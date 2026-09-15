@@ -1,0 +1,42 @@
+name: Pull Lines
+
+on:
+  schedule:
+    # 14:00 UTC = 9:00 AM EST (fixed UTC-5; drifts to 8 AM local once
+    # daylight saving ends in November - see README for details)
+    - cron: "0 14 * * 2" # Tuesday
+    - cron: "0 14 * * 3" # Wednesday
+    - cron: "0 14 * * 4" # Thursday
+    - cron: "0 14 * * 5" # Friday
+    - cron: "0 14 * * 6" # Saturday
+  workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Determine stage from today's UTC weekday
+        id: stage
+        run: echo "name=$(date -u +%A | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch lines
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: python scripts/fetch_lines.py --stage ${{ steps.stage.outputs.name }}
+
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "Pull lines: ${{ steps.stage.outputs.name }} ($(date -u +%F))"
+          git push

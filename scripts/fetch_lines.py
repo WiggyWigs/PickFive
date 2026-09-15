@@ -11,6 +11,7 @@ import argparse
 import json
 import os
 import sys
+from datetime import datetime, timedelta, time, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -26,13 +27,33 @@ SPORTS = {
 PREFERRED_BOOKMAKER = "draftkings"
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-VALID_STAGES = ["tuesday", "wednesday", "thursday", "friday", "saturday"]
+VALID_STAGES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
 
-def fetch_sport(sport_key: str, api_key: str) -> list:
+def compute_cutoff() -> str:
+    """
+    Return an ISO8601 UTC timestamp for the upcoming Monday, used as
+    commenceTimeTo so we only pull this week's slate - not next
+    week's games that are already up on the board.
+
+    If today is Monday, "upcoming Monday" is today (0 days out), so
+    tonight's Monday Night Football game is still included. The
+    cutoff is set to 9 AM UTC the day *after* that Monday (not
+    midnight) to cover late-kickoff MNF games, which can commence
+    just after midnight UTC.
+    """
+    now = datetime.now(timezone.utc)
+    days_until_monday = (7 - now.weekday()) % 7  # Monday == 0
+    target_monday = (now + timedelta(days=days_until_monday)).date()
+    cutoff = datetime.combine(target_monday + timedelta(days=1), time(9, 0), tzinfo=timezone.utc)
+    return cutoff.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def fetch_sport(sport_key: str, api_key: str, cutoff: str) -> list:
     url = (
         f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
-        f"?regions=us&markets=spreads&oddsFormat=american&apiKey={api_key}"
+        f"?regions=us&markets=spreads&oddsFormat=american"
+        f"&commenceTimeTo={cutoff}&apiKey={api_key}"
     )
     req = Request(url, headers={"User-Agent": "PickFive/1.0"})
     try:
@@ -64,9 +85,9 @@ def pick_spread(game: dict):
     return None, chosen.get("key")
 
 
-def build_rows(sport_key: str, league_label: str, api_key: str) -> list:
+def build_rows(sport_key: str, league_label: str, api_key: str, cutoff: str) -> list:
     rows = []
-    for game in fetch_sport(sport_key, api_key):
+    for game in fetch_sport(sport_key, api_key, cutoff):
         point, book = pick_spread(game)
         rows.append(
             {
@@ -93,14 +114,15 @@ def main():
         sys.exit(1)
 
     rows = []
+    cutoff = compute_cutoff()
     for sport_key, league_label in SPORTS.items():
-        rows.extend(build_rows(sport_key, league_label, api_key))
+        rows.extend(build_rows(sport_key, league_label, api_key, cutoff))
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     out_path = DATA_DIR / f"{args.stage}.json"
     out_path.write_text(json.dumps(rows, indent=2))
 
-    print(f"Wrote {len(rows)} games ({args.stage}) to {out_path}")
+    print(f"Wrote {len(rows)} games ({args.stage}, cutoff={cutoff}) to {out_path}")
 
 
 if __name__ == "__main__":

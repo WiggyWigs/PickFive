@@ -31,11 +31,12 @@
     margin: 0 auto 1.75rem;
   }
 
-  h1 {
-    font-size: 1.7rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    margin: 0 0 0.35rem;
+  .logo {
+    display: block;
+    height: auto;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 0 0.35rem -0.4rem; /* nudge left to offset the graffiti drip's built-in padding */
   }
 
   .sub {
@@ -124,7 +125,7 @@
 <body>
 
 <header>
-  <h1>PickFive</h1>
+  <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
   <p class="sub">NFL &amp; NCAAF spreads, pulled Monday through Saturday at 9 AM EST. Click any header to sort.</p>
 </header>
 

@@ -125,7 +125,7 @@
 
 <header>
   <h1>PickFive</h1>
-  <p class="sub">NFL &amp; NCAAF spreads, pulled Tuesday through Saturday at 9 AM EST. Click any header to sort.</p>
+  <p class="sub">NFL &amp; NCAAF spreads, pulled Monday through Saturday at 9 AM EST. Click any header to sort.</p>
 </header>
 
 <div class="status" id="status">Loading this week's data&hellip;</div>
@@ -137,6 +137,7 @@
         <th data-key="home_team" data-type="string">Home Team</th>
         <th data-key="league" data-type="string">Lg</th>
         <th data-key="away_team" data-type="string">Away Team</th>
+        <th data-key="monday" data-type="number">Mon</th>
         <th data-key="tuesday" data-type="number">Tue</th>
         <th data-key="wednesday" data-type="number">Wed</th>
         <th data-key="thursday" data-type="number">Thu</th>
@@ -150,14 +151,14 @@
 </div>
 
 <div class="empty-state" id="empty-state" style="display:none;">
-  No data yet. Once the Tuesday pull runs, games will show up here.
+  No data yet. Once the first weekly pull runs, games will show up here.
 </div>
 
-<footer>Spreads shown are the home team's line (negative = home favored). Delta = most recent pulled line minus Tuesday's opening line.</footer>
+<footer>Spreads shown are the home team's line (negative = home favored). Delta = most recent pulled line minus the first line posted for that game (usually Monday, but falls back to whichever day it first appeared on the board).</footer>
 
 <script>
-  const STAGES = ["tuesday", "wednesday", "thursday", "friday", "saturday"];
-  const LABELS = { tuesday: "Tue", wednesday: "Wed", thursday: "Thu", friday: "Fri", saturday: "Sat" };
+  const STAGES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+  const LABELS = { monday: "Mon", tuesday: "Tue", wednesday: "Wed", thursday: "Thu", friday: "Fri", saturday: "Sat" };
 
   async function loadStage(stage) {
     try {
@@ -181,15 +182,15 @@
       results[stage] = await loadStage(stage);
     }
 
-    const anchor = results.tuesday; // Tuesday's pull defines this week's game list
+    const pulledDays = STAGES.filter((s) => results[s] && results[s].length > 0);
 
-    if (!anchor || anchor.length === 0) {
+    if (pulledDays.length === 0) {
       statusEl.textContent = "";
       document.getElementById("empty-state").style.display = "block";
       return;
     }
 
-    // Index each later day's rows by game id for lookup
+    // Index each day's rows by game id for lookup
     const byStage = {};
     for (const stage of STAGES) {
       byStage[stage] = {};
@@ -198,32 +199,54 @@
       }
     }
 
-    const rows = anchor.map((g) => {
+    // Build the game list as the union of every game seen across all
+    // pulled days (not just one fixed anchor day) - handles games
+    // that don't get a line posted until after Monday. Team/league
+    // info is taken from whichever day first introduced the game.
+    const gameMeta = {};
+    for (const stage of STAGES) {
+      if (!results[stage]) continue;
+      for (const g of results[stage]) {
+        if (!gameMeta[g.id]) {
+          gameMeta[g.id] = { id: g.id, home_team: g.home_team, away_team: g.away_team, league: g.league };
+        }
+      }
+    }
+
+    const rows = Object.values(gameMeta).map((meta) => {
       const perDay = {};
+      let openSpread = null;
+      let openStage = null;
       let latestSpread = null;
       let latestStage = null;
+
       for (const stage of STAGES) {
-        const match = byStage[stage][g.id];
-        perDay[stage] = match ? match.spread : null;
-        if (match && match.spread !== null && match.spread !== undefined) {
-          latestSpread = match.spread;
+        const match = byStage[stage][meta.id];
+        const val = match ? match.spread : null;
+        perDay[stage] = val;
+        if (val !== null && val !== undefined) {
+          if (openSpread === null) {
+            openSpread = val; // first day this game had a posted line
+            openStage = stage;
+          }
+          latestSpread = val; // keeps overwriting -> ends on most recent
           latestStage = stage;
         }
       }
-      const tueSpread = perDay.tuesday;
+
       const delta =
-        latestSpread !== null && tueSpread !== null && latestStage !== "tuesday"
-          ? +(latestSpread - tueSpread).toFixed(1)
-          : latestStage === "tuesday"
-          ? 0
+        latestSpread !== null && openSpread !== null
+          ? +(latestSpread - openSpread).toFixed(1) // 0 if only one pull so far
           : null;
 
       return {
-        id: g.id,
-        home_team: g.home_team,
-        away_team: g.away_team,
-        league: g.league,
+        id: meta.id,
+        home_team: meta.home_team,
+        away_team: meta.away_team,
+        league: meta.league,
         spread: latestSpread,
+        opened: openStage, // which day this game's line first appeared (for reference)
+        monday: perDay.monday,
         tuesday: perDay.tuesday,
         wednesday: perDay.wednesday,
         thursday: perDay.thursday,
@@ -233,7 +256,6 @@
       };
     });
 
-    const pulledDays = STAGES.filter((s) => results[s] && results[s].length > 0);
     statusEl.textContent = `${rows.length} games · pulled: ${pulledDays.map((s) => LABELS[s]).join(", ")}`;
 
     renderTable(rows);
@@ -257,6 +279,7 @@
           <td class="team">${r.home_team}</td>
           <td class="league">${r.league}</td>
           <td class="team">${r.away_team}</td>
+          <td class="${r.monday === null ? 'blank' : 'num'}">${fmtSpread(r.monday) ?? "—"}</td>
           <td class="${r.tuesday === null ? 'blank' : 'num'}">${fmtSpread(r.tuesday) ?? "—"}</td>
           <td class="${r.wednesday === null ? 'blank' : 'num'}">${fmtSpread(r.wednesday) ?? "—"}</td>
           <td class="${r.thursday === null ? 'blank' : 'num'}">${fmtSpread(r.thursday) ?? "—"}</td>

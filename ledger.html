@@ -374,26 +374,12 @@
   let ALL_MONTHLY = [];
   let ALL_ENTRIES = [];
 
-  function renderTxnModal(title, txns, emptyLabel) {
+  function renderTxnModal(title, headers, rowsHtml, rowCount, emptyLabel) {
     document.getElementById("txn-modal-title").textContent = title;
-
-    const tbody = document.getElementById("txn-modal-body");
-    tbody.innerHTML = txns.length
-      ? txns
-          .map(
-            (e) => `
-        <tr>
-          <td>${e.date}</td>
-          <td>${e.bet}</td>
-          <td class="num">${fmtMoney(e.bet_amount)}</td>
-          <td class="num">${fmtMoney(e.payout)}</td>
-          <td class="num">${fmtMoney(e.net)}</td>
-        </tr>
-      `
-          )
-          .join("")
-      : `<tr><td colspan="5">No ${emptyLabel} found.</td></tr>`;
-
+    document.querySelector("#txn-modal table thead tr").innerHTML = headers.map((h) => `<th>${h}</th>`).join("");
+    document.getElementById("txn-modal-body").innerHTML = rowCount
+      ? rowsHtml
+      : `<tr><td colspan="${headers.length}">No ${emptyLabel} found.</td></tr>`;
     document.getElementById("txn-modal").style.display = "flex";
   }
 
@@ -407,13 +393,40 @@
       return y === year && m === month;
     });
 
-    renderTxnModal(`${name} — ${periodLabel}`, txns, "transactions");
+    const rowsHtml = txns
+      .map(
+        (e) => `
+      <tr>
+        <td>${e.date}</td>
+        <td>${e.bet}</td>
+        <td class="num">${fmtMoney(e.bet_amount)}</td>
+        <td class="num">${fmtMoney(e.payout)}</td>
+        <td class="num">${fmtMoney(e.net)}</td>
+      </tr>
+    `
+      )
+      .join("");
+
+    renderTxnModal(`${name} — ${periodLabel}`, ["Date", "Bet", "Bet Amount", "Payout", "Net"], rowsHtml, txns.length, "transactions");
   }
 
   function showTransferModal(name, transferType) {
     const label = transferType === "deposit" ? "Deposits" : "Withdraws";
     const txns = ALL_ENTRIES.filter((e) => e.type === transferType && e.name === name);
-    renderTxnModal(`${name} — ${label}`, txns, label.toLowerCase());
+
+    const rowsHtml = txns
+      .map(
+        (e) => `
+      <tr>
+        <td>${e.date}</td>
+        <td>${e.bet}</td>
+        <td class="num">${fmtMoney(e.payout)}</td>
+      </tr>
+    `
+      )
+      .join("");
+
+    renderTxnModal(`${name} — ${label}`, ["Date", "Type", "Amount"], rowsHtml, txns.length, label.toLowerCase());
   }
 
   function closeTransactionModal() {

@@ -15,6 +15,7 @@ link, set as a repo Actions variable, not a secret - it's a public
 read-only export URL, not a credential).
 
 Expected sheet headers (case/whitespace-insensitive):
+  Year          - season year, e.g. 2026
   Week          - week number, e.g. 1, 2, 3
   Person        - must match one of the known picker slots
   Team_Picked   - team name, shown as-is
@@ -41,6 +42,7 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 # (lowercased, stripped) version of whatever the sheet actually has -
 # keeps this resilient to minor renaming/whitespace in the sheet.
 HEADER_ALIASES = {
+    "year": "year",
     "week": "week",
     "person": "person",
     "team picked": "team_picked",
@@ -99,6 +101,17 @@ def normalize_result(v: str):
     return None
 
 
+def normalize_year(v: str):
+    v = (v or "").strip()
+    if not v:
+        return None
+    try:
+        return int(v)
+    except ValueError:
+        print(f"[warn] couldn't parse year value: {v!r}", file=sys.stderr)
+        return None
+
+
 def normalize_spread(v: str):
     v = (v or "").strip().replace("+", "")
     if not v:
@@ -130,18 +143,20 @@ def main():
     for i, raw_row in enumerate(reader, start=2):  # row 1 is the header
         row = {field_map[k]: v for k, v in raw_row.items() if k in field_map}
 
+        year = normalize_year(row.get("year"))
         week = (row.get("week") or "").strip()
         person = (row.get("person") or "").strip()
         team_picked = (row.get("team_picked") or "").strip()
 
-        if not week or not person or not team_picked:
+        if year is None or not week or not person or not team_picked:
             skipped += 1
-            print(f"[warn] row {i}: missing Week/Person/Team Picked, skipping", file=sys.stderr)
+            print(f"[warn] row {i}: missing Year/Week/Person/Team Picked, skipping", file=sys.stderr)
             continue
 
         spread = normalize_spread(row.get("spread"))
         picks.append(
             {
+                "year": year,
                 "week": week,
                 "person": person,
                 "team_picked": team_picked,

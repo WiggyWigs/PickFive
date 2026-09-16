@@ -36,13 +36,33 @@
     gap: 0.4rem;
   }
 
-  .filter-bar select {
+  select {
     background: var(--panel);
     color: var(--text);
     border: 1px solid var(--line);
     border-radius: 4px;
     padding: 0.4rem 0.6rem;
     font-size: 0.9rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  /* The Pick History filter row lives inside <thead> as <td> cells (not
+     <th>) specifically so it's excluded from the sortable-header click
+     handlers and hover styling - this row filters, it doesn't sort.
+     Sharing the table's own column layout is what guarantees each
+     select lines up exactly with the header above it. */
+  #history-table thead tr.filter-row td {
+    background: var(--panel);
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+    cursor: default;
+  }
+
+  #history-table thead tr.filter-row select {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.82rem;
+    padding: 0.3rem 0.4rem;
   }
 
   .stat-block {
@@ -82,6 +102,9 @@
 
 <div id="content" style="display:none;">
 
+  <div class="stat-block" id="team-rollup"></div>
+
+  <div class="section-title">Standings</div>
   <div class="filter-bar">
     <div class="filter-group">
       <label for="standings-year-filter">Year:</label>
@@ -90,11 +113,6 @@
       </select>
     </div>
   </div>
-
-  <div class="section-title">Team Rollup</div>
-  <div class="stat-block" id="team-rollup"></div>
-
-  <div class="section-title">Standings</div>
   <div class="table-wrap">
     <table id="standings-table">
       <thead>
@@ -114,37 +132,6 @@
     </table>
   </div>
 
-  <div class="filter-bar">
-    <div class="filter-group">
-      <label for="history-year-filter">Year:</label>
-      <select id="history-year-filter">
-        <option value="all">All Time</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <label for="history-person-filter">Person:</label>
-      <select id="history-person-filter">
-        <option value="all">Everyone</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <label for="history-homeaway-filter">Home/Away:</label>
-      <select id="history-homeaway-filter">
-        <option value="all">Both</option>
-        <option value="Home">Home</option>
-        <option value="Away">Away</option>
-      </select>
-    </div>
-    <div class="filter-group">
-      <label for="history-favdog-filter">Fav/Dog:</label>
-      <select id="history-favdog-filter">
-        <option value="all">Both</option>
-        <option value="Favorite">Favorite</option>
-        <option value="Underdog">Underdog</option>
-      </select>
-    </div>
-  </div>
-
   <div class="section-title">Pick History</div>
   <div class="table-wrap">
     <table id="history-table">
@@ -158,6 +145,36 @@
           <th data-key="fav_dog" data-type="string">Fav/Dog</th>
           <th data-key="spread" data-type="number">Spread</th>
           <th data-key="result" data-type="string">Result</th>
+        </tr>
+        <tr class="filter-row">
+          <td>
+            <select id="history-year-filter">
+              <option value="all">All</option>
+            </select>
+          </td>
+          <td></td>
+          <td>
+            <select id="history-person-filter">
+              <option value="all">All</option>
+            </select>
+          </td>
+          <td></td>
+          <td>
+            <select id="history-homeaway-filter">
+              <option value="all">All</option>
+              <option value="Home">Home</option>
+              <option value="Away">Away</option>
+            </select>
+          </td>
+          <td>
+            <select id="history-favdog-filter">
+              <option value="all">All</option>
+              <option value="Favorite">Favorite</option>
+              <option value="Underdog">Underdog</option>
+            </select>
+          </td>
+          <td></td>
+          <td></td>
         </tr>
       </thead>
       <tbody></tbody>
@@ -284,10 +301,10 @@
     }
 
     populateSelect(document.getElementById("standings-year-filter"), distinctYears(ALL_PICKS), "All Time");
-    populateSelect(document.getElementById("history-year-filter"), distinctYears(ALL_PICKS), "All Time");
+    populateSelect(document.getElementById("history-year-filter"), distinctYears(ALL_PICKS), "All");
 
     const people = [...new Set(ALL_PICKS.map((p) => p.person))].sort();
-    populateSelect(document.getElementById("history-person-filter"), people, "Everyone");
+    populateSelect(document.getElementById("history-person-filter"), people, "All");
 
     document.getElementById("standings-year-filter").addEventListener("change", refreshStandings);
     document.getElementById("history-year-filter").addEventListener("change", refreshHistory);

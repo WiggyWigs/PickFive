@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="assets/styles.css">
 <style>
   #ledger-table th,
-  #ledger-table td {
+  #ledger-table td,
+  #monthly-table th,
+  #monthly-table td {
     text-align: center;
   }
 
@@ -48,7 +50,20 @@
   No ledger entries yet. Once the sheet sync runs, this will show up here.
 </div>
 
-<footer>Deposits and Withdraws come from rows where Bet contains "Transfer" (positive Payout = deposit, negative = withdraw). Everything else is treated as a wager, and Wager Win/Loss sums that person's Net across all wagers. Current Balance = Deposits − Withdraws + Wager Win/Loss.</footer>
+<div class="section-title" id="monthly-title" style="display:none;">Monthly Breakdown</div>
+<div class="table-wrap" id="monthly-wrap" style="display:none;">
+  <table id="monthly-table">
+    <thead>
+      <tr>
+        <th data-key="name" data-type="string">Name</th>
+        <th data-key="year" data-type="number">Year</th>
+        <th data-key="month_num" data-type="number">Month</th>
+        <th data-key="win_loss" data-type="number">Win/Loss</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
 
 <script>
   async function loadLedger() {
@@ -65,6 +80,41 @@
     if (n === null || n === undefined) return "—";
     const sign = n < 0 ? "-" : "";
     return `${sign}$${Math.abs(n).toFixed(2)}`;
+  }
+
+  const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  function parseMonthYear(dateStr) {
+    // Expects M/D/YYYY, M/D/YY, or the equivalent with dashes. Returns
+    // {year, month} as numbers, or nulls if the date can't be parsed
+    // (e.g. still missing a year) rather than guessing.
+    const parts = (dateStr || "").trim().split(/[/-]/);
+    if (parts.length < 3) return { year: null, month: null };
+
+    const month = parseInt(parts[0], 10);
+    let year = parseInt(parts[2], 10);
+    if (Number.isNaN(month) || Number.isNaN(year)) return { year: null, month: null };
+
+    if (year < 100) year += 2000; // 2-digit year, e.g. "25" -> 2025
+    if (month < 1 || month > 12) return { year: null, month: null };
+
+    return { year, month };
+  }
+
+  function buildMonthly(entries) {
+    const byKey = {};
+    for (const e of entries) {
+      if (e.type !== "wager") continue; // transfers excluded, per request
+
+      const { year, month } = parseMonthYear(e.date);
+      const key = `${e.name}|${year ?? "unknown"}|${month ?? "unknown"}`;
+
+      if (!byKey[key]) {
+        byKey[key] = { name: e.name, year, month_num: month, win_loss: 0 };
+      }
+      byKey[key].win_loss += e.net ?? 0;
+    }
+    return Object.values(byKey);
   }
 
   function buildRollup(entries) {
@@ -136,6 +186,57 @@
     });
   }
 
+  function renderMonthlyTable(rows) {
+    const tbody = document.querySelector("#monthly-table tbody");
+    let currentSort = { key: null, dir: 1 };
+
+    function draw(data) {
+      tbody.innerHTML = "";
+      for (const r of data) {
+        const tr = document.createElement("tr");
+        const wlClass = r.win_loss > 0 ? "balance-pos" : r.win_loss < 0 ? "balance-neg" : "";
+        const monthLabel = r.month_num ? MONTH_NAMES[r.month_num - 1] : "Unknown";
+        tr.innerHTML = `
+          <td class="team">${r.name}</td>
+          <td class="${r.year === null ? 'blank' : 'num'}">${r.year ?? "—"}</td>
+          <td class="${r.month_num === null ? 'blank' : 'num'}">${monthLabel}</td>
+          <td class="${wlClass}">${fmtMoney(r.win_loss)}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    draw(rows);
+
+    document.querySelectorAll("#monthly-table thead th").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.key;
+        const type = th.dataset.type;
+        const dir = currentSort.key === key ? -currentSort.dir : 1;
+        currentSort = { key, dir };
+
+        document.querySelectorAll("#monthly-table thead th .arrow").forEach((a) => a.remove());
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = dir === 1 ? "▲" : "▼";
+        th.appendChild(arrow);
+
+        const sorted = [...rows].sort((a, b) => {
+          let av = a[key];
+          let bv = b[key];
+          if (type === "number") {
+            return ((av ?? -Infinity) - (bv ?? -Infinity)) * dir;
+          }
+          av = (av ?? "").toString().toLowerCase();
+          bv = (bv ?? "").toString().toLowerCase();
+          return av.localeCompare(bv) * dir;
+        });
+
+        draw(sorted);
+      });
+    });
+  }
+
   async function init() {
     const statusEl = document.getElementById("status");
     const entries = await loadLedger();
@@ -150,6 +251,11 @@
     statusEl.textContent = `${rollup.length} people tracked`;
     document.getElementById("table-wrap").style.display = "block";
     renderTable(rollup);
+
+    const monthly = buildMonthly(entries);
+    document.getElementById("monthly-title").style.display = "block";
+    document.getElementById("monthly-wrap").style.display = "block";
+    renderMonthlyTable(monthly);
   }
 
   init();

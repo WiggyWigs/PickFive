@@ -1,6 +1,6 @@
 [
   {
-    "date": "9/1",
+    "date": "9/1/2025",
     "name": "Carlos",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -9,7 +9,7 @@
     "type": "deposit"
   },
   {
-    "date": "9/11",
+    "date": "9/11/2025",
     "name": "Carlos",
     "bet": "TNF - Bank Builder",
     "bet_amount": 25.0,
@@ -18,7 +18,7 @@
     "type": "wager"
   },
   {
-    "date": "9/12",
+    "date": "9/12/2025",
     "name": "Carlos",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -27,7 +27,7 @@
     "type": "deposit"
   },
   {
-    "date": "9/12",
+    "date": "9/12/2025",
     "name": "Kevin",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -36,7 +36,7 @@
     "type": "deposit"
   },
   {
-    "date": "9/13",
+    "date": "9/13/2025",
     "name": "Billy",
     "bet": "ND Passing Parlay",
     "bet_amount": 20.0,
@@ -45,7 +45,7 @@
     "type": "wager"
   },
   {
-    "date": "9/13",
+    "date": "9/13/2025",
     "name": "Kevin",
     "bet": "3-way college ML",
     "bet_amount": 300.0,
@@ -54,7 +54,7 @@
     "type": "wager"
   },
   {
-    "date": "9/13",
+    "date": "9/13/2025",
     "name": "Kevin",
     "bet": "ND Passing Parlay",
     "bet_amount": 20.0,
@@ -63,7 +63,7 @@
     "type": "wager"
   },
   {
-    "date": "9/26",
+    "date": "9/26/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 1",
     "bet_amount": 20.0,
@@ -72,7 +72,7 @@
     "type": "wager"
   },
   {
-    "date": "9/26",
+    "date": "9/26/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 1",
     "bet_amount": 20.0,
@@ -81,7 +81,7 @@
     "type": "wager"
   },
   {
-    "date": "9/27",
+    "date": "9/27/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 2",
     "bet_amount": 20.0,
@@ -90,7 +90,7 @@
     "type": "wager"
   },
   {
-    "date": "9/27",
+    "date": "9/27/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 2",
     "bet_amount": 20.0,
@@ -99,7 +99,7 @@
     "type": "wager"
   },
   {
-    "date": "9/27",
+    "date": "9/27/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 2",
     "bet_amount": 20.0,
@@ -108,7 +108,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 3 - Parlay",
     "bet_amount": 20.0,
@@ -117,7 +117,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 3 - Young",
     "bet_amount": 20.0,
@@ -126,7 +126,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 3 - Scheffler",
     "bet_amount": 20.0,
@@ -135,7 +135,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 3 - Xander Tie",
     "bet_amount": 20.0,
@@ -144,7 +144,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Billy",
     "bet": "Ryder Cup Day 3 - JJ",
     "bet_amount": 20.0,
@@ -153,7 +153,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Carlos",
     "bet": "Ryder Cup Day 3 - Parlay",
     "bet_amount": 20.0,
@@ -162,7 +162,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Carlos",
     "bet": "Ryder Cup Day 3 - Young",
     "bet_amount": 20.0,
@@ -171,7 +171,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Carlos",
     "bet": "Ryder Cup Day 3 - Scheffler",
     "bet_amount": 20.0,
@@ -180,7 +180,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Carlos",
     "bet": "Ryder Cup Day 3 - Xander Tie",
     "bet_amount": 20.0,
@@ -189,7 +189,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Carlos",
     "bet": "Ryder Cup Day 3 - JJ",
     "bet_amount": 20.0,
@@ -198,7 +198,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Kevin",
     "bet": "Ryder Cup Day 3 - Parlay",
     "bet_amount": 20.0,
@@ -207,7 +207,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Kevin",
     "bet": "Ryder Cup Day 3 - Young",
     "bet_amount": 20.0,
@@ -216,7 +216,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Kevin",
     "bet": "Ryder Cup Day 3 - Scheffler",
     "bet_amount": 20.0,
@@ -225,7 +225,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Kevin",
     "bet": "Ryder Cup Day 3 - Xander Tie",
     "bet_amount": 20.0,
@@ -234,7 +234,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Kevin",
     "bet": "Ryder Cup Day 3 - JJ",
     "bet_amount": 20.0,
@@ -243,7 +243,7 @@
     "type": "wager"
   },
   {
-    "date": "9/28",
+    "date": "9/28/2025",
     "name": "Kevin",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -252,7 +252,7 @@
     "type": "deposit"
   },
   {
-    "date": "9/29",
+    "date": "9/29/2025",
     "name": "Billy",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -261,7 +261,7 @@
     "type": "deposit"
   },
   {
-    "date": "10/2",
+    "date": "10/2/2025",
     "name": "Carlos",
     "bet": "TNF - Bank Builder 1",
     "bet_amount": 25.0,
@@ -270,7 +270,7 @@
     "type": "wager"
   },
   {
-    "date": "10/5",
+    "date": "10/5/2025",
     "name": "Carlos",
     "bet": "NFL - Bank Builder 1",
     "bet_amount": 25.0,
@@ -279,7 +279,7 @@
     "type": "wager"
   },
   {
-    "date": "10/5",
+    "date": "10/5/2025",
     "name": "Carlos",
     "bet": "NFL - Bank Builder 2",
     "bet_amount": 40.63,
@@ -288,7 +288,7 @@
     "type": "wager"
   },
   {
-    "date": "10/6",
+    "date": "10/6/2025",
     "name": "Carlos",
     "bet": "NFL - Bank Builder 3",
     "bet_amount": 65.0,
@@ -297,7 +297,7 @@
     "type": "wager"
   },
   {
-    "date": "10/9",
+    "date": "10/9/2025",
     "name": "Carlos",
     "bet": "TNF - Bank Builder",
     "bet_amount": 25.0,
@@ -306,7 +306,7 @@
     "type": "wager"
   },
   {
-    "date": "10/11",
+    "date": "10/11/2025",
     "name": "Carlos",
     "bet": "3-leg CFB parlay",
     "bet_amount": 10.0,
@@ -315,7 +315,7 @@
     "type": "wager"
   },
   {
-    "date": "10/16",
+    "date": "10/16/2025",
     "name": "Carlos",
     "bet": "Bank Builder",
     "bet_amount": 25.0,
@@ -324,7 +324,7 @@
     "type": "wager"
   },
   {
-    "date": "10/19",
+    "date": "10/19/2025",
     "name": "Carlos",
     "bet": "Bank Builder",
     "bet_amount": -25.0,
@@ -333,7 +333,7 @@
     "type": "wager"
   },
   {
-    "date": "10/20",
+    "date": "10/20/2025",
     "name": "Carlos",
     "bet": "MNF Bank Builder",
     "bet_amount": 25.0,
@@ -342,7 +342,7 @@
     "type": "wager"
   },
   {
-    "date": "10/23",
+    "date": "10/23/2025",
     "name": "Carlos",
     "bet": "TNF Bank Builder",
     "bet_amount": 25.0,
@@ -351,7 +351,7 @@
     "type": "wager"
   },
   {
-    "date": "10/25",
+    "date": "10/25/2025",
     "name": "Carlos",
     "bet": "4-leg college",
     "bet_amount": 20.0,
@@ -360,7 +360,7 @@
     "type": "wager"
   },
   {
-    "date": "10/30",
+    "date": "10/30/2025",
     "name": "Billy",
     "bet": "TNF Bank Ladder",
     "bet_amount": 10.0,
@@ -369,7 +369,7 @@
     "type": "wager"
   },
   {
-    "date": "10/30",
+    "date": "10/30/2025",
     "name": "Carlos",
     "bet": "TNF Bank Ladder",
     "bet_amount": 10.0,
@@ -378,7 +378,7 @@
     "type": "wager"
   },
   {
-    "date": "10/30",
+    "date": "10/30/2025",
     "name": "Kevin",
     "bet": "TNF Bank Ladder",
     "bet_amount": 10.0,
@@ -387,7 +387,7 @@
     "type": "wager"
   },
   {
-    "date": "11/1",
+    "date": "11/1/2025",
     "name": "Billy",
     "bet": "4-leg college",
     "bet_amount": 20.0,
@@ -396,7 +396,7 @@
     "type": "wager"
   },
   {
-    "date": "11/1",
+    "date": "11/1/2025",
     "name": "Billy",
     "bet": "OSU & Indiana",
     "bet_amount": 15.0,
@@ -405,7 +405,7 @@
     "type": "wager"
   },
   {
-    "date": "11/1",
+    "date": "11/1/2025",
     "name": "Billy",
     "bet": "Army under & Boise",
     "bet_amount": 15.0,
@@ -414,7 +414,7 @@
     "type": "wager"
   },
   {
-    "date": "11/1",
+    "date": "11/1/2025",
     "name": "Carlos",
     "bet": "4-leg college",
     "bet_amount": 20.0,
@@ -423,7 +423,7 @@
     "type": "wager"
   },
   {
-    "date": "11/1",
+    "date": "11/1/2025",
     "name": "Carlos",
     "bet": "Army under & Boise",
     "bet_amount": 15.0,
@@ -432,7 +432,7 @@
     "type": "wager"
   },
   {
-    "date": "11/1",
+    "date": "11/1/2025",
     "name": "Carlos",
     "bet": "OSU & Indiana",
     "bet_amount": 15.0,
@@ -441,7 +441,7 @@
     "type": "wager"
   },
   {
-    "date": "11/8",
+    "date": "11/8/2025",
     "name": "Carlos",
     "bet": "3-team CFB auto-win",
     "bet_amount": 20.0,
@@ -450,7 +450,7 @@
     "type": "wager"
   },
   {
-    "date": "11/15",
+    "date": "11/15/2025",
     "name": "Carlos",
     "bet": "3-team CFB auto-win (fade)",
     "bet_amount": 10.0,
@@ -459,7 +459,7 @@
     "type": "wager"
   },
   {
-    "date": "11/22",
+    "date": "11/22/2025",
     "name": "Billy",
     "bet": "Aneyas Willams TD",
     "bet_amount": 20.0,
@@ -468,7 +468,7 @@
     "type": "wager"
   },
   {
-    "date": "11/22",
+    "date": "11/22/2025",
     "name": "Billy",
     "bet": "Price 2 TDs",
     "bet_amount": 20.0,
@@ -477,7 +477,7 @@
     "type": "wager"
   },
   {
-    "date": "11/22",
+    "date": "11/22/2025",
     "name": "Billy",
     "bet": "Rairidon TD",
     "bet_amount": 20.0,
@@ -486,7 +486,7 @@
     "type": "wager"
   },
   {
-    "date": "11/22",
+    "date": "11/22/2025",
     "name": "Billy",
     "bet": "ND Over 5.5 TDs",
     "bet_amount": 20.0,
@@ -495,7 +495,7 @@
     "type": "wager"
   },
   {
-    "date": "11/22",
+    "date": "11/22/2025",
     "name": "Carlos",
     "bet": "5-team CFB auto-win",
     "bet_amount": 25.0,
@@ -504,7 +504,7 @@
     "type": "wager"
   },
   {
-    "date": "11/22",
+    "date": "11/22/2025",
     "name": "Kevin",
     "bet": "Aneyas Williams TD",
     "bet_amount": 100.0,
@@ -513,7 +513,7 @@
     "type": "wager"
   },
   {
-    "date": "11/22",
+    "date": "11/22/2025",
     "name": "Kevin",
     "bet": "Over 5.5 ND TDs",
     "bet_amount": 100.0,
@@ -522,7 +522,7 @@
     "type": "wager"
   },
   {
-    "date": "11/24",
+    "date": "11/24/2025",
     "name": "Billy",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -531,7 +531,7 @@
     "type": "withdraw"
   },
   {
-    "date": "11/24",
+    "date": "11/24/2025",
     "name": "Billy",
     "bet": "BB - MNF",
     "bet_amount": 25.0,
@@ -540,7 +540,7 @@
     "type": "wager"
   },
   {
-    "date": "11/24",
+    "date": "11/24/2025",
     "name": "Carlos",
     "bet": "BB - MNF",
     "bet_amount": 25.0,
@@ -549,7 +549,7 @@
     "type": "wager"
   },
   {
-    "date": "11/24",
+    "date": "11/24/2025",
     "name": "Kevin",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -558,7 +558,7 @@
     "type": "withdraw"
   },
   {
-    "date": "11/27",
+    "date": "11/27/2025",
     "name": "Billy",
     "bet": "BB - Stage 2",
     "bet_amount": 40.0,
@@ -567,7 +567,7 @@
     "type": "wager"
   },
   {
-    "date": "11/27",
+    "date": "11/27/2025",
     "name": "Billy",
     "bet": "BB - Stage 2 Redo",
     "bet_amount": 40.0,
@@ -576,7 +576,7 @@
     "type": "wager"
   },
   {
-    "date": "11/27",
+    "date": "11/27/2025",
     "name": "Billy",
     "bet": "TNF Cincy Game",
     "bet_amount": 10.0,
@@ -585,7 +585,7 @@
     "type": "wager"
   },
   {
-    "date": "11/27",
+    "date": "11/27/2025",
     "name": "Carlos",
     "bet": "BB - Stage 2",
     "bet_amount": 40.0,
@@ -594,7 +594,7 @@
     "type": "wager"
   },
   {
-    "date": "11/27",
+    "date": "11/27/2025",
     "name": "Carlos",
     "bet": "BB - Stage 2 Redo",
     "bet_amount": 40.0,
@@ -603,7 +603,7 @@
     "type": "wager"
   },
   {
-    "date": "11/27",
+    "date": "11/27/2025",
     "name": "Carlos",
     "bet": "TNF Cincy Game",
     "bet_amount": 10.0,
@@ -612,7 +612,7 @@
     "type": "wager"
   },
   {
-    "date": "11/28",
+    "date": "11/28/2025",
     "name": "Billy",
     "bet": "BB - Stage 3",
     "bet_amount": 60.0,
@@ -621,7 +621,7 @@
     "type": "wager"
   },
   {
-    "date": "11/28",
+    "date": "11/28/2025",
     "name": "Carlos",
     "bet": "BB - Stage 3",
     "bet_amount": 60.0,
@@ -630,7 +630,7 @@
     "type": "wager"
   },
   {
-    "date": "11/29",
+    "date": "11/29/2025",
     "name": "Carlos",
     "bet": "3-leg can't lose parlay",
     "bet_amount": 20.0,
@@ -639,7 +639,7 @@
     "type": "wager"
   },
   {
-    "date": "12/4",
+    "date": "12/4/2025",
     "name": "Billy",
     "bet": "BB - Seed",
     "bet_amount": 25.0,
@@ -648,7 +648,7 @@
     "type": "wager"
   },
   {
-    "date": "12/4",
+    "date": "12/4/2025",
     "name": "Billy",
     "bet": "TNF Side Bet",
     "bet_amount": 10.0,
@@ -657,7 +657,7 @@
     "type": "wager"
   },
   {
-    "date": "12/4",
+    "date": "12/4/2025",
     "name": "Carlos",
     "bet": "BB - Seed",
     "bet_amount": 25.0,
@@ -666,7 +666,7 @@
     "type": "wager"
   },
   {
-    "date": "12/4",
+    "date": "12/4/2025",
     "name": "Carlos",
     "bet": "Hutchison Sack Bet",
     "bet_amount": 20.0,
@@ -675,7 +675,7 @@
     "type": "wager"
   },
   {
-    "date": "12/4",
+    "date": "12/4/2025",
     "name": "Carlos",
     "bet": "TNF Side Bet",
     "bet_amount": 10.0,
@@ -684,7 +684,7 @@
     "type": "wager"
   },
   {
-    "date": "12/6",
+    "date": "12/6/2025",
     "name": "Carlos",
     "bet": "3-leg can't lose (w/Navy)",
     "bet_amount": 20.0,
@@ -693,7 +693,7 @@
     "type": "wager"
   },
   {
-    "date": "12/8",
+    "date": "12/8/2025",
     "name": "Carlos",
     "bet": "BB - MNF - Bet 1",
     "bet_amount": 20.0,
@@ -702,7 +702,7 @@
     "type": "wager"
   },
   {
-    "date": "12/12",
+    "date": "12/12/2025",
     "name": "Carlos",
     "bet": "DanAI BB - Bet 1",
     "bet_amount": 12.5,
@@ -711,7 +711,7 @@
     "type": "wager"
   },
   {
-    "date": "12/12",
+    "date": "12/12/2025",
     "name": "Carlos",
     "bet": "BB - TNF - Bet 2",
     "bet_amount": 20.0,
@@ -720,7 +720,7 @@
     "type": "wager"
   },
   {
-    "date": "12/14",
+    "date": "12/14/2025",
     "name": "Billy",
     "bet": "BB - Leg 1",
     "bet_amount": 12.5,
@@ -729,7 +729,7 @@
     "type": "wager"
   },
   {
-    "date": "12/14",
+    "date": "12/14/2025",
     "name": "Carlos",
     "bet": "BB - Leg 1",
     "bet_amount": 12.5,
@@ -738,7 +738,7 @@
     "type": "wager"
   },
   {
-    "date": "12/14",
+    "date": "12/14/2025",
     "name": "Kevin",
     "bet": "BB - Leg 1",
     "bet_amount": 12.5,
@@ -747,7 +747,7 @@
     "type": "wager"
   },
   {
-    "date": "12/16",
+    "date": "12/16/2025",
     "name": "Billy",
     "bet": "BB - Leg 2",
     "bet_amount": 10.0,
@@ -756,7 +756,7 @@
     "type": "wager"
   },
   {
-    "date": "12/16",
+    "date": "12/16/2025",
     "name": "Carlos",
     "bet": "BB - Leg 2",
     "bet_amount": 10.0,
@@ -765,7 +765,7 @@
     "type": "wager"
   },
   {
-    "date": "12/16",
+    "date": "12/16/2025",
     "name": "Kevin",
     "bet": "BB - Leg 2",
     "bet_amount": 10.0,
@@ -774,7 +774,7 @@
     "type": "wager"
   },
   {
-    "date": "12/25",
+    "date": "12/25/2025",
     "name": "Billy",
     "bet": "Denver/Chiefs Parlay",
     "bet_amount": 20.0,
@@ -783,7 +783,7 @@
     "type": "wager"
   },
   {
-    "date": "12/25",
+    "date": "12/25/2025",
     "name": "Billy",
     "bet": "Xmas Day TD NFL Parlay",
     "bet_amount": 20.0,
@@ -792,7 +792,7 @@
     "type": "wager"
   },
   {
-    "date": "12/25",
+    "date": "12/25/2025",
     "name": "Carlos",
     "bet": "Denver/Chiefs Parlay",
     "bet_amount": 20.0,
@@ -801,7 +801,7 @@
     "type": "wager"
   },
   {
-    "date": "12/25",
+    "date": "12/25/2025",
     "name": "Carlos",
     "bet": "Xmas Day TD NFL Parlay",
     "bet_amount": 20.0,
@@ -810,7 +810,7 @@
     "type": "wager"
   },
   {
-    "date": "12/27",
+    "date": "12/27/2025",
     "name": "Billy",
     "bet": "Texans/Chargers 3-legger",
     "bet_amount": 15.0,
@@ -819,7 +819,7 @@
     "type": "wager"
   },
   {
-    "date": "12/27",
+    "date": "12/27/2025",
     "name": "Carlos",
     "bet": "CFB 4-legger",
     "bet_amount": 10.0,
@@ -828,7 +828,7 @@
     "type": "wager"
   },
   {
-    "date": "12/27",
+    "date": "12/27/2025",
     "name": "Carlos",
     "bet": "CFB 4-legger",
     "bet_amount": 10.0,
@@ -837,7 +837,7 @@
     "type": "wager"
   },
   {
-    "date": "12/27",
+    "date": "12/27/2025",
     "name": "Carlos",
     "bet": "Texans/Chargers 3-legger",
     "bet_amount": 15.0,
@@ -846,7 +846,7 @@
     "type": "wager"
   },
   {
-    "date": "12/28",
+    "date": "12/28/2025",
     "name": "Billy",
     "bet": "BB - Leg 3",
     "bet_amount": 50.0,
@@ -855,7 +855,7 @@
     "type": "wager"
   },
   {
-    "date": "12/28",
+    "date": "12/28/2025",
     "name": "Billy",
     "bet": "BB - Leg 2",
     "bet_amount": 24.0,
@@ -864,7 +864,7 @@
     "type": "wager"
   },
   {
-    "date": "12/28",
+    "date": "12/28/2025",
     "name": "Billy",
     "bet": "BB - Leg 1",
     "bet_amount": 15.0,
@@ -873,7 +873,7 @@
     "type": "wager"
   },
   {
-    "date": "12/28",
+    "date": "12/28/2025",
     "name": "Carlos",
     "bet": "BB - Leg 3",
     "bet_amount": 50.0,
@@ -882,7 +882,7 @@
     "type": "wager"
   },
   {
-    "date": "12/28",
+    "date": "12/28/2025",
     "name": "Carlos",
     "bet": "BB - Leg 2",
     "bet_amount": 24.0,
@@ -891,7 +891,7 @@
     "type": "wager"
   },
   {
-    "date": "12/28",
+    "date": "12/28/2025",
     "name": "Carlos",
     "bet": "BB - Leg 1",
     "bet_amount": 15.0,
@@ -900,7 +900,7 @@
     "type": "wager"
   },
   {
-    "date": "12/29",
+    "date": "12/29/2025",
     "name": "Billy",
     "bet": "BB - Leg 4 MNF",
     "bet_amount": 88.33,
@@ -909,7 +909,7 @@
     "type": "wager"
   },
   {
-    "date": "12/29",
+    "date": "12/29/2025",
     "name": "Carlos",
     "bet": "BB - Leg 4 MNF",
     "bet_amount": 88.33,
@@ -918,8 +918,8 @@
     "type": "wager"
   },
   {
-    "date": "12/30",
-    "name": "BIlly",
+    "date": "12/30/2025",
+    "name": "Billy",
     "bet": "Transfer",
     "bet_amount": 0.0,
     "payout": 187.5,
@@ -927,7 +927,7 @@
     "type": "deposit"
   },
   {
-    "date": "12/30",
+    "date": "12/30/2025",
     "name": "Carlos",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -936,7 +936,7 @@
     "type": "deposit"
   },
   {
-    "date": "12/30",
+    "date": "12/30/2025",
     "name": "Kevin",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -945,7 +945,7 @@
     "type": "deposit"
   },
   {
-    "date": "12/31",
+    "date": "12/31/2025",
     "name": "Billy",
     "bet": "Miami over 15.5",
     "bet_amount": 50.0,
@@ -954,7 +954,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Billy",
     "bet": "Bama ML",
     "bet_amount": 50.0,
@@ -963,7 +963,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Billy",
     "bet": "Oregon +1",
     "bet_amount": 50.0,
@@ -972,7 +972,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Billy",
     "bet": "Ole Miss Over",
     "bet_amount": 20.0,
@@ -981,7 +981,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Billy",
     "bet": "Ole Miss 2H ATS",
     "bet_amount": 20.0,
@@ -990,7 +990,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Billy",
     "bet": "Ole Miss +6",
     "bet_amount": 50.0,
@@ -999,7 +999,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Carlos",
     "bet": "3-leg CFP Parly",
     "bet_amount": 20.0,
@@ -1008,7 +1008,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Carlos",
     "bet": "Indiana -7",
     "bet_amount": 25.0,
@@ -1017,7 +1017,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Kevin",
     "bet": "Ole Miss +6",
     "bet_amount": 50.0,
@@ -1026,7 +1026,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Kevin",
     "bet": "Oregon +1",
     "bet_amount": 50.0,
@@ -1035,7 +1035,7 @@
     "type": "wager"
   },
   {
-    "date": "1/1",
+    "date": "1/1/2026",
     "name": "Kevin",
     "bet": "Ole Miss Over",
     "bet_amount": 20.0,
@@ -1044,7 +1044,7 @@
     "type": "wager"
   },
   {
-    "date": "1/4",
+    "date": "1/4/2026",
     "name": "Billy",
     "bet": "Steelers +4.5",
     "bet_amount": 20.0,
@@ -1053,7 +1053,7 @@
     "type": "wager"
   },
   {
-    "date": "1/5",
+    "date": "1/5/2026",
     "name": "Kevin",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -1062,7 +1062,7 @@
     "type": "withdraw"
   },
   {
-    "date": "1/8",
+    "date": "1/8/2026",
     "name": "Billy",
     "bet": "Ole Miss Over",
     "bet_amount": 25.0,
@@ -1071,7 +1071,7 @@
     "type": "wager"
   },
   {
-    "date": "1/8",
+    "date": "1/8/2026",
     "name": "Billy",
     "bet": "IU to win title",
     "bet_amount": 25.0,
@@ -1080,7 +1080,7 @@
     "type": "wager"
   },
   {
-    "date": "1/8",
+    "date": "1/8/2026",
     "name": "Billy",
     "bet": "Ole Miss first FG",
     "bet_amount": 20.0,
@@ -1089,7 +1089,7 @@
     "type": "wager"
   },
   {
-    "date": "1/8",
+    "date": "1/8/2026",
     "name": "Carlos",
     "bet": "UM/OLE no sacks",
     "bet_amount": 20.0,
@@ -1098,7 +1098,7 @@
     "type": "wager"
   },
   {
-    "date": "1/8",
+    "date": "1/8/2026",
     "name": "Carlos",
     "bet": "Miami first FG made",
     "bet_amount": 10.0,
@@ -1107,7 +1107,7 @@
     "type": "wager"
   },
   {
-    "date": "1/8",
+    "date": "1/8/2026",
     "name": "Carlos",
     "bet": "Ole Miss ML",
     "bet_amount": 25.0,
@@ -1116,7 +1116,7 @@
     "type": "wager"
   },
   {
-    "date": "1/9",
+    "date": "1/9/2026",
     "name": "Billy",
     "bet": "IU -3",
     "bet_amount": 20.0,
@@ -1125,7 +1125,7 @@
     "type": "wager"
   },
   {
-    "date": "1/9",
+    "date": "1/9/2026",
     "name": "Billy",
     "bet": "Kenyon Sadiq Prop",
     "bet_amount": 20.0,
@@ -1134,7 +1134,7 @@
     "type": "wager"
   },
   {
-    "date": "1/9",
+    "date": "1/9/2026",
     "name": "Billy",
     "bet": "Roman Hemby Prop",
     "bet_amount": 20.0,
@@ -1143,7 +1143,7 @@
     "type": "wager"
   },
   {
-    "date": "1/9",
+    "date": "1/9/2026",
     "name": "Carlos",
     "bet": "First score FG",
     "bet_amount": 20.0,
@@ -1152,7 +1152,7 @@
     "type": "wager"
   },
   {
-    "date": "1/9",
+    "date": "1/9/2026",
     "name": "Carlos",
     "bet": "IU -3",
     "bet_amount": 25.0,
@@ -1161,7 +1161,7 @@
     "type": "wager"
   },
   {
-    "date": "1/9",
+    "date": "1/9/2026",
     "name": "Carlos",
     "bet": "IU -3",
     "bet_amount": 25.0,
@@ -1170,7 +1170,7 @@
     "type": "wager"
   },
   {
-    "date": "1/10",
+    "date": "1/10/2026",
     "name": "Billy",
     "bet": "GB -1.5 & Panthers +10",
     "bet_amount": 20.0,
@@ -1179,7 +1179,7 @@
     "type": "wager"
   },
   {
-    "date": "1/10",
+    "date": "1/10/2026",
     "name": "Carlos",
     "bet": "GB -1.5 & Panthers +10",
     "bet_amount": 20.0,
@@ -1188,7 +1188,7 @@
     "type": "wager"
   },
   {
-    "date": "1/11",
+    "date": "1/11/2026",
     "name": "Billy",
     "bet": "Wild Card Bank Builder",
     "bet_amount": 15.0,
@@ -1197,7 +1197,7 @@
     "type": "wager"
   },
   {
-    "date": "1/11",
+    "date": "1/11/2026",
     "name": "Carlos",
     "bet": "Wild Card 3-legger",
     "bet_amount": 10.0,
@@ -1206,7 +1206,7 @@
     "type": "wager"
   },
   {
-    "date": "1/11",
+    "date": "1/11/2026",
     "name": "Carlos",
     "bet": "Wild Card Bank Builder",
     "bet_amount": 15.0,
@@ -1215,7 +1215,7 @@
     "type": "wager"
   },
   {
-    "date": "1/17",
+    "date": "1/17/2026",
     "name": "Billy",
     "bet": "Bills and Sehawks Parlay",
     "bet_amount": 20.0,
@@ -1224,7 +1224,7 @@
     "type": "wager"
   },
   {
-    "date": "1/18",
+    "date": "1/18/2026",
     "name": "Billy",
     "bet": "Rams -1.5 Live",
     "bet_amount": 20.0,
@@ -1233,7 +1233,7 @@
     "type": "wager"
   },
   {
-    "date": "1/18",
+    "date": "1/18/2026",
     "name": "Billy",
     "bet": "Kyren Live TD",
     "bet_amount": 20.0,
@@ -1242,7 +1242,7 @@
     "type": "wager"
   },
   {
-    "date": "1/18",
+    "date": "1/18/2026",
     "name": "Billy",
     "bet": "Texans & Bears Parlay",
     "bet_amount": 20.0,
@@ -1251,7 +1251,7 @@
     "type": "wager"
   },
   {
-    "date": "1/18",
+    "date": "1/18/2026",
     "name": "Carlos",
     "bet": "Kyren Live TD",
     "bet_amount": 20.0,
@@ -1260,7 +1260,7 @@
     "type": "wager"
   },
   {
-    "date": "1/19",
+    "date": "1/19/2026",
     "name": "Billy",
     "bet": "Beck TD",
     "bet_amount": 20.0,
@@ -1269,7 +1269,7 @@
     "type": "wager"
   },
   {
-    "date": "1/19",
+    "date": "1/19/2026",
     "name": "Billy",
     "bet": "IU/Miami Unde 47.5",
     "bet_amount": 20.0,
@@ -1278,7 +1278,7 @@
     "type": "wager"
   },
   {
-    "date": "1/19",
+    "date": "1/19/2026",
     "name": "Billy",
     "bet": "Miami +8.5",
     "bet_amount": 10.0,
@@ -1287,7 +1287,7 @@
     "type": "wager"
   },
   {
-    "date": "1/19",
+    "date": "1/19/2026",
     "name": "Carlos",
     "bet": "IU First Score TD",
     "bet_amount": 20.0,
@@ -1296,7 +1296,7 @@
     "type": "wager"
   },
   {
-    "date": "1/20",
+    "date": "1/20/2026",
     "name": "Carlos",
     "bet": "IU to win by 19-24",
     "bet_amount": 20.0,
@@ -1305,7 +1305,7 @@
     "type": "wager"
   },
   {
-    "date": "1/20",
+    "date": "1/20/2026",
     "name": "Carlos",
     "bet": "IU 2H Parlay",
     "bet_amount": 20.0,
@@ -1314,7 +1314,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Boutte 5+ Rec in 1Q",
     "bet_amount": 20.0,
@@ -1323,7 +1323,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Kryen Anytime TD",
     "bet_amount": 20.0,
@@ -1332,7 +1332,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Kupp Anytime TD",
     "bet_amount": 10.0,
@@ -1341,7 +1341,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Courtland Sutton Anytime TD",
     "bet_amount": 20.0,
@@ -1350,7 +1350,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "1H under",
     "bet_amount": 20.0,
@@ -1359,7 +1359,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Kyren Recieving Ladder - 5.5",
     "bet_amount": 25.0,
@@ -1368,7 +1368,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Kyren Recieving Ladder - 10",
     "bet_amount": 15.0,
@@ -1377,7 +1377,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Kupp 5 rec 1Q",
     "bet_amount": 20.0,
@@ -1386,7 +1386,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Stafford 3 TDs",
     "bet_amount": 20.0,
@@ -1395,7 +1395,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Walker 90 Rushing yards",
     "bet_amount": 20.0,
@@ -1404,7 +1404,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Billy",
     "bet": "Kyren Recieving Ladder - 15",
     "bet_amount": 10.0,
@@ -1413,7 +1413,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Carlos",
     "bet": "Broncos ML & Seahawks",
     "bet_amount": 20.0,
@@ -1422,7 +1422,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Carlos",
     "bet": "Kyren Recieving Ladder - 5.5",
     "bet_amount": 25.0,
@@ -1431,7 +1431,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Carlos",
     "bet": "Kyren Recieving Ladder - 10",
     "bet_amount": 15.0,
@@ -1440,7 +1440,7 @@
     "type": "wager"
   },
   {
-    "date": "1/28",
+    "date": "1/28/2026",
     "name": "Carlos",
     "bet": "Kyren Recieving Ladder - 15",
     "bet_amount": 10.0,
@@ -1449,7 +1449,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: Seattle punt 1 possession",
     "bet_amount": 25.0,
@@ -1458,7 +1458,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: Walker 4 receptions",
     "bet_amount": 25.0,
@@ -1467,7 +1467,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: NE +4.5",
     "bet_amount": 25.0,
@@ -1476,7 +1476,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: Seattle -2.5 1H",
     "bet_amount": 25.0,
@@ -1485,7 +1485,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: Rashind 40 receiving",
     "bet_amount": 25.0,
@@ -1494,7 +1494,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: Mack Hollins 40 rec",
     "bet_amount": 25.0,
@@ -1503,7 +1503,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: Holllins 2 catches each H",
     "bet_amount": 25.0,
@@ -1512,7 +1512,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Billy",
     "bet": "SB: Cooper Kupp pass",
     "bet_amount": 25.0,
@@ -1521,7 +1521,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Carlos",
     "bet": "SB: Cooper Kupp pass",
     "bet_amount": 25.0,
@@ -1530,7 +1530,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Carlos",
     "bet": "SB: Kicking DoinK",
     "bet_amount": 25.0,
@@ -1539,7 +1539,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Carlos",
     "bet": "SB: 4-legger",
     "bet_amount": 25.0,
@@ -1548,7 +1548,7 @@
     "type": "wager"
   },
   {
-    "date": "2/8",
+    "date": "2/8/2026",
     "name": "Carlos",
     "bet": "SB: 4-legger",
     "bet_amount": 25.0,
@@ -1557,7 +1557,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Fleetwood vs JT",
     "bet_amount": 20.0,
@@ -1566,7 +1566,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Hideki vs Rory",
     "bet_amount": 20.0,
@@ -1575,7 +1575,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Theegala vs Fowler",
     "bet_amount": 20.0,
@@ -1584,7 +1584,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Penge Top 20",
     "bet_amount": 20.0,
@@ -1593,7 +1593,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Glover Top 30",
     "bet_amount": 20.0,
@@ -1602,7 +1602,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - R2 Hole in One",
     "bet_amount": 20.0,
@@ -1611,7 +1611,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Thor birdie Hole 2",
     "bet_amount": 50.0,
@@ -1620,7 +1620,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Hodges birdie Hole 2",
     "bet_amount": 50.0,
@@ -1629,7 +1629,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - R3 hole in one #17",
     "bet_amount": 20.0,
@@ -1638,7 +1638,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Henley to beat Aberg",
     "bet_amount": 20.0,
@@ -1647,7 +1647,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Berger birdie Hole 2",
     "bet_amount": 50.0,
@@ -1656,7 +1656,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Finau birdie Hole 2",
     "bet_amount": 50.0,
@@ -1665,7 +1665,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Harmon vs Hovland",
     "bet_amount": 20.0,
@@ -1674,7 +1674,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Theegala vs Smotherman",
     "bet_amount": 20.0,
@@ -1683,7 +1683,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - R4 hole in one #17",
     "bet_amount": 20.0,
@@ -1692,7 +1692,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Theegala Top 10",
     "bet_amount": 20.0,
@@ -1701,7 +1701,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Burns Top 10",
     "bet_amount": 20.0,
@@ -1710,7 +1710,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - 3 man parlay Top 30",
     "bet_amount": 20.0,
@@ -1719,7 +1719,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Billy",
     "bet": "TPC - Scottie Top 20",
     "bet_amount": 20.0,
@@ -1728,7 +1728,7 @@
     "type": "wager"
   },
   {
-    "date": "3/14",
+    "date": "3/14/2026",
     "name": "Carlos",
     "bet": "TPC - H2Hs",
     "bet_amount": 20.0,
@@ -1737,7 +1737,7 @@
     "type": "wager"
   },
   {
-    "date": "3/17",
+    "date": "3/17/2026",
     "name": "Billy",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -1746,7 +1746,7 @@
     "type": "deposit"
   },
   {
-    "date": "3/21",
+    "date": "3/21/2026",
     "name": "Carlos",
     "bet": "High Point",
     "bet_amount": 20.0,
@@ -1755,7 +1755,7 @@
     "type": "wager"
   },
   {
-    "date": "4/2",
+    "date": "4/2/2026",
     "name": "Carlos",
     "bet": "OKC/LAL Parlay",
     "bet_amount": 25.0,
@@ -1764,7 +1764,7 @@
     "type": "wager"
   },
   {
-    "date": "4/2",
+    "date": "4/2/2026",
     "name": "Carlos",
     "bet": "OKC/LAL first 3M",
     "bet_amount": 10.0,
@@ -1773,7 +1773,7 @@
     "type": "wager"
   },
   {
-    "date": "4/6",
+    "date": "4/6/2026",
     "name": "Billy",
     "bet": "Calcutta",
     "bet_amount": 119.59,
@@ -1782,7 +1782,7 @@
     "type": "wager"
   },
   {
-    "date": "4/6",
+    "date": "4/6/2026",
     "name": "Carlos",
     "bet": "Calcutta",
     "bet_amount": 119.59,
@@ -1791,7 +1791,7 @@
     "type": "wager"
   },
   {
-    "date": "4/6",
+    "date": "4/6/2026",
     "name": "Kevin",
     "bet": "Calcutta",
     "bet_amount": 119.59,
@@ -1800,7 +1800,7 @@
     "type": "wager"
   },
   {
-    "date": "4/9",
+    "date": "4/9/2026",
     "name": "Billy",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -1809,7 +1809,7 @@
     "type": "deposit"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Cam Young Winner",
     "bet_amount": 20.0,
@@ -1818,7 +1818,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Scottie Winner",
     "bet_amount": 20.0,
@@ -1827,7 +1827,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Reed vs Morikawa",
     "bet_amount": 20.0,
@@ -1836,7 +1836,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Lowry vs Burns",
     "bet_amount": 20.0,
@@ -1845,7 +1845,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Rory under 70.5",
     "bet_amount": 20.0,
@@ -1854,7 +1854,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Winner to Birdie 18",
     "bet_amount": 20.0,
@@ -1863,7 +1863,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "R3 Hole in one",
     "bet_amount": 20.0,
@@ -1872,7 +1872,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Rahm & Straka Parlay",
     "bet_amount": 20.0,
@@ -1881,7 +1881,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Lowry vs Bhatia",
     "bet_amount": 20.0,
@@ -1890,7 +1890,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "R2 Hole in one",
     "bet_amount": 20.0,
@@ -1899,7 +1899,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Billy",
     "bet": "Koepka to win group",
     "bet_amount": 20.0,
@@ -1908,7 +1908,7 @@
     "type": "wager"
   },
   {
-    "date": "4/12",
+    "date": "4/12/2026",
     "name": "Carlos",
     "bet": "Koepka & Day Parlay",
     "bet_amount": 20.0,
@@ -1917,7 +1917,7 @@
     "type": "wager"
   },
   {
-    "date": "7/18",
+    "date": "7/18/2026",
     "name": "Billy",
     "bet": "British Open Bets",
     "bet_amount": 188.57,
@@ -1926,7 +1926,7 @@
     "type": "wager"
   },
   {
-    "date": "7/18",
+    "date": "7/18/2026",
     "name": "Carlos",
     "bet": "British Open Bets",
     "bet_amount": 56.07,
@@ -1935,7 +1935,7 @@
     "type": "wager"
   },
   {
-    "date": "9/1",
+    "date": "9/1/2026",
     "name": "Carlos",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -1944,7 +1944,7 @@
     "type": "withdraw"
   },
   {
-    "date": "8/17",
+    "date": "8/17/2026",
     "name": "Kevin",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -1953,7 +1953,7 @@
     "type": "deposit"
   },
   {
-    "date": "8/17",
+    "date": "8/17/2026",
     "name": "Billy",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -1962,7 +1962,7 @@
     "type": "deposit"
   },
   {
-    "date": "8/31",
+    "date": "8/31/2026",
     "name": "Carlos",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -1971,7 +1971,7 @@
     "type": "deposit"
   },
   {
-    "date": "9/6",
+    "date": "9/6/2026",
     "name": "Kevin",
     "bet": "Greathouse TD",
     "bet_amount": 100.0,
@@ -1980,7 +1980,7 @@
     "type": "wager"
   },
   {
-    "date": "9/6",
+    "date": "9/6/2026",
     "name": "Billy",
     "bet": "Carr and Faison Parlay",
     "bet_amount": 8.33,
@@ -1989,7 +1989,7 @@
     "type": "wager"
   },
   {
-    "date": "9/6",
+    "date": "9/6/2026",
     "name": "Carlos",
     "bet": "Carr and Faison Parlay",
     "bet_amount": 8.33,
@@ -1998,7 +1998,7 @@
     "type": "wager"
   },
   {
-    "date": "9/6",
+    "date": "9/6/2026",
     "name": "Billy",
     "bet": "Greathouse 50+ yards",
     "bet_amount": 10.0,
@@ -2007,7 +2007,7 @@
     "type": "wager"
   },
   {
-    "date": "9/6",
+    "date": "9/6/2026",
     "name": "Carlos",
     "bet": "Greathouse 50+ yards",
     "bet_amount": 10.0,
@@ -2016,7 +2016,7 @@
     "type": "wager"
   },
   {
-    "date": "9/5",
+    "date": "9/5/2026",
     "name": "Carlos",
     "bet": "Transfer",
     "bet_amount": 0.0,
@@ -2025,7 +2025,7 @@
     "type": "deposit"
   },
   {
-    "date": "9/14",
+    "date": "9/14/2026",
     "name": "Carlos",
     "bet": "Tiafoe US Open Winner",
     "bet_amount": 20.0,
@@ -2034,7 +2034,7 @@
     "type": "wager"
   },
   {
-    "date": "9/13",
+    "date": "9/13/2026",
     "name": "Billy",
     "bet": "Lions -7",
     "bet_amount": -20.0,
@@ -2043,7 +2043,7 @@
     "type": "wager"
   },
   {
-    "date": "9/12",
+    "date": "9/12/2026",
     "name": "Billy",
     "bet": "UGA -39.5",
     "bet_amount": 20.0,
@@ -2052,8 +2052,8 @@
     "type": "wager"
   },
   {
-    "date": "9/12",
-    "name": "BIlly",
+    "date": "9/12/2026",
+    "name": "Billy",
     "bet": "OSU ML",
     "bet_amount": 10.0,
     "payout": 0.0,
@@ -2061,7 +2061,7 @@
     "type": "wager"
   },
   {
-    "date": "9/12",
+    "date": "9/12/2026",
     "name": "Carlos",
     "bet": "Parlay: Missouri, Army, ETSU",
     "bet_amount": 10.0,
@@ -2070,8 +2070,8 @@
     "type": "wager"
   },
   {
-    "date": "9/12",
-    "name": "BIlly",
+    "date": "9/12/2026",
+    "name": "Billy",
     "bet": "Parlay: Carr & Faison",
     "bet_amount": 20.0,
     "payout": 0.0,
@@ -2079,8 +2079,8 @@
     "type": "wager"
   },
   {
-    "date": "9/12",
-    "name": "BIlly",
+    "date": "9/12/2026",
+    "name": "Billy",
     "bet": "Greathouse TD",
     "bet_amount": 20.0,
     "payout": 0.0,

@@ -1,0 +1,2090 @@
+[
+  {
+    "date": "9/1",
+    "name": "Carlos",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 195.31,
+    "net": 195.31,
+    "type": "deposit"
+  },
+  {
+    "date": "9/11",
+    "name": "Carlos",
+    "bet": "TNF - Bank Builder",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/12",
+    "name": "Carlos",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 250.0,
+    "net": 250.0,
+    "type": "deposit"
+  },
+  {
+    "date": "9/12",
+    "name": "Kevin",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 300.0,
+    "net": 300.0,
+    "type": "deposit"
+  },
+  {
+    "date": "9/13",
+    "name": "Billy",
+    "bet": "ND Passing Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/13",
+    "name": "Kevin",
+    "bet": "3-way college ML",
+    "bet_amount": 300.0,
+    "payout": 0.0,
+    "net": -300.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/13",
+    "name": "Kevin",
+    "bet": "ND Passing Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/26",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 1",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/26",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 1",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/27",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 2",
+    "bet_amount": 20.0,
+    "payout": 34.28,
+    "net": 14.28,
+    "type": "wager"
+  },
+  {
+    "date": "9/27",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 2",
+    "bet_amount": 20.0,
+    "payout": 46.0,
+    "net": 26.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/27",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 2",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 3 - Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 3 - Young",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 3 - Scheffler",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 3 - Xander Tie",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Billy",
+    "bet": "Ryder Cup Day 3 - JJ",
+    "bet_amount": 20.0,
+    "payout": 37.39,
+    "net": 17.39,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Carlos",
+    "bet": "Ryder Cup Day 3 - Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Carlos",
+    "bet": "Ryder Cup Day 3 - Young",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Carlos",
+    "bet": "Ryder Cup Day 3 - Scheffler",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Carlos",
+    "bet": "Ryder Cup Day 3 - Xander Tie",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Carlos",
+    "bet": "Ryder Cup Day 3 - JJ",
+    "bet_amount": 20.0,
+    "payout": 37.39,
+    "net": 17.39,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Kevin",
+    "bet": "Ryder Cup Day 3 - Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Kevin",
+    "bet": "Ryder Cup Day 3 - Young",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Kevin",
+    "bet": "Ryder Cup Day 3 - Scheffler",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Kevin",
+    "bet": "Ryder Cup Day 3 - Xander Tie",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Kevin",
+    "bet": "Ryder Cup Day 3 - JJ",
+    "bet_amount": 20.0,
+    "payout": 37.39,
+    "net": 17.39,
+    "type": "wager"
+  },
+  {
+    "date": "9/28",
+    "name": "Kevin",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 20.0,
+    "net": 20.0,
+    "type": "deposit"
+  },
+  {
+    "date": "9/29",
+    "name": "Billy",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 24.25,
+    "net": 24.25,
+    "type": "deposit"
+  },
+  {
+    "date": "10/2",
+    "name": "Carlos",
+    "bet": "TNF - Bank Builder 1",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/5",
+    "name": "Carlos",
+    "bet": "NFL - Bank Builder 1",
+    "bet_amount": 25.0,
+    "payout": 40.63,
+    "net": 15.63,
+    "type": "wager"
+  },
+  {
+    "date": "10/5",
+    "name": "Carlos",
+    "bet": "NFL - Bank Builder 2",
+    "bet_amount": 40.63,
+    "payout": 65.25,
+    "net": 24.62,
+    "type": "wager"
+  },
+  {
+    "date": "10/6",
+    "name": "Carlos",
+    "bet": "NFL - Bank Builder 3",
+    "bet_amount": 65.0,
+    "payout": 81.25,
+    "net": 16.25,
+    "type": "wager"
+  },
+  {
+    "date": "10/9",
+    "name": "Carlos",
+    "bet": "TNF - Bank Builder",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/11",
+    "name": "Carlos",
+    "bet": "3-leg CFB parlay",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/16",
+    "name": "Carlos",
+    "bet": "Bank Builder",
+    "bet_amount": 25.0,
+    "payout": 47.0,
+    "net": 22.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/19",
+    "name": "Carlos",
+    "bet": "Bank Builder",
+    "bet_amount": -25.0,
+    "payout": 0.0,
+    "net": 25.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/20",
+    "name": "Carlos",
+    "bet": "MNF Bank Builder",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/23",
+    "name": "Carlos",
+    "bet": "TNF Bank Builder",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/25",
+    "name": "Carlos",
+    "bet": "4-leg college",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/30",
+    "name": "Billy",
+    "bet": "TNF Bank Ladder",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/30",
+    "name": "Carlos",
+    "bet": "TNF Bank Ladder",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/30",
+    "name": "Kevin",
+    "bet": "TNF Bank Ladder",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/1",
+    "name": "Billy",
+    "bet": "4-leg college",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/1",
+    "name": "Billy",
+    "bet": "OSU & Indiana",
+    "bet_amount": 15.0,
+    "payout": 31.28,
+    "net": 16.28,
+    "type": "wager"
+  },
+  {
+    "date": "11/1",
+    "name": "Billy",
+    "bet": "Army under & Boise",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/1",
+    "name": "Carlos",
+    "bet": "4-leg college",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/1",
+    "name": "Carlos",
+    "bet": "Army under & Boise",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/1",
+    "name": "Carlos",
+    "bet": "OSU & Indiana",
+    "bet_amount": 15.0,
+    "payout": 31.28,
+    "net": 16.28,
+    "type": "wager"
+  },
+  {
+    "date": "11/8",
+    "name": "Carlos",
+    "bet": "3-team CFB auto-win",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/15",
+    "name": "Carlos",
+    "bet": "3-team CFB auto-win (fade)",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/22",
+    "name": "Billy",
+    "bet": "Aneyas Willams TD",
+    "bet_amount": 20.0,
+    "payout": 86.0,
+    "net": 66.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/22",
+    "name": "Billy",
+    "bet": "Price 2 TDs",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/22",
+    "name": "Billy",
+    "bet": "Rairidon TD",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/22",
+    "name": "Billy",
+    "bet": "ND Over 5.5 TDs",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "11/22",
+    "name": "Carlos",
+    "bet": "5-team CFB auto-win",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/22",
+    "name": "Kevin",
+    "bet": "Aneyas Williams TD",
+    "bet_amount": 100.0,
+    "payout": 430.0,
+    "net": 330.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/22",
+    "name": "Kevin",
+    "bet": "Over 5.5 ND TDs",
+    "bet_amount": 100.0,
+    "payout": 195.23,
+    "net": 95.23,
+    "type": "wager"
+  },
+  {
+    "date": "11/24",
+    "name": "Billy",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": -26.32,
+    "net": -26.32,
+    "type": "withdraw"
+  },
+  {
+    "date": "11/24",
+    "name": "Billy",
+    "bet": "BB - MNF",
+    "bet_amount": 25.0,
+    "payout": 40.98,
+    "net": 15.98,
+    "type": "wager"
+  },
+  {
+    "date": "11/24",
+    "name": "Carlos",
+    "bet": "BB - MNF",
+    "bet_amount": 25.0,
+    "payout": 40.98,
+    "net": 15.98,
+    "type": "wager"
+  },
+  {
+    "date": "11/24",
+    "name": "Kevin",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": -425.23,
+    "net": -425.23,
+    "type": "withdraw"
+  },
+  {
+    "date": "11/27",
+    "name": "Billy",
+    "bet": "BB - Stage 2",
+    "bet_amount": 40.0,
+    "payout": 55.69,
+    "net": 15.69,
+    "type": "wager"
+  },
+  {
+    "date": "11/27",
+    "name": "Billy",
+    "bet": "BB - Stage 2 Redo",
+    "bet_amount": 40.0,
+    "payout": 62.86,
+    "net": 22.86,
+    "type": "wager"
+  },
+  {
+    "date": "11/27",
+    "name": "Billy",
+    "bet": "TNF Cincy Game",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/27",
+    "name": "Carlos",
+    "bet": "BB - Stage 2",
+    "bet_amount": 40.0,
+    "payout": 55.69,
+    "net": 15.69,
+    "type": "wager"
+  },
+  {
+    "date": "11/27",
+    "name": "Carlos",
+    "bet": "BB - Stage 2 Redo",
+    "bet_amount": 40.0,
+    "payout": 62.86,
+    "net": 22.86,
+    "type": "wager"
+  },
+  {
+    "date": "11/27",
+    "name": "Carlos",
+    "bet": "TNF Cincy Game",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/28",
+    "name": "Billy",
+    "bet": "BB - Stage 3",
+    "bet_amount": 60.0,
+    "payout": 0.0,
+    "net": -60.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/28",
+    "name": "Carlos",
+    "bet": "BB - Stage 3",
+    "bet_amount": 60.0,
+    "payout": 0.0,
+    "net": -60.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/29",
+    "name": "Carlos",
+    "bet": "3-leg can't lose parlay",
+    "bet_amount": 20.0,
+    "payout": 142.31,
+    "net": 122.31,
+    "type": "wager"
+  },
+  {
+    "date": "12/4",
+    "name": "Billy",
+    "bet": "BB - Seed",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/4",
+    "name": "Billy",
+    "bet": "TNF Side Bet",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/4",
+    "name": "Carlos",
+    "bet": "BB - Seed",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/4",
+    "name": "Carlos",
+    "bet": "Hutchison Sack Bet",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/4",
+    "name": "Carlos",
+    "bet": "TNF Side Bet",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/6",
+    "name": "Carlos",
+    "bet": "3-leg can't lose (w/Navy)",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/8",
+    "name": "Carlos",
+    "bet": "BB - MNF - Bet 1",
+    "bet_amount": 20.0,
+    "payout": 40.0,
+    "net": 20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/12",
+    "name": "Carlos",
+    "bet": "DanAI BB - Bet 1",
+    "bet_amount": 12.5,
+    "payout": 0.0,
+    "net": -12.5,
+    "type": "wager"
+  },
+  {
+    "date": "12/12",
+    "name": "Carlos",
+    "bet": "BB - TNF - Bet 2",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/14",
+    "name": "Billy",
+    "bet": "BB - Leg 1",
+    "bet_amount": 12.5,
+    "payout": 20.5,
+    "net": 8.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/14",
+    "name": "Carlos",
+    "bet": "BB - Leg 1",
+    "bet_amount": 12.5,
+    "payout": 20.5,
+    "net": 8.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/14",
+    "name": "Kevin",
+    "bet": "BB - Leg 1",
+    "bet_amount": 12.5,
+    "payout": 20.5,
+    "net": 8.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/16",
+    "name": "Billy",
+    "bet": "BB - Leg 2",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/16",
+    "name": "Carlos",
+    "bet": "BB - Leg 2",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/16",
+    "name": "Kevin",
+    "bet": "BB - Leg 2",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/25",
+    "name": "Billy",
+    "bet": "Denver/Chiefs Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/25",
+    "name": "Billy",
+    "bet": "Xmas Day TD NFL Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/25",
+    "name": "Carlos",
+    "bet": "Denver/Chiefs Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/25",
+    "name": "Carlos",
+    "bet": "Xmas Day TD NFL Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/27",
+    "name": "Billy",
+    "bet": "Texans/Chargers 3-legger",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/27",
+    "name": "Carlos",
+    "bet": "CFB 4-legger",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/27",
+    "name": "Carlos",
+    "bet": "CFB 4-legger",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/27",
+    "name": "Carlos",
+    "bet": "Texans/Chargers 3-legger",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "12/28",
+    "name": "Billy",
+    "bet": "BB - Leg 3",
+    "bet_amount": 50.0,
+    "payout": 88.46,
+    "net": 38.46,
+    "type": "wager"
+  },
+  {
+    "date": "12/28",
+    "name": "Billy",
+    "bet": "BB - Leg 2",
+    "bet_amount": 24.0,
+    "payout": 50.33,
+    "net": 26.33,
+    "type": "wager"
+  },
+  {
+    "date": "12/28",
+    "name": "Billy",
+    "bet": "BB - Leg 1",
+    "bet_amount": 15.0,
+    "payout": 24.37,
+    "net": 9.37,
+    "type": "wager"
+  },
+  {
+    "date": "12/28",
+    "name": "Carlos",
+    "bet": "BB - Leg 3",
+    "bet_amount": 50.0,
+    "payout": 88.46,
+    "net": 38.46,
+    "type": "wager"
+  },
+  {
+    "date": "12/28",
+    "name": "Carlos",
+    "bet": "BB - Leg 2",
+    "bet_amount": 24.0,
+    "payout": 50.33,
+    "net": 26.33,
+    "type": "wager"
+  },
+  {
+    "date": "12/28",
+    "name": "Carlos",
+    "bet": "BB - Leg 1",
+    "bet_amount": 15.0,
+    "payout": 24.37,
+    "net": 9.37,
+    "type": "wager"
+  },
+  {
+    "date": "12/29",
+    "name": "Billy",
+    "bet": "BB - Leg 4 MNF",
+    "bet_amount": 88.33,
+    "payout": 0.0,
+    "net": -88.33,
+    "type": "wager"
+  },
+  {
+    "date": "12/29",
+    "name": "Carlos",
+    "bet": "BB - Leg 4 MNF",
+    "bet_amount": 88.33,
+    "payout": 0.0,
+    "net": -88.33,
+    "type": "wager"
+  },
+  {
+    "date": "12/30",
+    "name": "BIlly",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 187.5,
+    "net": 187.5,
+    "type": "deposit"
+  },
+  {
+    "date": "12/30",
+    "name": "Carlos",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 93.75,
+    "net": 93.75,
+    "type": "deposit"
+  },
+  {
+    "date": "12/30",
+    "name": "Kevin",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 187.5,
+    "net": 187.5,
+    "type": "deposit"
+  },
+  {
+    "date": "12/31",
+    "name": "Billy",
+    "bet": "Miami over 15.5",
+    "bet_amount": 50.0,
+    "payout": 97.61,
+    "net": 47.61,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Billy",
+    "bet": "Bama ML",
+    "bet_amount": 50.0,
+    "payout": 0.0,
+    "net": -50.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Billy",
+    "bet": "Oregon +1",
+    "bet_amount": 50.0,
+    "payout": 97.62,
+    "net": 47.62,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Billy",
+    "bet": "Ole Miss Over",
+    "bet_amount": 20.0,
+    "payout": 38.18,
+    "net": 18.18,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Billy",
+    "bet": "Ole Miss 2H ATS",
+    "bet_amount": 20.0,
+    "payout": 38.18,
+    "net": 18.18,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Billy",
+    "bet": "Ole Miss +6",
+    "bet_amount": 50.0,
+    "payout": 97.62,
+    "net": 47.62,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Carlos",
+    "bet": "3-leg CFP Parly",
+    "bet_amount": 20.0,
+    "payout": 113.47,
+    "net": 93.47,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Carlos",
+    "bet": "Indiana -7",
+    "bet_amount": 25.0,
+    "payout": 50.0,
+    "net": 25.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Kevin",
+    "bet": "Ole Miss +6",
+    "bet_amount": 50.0,
+    "payout": 97.62,
+    "net": 47.62,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Kevin",
+    "bet": "Oregon +1",
+    "bet_amount": 50.0,
+    "payout": 97.62,
+    "net": 47.62,
+    "type": "wager"
+  },
+  {
+    "date": "1/1",
+    "name": "Kevin",
+    "bet": "Ole Miss Over",
+    "bet_amount": 20.0,
+    "payout": 37.39,
+    "net": 17.39,
+    "type": "wager"
+  },
+  {
+    "date": "1/4",
+    "name": "Billy",
+    "bet": "Steelers +4.5",
+    "bet_amount": 20.0,
+    "payout": 37.39,
+    "net": 17.39,
+    "type": "wager"
+  },
+  {
+    "date": "1/5",
+    "name": "Kevin",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": -303.6,
+    "net": -303.6,
+    "type": "withdraw"
+  },
+  {
+    "date": "1/8",
+    "name": "Billy",
+    "bet": "Ole Miss Over",
+    "bet_amount": 25.0,
+    "payout": 47.72,
+    "net": 22.72,
+    "type": "wager"
+  },
+  {
+    "date": "1/8",
+    "name": "Billy",
+    "bet": "IU to win title",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/8",
+    "name": "Billy",
+    "bet": "Ole Miss first FG",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/8",
+    "name": "Carlos",
+    "bet": "UM/OLE no sacks",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/8",
+    "name": "Carlos",
+    "bet": "Miami first FG made",
+    "bet_amount": 10.0,
+    "payout": 55.0,
+    "net": 45.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/8",
+    "name": "Carlos",
+    "bet": "Ole Miss ML",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/9",
+    "name": "Billy",
+    "bet": "IU -3",
+    "bet_amount": 20.0,
+    "payout": 36.94,
+    "net": 16.94,
+    "type": "wager"
+  },
+  {
+    "date": "1/9",
+    "name": "Billy",
+    "bet": "Kenyon Sadiq Prop",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/9",
+    "name": "Billy",
+    "bet": "Roman Hemby Prop",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/9",
+    "name": "Carlos",
+    "bet": "First score FG",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/9",
+    "name": "Carlos",
+    "bet": "IU -3",
+    "bet_amount": 25.0,
+    "payout": 46.18,
+    "net": 21.18,
+    "type": "wager"
+  },
+  {
+    "date": "1/9",
+    "name": "Carlos",
+    "bet": "IU -3",
+    "bet_amount": 25.0,
+    "payout": 50.0,
+    "net": 25.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/10",
+    "name": "Billy",
+    "bet": "GB -1.5 & Panthers +10",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/10",
+    "name": "Carlos",
+    "bet": "GB -1.5 & Panthers +10",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/11",
+    "name": "Billy",
+    "bet": "Wild Card Bank Builder",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/11",
+    "name": "Carlos",
+    "bet": "Wild Card 3-legger",
+    "bet_amount": 10.0,
+    "payout": 74.22,
+    "net": 64.22,
+    "type": "wager"
+  },
+  {
+    "date": "1/11",
+    "name": "Carlos",
+    "bet": "Wild Card Bank Builder",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/17",
+    "name": "Billy",
+    "bet": "Bills and Sehawks Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/18",
+    "name": "Billy",
+    "bet": "Rams -1.5 Live",
+    "bet_amount": 20.0,
+    "payout": 36.0,
+    "net": 16.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/18",
+    "name": "Billy",
+    "bet": "Kyren Live TD",
+    "bet_amount": 20.0,
+    "payout": 79.0,
+    "net": 59.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/18",
+    "name": "Billy",
+    "bet": "Texans & Bears Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/18",
+    "name": "Carlos",
+    "bet": "Kyren Live TD",
+    "bet_amount": 20.0,
+    "payout": 79.0,
+    "net": 59.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/19",
+    "name": "Billy",
+    "bet": "Beck TD",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/19",
+    "name": "Billy",
+    "bet": "IU/Miami Unde 47.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/19",
+    "name": "Billy",
+    "bet": "Miami +8.5",
+    "bet_amount": 10.0,
+    "payout": 19.6,
+    "net": 9.6,
+    "type": "wager"
+  },
+  {
+    "date": "1/19",
+    "name": "Carlos",
+    "bet": "IU First Score TD",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/20",
+    "name": "Carlos",
+    "bet": "IU to win by 19-24",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/20",
+    "name": "Carlos",
+    "bet": "IU 2H Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Boutte 5+ Rec in 1Q",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Kryen Anytime TD",
+    "bet_amount": 20.0,
+    "payout": 47.0,
+    "net": 27.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Kupp Anytime TD",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Courtland Sutton Anytime TD",
+    "bet_amount": 20.0,
+    "payout": 72.0,
+    "net": 52.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "1H under",
+    "bet_amount": 20.0,
+    "payout": 37.85,
+    "net": 17.85,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Kyren Recieving Ladder - 5.5",
+    "bet_amount": 25.0,
+    "payout": 69.27,
+    "net": 44.27,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Kyren Recieving Ladder - 10",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Kupp 5 rec 1Q",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Stafford 3 TDs",
+    "bet_amount": 20.0,
+    "payout": 73.4,
+    "net": 53.4,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Walker 90 Rushing yards",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Billy",
+    "bet": "Kyren Recieving Ladder - 15",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Carlos",
+    "bet": "Broncos ML & Seahawks",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Carlos",
+    "bet": "Kyren Recieving Ladder - 5.5",
+    "bet_amount": 25.0,
+    "payout": 69.27,
+    "net": 44.27,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Carlos",
+    "bet": "Kyren Recieving Ladder - 10",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "1/28",
+    "name": "Carlos",
+    "bet": "Kyren Recieving Ladder - 15",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: Seattle punt 1 possession",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: Walker 4 receptions",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: NE +4.5",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: Seattle -2.5 1H",
+    "bet_amount": 25.0,
+    "payout": 45.49,
+    "net": 20.49,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: Rashind 40 receiving",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: Mack Hollins 40 rec",
+    "bet_amount": 25.0,
+    "payout": 70.75,
+    "net": 45.75,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: Holllins 2 catches each H",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Billy",
+    "bet": "SB: Cooper Kupp pass",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Carlos",
+    "bet": "SB: Cooper Kupp pass",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Carlos",
+    "bet": "SB: Kicking DoinK",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Carlos",
+    "bet": "SB: 4-legger",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "2/8",
+    "name": "Carlos",
+    "bet": "SB: 4-legger",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Fleetwood vs JT",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Hideki vs Rory",
+    "bet_amount": 20.0,
+    "payout": 42.4,
+    "net": 22.4,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Theegala vs Fowler",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Penge Top 20",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Glover Top 30",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - R2 Hole in One",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Thor birdie Hole 2",
+    "bet_amount": 50.0,
+    "payout": 0.0,
+    "net": -50.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Hodges birdie Hole 2",
+    "bet_amount": 50.0,
+    "payout": 0.0,
+    "net": -50.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - R3 hole in one #17",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Henley to beat Aberg",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Berger birdie Hole 2",
+    "bet_amount": 50.0,
+    "payout": 0.0,
+    "net": -50.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Finau birdie Hole 2",
+    "bet_amount": 50.0,
+    "payout": 101.0,
+    "net": 51.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Harmon vs Hovland",
+    "bet_amount": 20.0,
+    "payout": 45.6,
+    "net": 25.6,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Theegala vs Smotherman",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - R4 hole in one #17",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Theegala Top 10",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Burns Top 10",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - 3 man parlay Top 30",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Billy",
+    "bet": "TPC - Scottie Top 20",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/14",
+    "name": "Carlos",
+    "bet": "TPC - H2Hs",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "3/17",
+    "name": "Billy",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 200.0,
+    "net": 200.0,
+    "type": "deposit"
+  },
+  {
+    "date": "3/21",
+    "name": "Carlos",
+    "bet": "High Point",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/2",
+    "name": "Carlos",
+    "bet": "OKC/LAL Parlay",
+    "bet_amount": 25.0,
+    "payout": 0.0,
+    "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/2",
+    "name": "Carlos",
+    "bet": "OKC/LAL first 3M",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/6",
+    "name": "Billy",
+    "bet": "Calcutta",
+    "bet_amount": 119.59,
+    "payout": 0.0,
+    "net": -119.59,
+    "type": "wager"
+  },
+  {
+    "date": "4/6",
+    "name": "Carlos",
+    "bet": "Calcutta",
+    "bet_amount": 119.59,
+    "payout": 0.0,
+    "net": -119.59,
+    "type": "wager"
+  },
+  {
+    "date": "4/6",
+    "name": "Kevin",
+    "bet": "Calcutta",
+    "bet_amount": 119.59,
+    "payout": 0.0,
+    "net": -119.59,
+    "type": "wager"
+  },
+  {
+    "date": "4/9",
+    "name": "Billy",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 88.11,
+    "net": 88.11,
+    "type": "deposit"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Cam Young Winner",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Scottie Winner",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Reed vs Morikawa",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Lowry vs Burns",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Rory under 70.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Winner to Birdie 18",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "R3 Hole in one",
+    "bet_amount": 20.0,
+    "payout": 110.0,
+    "net": 90.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Rahm & Straka Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Lowry vs Bhatia",
+    "bet_amount": 20.0,
+    "payout": 40.0,
+    "net": 20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "R2 Hole in one",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Billy",
+    "bet": "Koepka to win group",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "4/12",
+    "name": "Carlos",
+    "bet": "Koepka & Day Parlay",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "7/18",
+    "name": "Billy",
+    "bet": "British Open Bets",
+    "bet_amount": 188.57,
+    "payout": 222.18,
+    "net": 33.61,
+    "type": "wager"
+  },
+  {
+    "date": "7/18",
+    "name": "Carlos",
+    "bet": "British Open Bets",
+    "bet_amount": 56.07,
+    "payout": 0.0,
+    "net": -56.07,
+    "type": "wager"
+  },
+  {
+    "date": "9/1",
+    "name": "Carlos",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": -100.0,
+    "net": -100.0,
+    "type": "withdraw"
+  },
+  {
+    "date": "8/17",
+    "name": "Kevin",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 119.59,
+    "net": 119.59,
+    "type": "deposit"
+  },
+  {
+    "date": "8/17",
+    "name": "Billy",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 36.39,
+    "net": 36.39,
+    "type": "deposit"
+  },
+  {
+    "date": "8/31",
+    "name": "Carlos",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 39.0,
+    "net": 39.0,
+    "type": "deposit"
+  },
+  {
+    "date": "9/6",
+    "name": "Kevin",
+    "bet": "Greathouse TD",
+    "bet_amount": 100.0,
+    "payout": 0.0,
+    "net": -100.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/6",
+    "name": "Billy",
+    "bet": "Carr and Faison Parlay",
+    "bet_amount": 8.33,
+    "payout": 33.08,
+    "net": 24.75,
+    "type": "wager"
+  },
+  {
+    "date": "9/6",
+    "name": "Carlos",
+    "bet": "Carr and Faison Parlay",
+    "bet_amount": 8.33,
+    "payout": 33.08,
+    "net": 24.75,
+    "type": "wager"
+  },
+  {
+    "date": "9/6",
+    "name": "Billy",
+    "bet": "Greathouse 50+ yards",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/6",
+    "name": "Carlos",
+    "bet": "Greathouse 50+ yards",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/5",
+    "name": "Carlos",
+    "bet": "Transfer",
+    "bet_amount": 0.0,
+    "payout": 200.0,
+    "net": 200.0,
+    "type": "deposit"
+  },
+  {
+    "date": "9/14",
+    "name": "Carlos",
+    "bet": "Tiafoe US Open Winner",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/13",
+    "name": "Billy",
+    "bet": "Lions -7",
+    "bet_amount": -20.0,
+    "payout": 0.0,
+    "net": 20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/12",
+    "name": "Billy",
+    "bet": "UGA -39.5",
+    "bet_amount": 20.0,
+    "payout": 37.85,
+    "net": 17.85,
+    "type": "wager"
+  },
+  {
+    "date": "9/12",
+    "name": "BIlly",
+    "bet": "OSU ML",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/12",
+    "name": "Carlos",
+    "bet": "Parlay: Missouri, Army, ETSU",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/12",
+    "name": "BIlly",
+    "bet": "Parlay: Carr & Faison",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/12",
+    "name": "BIlly",
+    "bet": "Greathouse TD",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  }
+]

@@ -2,7 +2,7 @@
   {
     "date": "9/1/2025",
     "name": "Carlos",
-    "bet": "Transfer",
+    "bet": "Transfer (Deposit)",
     "bet_amount": 0.0,
     "payout": 195.31,
     "net": 195.31,
@@ -20,7 +20,7 @@
   {
     "date": "9/12/2025",
     "name": "Carlos",
-    "bet": "Transfer",
+    "bet": "Transfer (Deposit)",
     "bet_amount": 0.0,
     "payout": 250.0,
     "net": 250.0,
@@ -929,7 +929,7 @@
   {
     "date": "12/30/2025",
     "name": "Carlos",
-    "bet": "Transfer",
+    "bet": "Transfer (Deposit - Pick 5 Winnings)",
     "bet_amount": 0.0,
     "payout": 93.75,
     "net": 93.75,
@@ -1935,13 +1935,13 @@
     "type": "wager"
   },
   {
-    "date": "9/1/2026",
+    "date": "8/31/2026",
     "name": "Carlos",
-    "bet": "Transfer",
+    "bet": "Transfer (Deposit - Honors Winnings)",
     "bet_amount": 0.0,
-    "payout": -100.0,
-    "net": -100.0,
-    "type": "withdraw"
+    "payout": 39.0,
+    "net": 39.0,
+    "type": "deposit"
   },
   {
     "date": "8/17/2026",
@@ -1962,13 +1962,13 @@
     "type": "deposit"
   },
   {
-    "date": "8/31/2026",
+    "date": "9/1/2026",
     "name": "Carlos",
-    "bet": "Transfer",
+    "bet": "Transfer (Withdraw - Pick 5 Buy In)",
     "bet_amount": 0.0,
-    "payout": 39.0,
-    "net": 39.0,
-    "type": "deposit"
+    "payout": -100.0,
+    "net": -100.0,
+    "type": "withdraw"
   },
   {
     "date": "9/6/2026",
@@ -1989,13 +1989,13 @@
     "type": "wager"
   },
   {
-    "date": "9/6/2026",
+    "date": "9/5/2026",
     "name": "Carlos",
-    "bet": "Carr and Faison Parlay",
-    "bet_amount": 8.33,
-    "payout": 33.08,
-    "net": 24.75,
-    "type": "wager"
+    "bet": "Transfer (Deposit)",
+    "bet_amount": 0.0,
+    "payout": 200.0,
+    "net": 200.0,
+    "type": "deposit"
   },
   {
     "date": "9/6/2026",
@@ -2009,6 +2009,15 @@
   {
     "date": "9/6/2026",
     "name": "Carlos",
+    "bet": "Carr and Faison Parlay",
+    "bet_amount": 8.33,
+    "payout": 33.08,
+    "net": 24.75,
+    "type": "wager"
+  },
+  {
+    "date": "9/6/2026",
+    "name": "Carlos",
     "bet": "Greathouse 50+ yards",
     "bet_amount": 10.0,
     "payout": 0.0,
@@ -2016,21 +2025,12 @@
     "type": "wager"
   },
   {
-    "date": "9/5/2026",
+    "date": "9/12/2026",
     "name": "Carlos",
-    "bet": "Transfer",
-    "bet_amount": 0.0,
-    "payout": 200.0,
-    "net": 200.0,
-    "type": "deposit"
-  },
-  {
-    "date": "9/14/2026",
-    "name": "Carlos",
-    "bet": "Tiafoe US Open Winner",
-    "bet_amount": 20.0,
+    "bet": "Parlay: Missouri, Army, ETSU",
+    "bet_amount": 10.0,
     "payout": 0.0,
-    "net": -20.0,
+    "net": -10.0,
     "type": "wager"
   },
   {
@@ -2061,12 +2061,12 @@
     "type": "wager"
   },
   {
-    "date": "9/12/2026",
+    "date": "9/14/2026",
     "name": "Carlos",
-    "bet": "Parlay: Missouri, Army, ETSU",
-    "bet_amount": 10.0,
+    "bet": "Tiafoe US Open Winner",
+    "bet_amount": 20.0,
     "payout": 0.0,
-    "net": -10.0,
+    "net": -20.0,
     "type": "wager"
   },
   {

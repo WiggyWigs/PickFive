@@ -1,0 +1,47 @@
+[
+  {
+    "week": "1",
+    "person": "Carlos/Patrick",
+    "team_picked": "Utah",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -12.5,
+    "result": "W"
+  },
+  {
+    "week": "1",
+    "person": "Greg",
+    "team_picked": "Kansas",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 5.5,
+    "result": "L"
+  },
+  {
+    "week": "1",
+    "person": "Kevin",
+    "team_picked": "Kentucky",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 10.5,
+    "result": "L"
+  },
+  {
+    "week": "1",
+    "person": "Robert",
+    "team_picked": "Oregon",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -22.5,
+    "result": "L"
+  },
+  {
+    "week": "1",
+    "person": "Billy",
+    "team_picked": "Iowa",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "L"
+  }
+]

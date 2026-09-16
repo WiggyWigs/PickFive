@@ -106,6 +106,9 @@
   td.num { text-align: right; }
   td.blank { color: var(--muted); text-align: right; }
 
+  td.kickoff { text-align: left; color: var(--muted); font-size: 0.85rem; }
+  td.kickoff.blank { text-align: left; }
+
   td.delta-up { color: var(--up); text-align: right; font-weight: 600; }
   td.delta-down { color: var(--down); text-align: right; font-weight: 600; }
   td.delta-flat { color: var(--muted); text-align: right; }
@@ -141,6 +144,7 @@
         <th data-key="home_team" data-type="string">Home Team</th>
         <th data-key="league" data-type="string">Lg</th>
         <th data-key="away_team" data-type="string">Away Team</th>
+        <th data-key="commence_time" data-type="number">Kickoff</th>
         <th data-key="monday" data-type="number">Mon</th>
         <th data-key="tuesday" data-type="number">Tue</th>
         <th data-key="wednesday" data-type="number">Wed</th>
@@ -179,6 +183,14 @@
     return v > 0 ? `+${v}` : `${v}`;
   }
 
+  function fmtKickoff(epochMs) {
+    if (epochMs === null || epochMs === undefined || Number.isNaN(epochMs)) return null;
+    const d = new Date(epochMs);
+    const datePart = d.toLocaleDateString(undefined, { month: "numeric", day: "numeric" });
+    const timePart = d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" });
+    return `${datePart}, ${timePart}`;
+  }
+
   async function init() {
     const statusEl = document.getElementById("status");
     const results = {};
@@ -212,7 +224,13 @@
       if (!results[stage]) continue;
       for (const g of results[stage]) {
         if (!gameMeta[g.id]) {
-          gameMeta[g.id] = { id: g.id, home_team: g.home_team, away_team: g.away_team, league: g.league };
+          gameMeta[g.id] = {
+            id: g.id,
+            home_team: g.home_team,
+            away_team: g.away_team,
+            league: g.league,
+            commence_time: g.commence_time,
+          };
         }
       }
     }
@@ -248,6 +266,7 @@
         home_team: meta.home_team,
         away_team: meta.away_team,
         league: meta.league,
+        commence_time: meta.commence_time ? Date.parse(meta.commence_time) : null, // epoch ms, for sorting
         spread: latestSpread,
         opened: openStage, // which day this game's line first appeared (for reference)
         monday: perDay.monday,
@@ -283,6 +302,7 @@
           <td class="team">${r.home_team}</td>
           <td class="league">${r.league}</td>
           <td class="team">${r.away_team}</td>
+          <td class="${r.commence_time === null ? 'kickoff blank' : 'kickoff'}">${fmtKickoff(r.commence_time) ?? "—"}</td>
           <td class="${r.monday === null ? 'blank' : 'num'}">${fmtSpread(r.monday) ?? "—"}</td>
           <td class="${r.tuesday === null ? 'blank' : 'num'}">${fmtSpread(r.tuesday) ?? "—"}</td>
           <td class="${r.wednesday === null ? 'blank' : 'num'}">${fmtSpread(r.wednesday) ?? "—"}</td>
@@ -316,6 +336,12 @@
           if (type === "number") {
             av = av === null || av === undefined ? -Infinity : av;
             bv = bv === null || bv === undefined ? -Infinity : bv;
+            // Delta sorts by magnitude of change (a -7 swing ranks above a +5 swing),
+            // while still displaying the real signed value in the cell.
+            if (key === "delta") {
+              av = av === -Infinity ? -Infinity : Math.abs(av);
+              bv = bv === -Infinity ? -Infinity : Math.abs(bv);
+            }
             return (av - bv) * dir;
           }
           av = (av ?? "").toString().toLowerCase();

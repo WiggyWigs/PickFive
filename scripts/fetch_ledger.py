@@ -109,6 +109,12 @@ def main():
             print(f"[warn] row {i}: missing Date/Name/Bet, skipping", file=sys.stderr)
             continue
 
+        # Doesn't block the row - just flags it, since a year-less date
+        # (e.g. "9/1" instead of "9/1/2025") is a real ambiguity once
+        # entries span more than one season, but the row is still usable.
+        if re.fullmatch(r"\d{1,2}[/-]\d{1,2}", date):
+            print(f"[warn] row {i}: Date {date!r} has no year - reformat the Date column in the sheet to include one", file=sys.stderr)
+
         bet_amount = normalize_number(row.get("bet_amount"))
         payout = normalize_number(row.get("payout"))
         net = normalize_number(row.get("net"))

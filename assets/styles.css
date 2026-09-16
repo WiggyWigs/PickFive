@@ -1,0 +1,170 @@
+:root {
+  --bg: #12181c;
+  --panel: #1a2228;
+  --line: #2a353c;
+  --text: #e7eced;
+  --muted: #8a99a3;
+  --amber: #e0a458;
+  --up: #4fae6a;
+  --down: #d9634f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  padding: 0 1.5rem 4rem;
+}
+
+/* --- Nav --- */
+
+nav.site-nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.1rem 0 0;
+  display: flex;
+  gap: 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+nav.site-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  padding-bottom: 0.35rem;
+  border-bottom: 2px solid transparent;
+}
+
+nav.site-nav a:hover { color: var(--text); }
+
+nav.site-nav a.active {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+
+/* --- Header / logo --- */
+
+header {
+  max-width: 1100px;
+  margin: 0 auto 1.5rem;
+  text-align: center;
+  padding-top: 0.75rem;
+}
+
+.logo {
+  display: block;
+  height: auto;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto 0.5rem;
+}
+
+h1.page-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin: 0 0 0.35rem;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.status {
+  max-width: 1100px;
+  margin: 0 auto 1rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.section-title {
+  max-width: 1100px;
+  margin: 2rem auto 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.section-title:first-of-type { margin-top: 0; }
+
+/* --- Tables --- */
+
+.table-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 0.92rem;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem 0.9rem;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  position: sticky;
+  top: 0;
+}
+
+thead th:hover { color: var(--amber); }
+
+thead th .arrow {
+  display: inline-block;
+  width: 0.8em;
+  color: var(--amber);
+}
+
+td {
+  padding: 0.65rem 0.9rem;
+  border-bottom: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+td.team { font-family: "Iowan Old Style", Georgia, serif; white-space: normal; }
+td.league { color: var(--muted); font-size: 0.78rem; }
+
+tbody tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+td.num { text-align: right; }
+td.blank { color: var(--muted); text-align: right; }
+
+td.kickoff { text-align: left; color: var(--muted); font-size: 0.85rem; }
+td.kickoff.blank { text-align: left; }
+
+td.delta-up { color: var(--up); text-align: right; font-weight: 600; }
+td.delta-down { color: var(--down); text-align: right; font-weight: 600; }
+td.delta-flat { color: var(--muted); text-align: right; }
+
+td.result-w { color: var(--up); font-weight: 600; }
+td.result-l { color: var(--down); font-weight: 600; }
+td.result-pending { color: var(--muted); }
+
+.empty-state {
+  max-width: 1100px;
+  margin: 2rem auto;
+  color: var(--muted);
+  text-align: center;
+}
+
+footer {
+  max-width: 1100px;
+  margin: 1.5rem auto 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}

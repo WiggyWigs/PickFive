@@ -17,6 +17,25 @@
 
   td.balance-pos { color: var(--up); font-weight: 600; }
   td.balance-neg { color: var(--down); font-weight: 600; }
+
+  #monthly-table thead tr.filter-row td {
+    background: #d7dbdf;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+    cursor: default;
+  }
+
+  #monthly-table thead tr.filter-row select {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.82rem;
+    padding: 0.3rem 0.4rem;
+    text-align: center;
+    text-align-last: center;
+    background: #f2f3f5;
+    color: #1a2228;
+    border: 1px solid #b8bec3;
+  }
 </style>
 </head>
 <body>
@@ -59,6 +78,24 @@
         <th data-key="year" data-type="number">Year</th>
         <th data-key="month_num" data-type="number">Month</th>
         <th data-key="win_loss" data-type="number">Win/Loss</th>
+      </tr>
+      <tr class="filter-row">
+        <td>
+          <select id="monthly-name-filter">
+            <option value="all">All</option>
+          </select>
+        </td>
+        <td>
+          <select id="monthly-year-filter">
+            <option value="all">All</option>
+          </select>
+        </td>
+        <td>
+          <select id="monthly-month-filter">
+            <option value="all">All</option>
+          </select>
+        </td>
+        <td></td>
       </tr>
     </thead>
     <tbody></tbody>
@@ -237,6 +274,33 @@
     });
   }
 
+  let ALL_MONTHLY = [];
+
+  function populateSelect(select, values, allLabel) {
+    select.innerHTML = `<option value="all">${allLabel}</option>`;
+    for (const v of values) {
+      const opt = document.createElement("option");
+      opt.value = String(v);
+      opt.textContent = v;
+      select.appendChild(opt);
+    }
+  }
+
+  function refreshMonthly() {
+    const name = document.getElementById("monthly-name-filter").value;
+    const year = document.getElementById("monthly-year-filter").value;
+    const month = document.getElementById("monthly-month-filter").value;
+
+    const filtered = ALL_MONTHLY.filter((r) => {
+      if (name !== "all" && r.name !== name) return false;
+      if (year !== "all" && String(r.year) !== year) return false;
+      if (month !== "all" && String(r.month_num) !== month) return false;
+      return true;
+    });
+
+    renderMonthlyTable(filtered);
+  }
+
   async function init() {
     const statusEl = document.getElementById("status");
     const entries = await loadLedger();
@@ -252,10 +316,38 @@
     document.getElementById("table-wrap").style.display = "block";
     renderTable(rollup);
 
-    const monthly = buildMonthly(entries);
+    ALL_MONTHLY = buildMonthly(entries);
     document.getElementById("monthly-title").style.display = "block";
     document.getElementById("monthly-wrap").style.display = "block";
-    renderMonthlyTable(monthly);
+
+    const names = [...new Set(ALL_MONTHLY.map((r) => r.name))].sort();
+    populateSelect(document.getElementById("monthly-name-filter"), names, "All");
+
+    const years = [...new Set(ALL_MONTHLY.map((r) => r.year))].sort((a, b) => (b ?? -Infinity) - (a ?? -Infinity));
+    const yearSelect = document.getElementById("monthly-year-filter");
+    yearSelect.innerHTML = `<option value="all">All</option>`;
+    for (const y of years) {
+      const opt = document.createElement("option");
+      opt.value = y === null ? "null" : String(y);
+      opt.textContent = y === null ? "Unknown" : y;
+      yearSelect.appendChild(opt);
+    }
+
+    const months = [...new Set(ALL_MONTHLY.map((r) => r.month_num))].sort((a, b) => (a ?? 99) - (b ?? 99));
+    const monthSelect = document.getElementById("monthly-month-filter");
+    monthSelect.innerHTML = `<option value="all">All</option>`;
+    for (const m of months) {
+      const opt = document.createElement("option");
+      opt.value = m === null ? "null" : String(m);
+      opt.textContent = m === null ? "Unknown" : MONTH_NAMES[m - 1];
+      monthSelect.appendChild(opt);
+    }
+
+    document.getElementById("monthly-name-filter").addEventListener("change", refreshMonthly);
+    document.getElementById("monthly-year-filter").addEventListener("change", refreshMonthly);
+    document.getElementById("monthly-month-filter").addEventListener("change", refreshMonthly);
+
+    renderMonthlyTable(ALL_MONTHLY);
   }
 
   init();

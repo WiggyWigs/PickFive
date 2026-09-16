@@ -170,7 +170,7 @@
 
   function renderTable(rows) {
     const tbody = document.querySelector("#lines-table tbody");
-    let currentSort = { key: null, dir: 1 };
+    let currentSort = { key: "delta", dir: -1 }; // default: biggest movement first, either direction
 
     function draw(data) {
       tbody.innerHTML = "";
@@ -198,12 +198,41 @@
       }
     }
 
-    draw(rows);
+    function sortRows(key, dir, type) {
+      return [...rows].sort((a, b) => {
+        let av = a[key];
+        let bv = b[key];
+        if (type === "number") {
+          av = av === null || av === undefined ? -Infinity : av;
+          bv = bv === null || bv === undefined ? -Infinity : bv;
+          // Delta sorts by magnitude of change (a -7 swing ranks above a +5 swing),
+          // while still displaying the real signed value in the cell.
+          if (key === "delta") {
+            av = av === -Infinity ? -Infinity : Math.abs(av);
+            bv = bv === -Infinity ? -Infinity : Math.abs(bv);
+          }
+          return (av - bv) * dir;
+        }
+        av = (av ?? "").toString().toLowerCase();
+        bv = (bv ?? "").toString().toLowerCase();
+        return av.localeCompare(bv) * dir;
+      });
+    }
+
+    // Default view: sorted by Delta magnitude, descending - matches what a
+    // click on the Delta header would produce, including its arrow indicator.
+    draw(sortRows("delta", -1, "number"));
+    const deltaHeader = document.querySelector('#lines-table thead th[data-key="delta"]');
+    if (deltaHeader) {
+      const arrow = document.createElement("span");
+      arrow.className = "arrow";
+      arrow.textContent = "▼";
+      deltaHeader.appendChild(arrow);
+    }
 
     document.querySelectorAll("#lines-table thead th").forEach((th) => {
       th.addEventListener("click", () => {
         const key = th.dataset.key;
-        const type = th.dataset.type;
         const dir = currentSort.key === key ? -currentSort.dir : 1;
         currentSort = { key, dir };
 
@@ -213,26 +242,7 @@
         arrow.textContent = dir === 1 ? "▲" : "▼";
         th.appendChild(arrow);
 
-        const sorted = [...rows].sort((a, b) => {
-          let av = a[key];
-          let bv = b[key];
-          if (type === "number") {
-            av = av === null || av === undefined ? -Infinity : av;
-            bv = bv === null || bv === undefined ? -Infinity : bv;
-            // Delta sorts by magnitude of change (a -7 swing ranks above a +5 swing),
-            // while still displaying the real signed value in the cell.
-            if (key === "delta") {
-              av = av === -Infinity ? -Infinity : Math.abs(av);
-              bv = bv === -Infinity ? -Infinity : Math.abs(bv);
-            }
-            return (av - bv) * dir;
-          }
-          av = (av ?? "").toString().toLowerCase();
-          bv = (bv ?? "").toString().toLowerCase();
-          return av.localeCompare(bv) * dir;
-        });
-
-        draw(sorted);
+        draw(sortRows(key, dir, th.dataset.type));
       });
     });
   }

@@ -1,5 +1,906 @@
 [
   {
+    "year": 2025,
+    "week": "1",
+    "person": "Billy",
+    "team_picked": "BYU",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -18.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "1",
+    "person": "Carlos/Patrick",
+    "team_picked": "Missouri",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "1",
+    "person": "Greg",
+    "team_picked": "Navy",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -21.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "1",
+    "person": "Kevin",
+    "team_picked": "Tulsa",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "1",
+    "person": "Robert",
+    "team_picked": "SMU",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "2",
+    "person": "Billy",
+    "team_picked": "Navy",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "2",
+    "person": "Carlos/Patrick",
+    "team_picked": "Cowboys",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "2",
+    "person": "Greg",
+    "team_picked": "Memphis",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -4.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "2",
+    "person": "Kevin",
+    "team_picked": "Georgia",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "2",
+    "person": "Robert",
+    "team_picked": "Notre Dame",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "3",
+    "person": "Billy",
+    "team_picked": "Oregon",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -35.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "3",
+    "person": "Carlos/Patrick",
+    "team_picked": "UNLV",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "3",
+    "person": "Greg",
+    "team_picked": "Dallas",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -0.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "3",
+    "person": "Kevin",
+    "team_picked": "ECU",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 7.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "3",
+    "person": "Robert",
+    "team_picked": "TCU",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "4",
+    "person": "Billy",
+    "team_picked": "NC State",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -10.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "4",
+    "person": "Billy",
+    "team_picked": "Notre Dame",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "4",
+    "person": "Carlos/Patrick",
+    "team_picked": "Georgia Tech",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -14.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "4",
+    "person": "Greg",
+    "team_picked": "Kansas",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "4",
+    "person": "Robert",
+    "team_picked": "BYU",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "5",
+    "person": "Billy",
+    "team_picked": "Alabama",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -10.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "5",
+    "person": "Carlos/Patrick",
+    "team_picked": "Rams",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "5",
+    "person": "Greg",
+    "team_picked": "BYU",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -18.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "5",
+    "person": "Kevin",
+    "team_picked": "Penn State",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -25.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "5",
+    "person": "Robert",
+    "team_picked": "Memphis",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -19.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "6",
+    "person": "Billy",
+    "team_picked": "UNLV",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "6",
+    "person": "Billy",
+    "team_picked": "Clemson",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -14.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "6",
+    "person": "Carlos/Patrick",
+    "team_picked": "Tennessee",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "6",
+    "person": "Kevin",
+    "team_picked": "Utah",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "6",
+    "person": "Robert",
+    "team_picked": "Commanders",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -4.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "7",
+    "person": "Billy",
+    "team_picked": "Memphis",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -21.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "7",
+    "person": "Billy",
+    "team_picked": "UVA",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -17.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "7",
+    "person": "Greg",
+    "team_picked": "Ole Miss",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 7.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "7",
+    "person": "Kevin",
+    "team_picked": "Uconn",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 1.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "7",
+    "person": "Robert",
+    "team_picked": "Cincinnati",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -22.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "8",
+    "person": "Billy",
+    "team_picked": "Alabama",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -12.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "8",
+    "person": "Carlos/Patrick",
+    "team_picked": "TCU",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -15.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "8",
+    "person": "Greg",
+    "team_picked": "Minnesota",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 8.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "8",
+    "person": "Kevin",
+    "team_picked": "Vikings",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 3.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "8",
+    "person": "Robert",
+    "team_picked": "Vanderbilt",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "9",
+    "person": "Billy",
+    "team_picked": "California",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 3.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "9",
+    "person": "Carlos/Patrick",
+    "team_picked": "Tennessee",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "9",
+    "person": "Greg",
+    "team_picked": "JMU",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "9",
+    "person": "Kevin",
+    "team_picked": "UNC",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 1.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "9",
+    "person": "Robert",
+    "team_picked": "Memphis",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -14.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "10",
+    "person": "Carlos/Patrick",
+    "team_picked": "WVU",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "10",
+    "person": "Greg",
+    "team_picked": "Miami OH",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 2.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "10",
+    "person": "Kevin",
+    "team_picked": "Oregon",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "10",
+    "person": "Robert",
+    "team_picked": "BYU",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 10.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "10",
+    "person": "Robert",
+    "team_picked": "Indiana",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -15.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "11",
+    "person": "Billy",
+    "team_picked": "Ohio State",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -31.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "11",
+    "person": "Carlos/Patrick",
+    "team_picked": "Tulsa",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "11",
+    "person": "Greg",
+    "team_picked": "Dolphins",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "11",
+    "person": "Kevin",
+    "team_picked": "Notre Dame",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -10.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "11",
+    "person": "Robert",
+    "team_picked": "Alabama",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "12",
+    "person": "Billy",
+    "team_picked": "Notre Dame",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -35.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "12",
+    "person": "Carlos/Patrick",
+    "team_picked": "Georgia Tech",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "12",
+    "person": "Greg",
+    "team_picked": "Lions",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -10.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "12",
+    "person": "Kevin",
+    "team_picked": "Oregon",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -9.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "12",
+    "person": "Robert",
+    "team_picked": "JMU",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "13",
+    "person": "Billy",
+    "team_picked": "Ohio State",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -9.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "13",
+    "person": "Carlos/Patrick",
+    "team_picked": "Indiana",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -28.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "13",
+    "person": "Greg",
+    "team_picked": "Seahawks",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -10.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "13",
+    "person": "Kevin",
+    "team_picked": "Georgia",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "13",
+    "person": "Kevin",
+    "team_picked": "South Carolina",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "14",
+    "person": "Billy",
+    "team_picked": "Georgia",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "14",
+    "person": "Carlos/Patrick",
+    "team_picked": "Texas Tech",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "14",
+    "person": "Greg",
+    "team_picked": "Commanders",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 0.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "14",
+    "person": "Kevin",
+    "team_picked": "Boise State",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "14",
+    "person": "Robert",
+    "team_picked": "Seahawks",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -7.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "15",
+    "person": "Billy",
+    "team_picked": "Army",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 6.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "15",
+    "person": "Carlos/Patrick",
+    "team_picked": "Washington",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -8.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "15",
+    "person": "Greg",
+    "team_picked": "Texans",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -9.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "15",
+    "person": "Kevin",
+    "team_picked": "Bills",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -1.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "15",
+    "person": "Robert",
+    "team_picked": "Steelers",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "16",
+    "person": "Billy",
+    "team_picked": "Jacksonville St",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "16",
+    "person": "Carlos/Patrick",
+    "team_picked": "Broncos",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "16",
+    "person": "Greg",
+    "team_picked": "New Orleans",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -4.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "16",
+    "person": "Kevin",
+    "team_picked": "Oregon",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -21.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "16",
+    "person": "Robert",
+    "team_picked": "Eagles",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Billy",
+    "team_picked": "Broncos",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -12.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Billy",
+    "team_picked": "Giants",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -1.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Carlos/Patrick",
+    "team_picked": "Hawaii",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Carlos/Patrick",
+    "team_picked": "Saints",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Greg",
+    "team_picked": "Minnesota",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Greg",
+    "team_picked": "Cardinals",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 7.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Kevin",
+    "team_picked": "Pittsburgh",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Kevin",
+    "team_picked": "Seahawks",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -7.5,
+    "result": "W"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Robert",
+    "team_picked": "Lions",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "L"
+  },
+  {
+    "year": 2025,
+    "week": "17",
+    "person": "Robert",
+    "team_picked": "Jaguars",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
     "week": "1",
     "person": "Carlos/Patrick",
     "team_picked": "Utah",
@@ -9,6 +910,7 @@
     "result": "W"
   },
   {
+    "year": 2026,
     "week": "1",
     "person": "Greg",
     "team_picked": "Kansas",
@@ -18,6 +920,7 @@
     "result": "L"
   },
   {
+    "year": 2026,
     "week": "1",
     "person": "Kevin",
     "team_picked": "Kentucky",
@@ -27,6 +930,7 @@
     "result": "L"
   },
   {
+    "year": 2026,
     "week": "1",
     "person": "Robert",
     "team_picked": "Oregon",
@@ -36,6 +940,7 @@
     "result": "L"
   },
   {
+    "year": 2026,
     "week": "1",
     "person": "Billy",
     "team_picked": "Iowa",

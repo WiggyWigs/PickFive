@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickFive — Ledger</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  #ledger-table th,
+  #ledger-table td {
+    text-align: center;
+  }
+
+  td.balance-pos { color: var(--up); font-weight: 600; }
+  td.balance-neg { color: var(--down); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<script src="assets/nav.js"></script>
+
+<header>
+  <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
+  <p class="sub">Deposits, withdrawals, and wager results by person. Click any header to sort.</p>
+</header>
+
+<div class="status" id="status">Loading ledger&hellip;</div>
+
+<div class="table-wrap" id="table-wrap" style="display:none;">
+  <table id="ledger-table">
+    <thead>
+      <tr>
+        <th data-key="name" data-type="string">Name</th>
+        <th data-key="deposits" data-type="number">Deposits</th>
+        <th data-key="withdraws" data-type="number">Withdraws</th>
+        <th data-key="wager_net" data-type="number">Wager Win/Loss</th>
+        <th data-key="balance" data-type="number">Current Balance</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="empty-state" id="empty-state" style="display:none;">
+  No ledger entries yet. Once the sheet sync runs, this will show up here.
+</div>
+
+<footer>Deposits and Withdraws come from rows where Bet contains "Transfer" (positive Payout = deposit, negative = withdraw). Everything else is treated as a wager, and Wager Win/Loss sums that person's Net across all wagers. Current Balance = Deposits − Withdraws + Wager Win/Loss.</footer>
+
+<script>
+  async function loadLedger() {
+    try {
+      const res = await fetch("data/ledger.json", { cache: "no-store" });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function fmtMoney(n) {
+    if (n === null || n === undefined) return "—";
+    const sign = n < 0 ? "-" : "";
+    return `${sign}$${Math.abs(n).toFixed(2)}`;
+  }
+
+  function buildRollup(entries) {
+    const byName = {};
+    for (const e of entries) {
+      if (!byName[e.name]) {
+        byName[e.name] = { name: e.name, deposits: 0, withdraws: 0, wager_net: 0 };
+      }
+      const row = byName[e.name];
+      if (e.type === "deposit") row.deposits += e.payout ?? 0;
+      else if (e.type === "withdraw") row.withdraws += Math.abs(e.payout ?? 0);
+      else if (e.type === "wager") row.wager_net += e.net ?? 0;
+    }
+
+    return Object.values(byName).map((r) => ({
+      ...r,
+      balance: r.deposits - r.withdraws + r.wager_net,
+    }));
+  }
+
+  function renderTable(rows) {
+    const tbody = document.querySelector("#ledger-table tbody");
+    let currentSort = { key: null, dir: 1 };
+
+    function draw(data) {
+      tbody.innerHTML = "";
+      for (const r of data) {
+        const tr = document.createElement("tr");
+        const balClass = r.balance > 0 ? "balance-pos" : r.balance < 0 ? "balance-neg" : "";
+        tr.innerHTML = `
+          <td class="team">${r.name}</td>
+          <td class="num">${fmtMoney(r.deposits)}</td>
+          <td class="num">${fmtMoney(r.withdraws)}</td>
+          <td class="num">${fmtMoney(r.wager_net)}</td>
+          <td class="${balClass}">${fmtMoney(r.balance)}</td>
+        `;
+        tbody.appendChild(tr);
+      }
+    }
+
+    draw(rows);
+
+    document.querySelectorAll("#ledger-table thead th").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.key;
+        const type = th.dataset.type;
+        const dir = currentSort.key === key ? -currentSort.dir : 1;
+        currentSort = { key, dir };
+
+        document.querySelectorAll("#ledger-table thead th .arrow").forEach((a) => a.remove());
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = dir === 1 ? "▲" : "▼";
+        th.appendChild(arrow);
+
+        const sorted = [...rows].sort((a, b) => {
+          let av = a[key];
+          let bv = b[key];
+          if (type === "number") {
+            return ((av ?? -Infinity) - (bv ?? -Infinity)) * dir;
+          }
+          av = (av ?? "").toString().toLowerCase();
+          bv = (bv ?? "").toString().toLowerCase();
+          return av.localeCompare(bv) * dir;
+        });
+
+        draw(sorted);
+      });
+    });
+  }
+
+  async function init() {
+    const statusEl = document.getElementById("status");
+    const entries = await loadLedger();
+
+    if (!entries || entries.length === 0) {
+      statusEl.textContent = "";
+      document.getElementById("empty-state").style.display = "block";
+      return;
+    }
+
+    const rollup = buildRollup(entries);
+    statusEl.textContent = `${rollup.length} people tracked`;
+    document.getElementById("table-wrap").style.display = "block";
+    renderTable(rollup);
+  }
+
+  init();
+</script>
+
+</body>
+</html>

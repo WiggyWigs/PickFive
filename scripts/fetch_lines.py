@@ -30,6 +30,17 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 VALID_STAGES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]
 
 
+def compute_week_id(now: datetime = None) -> "date":
+    """Return the date of the upcoming Monday (today, if today is Monday).
+
+    Used both as the commenceTimeTo cutoff basis and as the folder name
+    for this week's permanent archive under data/weeks/<week_id>/.
+    """
+    now = now or datetime.now(timezone.utc)
+    days_until_monday = (7 - now.weekday()) % 7  # Monday == 0
+    return (now + timedelta(days=days_until_monday)).date()
+
+
 def compute_cutoff() -> str:
     """
     Return an ISO8601 UTC timestamp for the upcoming Monday, used as
@@ -42,9 +53,7 @@ def compute_cutoff() -> str:
     midnight) to cover late-kickoff MNF games, which can commence
     just after midnight UTC.
     """
-    now = datetime.now(timezone.utc)
-    days_until_monday = (7 - now.weekday()) % 7  # Monday == 0
-    target_monday = (now + timedelta(days=days_until_monday)).date()
+    target_monday = compute_week_id()
     cutoff = datetime.combine(target_monday + timedelta(days=1), time(9, 0), tzinfo=timezone.utc)
     return cutoff.strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -118,11 +127,21 @@ def main():
     for sport_key, league_label in SPORTS.items():
         rows.extend(build_rows(sport_key, league_label, api_key, cutoff))
 
+    week_id = compute_week_id().isoformat()  # this week's Monday, e.g. "2026-09-21"
+
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     out_path = DATA_DIR / f"{args.stage}.json"
     out_path.write_text(json.dumps(rows, indent=2))
 
-    print(f"Wrote {len(rows)} games ({args.stage}, cutoff={cutoff}) to {out_path}")
+    # Permanent per-week archive - the rolling data/<stage>.json files above
+    # get overwritten every week, but data/weeks/<week_id>/ never does.
+    # This is what the Picks page matches historical picks against.
+    archive_dir = DATA_DIR / "weeks" / week_id
+    archive_dir.mkdir(parents=True, exist_ok=True)
+    archive_path = archive_dir / f"{args.stage}.json"
+    archive_path.write_text(json.dumps(rows, indent=2))
+
+    print(f"Wrote {len(rows)} games ({args.stage}, week={week_id}, cutoff={cutoff}) to {out_path} and {archive_path}")
 
 
 if __name__ == "__main__":

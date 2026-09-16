@@ -7,6 +7,17 @@
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* Picks-page-only override - center everything in both tables,
+     rather than changing the shared right/left alignment rules
+     used elsewhere on the site. */
+  #standings-table th,
+  #standings-table td,
+  #history-table th,
+  #history-table td {
+    text-align: center;
+  }
+</style>
 </head>
 <body>
 
@@ -65,8 +76,6 @@
 <div class="empty-state" id="empty-state" style="display:none;">
   No picks yet. Once the sheet sync runs, picks will show up here.
 </div>
-
-<footer>Week, Person, Team, Home/Away, Spread, and Result are entered manually in the sheet, taken from the actual contest site at pick time. Fav/Dog is derived automatically from the sign of Spread - not a separate sheet column. A pick missing Home/Away or Spread in the sheet shows blanks here rather than being dropped.</footer>
 
 <script>
   // Every known pick slot, shown in Standings even before they've made a

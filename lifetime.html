@@ -52,7 +52,7 @@
      Sharing the table's own column layout is what guarantees each
      select lines up exactly with the header above it. */
   #history-table thead tr.filter-row td {
-    background: var(--panel);
+    background: #d7dbdf;
     padding: 0.5rem 0.6rem;
     border-bottom: 1px solid var(--line);
     cursor: default;
@@ -63,6 +63,11 @@
     box-sizing: border-box;
     font-size: 0.82rem;
     padding: 0.3rem 0.4rem;
+    text-align: center;
+    text-align-last: center; /* Firefox needs this to center the closed-state text */
+    background: #f2f3f5;
+    color: #1a2228;
+    border: 1px solid #b8bec3;
   }
 
   .stat-block {

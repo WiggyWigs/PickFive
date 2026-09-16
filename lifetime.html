@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickFive — Lifetime</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* Picks-page-only override - center everything in both tables,
+     rather than changing the shared right/left alignment rules
+     used elsewhere on the site. */
+  #standings-table th,
+  #standings-table td,
+  #history-table th,
+  #history-table td {
+    text-align: center;
+  }
+
+  .filter-bar {
+    max-width: 1100px;
+    margin: 0 auto 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+
+  .filter-bar select {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<script src="assets/nav.js"></script>
+
+<header>
+  <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
+  <p class="sub">All-time picks and standings. Click any header to sort.</p>
+</header>
+
+<div class="status" id="status">Loading picks&hellip;</div>
+
+<div id="content" style="display:none;">
+
+  <div class="filter-bar">
+    <label for="year-filter">Year:</label>
+    <select id="year-filter">
+      <option value="all">All Time</option>
+    </select>
+  </div>
+
+  <div class="section-title">Standings</div>
+  <div class="table-wrap">
+    <table id="standings-table">
+      <thead>
+        <tr>
+          <th data-key="person" data-type="string">Person</th>
+          <th data-key="wins" data-type="number">W</th>
+          <th data-key="losses" data-type="number">L</th>
+          <th data-key="win_pct" data-type="number">W%</th>
+          <th data-key="home_pct" data-type="number">Home W%</th>
+          <th data-key="away_pct" data-type="number">Away W%</th>
+          <th data-key="fav_pct" data-type="number">Fav W%</th>
+          <th data-key="dog_pct" data-type="number">Dog W%</th>
+          <th data-key="pending" data-type="number">Pending</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Pick History</div>
+  <div class="table-wrap">
+    <table id="history-table">
+      <thead>
+        <tr>
+          <th data-key="year" data-type="number">Year</th>
+          <th data-key="week_sort" data-type="number">Week</th>
+          <th data-key="person" data-type="string">Person</th>
+          <th data-key="team_picked" data-type="string">Team</th>
+          <th data-key="home_away" data-type="string">Home/Away</th>
+          <th data-key="fav_dog" data-type="string">Fav/Dog</th>
+          <th data-key="spread" data-type="number">Spread</th>
+          <th data-key="result" data-type="string">Result</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="empty-state" id="empty-state" style="display:none;">
+  No picks yet. Once the sheet sync runs, picks will show up here.
+</div>
+
+<script src="assets/picks-shared.js"></script>
+<script>
+  let ALL_PICKS = [];
+
+  function renderForYear(yearValue) {
+    const picks = yearValue === "all" ? ALL_PICKS : ALL_PICKS.filter((p) => String(p.year) === yearValue);
+    document.getElementById("status").textContent =
+      `${picks.length} picks logged${yearValue === "all" ? " (all time)" : ` (${yearValue})`}`;
+    renderStandings(buildStandings(picks));
+    renderHistory(picks, true);
+  }
+
+  async function init() {
+    const statusEl = document.getElementById("status");
+    ALL_PICKS = (await loadPicks()) || [];
+
+    if (ALL_PICKS.length === 0) {
+      statusEl.textContent = "";
+      document.getElementById("empty-state").style.display = "block";
+      return;
+    }
+
+    const select = document.getElementById("year-filter");
+    for (const y of distinctYears(ALL_PICKS)) {
+      const opt = document.createElement("option");
+      opt.value = String(y);
+      opt.textContent = y;
+      select.appendChild(opt);
+    }
+    select.addEventListener("change", () => renderForYear(select.value));
+
+    document.getElementById("content").style.display = "block";
+    renderForYear("all");
+  }
+
+  init();
+</script>
+
+</body>
+</html>

@@ -273,11 +273,15 @@
         const balClass = r.balance > 0 ? "balance-pos" : r.balance < 0 ? "balance-neg" : "";
         tr.innerHTML = `
           <td class="team">${r.name}</td>
-          <td class="num">${fmtMoney(r.deposits)}</td>
-          <td class="num">${fmtMoney(r.withdraws)}</td>
-          <td class="num">${fmtMoney(r.wager_net)}</td>
+          <td class="num clickable-cell">${fmtMoney(r.deposits)}</td>
+          <td class="num clickable-cell">${fmtMoney(r.withdraws)}</td>
+          <td class="num clickable-cell">${fmtMoney(r.wager_net)}</td>
           <td class="${balClass}">${fmtMoney(r.balance)}</td>
         `;
+        const cells = tr.querySelectorAll(".clickable-cell");
+        cells[0].addEventListener("click", () => showTransferModal(r.name, "deposit"));
+        cells[1].addEventListener("click", () => showTransferModal(r.name, "withdraw"));
+        cells[2].addEventListener("click", () => showYearlyModal(r.name));
         tbody.appendChild(tr);
       }
     }
@@ -370,17 +374,8 @@
   let ALL_MONTHLY = [];
   let ALL_ENTRIES = [];
 
-  function showTransactionModal(name, year, month) {
-    const monthLabel = month ? MONTH_NAMES[month - 1] : "Unknown";
-    const periodLabel = year === null || month === null ? "date unresolved" : `${monthLabel} ${year}`;
-
-    const txns = ALL_ENTRIES.filter((e) => {
-      if (e.type !== "wager" || e.name !== name) return false;
-      const { year: y, month: m } = parseMonthYear(e.date);
-      return y === year && m === month;
-    });
-
-    document.getElementById("txn-modal-title").textContent = `${name} — ${periodLabel}`;
+  function renderTxnModal(title, txns, emptyLabel) {
+    document.getElementById("txn-modal-title").textContent = title;
 
     const tbody = document.getElementById("txn-modal-body");
     tbody.innerHTML = txns.length
@@ -397,13 +392,71 @@
       `
           )
           .join("")
-      : `<tr><td colspan="5">No transactions found.</td></tr>`;
+      : `<tr><td colspan="5">No ${emptyLabel} found.</td></tr>`;
 
     document.getElementById("txn-modal").style.display = "flex";
   }
 
+  function showTransactionModal(name, year, month) {
+    const monthLabel = month ? MONTH_NAMES[month - 1] : "Unknown";
+    const periodLabel = year === null || month === null ? "date unresolved" : `${monthLabel} ${year}`;
+
+    const txns = ALL_ENTRIES.filter((e) => {
+      if (e.type !== "wager" || e.name !== name) return false;
+      const { year: y, month: m } = parseMonthYear(e.date);
+      return y === year && m === month;
+    });
+
+    renderTxnModal(`${name} — ${periodLabel}`, txns, "transactions");
+  }
+
+  function showTransferModal(name, transferType) {
+    const label = transferType === "deposit" ? "Deposits" : "Withdraws";
+    const txns = ALL_ENTRIES.filter((e) => e.type === transferType && e.name === name);
+    renderTxnModal(`${name} — ${label}`, txns, label.toLowerCase());
+  }
+
   function closeTransactionModal() {
     document.getElementById("txn-modal").style.display = "none";
+  }
+
+  function showYearlyModal(name) {
+    const byYear = {};
+    for (const e of ALL_ENTRIES) {
+      if (e.type !== "wager" || e.name !== name) continue;
+      const { year } = parseMonthYear(e.date);
+      const key = year ?? "unknown";
+      byYear[key] = (byYear[key] ?? 0) + (e.net ?? 0);
+    }
+
+    const rows = Object.entries(byYear).sort(([a], [b]) => {
+      if (a === "unknown") return 1; // Unknown always sorts last
+      if (b === "unknown") return -1;
+      return Number(b) - Number(a); // most recent year first
+    });
+
+    document.getElementById("yearly-modal-title").textContent = `${name} — Win/Loss by Year`;
+
+    const tbody = document.getElementById("yearly-modal-body");
+    tbody.innerHTML = rows.length
+      ? rows
+          .map(([year, net]) => {
+            const cls = net > 0 ? "balance-pos" : net < 0 ? "balance-neg" : "";
+            return `
+        <tr>
+          <td>${year === "unknown" ? "Unknown" : year}</td>
+          <td class="num ${cls}">${fmtMoney(net)}</td>
+        </tr>
+      `;
+          })
+          .join("")
+      : `<tr><td colspan="2">No wagers found.</td></tr>`;
+
+    document.getElementById("yearly-modal").style.display = "flex";
+  }
+
+  function closeYearlyModal() {
+    document.getElementById("yearly-modal").style.display = "none";
   }
 
   function populateSelect(select, values, allLabel) {
@@ -447,8 +500,17 @@
     document.getElementById("txn-modal").addEventListener("click", (e) => {
       if (e.target.id === "txn-modal") closeTransactionModal(); // click on the dark overlay, not the card itself
     });
+
+    document.getElementById("yearly-modal-close").addEventListener("click", closeYearlyModal);
+    document.getElementById("yearly-modal").addEventListener("click", (e) => {
+      if (e.target.id === "yearly-modal") closeYearlyModal();
+    });
+
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeTransactionModal();
+      if (e.key === "Escape") {
+        closeTransactionModal();
+        closeYearlyModal();
+      }
     });
 
     const rollup = buildRollup(entries);
@@ -510,6 +572,24 @@
         </tr>
       </thead>
       <tbody id="txn-modal-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-overlay" id="yearly-modal" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="yearly-modal-title">Win/Loss by Year</h2>
+      <button class="modal-close" id="yearly-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Win/Loss</th>
+        </tr>
+      </thead>
+      <tbody id="yearly-modal-body"></tbody>
     </table>
   </div>
 </div>

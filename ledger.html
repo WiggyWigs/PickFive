@@ -18,6 +18,74 @@
   td.balance-pos { color: var(--up); font-weight: 600; }
   td.balance-neg { color: var(--down); font-weight: 600; }
 
+  .clickable-cell {
+    cursor: pointer;
+    text-decoration: underline dotted;
+    text-underline-offset: 3px;
+  }
+  .clickable-cell:hover { color: var(--amber) !important; }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1.5rem;
+  }
+
+  .modal-content {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    max-width: 640px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.75rem;
+  }
+
+  .modal-header h2 {
+    font-size: 1.1rem;
+    margin: 0;
+    color: var(--text);
+    font-family: "Iowan Old Style", Georgia, serif;
+  }
+
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.25rem;
+  }
+  .modal-close:hover { color: var(--text); }
+
+  .modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .modal-content th, .modal-content td {
+    text-align: left;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .modal-content th { color: var(--muted); font-weight: 600; }
+  .modal-content td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
   #monthly-table thead tr.filter-row td {
     background: #d7dbdf;
     padding: 0.5rem 0.6rem;
@@ -140,17 +208,39 @@
 
   function buildMonthly(entries) {
     const byKey = {};
+    const periodsSet = new Set(); // every "year|month" that appears anywhere, across anyone
+    const namesSet = new Set(); // every person who's appeared in any entry (wager or transfer)
+
     for (const e of entries) {
+      namesSet.add(e.name);
       if (e.type !== "wager") continue; // transfers excluded, per request
 
       const { year, month } = parseMonthYear(e.date);
-      const key = `${e.name}|${year ?? "unknown"}|${month ?? "unknown"}`;
+      if (year !== null && month !== null) periodsSet.add(`${year}|${month}`);
 
+      const key = `${e.name}|${year ?? "unknown"}|${month ?? "unknown"}`;
       if (!byKey[key]) {
         byKey[key] = { name: e.name, year, month_num: month, win_loss: 0 };
       }
       byKey[key].win_loss += e.net ?? 0;
     }
+
+    // Zero-fill: every known person gets a $0 row for every real
+    // (year, month) period that appears anywhere in the data, even if
+    // they personally had no wagers that month. The synthetic "Unknown"
+    // bucket (unparseable dates) is deliberately NOT zero-filled here -
+    // it's a data-quality flag, not a real time period to fill in for
+    // everyone.
+    for (const name of namesSet) {
+      for (const periodKey of periodsSet) {
+        const [yearStr, monthStr] = periodKey.split("|");
+        const key = `${name}|${yearStr}|${monthStr}`;
+        if (!byKey[key]) {
+          byKey[key] = { name, year: Number(yearStr), month_num: Number(monthStr), win_loss: 0 };
+        }
+      }
+    }
+
     return Object.values(byKey);
   }
 
@@ -237,8 +327,11 @@
           <td class="team">${r.name}</td>
           <td class="${r.year === null ? 'blank' : 'num'}">${r.year ?? "—"}</td>
           <td class="${r.month_num === null ? 'blank' : 'num'}">${monthLabel}</td>
-          <td class="${wlClass}">${fmtMoney(r.win_loss)}</td>
+          <td class="${wlClass} clickable-cell">${fmtMoney(r.win_loss)}</td>
         `;
+        tr.querySelector(".clickable-cell").addEventListener("click", () => {
+          showTransactionModal(r.name, r.year, r.month_num);
+        });
         tbody.appendChild(tr);
       }
     }
@@ -275,6 +368,43 @@
   }
 
   let ALL_MONTHLY = [];
+  let ALL_ENTRIES = [];
+
+  function showTransactionModal(name, year, month) {
+    const monthLabel = month ? MONTH_NAMES[month - 1] : "Unknown";
+    const periodLabel = year === null || month === null ? "date unresolved" : `${monthLabel} ${year}`;
+
+    const txns = ALL_ENTRIES.filter((e) => {
+      if (e.type !== "wager" || e.name !== name) return false;
+      const { year: y, month: m } = parseMonthYear(e.date);
+      return y === year && m === month;
+    });
+
+    document.getElementById("txn-modal-title").textContent = `${name} — ${periodLabel}`;
+
+    const tbody = document.getElementById("txn-modal-body");
+    tbody.innerHTML = txns.length
+      ? txns
+          .map(
+            (e) => `
+        <tr>
+          <td>${e.date}</td>
+          <td>${e.bet}</td>
+          <td class="num">${fmtMoney(e.bet_amount)}</td>
+          <td class="num">${fmtMoney(e.payout)}</td>
+          <td class="num">${fmtMoney(e.net)}</td>
+        </tr>
+      `
+          )
+          .join("")
+      : `<tr><td colspan="5">No transactions found.</td></tr>`;
+
+    document.getElementById("txn-modal").style.display = "flex";
+  }
+
+  function closeTransactionModal() {
+    document.getElementById("txn-modal").style.display = "none";
+  }
 
   function populateSelect(select, values, allLabel) {
     select.innerHTML = `<option value="all">${allLabel}</option>`;
@@ -310,6 +440,16 @@
       document.getElementById("empty-state").style.display = "block";
       return;
     }
+
+    ALL_ENTRIES = entries;
+
+    document.getElementById("txn-modal-close").addEventListener("click", closeTransactionModal);
+    document.getElementById("txn-modal").addEventListener("click", (e) => {
+      if (e.target.id === "txn-modal") closeTransactionModal(); // click on the dark overlay, not the card itself
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeTransactionModal();
+    });
 
     const rollup = buildRollup(entries);
     statusEl.textContent = `${rollup.length} people tracked`;
@@ -352,6 +492,27 @@
 
   init();
 </script>
+
+<div class="modal-overlay" id="txn-modal" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="txn-modal-title">Transactions</h2>
+      <button class="modal-close" id="txn-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Bet</th>
+          <th>Bet Amount</th>
+          <th>Payout</th>
+          <th>Net</th>
+        </tr>
+      </thead>
+      <tbody id="txn-modal-body"></tbody>
+    </table>
+  </div>
+</div>
 
 </body>
 </html>

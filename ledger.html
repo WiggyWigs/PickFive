@@ -84,7 +84,7 @@
     border-bottom: 1px solid var(--line);
   }
   .modal-content th { color: var(--muted); font-weight: 600; }
-  .modal-content td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .modal-content td.num { font-variant-numeric: tabular-nums; }
 
   #monthly-table thead tr.filter-row td {
     background: #d7dbdf;
@@ -208,17 +208,19 @@
 
   function buildMonthly(entries) {
     const byKey = {};
-    const periodsSet = new Set(); // every "year|month" that appears anywhere, across anyone
     const namesSet = new Set(); // every person who's appeared in any entry (wager or transfer)
+    let minK = null; // earliest (year, month) across ALL entries, as a continuous month index
+    let maxK = null; // latest, before extending through the present below
 
     for (const e of entries) {
       namesSet.add(e.name);
 
-      // Every entry - wager or transfer - counts toward "this month is
-      // real" so a month with only a deposit/withdraw still gets $0
-      // rows for everyone, not just months someone happened to wager in.
       const { year, month } = parseMonthYear(e.date);
-      if (year !== null && month !== null) periodsSet.add(`${year}|${month}`);
+      if (year !== null && month !== null) {
+        const k = year * 12 + (month - 1);
+        if (minK === null || k < minK) minK = k;
+        if (maxK === null || k > maxK) maxK = k;
+      }
 
       if (e.type !== "wager") continue; // win/loss summing stays wager-only
 
@@ -229,18 +231,25 @@
       byKey[key].win_loss += e.net ?? 0;
     }
 
-    // Zero-fill: every known person gets a $0 row for every real
-    // (year, month) period that appears anywhere in the data, even if
-    // they personally had no wagers that month. The synthetic "Unknown"
-    // bucket (unparseable dates) is deliberately NOT zero-filled here -
-    // it's a data-quality flag, not a real time period to fill in for
-    // everyone.
-    for (const name of namesSet) {
-      for (const periodKey of periodsSet) {
-        const [yearStr, monthStr] = periodKey.split("|");
-        const key = `${name}|${yearStr}|${monthStr}`;
-        if (!byKey[key]) {
-          byKey[key] = { name, year: Number(yearStr), month_num: Number(monthStr), win_loss: 0 };
+    // Zero-fill: every known person gets a $0 row for every real month
+    // in the FULL continuous range - from the earliest entry anywhere
+    // in the data through the current real-world month - even a month
+    // where literally nobody has any entry at all. The synthetic
+    // "Unknown" bucket (unparseable dates) is deliberately excluded
+    // from this range fill; it's a data-quality flag, not a real month.
+    if (minK !== null) {
+      const now = new Date();
+      const todayK = now.getFullYear() * 12 + now.getMonth(); // getMonth() is already 0-11
+      if (todayK > maxK) maxK = todayK;
+
+      for (const name of namesSet) {
+        for (let k = minK; k <= maxK; k++) {
+          const year = Math.floor(k / 12);
+          const month = (k % 12) + 1;
+          const key = `${name}|${year}|${month}`;
+          if (!byKey[key]) {
+            byKey[key] = { name, year, month_num: month, win_loss: 0 };
+          }
         }
       }
     }
@@ -486,6 +495,21 @@
     }
   }
 
+  function sortMonthlyDefault(rows) {
+    // Groups each person's months together, in chronological order -
+    // this is the table's baseline order, separate from whatever a
+    // header click temporarily overrides it with.
+    return [...rows].sort((a, b) => {
+      if (a.name !== b.name) return a.name.localeCompare(b.name);
+      const ay = a.year ?? Infinity; // Unknown-period rows sort last within a person
+      const by = b.year ?? Infinity;
+      if (ay !== by) return ay - by;
+      const am = a.month_num ?? Infinity;
+      const bm = b.month_num ?? Infinity;
+      return am - bm;
+    });
+  }
+
   function refreshMonthly() {
     const name = document.getElementById("monthly-name-filter").value;
     const year = document.getElementById("monthly-year-filter").value;
@@ -498,7 +522,7 @@
       return true;
     });
 
-    renderMonthlyTable(filtered);
+    renderMonthlyTable(sortMonthlyDefault(filtered));
   }
 
   async function init() {
@@ -566,7 +590,7 @@
     document.getElementById("monthly-year-filter").addEventListener("change", refreshMonthly);
     document.getElementById("monthly-month-filter").addEventListener("change", refreshMonthly);
 
-    renderMonthlyTable(ALL_MONTHLY);
+    renderMonthlyTable(sortMonthlyDefault(ALL_MONTHLY));
   }
 
   init();

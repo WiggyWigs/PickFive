@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickFive — Current Season</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* Picks-page-only override - center everything in both tables,
+     rather than changing the shared right/left alignment rules
+     used elsewhere on the site. */
+  #standings-table th,
+  #standings-table td,
+  #history-table th,
+  #history-table td {
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<script src="assets/nav.js"></script>
+
+<header>
+  <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
+  <p class="sub" id="season-sub">One pick a week per person, entered from the contest site. Click any header to sort.</p>
+</header>
+
+<div class="status" id="status">Loading picks&hellip;</div>
+
+<div id="content" style="display:none;">
+
+  <div class="section-title">Standings</div>
+  <div class="table-wrap">
+    <table id="standings-table">
+      <thead>
+        <tr>
+          <th data-key="person" data-type="string">Person</th>
+          <th data-key="wins" data-type="number">W</th>
+          <th data-key="losses" data-type="number">L</th>
+          <th data-key="win_pct" data-type="number">W%</th>
+          <th data-key="home_pct" data-type="number">Home W%</th>
+          <th data-key="away_pct" data-type="number">Away W%</th>
+          <th data-key="fav_pct" data-type="number">Fav W%</th>
+          <th data-key="dog_pct" data-type="number">Dog W%</th>
+          <th data-key="pending" data-type="number">Pending</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Pick History</div>
+  <div class="table-wrap">
+    <table id="history-table">
+      <thead>
+        <tr>
+          <th data-key="week_sort" data-type="number">Week</th>
+          <th data-key="person" data-type="string">Person</th>
+          <th data-key="team_picked" data-type="string">Team</th>
+          <th data-key="home_away" data-type="string">Home/Away</th>
+          <th data-key="fav_dog" data-type="string">Fav/Dog</th>
+          <th data-key="spread" data-type="number">Spread</th>
+          <th data-key="result" data-type="string">Result</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+</div>
+
+<div class="empty-state" id="empty-state" style="display:none;">
+  No picks yet. Once the sheet sync runs, picks will show up here.
+</div>
+
+<script src="assets/picks-shared.js"></script>
+<script>
+  async function init() {
+    const statusEl = document.getElementById("status");
+    const allPicks = await loadPicks();
+
+    if (!allPicks || allPicks.length === 0) {
+      statusEl.textContent = "";
+      document.getElementById("empty-state").style.display = "block";
+      return;
+    }
+
+    const year = latestYear(allPicks);
+    const seasonPicks = year === null ? allPicks : allPicks.filter((p) => p.year === year);
+
+    document.getElementById("season-sub").textContent =
+      `${year ?? "Current"} season. Click any header to sort.`;
+    statusEl.textContent = `${seasonPicks.length} picks logged`;
+    document.getElementById("content").style.display = "block";
+
+    renderStandings(buildStandings(seasonPicks));
+    renderHistory(seasonPicks, false);
+  }
+
+  init();
+</script>
+
+</body>
+</html>

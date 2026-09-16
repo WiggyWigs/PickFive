@@ -213,10 +213,14 @@
 
     for (const e of entries) {
       namesSet.add(e.name);
-      if (e.type !== "wager") continue; // transfers excluded, per request
 
+      // Every entry - wager or transfer - counts toward "this month is
+      // real" so a month with only a deposit/withdraw still gets $0
+      // rows for everyone, not just months someone happened to wager in.
       const { year, month } = parseMonthYear(e.date);
       if (year !== null && month !== null) periodsSet.add(`${year}|${month}`);
+
+      if (e.type !== "wager") continue; // win/loss summing stays wager-only
 
       const key = `${e.name}|${year ?? "unknown"}|${month ?? "unknown"}`;
       if (!byKey[key]) {

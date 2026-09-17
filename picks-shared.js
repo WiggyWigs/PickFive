@@ -103,7 +103,7 @@ function buildStandings(picks) {
   }));
 }
 
-function renderStandings(standings) {
+function renderStandings(standings, onPersonClick) {
   const tbody = document.querySelector("#standings-table tbody");
   let currentSort = { key: null, dir: 1 };
 
@@ -111,8 +111,9 @@ function renderStandings(standings) {
     tbody.innerHTML = "";
     for (const r of data) {
       const tr = document.createElement("tr");
+      const nameClass = onPersonClick ? "team clickable-cell" : "team";
       tr.innerHTML = `
-        <td class="team">${r.person}</td>
+        <td class="${nameClass}">${r.person}</td>
         <td class="num">${r.wins}</td>
         <td class="num">${r.losses}</td>
         <td class="num">${fmtPct(r.win_pct)}</td>
@@ -122,6 +123,9 @@ function renderStandings(standings) {
         <td class="num">${fmtPct(r.dog_pct)}</td>
         <td class="${r.pending === 0 ? 'blank' : 'num'}">${r.pending}</td>
       `;
+      if (onPersonClick) {
+        tr.querySelector(".clickable-cell").addEventListener("click", () => onPersonClick(r.person));
+      }
       tbody.appendChild(tr);
     }
   }

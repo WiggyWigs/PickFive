@@ -241,12 +241,18 @@
         best = { label: CATEGORY_LABELS[key], pct, w: b.w, l: b.l, total };
       }
     }
-    return best;
+
+    const all = Object.entries(buckets).map(([key, b]) => {
+      const total = b.w + b.l;
+      return { label: CATEGORY_LABELS[key], pct: total === 0 ? null : b.w / total, w: b.w, l: b.l };
+    });
+
+    return { best, all };
   }
 
   function renderTeamRollup(picks) {
     const rollup = buildTeamRollup(picks);
-    const best = buildBestCategory(picks);
+    const { best, all } = buildBestCategory(picks);
 
     const rollupLine =
       rollup.wins + rollup.losses === 0
@@ -257,9 +263,18 @@
       ? `<span class="stat-label">Best Overall Category:</span> <span class="stat-value">${best.label} — ${fmtPct(best.pct)} (${best.w}-${best.l})</span>`
       : `<span class="stat-label">Best Overall Category:</span> <span class="stat-value">Not enough decided picks yet</span>`;
 
+    const categoryLines = all
+      .map((c) => {
+        const value = c.pct === null ? "No decided picks yet" : `${fmtPct(c.pct)} (${c.w}-${c.l})`;
+        return `<div class="stat-line"><span class="stat-label">${c.label}:</span> <span class="stat-value">${value}</span></div>`;
+      })
+      .join("");
+
     document.getElementById("team-rollup").innerHTML = `
       <div class="stat-line">${rollupLine}</div>
       <div class="stat-line">${bestLine}</div>
+      <br>
+      ${categoryLines}
     `;
   }
 

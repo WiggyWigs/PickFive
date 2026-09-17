@@ -214,7 +214,7 @@
     return { wins, losses, winPct: total === 0 ? null : wins / total };
   }
 
-  function buildBestCategory(picks) {
+  function buildCategoryBreakdown(picks) {
     const buckets = {
       "Home|Favorite": { w: 0, l: 0 },
       "Home|Underdog": { w: 0, l: 0 },
@@ -230,40 +230,34 @@
       buckets[key][p.result === "W" ? "w" : "l"] += 1;
     }
 
-    let best = null;
-    for (const [key, b] of Object.entries(buckets)) {
-      const total = b.w + b.l;
-      if (total === 0) continue;
-      const pct = b.w / total;
-      // Ties broken by larger sample size, so a 2-0 category doesn't
-      // outrank a 20-8 category just because its percentage is higher.
-      if (!best || pct > best.pct || (pct === best.pct && total > best.total)) {
-        best = { label: CATEGORY_LABELS[key], pct, w: b.w, l: b.l, total };
-      }
-    }
-
     const all = Object.entries(buckets).map(([key, b]) => {
       const total = b.w + b.l;
-      return { label: CATEGORY_LABELS[key], pct: total === 0 ? null : b.w / total, w: b.w, l: b.l };
+      return { label: CATEGORY_LABELS[key], pct: total === 0 ? null : b.w / total, w: b.w, l: b.l, total };
     });
 
-    return { best, all };
+    // Best win% first; categories with no decided picks sort to the
+    // bottom instead of being treated as a 0% record.
+    all.sort((a, b) => {
+      if (a.pct === null && b.pct === null) return 0;
+      if (a.pct === null) return 1;
+      if (b.pct === null) return -1;
+      if (a.pct !== b.pct) return b.pct - a.pct;
+      return b.total - a.total; // tie-break: larger sample size ranks first
+    });
+
+    return all;
   }
 
   function renderTeamRollup(picks) {
     const rollup = buildTeamRollup(picks);
-    const { best, all } = buildBestCategory(picks);
+    const categories = buildCategoryBreakdown(picks);
 
     const rollupLine =
       rollup.wins + rollup.losses === 0
         ? `<span class="stat-label">Team record:</span> <span class="stat-value">No decided picks yet</span>`
         : `<span class="stat-label">Team record:</span> <span class="stat-value">${rollup.wins}-${rollup.losses} (${fmtPct(rollup.winPct)})</span>`;
 
-    const bestLine = best
-      ? `<span class="stat-label">Best Overall Category:</span> <span class="stat-value">${best.label} — ${fmtPct(best.pct)} (${best.w}-${best.l})</span>`
-      : `<span class="stat-label">Best Overall Category:</span> <span class="stat-value">Not enough decided picks yet</span>`;
-
-    const categoryLines = all
+    const categoryLines = categories
       .map((c) => {
         const value = c.pct === null ? "No decided picks yet" : `${fmtPct(c.pct)} (${c.w}-${c.l})`;
         return `<div class="stat-line"><span class="stat-label">${c.label}:</span> <span class="stat-value">${value}</span></div>`;
@@ -272,7 +266,6 @@
 
     document.getElementById("team-rollup").innerHTML = `
       <div class="stat-line">${rollupLine}</div>
-      <div class="stat-line">${bestLine}</div>
       <br>
       ${categoryLines}
     `;

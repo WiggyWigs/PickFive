@@ -14,6 +14,8 @@ Expected sheet headers (case/whitespace-insensitive):
   Amount    - amount risked
   Payout    - amount returned (blank if the wager hasn't resolved yet)
   Net       - profit/loss for that wager (blank if pending)
+  Total     - running cumulative bankroll balance after this wager,
+              across all weeks (blank if the wager hasn't resolved yet)
 """
 import csv
 import io
@@ -34,6 +36,7 @@ HEADER_ALIASES = {
     "amount": "amount",
     "payout": "payout",
     "net": "net",
+    "total": "total",
 }
 
 
@@ -120,6 +123,7 @@ def main():
                 "amount": normalize_number(row.get("amount")),
                 "payout": normalize_number(row.get("payout")),
                 "net": normalize_number(row.get("net")),
+                "total": normalize_number(row.get("total")),
             }
         )
 

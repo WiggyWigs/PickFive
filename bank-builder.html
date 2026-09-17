@@ -125,7 +125,7 @@
     }
 
     const weeks = groupByWeek(entries);
-    statusEl.textContent = `${entries.length} entries across ${weeks.length} weeks`;
+    statusEl.textContent = "";
 
     const content = document.getElementById("content");
     content.innerHTML = weeks.map(({ week, rows }) => renderWeek(week, rows)).join("");

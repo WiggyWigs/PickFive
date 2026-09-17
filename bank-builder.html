@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickFive — Bank Builder</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  #content table th,
+  #content table td {
+    text-align: center;
+  }
+
+  td.balance-pos { color: var(--up); font-weight: 600; }
+  td.balance-neg { color: var(--down); font-weight: 600; }
+
+  .week-block {
+    max-width: 1100px;
+    margin: 0 auto 2rem;
+  }
+
+  .week-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<script src="assets/nav.js"></script>
+
+<header>
+  <img class="logo" src="assets/bank_builder_header.png" alt="Bank Builder">
+  <p class="sub">Weekly wager log, oldest to newest.</p>
+</header>
+
+<div class="status" id="status">Loading entries&hellip;</div>
+
+<div id="content" style="display:none;"></div>
+
+<div class="empty-state" id="empty-state" style="display:none;">
+  No entries yet. Once the sheet sync runs, this will show up here.
+</div>
+
+<script>
+  async function loadEntries() {
+    try {
+      const res = await fetch("data/bank_builder.json", { cache: "no-store" });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function fmtMoney(n) {
+    if (n === null || n === undefined) return "—";
+    const sign = n < 0 ? "-" : "";
+    return `${sign}$${Math.abs(n).toFixed(2)}`;
+  }
+
+  function groupByWeek(entries) {
+    const byWeek = {};
+    for (const e of entries) {
+      if (!byWeek[e.week]) byWeek[e.week] = [];
+      byWeek[e.week].push(e);
+    }
+    return Object.keys(byWeek)
+      .map(Number)
+      .sort((a, b) => a - b) // oldest week first
+      .map((week) => ({ week, rows: byWeek[week] }));
+  }
+
+  function renderWeek(week, rows) {
+    const netClass = (n) => (n > 0 ? "balance-pos" : n < 0 ? "balance-neg" : "");
+
+    const rowsHtml = rows
+      .map(
+        (e) => `
+      <tr>
+        <td class="team">${e.wager}</td>
+        <td class="team">${e.pick}</td>
+        <td class="num">${fmtMoney(e.amount)}</td>
+        <td class="num">${fmtMoney(e.payout)}</td>
+        <td class="${netClass(e.net)}">${fmtMoney(e.net)}</td>
+      </tr>
+    `
+      )
+      .join("");
+
+    return `
+      <div class="week-block">
+        <div class="week-title">Week ${week}</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Wager</th>
+                <th>Pick</th>
+                <th>Amount</th>
+                <th>Payout</th>
+                <th>Net</th>
+              </tr>
+            </thead>
+            <tbody>${rowsHtml}</tbody>
+          </table>
+        </div>
+      </div>
+    `;
+  }
+
+  async function init() {
+    const statusEl = document.getElementById("status");
+    const entries = await loadEntries();
+
+    if (!entries || entries.length === 0) {
+      statusEl.textContent = "";
+      document.getElementById("empty-state").style.display = "block";
+      return;
+    }
+
+    const weeks = groupByWeek(entries);
+    statusEl.textContent = `${entries.length} entries across ${weeks.length} weeks`;
+
+    const content = document.getElementById("content");
+    content.innerHTML = weeks.map(({ week, rows }) => renderWeek(week, rows)).join("");
+    content.style.display = "block";
+  }
+
+  init();
+</script>
+
+</body>
+</html>

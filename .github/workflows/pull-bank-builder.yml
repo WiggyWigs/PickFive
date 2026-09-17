@@ -1,0 +1,44 @@
+name: Sync Bank Builder
+
+on:
+  schedule:
+    # All times fixed at EST (UTC-5) - see the README note in pull-lines.yml
+    # for the same daylight-saving caveat (drifts ~1hr local once DST ends
+    # in November). Cron's day-of-week is UTC's day, not Eastern's - the
+    # Sunday 8:30 PM EST entry below crosses midnight into Monday UTC.
+    - cron: "0 19 * * 4"  # Thursday 2:00 PM EST
+    - cron: "0 23 * * 4"  # Thursday 6:00 PM EST
+    - cron: "0 22 * * 5"  # Friday 5:00 PM EST
+    - cron: "0 17 * * 6"  # Saturday 12:00 PM EST
+    - cron: "0 17 * * 0"  # Sunday 12:00 PM EST
+    - cron: "30 21 * * 0" # Sunday 4:30 PM EST
+    - cron: "30 1 * * 1"  # Sunday 8:30 PM EST (= Monday 01:30 UTC)
+    - cron: "0 19 * * 1"  # Monday 2:00 PM EST
+    - cron: "0 23 * * 1"  # Monday 6:00 PM EST
+  workflow_dispatch: {} # lets you trigger a manual sync from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Sync Bank Builder from sheet
+        env:
+          BANK_BUILDER_SHEET_CSV_URL: ${{ vars.BANK_BUILDER_SHEET_CSV_URL }}
+        run: python scripts/fetch_bank_builder.py
+
+      - name: Commit bank_builder.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/bank_builder.json
+          git diff --staged --quiet || git commit -m "Sync Bank Builder ($(date -u +%F))"
+          git push

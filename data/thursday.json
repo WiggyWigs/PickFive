@@ -275,7 +275,7 @@
     "home_team": "Texas State Bobcats",
     "away_team": "North Texas Mean Green",
     "commence_time": "2026-09-19T16:00:00Z",
-    "spread": -2.5,
+    "spread": -3.0,
     "bookmaker": "draftkings"
   },
   {
@@ -302,7 +302,7 @@
     "home_team": "Central Michigan Chippewas",
     "away_team": "Wyoming Cowboys",
     "commence_time": "2026-09-19T17:00:00Z",
-    "spread": -1.5,
+    "spread": 1.5,
     "bookmaker": "draftkings"
   },
   {
@@ -428,7 +428,7 @@
     "home_team": "Baylor Bears",
     "away_team": "Louisiana Tech Bulldogs",
     "commence_time": "2026-09-19T20:00:00Z",
-    "spread": -19.5,
+    "spread": -18.5,
     "bookmaker": "draftkings"
   },
   {
@@ -500,7 +500,7 @@
     "home_team": "Florida Atlantic Owls",
     "away_team": "Florida International Panthers",
     "commence_time": "2026-09-19T22:00:00Z",
-    "spread": -7.0,
+    "spread": -6.5,
     "bookmaker": "draftkings"
   },
   {
@@ -536,7 +536,7 @@
     "home_team": "Jacksonville State Gamecocks",
     "away_team": "Georgia Southern Eagles",
     "commence_time": "2026-09-19T23:00:00Z",
-    "spread": -3.0,
+    "spread": -3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -707,7 +707,7 @@
     "home_team": "Tennessee Volunteers",
     "away_team": "Kennesaw State Owls",
     "commence_time": "2026-09-19T23:45:00Z",
-    "spread": -34.5,
+    "spread": -35.5,
     "bookmaker": "draftkings"
   },
   {
@@ -716,7 +716,7 @@
     "home_team": "TCU Horned Frogs",
     "away_team": "Arkansas State Red Wolves",
     "commence_time": "2026-09-20T00:00:00Z",
-    "spread": -20.5,
+    "spread": -19.5,
     "bookmaker": "draftkings"
   },
   {

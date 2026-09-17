@@ -88,6 +88,7 @@
         <td class="num">${fmtMoney(e.amount)}</td>
         <td class="num">${fmtMoney(e.payout)}</td>
         <td class="${netClass(e.net)}">${fmtMoney(e.net)}</td>
+        <td class="${netClass(e.total)}">${fmtMoney(e.total)}</td>
       </tr>
     `
       )
@@ -105,6 +106,7 @@
                 <th>Amount</th>
                 <th>Payout</th>
                 <th>Net</th>
+                <th>Total</th>
               </tr>
             </thead>
             <tbody>${rowsHtml}</tbody>

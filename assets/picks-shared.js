@@ -103,16 +103,17 @@ function buildStandings(picks) {
   }));
 }
 
-function renderStandings(standings) {
+function renderStandings(standings, onPersonClick) {
   const tbody = document.querySelector("#standings-table tbody");
-  let currentSort = { key: null, dir: 1 };
+  let currentSort = { key: "win_pct", dir: -1 }; // default: best record first
 
   function draw(data) {
     tbody.innerHTML = "";
     for (const r of data) {
       const tr = document.createElement("tr");
+      const nameClass = onPersonClick ? "team clickable-cell" : "team";
       tr.innerHTML = `
-        <td class="team">${r.person}</td>
+        <td class="${nameClass}">${r.person}</td>
         <td class="num">${r.wins}</td>
         <td class="num">${r.losses}</td>
         <td class="num">${fmtPct(r.win_pct)}</td>
@@ -122,11 +123,27 @@ function renderStandings(standings) {
         <td class="num">${fmtPct(r.dog_pct)}</td>
         <td class="${r.pending === 0 ? 'blank' : 'num'}">${r.pending}</td>
       `;
+      if (onPersonClick) {
+        tr.querySelector(".clickable-cell").addEventListener("click", () => onPersonClick(r.person));
+      }
       tbody.appendChild(tr);
     }
   }
 
-  draw(standings);
+  const sortedDefault = [...standings].sort((a, b) => {
+    const av = a.win_pct === null ? -Infinity : a.win_pct;
+    const bv = b.win_pct === null ? -Infinity : b.win_pct;
+    return bv - av;
+  });
+  draw(sortedDefault);
+
+  const winPctHeader = document.querySelector('#standings-table thead th[data-key="win_pct"]');
+  if (winPctHeader) {
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.textContent = "▼";
+    winPctHeader.appendChild(arrow);
+  }
   wireSort("#standings-table", standings, draw, currentSort);
 }
 

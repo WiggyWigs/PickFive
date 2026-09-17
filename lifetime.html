@@ -3,96 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PickFive — Lifetime</title>
+<title>PickFive — Ledger</title>
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
 <style>
-  /* Picks-page-only override - center everything in both tables,
-     rather than changing the shared right/left alignment rules
-     used elsewhere on the site. */
-  #standings-table th,
-  #standings-table td,
-  #history-table th,
-  #history-table td {
+  #ledger-table th,
+  #ledger-table td,
+  #monthly-table th,
+  #monthly-table td {
     text-align: center;
   }
 
-  .filter-bar {
-    max-width: 1100px;
-    margin: 0 auto 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 1.2rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 0.9rem;
-    color: var(--muted);
+  /* Sticky first column (Name) so it stays visible while scrolling
+     horizontally on narrow screens - without this you lose track of
+     which row you're looking at once Year/Month/Win-Loss scroll off. */
+  #monthly-table th:first-child,
+  #monthly-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
   }
 
-  .filter-bar .filter-group {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-
-  select {
+  /* The header row's corner cell is sticky in BOTH directions (top from
+     the base stylesheet, left from above), so it needs to sit above
+     everything else and can't be see-through as content scrolls under it. */
+  #monthly-table thead th:first-child {
+    z-index: 3;
     background: var(--panel);
-    color: var(--text);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0.4rem 0.6rem;
-    font-size: 0.9rem;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
 
-  /* The Pick History filter row lives inside <thead> as <td> cells (not
-     <th>) specifically so it's excluded from the sortable-header click
-     handlers and hover styling - this row filters, it doesn't sort.
-     Sharing the table's own column layout is what guarantees each
-     select lines up exactly with the header above it. */
-  #history-table thead tr.filter-row td {
-    background: #d7dbdf;
-    padding: 0.5rem 0.6rem;
-    border-bottom: 1px solid var(--line);
-    cursor: default;
+  #monthly-table thead tr.filter-row td:first-child {
+    z-index: 3;
+    background: #d7dbdf; /* matches the filter row's own background */
   }
 
-  #history-table thead tr.filter-row select {
-    width: 100%;
-    box-sizing: border-box;
-    font-size: 0.82rem;
-    padding: 0.3rem 0.4rem;
-    text-align: center;
-    text-align-last: center; /* Firefox needs this to center the closed-state text */
-    background: #f2f3f5;
-    color: #1a2228;
-    border: 1px solid #b8bec3;
+  /* Body cells need an explicit background too, or content scrolling
+     underneath would show through the "transparent" sticky cell. Using
+     the page's own background keeps it seamless. Trade-off: the
+     row-hover tint (tbody tr:hover) won't visibly extend into this one
+     sticky cell, since it now paints its own background on top. */
+  #monthly-table tbody td:first-child {
+    background: var(--bg);
   }
 
-  .stat-block {
-    max-width: 1100px;
-    margin: 0 auto 1.5rem;
-    padding: 1rem 1.2rem;
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    background: var(--panel);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    font-size: 0.95rem;
+  /* CSS-only "scroll shadow": a fade appears at whichever edge still has
+     more table to scroll toward, and disappears once you've scrolled all
+     the way there - no JS needed. (Classic Lea Verou scrolling-shadows
+     technique: two gradients scroll with the content and mask themselves
+     out, two more stay fixed to the edges and only show past the mask.) */
+  #monthly-wrap {
+    background:
+      linear-gradient(to right, var(--bg) 30%, rgba(18, 24, 28, 0)),
+      linear-gradient(to right, rgba(18, 24, 28, 0), var(--bg) 70%) 100% 0,
+      linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+      linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)) 100% 0;
+    background-repeat: no-repeat;
+    background-color: var(--bg);
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-attachment: local, local, scroll, scroll;
   }
 
-  .stat-line {
-    margin: 0.25rem 0;
-  }
-
-  .stat-label {
-    color: var(--muted);
-  }
-
-  .stat-value {
-    color: var(--amber);
-    font-weight: 600;
-  }
+  td.balance-pos { color: var(--up); font-weight: 600; }
+  td.balance-neg { color: var(--down); font-weight: 600; }
 
   .clickable-cell {
     cursor: pointer;
@@ -117,8 +90,10 @@
     border: 1px solid var(--line);
     border-radius: 8px;
     padding: 1.25rem 1.5rem;
-    max-width: 480px;
+    max-width: 640px;
     width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
 
@@ -146,6 +121,38 @@
     padding: 0 0.25rem;
   }
   .modal-close:hover { color: var(--text); }
+
+  .modal-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .modal-content th, .modal-content td {
+    text-align: left;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .modal-content th { color: var(--muted); font-weight: 600; }
+  .modal-content td.num { font-variant-numeric: tabular-nums; }
+
+  #monthly-table thead tr.filter-row td {
+    background: #d7dbdf;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+    cursor: default;
+  }
+
+  #monthly-table thead tr.filter-row select {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.82rem;
+    padding: 0.3rem 0.4rem;
+    text-align: center;
+    text-align-last: center;
+    background: #f2f3f5;
+    color: #1a2228;
+    border: 1px solid #b8bec3;
+  }
 </style>
 </head>
 <body>
@@ -154,194 +161,377 @@
 <script src="assets/nav.js"></script>
 
 <header>
-  <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
-  <p class="sub">All-time picks and standings. Click any header to sort.</p>
+  <img class="logo" src="assets/ledger_header.png" alt="The Ledger">
+  <p class="sub">Deposits, withdrawals, and wager results by person. Click any header to sort.</p>
 </header>
 
-<div id="content" style="display:none;">
+<div class="status" id="status">Loading ledger&hellip;</div>
 
-  <div class="stat-block" id="team-rollup"></div>
-
-  <div class="section-title">Standings</div>
-  <div class="filter-bar">
-    <div class="filter-group">
-      <label for="standings-year-filter">Year:</label>
-      <select id="standings-year-filter">
-        <option value="all">All Time</option>
-      </select>
-    </div>
-  </div>
-  <div class="table-wrap">
-    <table id="standings-table">
-      <thead>
-        <tr>
-          <th data-key="person" data-type="string">Person</th>
-          <th data-key="wins" data-type="number">W</th>
-          <th data-key="losses" data-type="number">L</th>
-          <th data-key="win_pct" data-type="number">W%</th>
-          <th data-key="home_pct" data-type="number">Home W%</th>
-          <th data-key="away_pct" data-type="number">Away W%</th>
-          <th data-key="fav_pct" data-type="number">Fav W%</th>
-          <th data-key="dog_pct" data-type="number">Dog W%</th>
-          <th data-key="pending" data-type="number">Pending</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
-  <div class="section-title">Pick History</div>
-  <div class="table-wrap">
-    <table id="history-table">
-      <thead>
-        <tr>
-          <th data-key="year" data-type="number">Year</th>
-          <th data-key="week_sort" data-type="number">Week</th>
-          <th data-key="person" data-type="string">Person</th>
-          <th data-key="team_picked" data-type="string">Team</th>
-          <th data-key="home_away" data-type="string">Home/Away</th>
-          <th data-key="fav_dog" data-type="string">Fav/Dog</th>
-          <th data-key="spread" data-type="number">Spread</th>
-          <th data-key="result" data-type="string">Result</th>
-        </tr>
-        <tr class="filter-row">
-          <td>
-            <select id="history-year-filter">
-              <option value="all">All</option>
-            </select>
-          </td>
-          <td></td>
-          <td>
-            <select id="history-person-filter">
-              <option value="all">All</option>
-            </select>
-          </td>
-          <td></td>
-          <td>
-            <select id="history-homeaway-filter">
-              <option value="all">All</option>
-              <option value="Home">Home</option>
-              <option value="Away">Away</option>
-            </select>
-          </td>
-          <td>
-            <select id="history-favdog-filter">
-              <option value="all">All</option>
-              <option value="Favorite">Favorite</option>
-              <option value="Underdog">Underdog</option>
-            </select>
-          </td>
-          <td></td>
-          <td></td>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
-  </div>
-
+<div class="table-wrap" id="table-wrap" style="display:none;">
+  <table id="ledger-table">
+    <thead>
+      <tr>
+        <th data-key="name" data-type="string">Name</th>
+        <th data-key="deposits" data-type="number">Deposits</th>
+        <th data-key="withdraws" data-type="number">Withdraws</th>
+        <th data-key="wager_net" data-type="number">Wager Win/Loss</th>
+        <th data-key="balance" data-type="number">Current Balance</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </div>
 
 <div class="empty-state" id="empty-state" style="display:none;">
-  No picks yet. Once the sheet sync runs, picks will show up here.
+  No ledger entries yet. Once the sheet sync runs, this will show up here.
 </div>
 
-<script src="assets/picks-shared.js"></script>
+<div class="section-title" id="monthly-title" style="display:none;">Monthly Breakdown</div>
+<div class="table-wrap" id="monthly-wrap" style="display:none;">
+  <table id="monthly-table">
+    <thead>
+      <tr>
+        <th data-key="name" data-type="string">Name</th>
+        <th data-key="year" data-type="number">Year</th>
+        <th data-key="month_num" data-type="number">Month</th>
+        <th data-key="win_loss" data-type="number">Win/Loss</th>
+      </tr>
+      <tr class="filter-row">
+        <td>
+          <select id="monthly-name-filter">
+            <option value="all">All</option>
+          </select>
+        </td>
+        <td>
+          <select id="monthly-year-filter">
+            <option value="all">All</option>
+          </select>
+        </td>
+        <td>
+          <select id="monthly-month-filter">
+            <option value="all">All</option>
+          </select>
+        </td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
 <script>
-  let ALL_PICKS = [];
-
-  const CATEGORY_LABELS = {
-    "Home|Favorite": "Home Favorite",
-    "Home|Underdog": "Home Underdog",
-    "Away|Favorite": "Away Favorite",
-    "Away|Underdog": "Away Underdog",
-  };
-
-  function buildTeamRollup(picks) {
-    let wins = 0;
-    let losses = 0;
-    for (const p of picks) {
-      if (p.result === "W") wins += 1;
-      else if (p.result === "L") losses += 1;
+  async function loadLedger() {
+    try {
+      const res = await fetch("data/ledger.json", { cache: "no-store" });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (e) {
+      return null;
     }
-    const total = wins + losses;
-    return { wins, losses, winPct: total === 0 ? null : wins / total };
   }
 
-  function buildCategoryBreakdown(picks) {
-    const buckets = {
-      "Home|Favorite": { w: 0, l: 0 },
-      "Home|Underdog": { w: 0, l: 0 },
-      "Away|Favorite": { w: 0, l: 0 },
-      "Away|Underdog": { w: 0, l: 0 },
-    };
+  function fmtMoney(n) {
+    if (n === null || n === undefined) return "—";
+    const sign = n < 0 ? "-" : "";
+    return `${sign}$${Math.abs(n).toFixed(2)}`;
+  }
 
-    for (const p of picks) {
-      if (p.result !== "W" && p.result !== "L") continue;
-      if (!p.home_away || !p.fav_dog) continue;
-      const key = `${p.home_away}|${p.fav_dog}`;
-      if (!buckets[key]) continue; // e.g. "Pick'em" fav_dog isn't one of the four categories
-      buckets[key][p.result === "W" ? "w" : "l"] += 1;
+  const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+  function parseMonthYear(dateStr) {
+    // Expects M/D/YYYY, M/D/YY, or the equivalent with dashes. Returns
+    // {year, month} as numbers, or nulls if the date can't be parsed
+    // (e.g. still missing a year) rather than guessing.
+    const parts = (dateStr || "").trim().split(/[/-]/);
+    if (parts.length < 3) return { year: null, month: null };
+
+    const month = parseInt(parts[0], 10);
+    let year = parseInt(parts[2], 10);
+    if (Number.isNaN(month) || Number.isNaN(year)) return { year: null, month: null };
+
+    if (year < 100) year += 2000; // 2-digit year, e.g. "25" -> 2025
+    if (month < 1 || month > 12) return { year: null, month: null };
+
+    return { year, month };
+  }
+
+  function buildMonthly(entries) {
+    const byKey = {};
+    const namesSet = new Set(); // every person who's appeared in any entry (wager or transfer)
+    let minK = null; // earliest (year, month) across ALL entries, as a continuous month index
+    let maxK = null; // latest, before extending through the present below
+
+    for (const e of entries) {
+      namesSet.add(e.name);
+
+      const { year, month } = parseMonthYear(e.date);
+      if (year !== null && month !== null) {
+        const k = year * 12 + (month - 1);
+        if (minK === null || k < minK) minK = k;
+        if (maxK === null || k > maxK) maxK = k;
+      }
+
+      if (e.type !== "wager") continue; // win/loss summing stays wager-only
+
+      const key = `${e.name}|${year ?? "unknown"}|${month ?? "unknown"}`;
+      if (!byKey[key]) {
+        byKey[key] = { name: e.name, year, month_num: month, win_loss: 0 };
+      }
+      byKey[key].win_loss += e.net ?? 0;
     }
 
-    const all = Object.entries(buckets).map(([key, b]) => {
-      const total = b.w + b.l;
-      return { label: CATEGORY_LABELS[key], pct: total === 0 ? null : b.w / total, w: b.w, l: b.l, total };
+    // Zero-fill: every known person gets a $0 row for every real month
+    // in the FULL continuous range - from the earliest entry anywhere
+    // in the data through the current real-world month - even a month
+    // where literally nobody has any entry at all. The synthetic
+    // "Unknown" bucket (unparseable dates) is deliberately excluded
+    // from this range fill; it's a data-quality flag, not a real month.
+    if (minK !== null) {
+      const now = new Date();
+      const todayK = now.getFullYear() * 12 + now.getMonth(); // getMonth() is already 0-11
+      if (todayK > maxK) maxK = todayK;
+
+      for (const name of namesSet) {
+        for (let k = minK; k <= maxK; k++) {
+          const year = Math.floor(k / 12);
+          const month = (k % 12) + 1;
+          const key = `${name}|${year}|${month}`;
+          if (!byKey[key]) {
+            byKey[key] = { name, year, month_num: month, win_loss: 0 };
+          }
+        }
+      }
+    }
+
+    return Object.values(byKey);
+  }
+
+  function buildRollup(entries) {
+    const byName = {};
+    for (const e of entries) {
+      if (!byName[e.name]) {
+        byName[e.name] = { name: e.name, deposits: 0, withdraws: 0, wager_net: 0 };
+      }
+      const row = byName[e.name];
+      if (e.type === "deposit") row.deposits += e.payout ?? 0;
+      else if (e.type === "withdraw") row.withdraws += Math.abs(e.payout ?? 0);
+      else if (e.type === "wager") row.wager_net += e.net ?? 0;
+    }
+
+    return Object.values(byName).map((r) => ({
+      ...r,
+      balance: r.deposits - r.withdraws + r.wager_net,
+    }));
+  }
+
+  function renderTable(rows) {
+    const tbody = document.querySelector("#ledger-table tbody");
+    let currentSort = { key: null, dir: 1 };
+
+    function draw(data) {
+      tbody.innerHTML = "";
+      for (const r of data) {
+        const tr = document.createElement("tr");
+        const balClass = r.balance > 0 ? "balance-pos" : r.balance < 0 ? "balance-neg" : "";
+        tr.innerHTML = `
+          <td class="team">${r.name}</td>
+          <td class="num clickable-cell">${fmtMoney(r.deposits)}</td>
+          <td class="num clickable-cell">${fmtMoney(r.withdraws)}</td>
+          <td class="num clickable-cell">${fmtMoney(r.wager_net)}</td>
+          <td class="${balClass}">${fmtMoney(r.balance)}</td>
+        `;
+        const cells = tr.querySelectorAll(".clickable-cell");
+        cells[0].addEventListener("click", () => showTransferModal(r.name, "deposit"));
+        cells[1].addEventListener("click", () => showTransferModal(r.name, "withdraw"));
+        cells[2].addEventListener("click", () => showYearlyModal(r.name));
+        tbody.appendChild(tr);
+      }
+    }
+
+    draw(rows);
+
+    document.querySelectorAll("#ledger-table thead th").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.key;
+        const type = th.dataset.type;
+        const dir = currentSort.key === key ? -currentSort.dir : 1;
+        currentSort = { key, dir };
+
+        document.querySelectorAll("#ledger-table thead th .arrow").forEach((a) => a.remove());
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = dir === 1 ? "▲" : "▼";
+        th.appendChild(arrow);
+
+        const sorted = [...rows].sort((a, b) => {
+          let av = a[key];
+          let bv = b[key];
+          if (type === "number") {
+            return ((av ?? -Infinity) - (bv ?? -Infinity)) * dir;
+          }
+          av = (av ?? "").toString().toLowerCase();
+          bv = (bv ?? "").toString().toLowerCase();
+          return av.localeCompare(bv) * dir;
+        });
+
+        draw(sorted);
+      });
+    });
+  }
+
+  function renderMonthlyTable(rows) {
+    const tbody = document.querySelector("#monthly-table tbody");
+    let currentSort = { key: null, dir: 1 };
+
+    function draw(data) {
+      tbody.innerHTML = "";
+      for (const r of data) {
+        const tr = document.createElement("tr");
+        const wlClass = r.win_loss > 0 ? "balance-pos" : r.win_loss < 0 ? "balance-neg" : "";
+        const monthLabel = r.month_num ? MONTH_NAMES[r.month_num - 1] : "Unknown";
+        tr.innerHTML = `
+          <td class="team">${r.name}</td>
+          <td class="${r.year === null ? 'blank' : 'num'}">${r.year ?? "—"}</td>
+          <td class="${r.month_num === null ? 'blank' : 'num'}">${monthLabel}</td>
+          <td class="${wlClass} clickable-cell">${fmtMoney(r.win_loss)}</td>
+        `;
+        tr.querySelector(".clickable-cell").addEventListener("click", () => {
+          showTransactionModal(r.name, r.year, r.month_num);
+        });
+        tbody.appendChild(tr);
+      }
+    }
+
+    draw(rows);
+
+    document.querySelectorAll("#monthly-table thead th").forEach((th) => {
+      th.addEventListener("click", () => {
+        const key = th.dataset.key;
+        const type = th.dataset.type;
+        const dir = currentSort.key === key ? -currentSort.dir : 1;
+        currentSort = { key, dir };
+
+        document.querySelectorAll("#monthly-table thead th .arrow").forEach((a) => a.remove());
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = dir === 1 ? "▲" : "▼";
+        th.appendChild(arrow);
+
+        const sorted = [...rows].sort((a, b) => {
+          let av = a[key];
+          let bv = b[key];
+          if (type === "number") {
+            return ((av ?? -Infinity) - (bv ?? -Infinity)) * dir;
+          }
+          av = (av ?? "").toString().toLowerCase();
+          bv = (bv ?? "").toString().toLowerCase();
+          return av.localeCompare(bv) * dir;
+        });
+
+        draw(sorted);
+      });
+    });
+  }
+
+  let ALL_MONTHLY = [];
+  let ALL_ENTRIES = [];
+
+  function renderTxnModal(title, headers, rowsHtml, rowCount, emptyLabel) {
+    document.getElementById("txn-modal-title").textContent = title;
+    document.querySelector("#txn-modal table thead tr").innerHTML = headers.map((h) => `<th>${h}</th>`).join("");
+    document.getElementById("txn-modal-body").innerHTML = rowCount
+      ? rowsHtml
+      : `<tr><td colspan="${headers.length}">No ${emptyLabel} found.</td></tr>`;
+    document.getElementById("txn-modal").style.display = "flex";
+  }
+
+  function showTransactionModal(name, year, month) {
+    const monthLabel = month ? MONTH_NAMES[month - 1] : "Unknown";
+    const periodLabel = year === null || month === null ? "date unresolved" : `${monthLabel} ${year}`;
+
+    const txns = ALL_ENTRIES.filter((e) => {
+      if (e.type !== "wager" || e.name !== name) return false;
+      const { year: y, month: m } = parseMonthYear(e.date);
+      return y === year && m === month;
     });
 
-    // Best win% first; categories with no decided picks sort to the
-    // bottom instead of being treated as a 0% record.
-    all.sort((a, b) => {
-      if (a.pct === null && b.pct === null) return 0;
-      if (a.pct === null) return 1;
-      if (b.pct === null) return -1;
-      if (a.pct !== b.pct) return b.pct - a.pct;
-      return b.total - a.total; // tie-break: larger sample size ranks first
+    const rowsHtml = txns
+      .map(
+        (e) => `
+      <tr>
+        <td>${e.date}</td>
+        <td>${e.bet}</td>
+        <td class="num">${fmtMoney(e.bet_amount)}</td>
+        <td class="num">${fmtMoney(e.payout)}</td>
+        <td class="num">${fmtMoney(e.net)}</td>
+      </tr>
+    `
+      )
+      .join("");
+
+    renderTxnModal(`${name} — ${periodLabel}`, ["Date", "Bet", "Bet Amount", "Payout", "Net"], rowsHtml, txns.length, "transactions");
+  }
+
+  function showTransferModal(name, transferType) {
+    const label = transferType === "deposit" ? "Deposits" : "Withdraws";
+    const txns = ALL_ENTRIES.filter((e) => e.type === transferType && e.name === name);
+
+    const rowsHtml = txns
+      .map(
+        (e) => `
+      <tr>
+        <td>${e.date}</td>
+        <td>${e.bet}</td>
+        <td class="num">${fmtMoney(e.payout)}</td>
+      </tr>
+    `
+      )
+      .join("");
+
+    renderTxnModal(`${name} — ${label}`, ["Date", "Type", "Amount"], rowsHtml, txns.length, label.toLowerCase());
+  }
+
+  function closeTransactionModal() {
+    document.getElementById("txn-modal").style.display = "none";
+  }
+
+  function showYearlyModal(name) {
+    const byYear = {};
+    for (const e of ALL_ENTRIES) {
+      if (e.type !== "wager" || e.name !== name) continue;
+      const { year } = parseMonthYear(e.date);
+      const key = year ?? "unknown";
+      byYear[key] = (byYear[key] ?? 0) + (e.net ?? 0);
+    }
+
+    const rows = Object.entries(byYear).sort(([a], [b]) => {
+      if (a === "unknown") return 1; // Unknown always sorts last
+      if (b === "unknown") return -1;
+      return Number(b) - Number(a); // most recent year first
     });
 
-    return all;
+    document.getElementById("yearly-modal-title").textContent = `${name} — Win/Loss by Year`;
+
+    const tbody = document.getElementById("yearly-modal-body");
+    tbody.innerHTML = rows.length
+      ? rows
+          .map(([year, net]) => {
+            const cls = net > 0 ? "balance-pos" : net < 0 ? "balance-neg" : "";
+            return `
+        <tr>
+          <td>${year === "unknown" ? "Unknown" : year}</td>
+          <td class="num ${cls}">${fmtMoney(net)}</td>
+        </tr>
+      `;
+          })
+          .join("")
+      : `<tr><td colspan="2">No wagers found.</td></tr>`;
+
+    document.getElementById("yearly-modal").style.display = "flex";
   }
 
-  function showCategoryModal(name, picks) {
-    const personPicks = picks.filter((p) => p.person === name);
-    const categories = buildCategoryBreakdown(personPicks);
-
-    document.getElementById("category-modal-title").textContent = `${name} — Category Breakdown`;
-
-    document.getElementById("category-modal-body").innerHTML = categories
-      .map((c) => {
-        const value = c.pct === null ? "No decided picks yet" : `${fmtPct(c.pct)} (${c.w}-${c.l})`;
-        return `<div class="stat-line"><span class="stat-label">${c.label}:</span> <span class="stat-value">${value}</span></div>`;
-      })
-      .join("");
-
-    document.getElementById("category-modal").style.display = "flex";
-  }
-
-  function closeCategoryModal() {
-    document.getElementById("category-modal").style.display = "none";
-  }
-
-  function renderTeamRollup(picks) {
-    const rollup = buildTeamRollup(picks);
-    const categories = buildCategoryBreakdown(picks);
-
-    const rollupLine =
-      rollup.wins + rollup.losses === 0
-        ? `<span class="stat-label">Team record:</span> <span class="stat-value">No decided picks yet</span>`
-        : `<span class="stat-label">Team record:</span> <span class="stat-value">${rollup.wins}-${rollup.losses} (${fmtPct(rollup.winPct)})</span>`;
-
-    const categoryLines = categories
-      .map((c) => {
-        const value = c.pct === null ? "No decided picks yet" : `${fmtPct(c.pct)} (${c.w}-${c.l})`;
-        return `<div class="stat-line"><span class="stat-label">${c.label}:</span> <span class="stat-value">${value}</span></div>`;
-      })
-      .join("");
-
-    document.getElementById("team-rollup").innerHTML = `
-      <div class="stat-line">${rollupLine}</div>
-      <br>
-      ${categoryLines}
-    `;
+  function closeYearlyModal() {
+    document.getElementById("yearly-modal").style.display = "none";
   }
 
   function populateSelect(select, values, allLabel) {
@@ -354,74 +544,143 @@
     }
   }
 
-  function refreshStandings() {
-    const year = document.getElementById("standings-year-filter").value;
-    const picks = year === "all" ? ALL_PICKS : ALL_PICKS.filter((p) => String(p.year) === year);
-    renderTeamRollup(picks);
-    renderStandings(buildStandings(picks), (name) => showCategoryModal(name, picks));
+  function sortMonthlyDefault(rows) {
+    // Groups each person's months together, in chronological order -
+    // this is the table's baseline order, separate from whatever a
+    // header click temporarily overrides it with.
+    return [...rows].sort((a, b) => {
+      if (a.name !== b.name) return a.name.localeCompare(b.name);
+      const ay = a.year ?? Infinity; // Unknown-period rows sort last within a person
+      const by = b.year ?? Infinity;
+      if (ay !== by) return ay - by;
+      const am = a.month_num ?? Infinity;
+      const bm = b.month_num ?? Infinity;
+      return am - bm;
+    });
   }
 
-  function refreshHistory() {
-    const year = document.getElementById("history-year-filter").value;
-    const person = document.getElementById("history-person-filter").value;
-    const homeAway = document.getElementById("history-homeaway-filter").value;
-    const favDog = document.getElementById("history-favdog-filter").value;
+  function refreshMonthly() {
+    const name = document.getElementById("monthly-name-filter").value;
+    const year = document.getElementById("monthly-year-filter").value;
+    const month = document.getElementById("monthly-month-filter").value;
 
-    const picks = ALL_PICKS.filter((p) => {
-      if (year !== "all" && String(p.year) !== year) return false;
-      if (person !== "all" && p.person !== person) return false;
-      if (homeAway !== "all" && p.home_away !== homeAway) return false;
-      if (favDog !== "all" && p.fav_dog !== favDog) return false;
+    const filtered = ALL_MONTHLY.filter((r) => {
+      if (name !== "all" && r.name !== name) return false;
+      if (year !== "all" && String(r.year) !== year) return false;
+      if (month !== "all" && String(r.month_num) !== month) return false;
       return true;
     });
 
-    renderHistory(picks, true);
+    renderMonthlyTable(sortMonthlyDefault(filtered));
   }
 
   async function init() {
-    ALL_PICKS = (await loadPicks()) || [];
+    const statusEl = document.getElementById("status");
+    const entries = await loadLedger();
 
-    if (ALL_PICKS.length === 0) {
+    if (!entries || entries.length === 0) {
+      statusEl.textContent = "";
       document.getElementById("empty-state").style.display = "block";
       return;
     }
 
-    populateSelect(document.getElementById("standings-year-filter"), distinctYears(ALL_PICKS), "All Time");
-    populateSelect(document.getElementById("history-year-filter"), distinctYears(ALL_PICKS), "All");
+    ALL_ENTRIES = entries;
 
-    const people = [...new Set(ALL_PICKS.map((p) => p.person))].sort();
-    populateSelect(document.getElementById("history-person-filter"), people, "All");
-
-    document.getElementById("standings-year-filter").addEventListener("change", refreshStandings);
-    document.getElementById("history-year-filter").addEventListener("change", refreshHistory);
-    document.getElementById("history-person-filter").addEventListener("change", refreshHistory);
-    document.getElementById("history-homeaway-filter").addEventListener("change", refreshHistory);
-    document.getElementById("history-favdog-filter").addEventListener("change", refreshHistory);
-
-    document.getElementById("category-modal-close").addEventListener("click", closeCategoryModal);
-    document.getElementById("category-modal").addEventListener("click", (e) => {
-      if (e.target.id === "category-modal") closeCategoryModal();
+    document.getElementById("txn-modal-close").addEventListener("click", closeTransactionModal);
+    document.getElementById("txn-modal").addEventListener("click", (e) => {
+      if (e.target.id === "txn-modal") closeTransactionModal(); // click on the dark overlay, not the card itself
     });
+
+    document.getElementById("yearly-modal-close").addEventListener("click", closeYearlyModal);
+    document.getElementById("yearly-modal").addEventListener("click", (e) => {
+      if (e.target.id === "yearly-modal") closeYearlyModal();
+    });
+
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") closeCategoryModal();
+      if (e.key === "Escape") {
+        closeTransactionModal();
+        closeYearlyModal();
+      }
     });
 
-    document.getElementById("content").style.display = "block";
+    const rollup = buildRollup(entries);
+    statusEl.textContent = `${rollup.length} people tracked`;
+    document.getElementById("table-wrap").style.display = "block";
+    renderTable(rollup);
 
-    refreshStandings();
-    refreshHistory();
+    ALL_MONTHLY = buildMonthly(entries);
+    document.getElementById("monthly-title").style.display = "block";
+    document.getElementById("monthly-wrap").style.display = "block";
+
+    const names = [...new Set(ALL_MONTHLY.map((r) => r.name))].sort();
+    populateSelect(document.getElementById("monthly-name-filter"), names, "All");
+
+    const years = [...new Set(ALL_MONTHLY.map((r) => r.year))].sort((a, b) => (b ?? -Infinity) - (a ?? -Infinity));
+    const yearSelect = document.getElementById("monthly-year-filter");
+    yearSelect.innerHTML = `<option value="all">All</option>`;
+    for (const y of years) {
+      const opt = document.createElement("option");
+      opt.value = y === null ? "null" : String(y);
+      opt.textContent = y === null ? "Unknown" : y;
+      yearSelect.appendChild(opt);
+    }
+
+    const months = [...new Set(ALL_MONTHLY.map((r) => r.month_num))].sort((a, b) => (a ?? 99) - (b ?? 99));
+    const monthSelect = document.getElementById("monthly-month-filter");
+    monthSelect.innerHTML = `<option value="all">All</option>`;
+    for (const m of months) {
+      const opt = document.createElement("option");
+      opt.value = m === null ? "null" : String(m);
+      opt.textContent = m === null ? "Unknown" : MONTH_NAMES[m - 1];
+      monthSelect.appendChild(opt);
+    }
+
+    document.getElementById("monthly-name-filter").addEventListener("change", refreshMonthly);
+    document.getElementById("monthly-year-filter").addEventListener("change", refreshMonthly);
+    document.getElementById("monthly-month-filter").addEventListener("change", refreshMonthly);
+
+    renderMonthlyTable(sortMonthlyDefault(ALL_MONTHLY));
   }
 
   init();
 </script>
 
-<div class="modal-overlay" id="category-modal" style="display:none;">
+<div class="modal-overlay" id="txn-modal" style="display:none;">
   <div class="modal-content">
     <div class="modal-header">
-      <h2 id="category-modal-title">Category Breakdown</h2>
-      <button class="modal-close" id="category-modal-close" aria-label="Close">&times;</button>
+      <h2 id="txn-modal-title">Transactions</h2>
+      <button class="modal-close" id="txn-modal-close" aria-label="Close">&times;</button>
     </div>
-    <div id="category-modal-body"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Bet</th>
+          <th>Bet Amount</th>
+          <th>Payout</th>
+          <th>Net</th>
+        </tr>
+      </thead>
+      <tbody id="txn-modal-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-overlay" id="yearly-modal" style="display:none;">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h2 id="yearly-modal-title">Win/Loss by Year</h2>
+      <button class="modal-close" id="yearly-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Win/Loss</th>
+        </tr>
+      </thead>
+      <tbody id="yearly-modal-body"></tbody>
+    </table>
   </div>
 </div>
 

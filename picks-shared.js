@@ -105,7 +105,7 @@ function buildStandings(picks) {
 
 function renderStandings(standings, onPersonClick) {
   const tbody = document.querySelector("#standings-table tbody");
-  let currentSort = { key: null, dir: 1 };
+  let currentSort = { key: "win_pct", dir: -1 }; // default: best record first
 
   function draw(data) {
     tbody.innerHTML = "";
@@ -130,7 +130,20 @@ function renderStandings(standings, onPersonClick) {
     }
   }
 
-  draw(standings);
+  const sortedDefault = [...standings].sort((a, b) => {
+    const av = a.win_pct === null ? -Infinity : a.win_pct;
+    const bv = b.win_pct === null ? -Infinity : b.win_pct;
+    return bv - av;
+  });
+  draw(sortedDefault);
+
+  const winPctHeader = document.querySelector('#standings-table thead th[data-key="win_pct"]');
+  if (winPctHeader) {
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.textContent = "▼";
+    winPctHeader.appendChild(arrow);
+  }
   wireSort("#standings-table", standings, draw, currentSort);
 }
 

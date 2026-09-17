@@ -15,6 +15,55 @@
     text-align: center;
   }
 
+  /* Sticky first column (Name) so it stays visible while scrolling
+     horizontally on narrow screens - without this you lose track of
+     which row you're looking at once Year/Month/Win-Loss scroll off. */
+  #monthly-table th:first-child,
+  #monthly-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+  }
+
+  /* The header row's corner cell is sticky in BOTH directions (top from
+     the base stylesheet, left from above), so it needs to sit above
+     everything else and can't be see-through as content scrolls under it. */
+  #monthly-table thead th:first-child {
+    z-index: 3;
+    background: var(--panel);
+  }
+
+  #monthly-table thead tr.filter-row td:first-child {
+    z-index: 3;
+    background: #d7dbdf; /* matches the filter row's own background */
+  }
+
+  /* Body cells need an explicit background too, or content scrolling
+     underneath would show through the "transparent" sticky cell. Using
+     the page's own background keeps it seamless. Trade-off: the
+     row-hover tint (tbody tr:hover) won't visibly extend into this one
+     sticky cell, since it now paints its own background on top. */
+  #monthly-table tbody td:first-child {
+    background: var(--bg);
+  }
+
+  /* CSS-only "scroll shadow": a fade appears at whichever edge still has
+     more table to scroll toward, and disappears once you've scrolled all
+     the way there - no JS needed. (Classic Lea Verou scrolling-shadows
+     technique: two gradients scroll with the content and mask themselves
+     out, two more stay fixed to the edges and only show past the mask.) */
+  #monthly-wrap {
+    background:
+      linear-gradient(to right, var(--bg) 30%, rgba(18, 24, 28, 0)),
+      linear-gradient(to right, rgba(18, 24, 28, 0), var(--bg) 70%) 100% 0,
+      linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)),
+      linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)) 100% 0;
+    background-repeat: no-repeat;
+    background-color: var(--bg);
+    background-size: 40px 100%, 40px 100%, 14px 100%, 14px 100%;
+    background-attachment: local, local, scroll, scroll;
+  }
+
   td.balance-pos { color: var(--up); font-weight: 600; }
   td.balance-neg { color: var(--down); font-weight: 600; }
 

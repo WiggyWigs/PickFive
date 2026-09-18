@@ -44,17 +44,117 @@
 <div id="content" style="display:none;"></div>
 
 <div class="empty-state" id="empty-state" style="display:none;">
-  No entries yet. Once the sheet sync runs, this will show up here.
+  No entries yet.
 </div>
 
 <script>
+  const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSCJ1xEWWQHvRJVkAtSH1OpjCxHtYvk1YXmKSsTspXwu3jkebG81SDs1_NB9ALOnV2zrUMvhwpyy4zi/pub?gid=249916722&single=true&output=csv";
+
+  const HEADER_ALIASES = {
+    "week": "week",
+    "wager": "wager",
+    "pick": "pick",
+    "amount": "amount",
+    "payout": "payout",
+    "net": "net",
+    "total": "total",
+  };
+
+  // Proper CSV parser - handles quoted fields with embedded commas
+  // ("3-team parlay, MNF included") and escaped quotes (""), which a
+  // plain split(',') would silently corrupt.
+  function parseCSV(text) {
+    const rows = [];
+    let row = [];
+    let field = "";
+    let inQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+      const c = text[i];
+      if (inQuotes) {
+        if (c === '"') {
+          if (text[i + 1] === '"') { field += '"'; i++; }
+          else inQuotes = false;
+        } else {
+          field += c;
+        }
+      } else {
+        if (c === '"') inQuotes = true;
+        else if (c === ",") { row.push(field); field = ""; }
+        else if (c === "\n" || c === "\r") {
+          if (c === "\r" && text[i + 1] === "\n") i++;
+          row.push(field);
+          rows.push(row);
+          row = [];
+          field = "";
+        } else {
+          field += c;
+        }
+      }
+    }
+    if (field !== "" || row.length) { row.push(field); rows.push(row); }
+    return rows.filter((r) => r.length > 1 || r[0] !== "");
+  }
+
+  function normalizeHeader(h) {
+    const key = (h || "").trim().toLowerCase();
+    return HEADER_ALIASES[key] || key;
+  }
+
+  function normalizeNumber(v) {
+    v = (v || "").trim();
+    if (!v) return null;
+    const negative = v.startsWith("(") && v.endsWith(")");
+    v = v.replace(/[()]/g, "");
+    v = v.replace(/[$,]/g, "").trim();
+    if (!v) return null;
+    const n = parseFloat(v);
+    if (Number.isNaN(n)) return null;
+    return negative ? -n : n;
+  }
+
+  function normalizeWeek(v) {
+    v = (v || "").trim();
+    if (!v) return null;
+    const n = parseInt(v, 10);
+    return Number.isNaN(n) ? null : n;
+  }
+
   async function loadEntries() {
     try {
-      const res = await fetch("data/bank_builder.json", { cache: "no-store" });
-      if (!res.ok) return null;
-      return await res.json();
+      const res = await fetch(CSV_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const text = await res.text();
+      const rows = parseCSV(text);
+      if (rows.length < 1) return { entries: [], error: null };
+
+      const headers = rows[0].map(normalizeHeader);
+      const entries = [];
+
+      for (const raw of rows.slice(1)) {
+        const row = {};
+        headers.forEach((h, i) => { row[h] = raw[i]; });
+
+        const week = normalizeWeek(row.week);
+        const wager = (row.wager || "").trim();
+        const pick = (row.pick || "").trim();
+
+        if (week === null || !wager || !pick) continue; // mirrors the sync script's required-field check
+
+        entries.push({
+          week,
+          wager,
+          pick,
+          amount: normalizeNumber(row.amount),
+          payout: normalizeNumber(row.payout),
+          net: normalizeNumber(row.net),
+          total: normalizeNumber(row.total),
+        });
+      }
+
+      return { entries, error: null };
     } catch (e) {
-      return null;
+      return { entries: null, error: e.message || "fetch failed" };
     }
   }
 
@@ -118,7 +218,15 @@
 
   async function init() {
     const statusEl = document.getElementById("status");
-    const entries = await loadEntries();
+    const { entries, error } = await loadEntries();
+
+    if (error) {
+      statusEl.textContent = "";
+      const emptyEl = document.getElementById("empty-state");
+      emptyEl.textContent = `Couldn't load data (${error}). Check the browser console for details.`;
+      emptyEl.style.display = "block";
+      return;
+    }
 
     if (!entries || entries.length === 0) {
       statusEl.textContent = "";

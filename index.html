@@ -7,61 +7,6 @@
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
-<style>
-  /* Lock Home Team / Lg / Away Team in place while scrolling
-     horizontally through the day columns. Fixed widths are required
-     here (not just on the first column, like Ledger's Name lock) -
-     stacking three sticky columns means each one's `left` offset has
-     to equal the combined width of the ones before it, which only
-     stays correct if those widths are pinned rather than auto-sized. */
-  #lines-table th:nth-child(1),
-  #lines-table td:nth-child(1) {
-    position: sticky;
-    left: 0;
-    width: 170px;
-    min-width: 170px;
-    max-width: 170px;
-  }
-
-  #lines-table th:nth-child(2),
-  #lines-table td:nth-child(2) {
-    position: sticky;
-    left: 170px;
-    width: 55px;
-    min-width: 55px;
-    max-width: 55px;
-  }
-
-  #lines-table th:nth-child(3),
-  #lines-table td:nth-child(3) {
-    position: sticky;
-    left: 225px;
-    width: 170px;
-    min-width: 170px;
-    max-width: 170px;
-  }
-
-  /* The header row is already sticky top (base stylesheet); these three
-     also need to win the top-left corner, so they get a higher z-index
-     than the plain sticky-top headers and the sticky-left body cells. */
-  #lines-table thead th:nth-child(1),
-  #lines-table thead th:nth-child(2),
-  #lines-table thead th:nth-child(3) {
-    z-index: 3;
-    background: var(--panel);
-  }
-
-  /* Body cells need an explicit background too, or the day columns
-     scrolling underneath would show through. Trade-off: the row-hover
-     tint won't visibly extend into these three locked cells, since they
-     now paint their own background on top of it. */
-  #lines-table tbody td:nth-child(1),
-  #lines-table tbody td:nth-child(2),
-  #lines-table tbody td:nth-child(3) {
-    z-index: 1;
-    background: var(--bg);
-  }
-</style>
 </head>
 <body>
 
@@ -80,16 +25,15 @@
     <thead>
       <tr>
         <th data-key="home_team" data-type="string">Home Team</th>
-        <th data-key="league" data-type="string">Lg</th>
         <th data-key="away_team" data-type="string">Away Team</th>
-        <th data-key="commence_time" data-type="number">Kickoff</th>
-        <th data-key="monday" data-type="number">Mon</th>
-        <th data-key="tuesday" data-type="number">Tue</th>
-        <th data-key="wednesday" data-type="number">Wed</th>
-        <th data-key="thursday" data-type="number">Thu</th>
-        <th data-key="friday" data-type="number">Fri</th>
-        <th data-key="saturday" data-type="number">Sat</th>
         <th data-key="delta" data-type="number">Delta</th>
+        <th data-key="commence_time" data-type="number">Kickoff</th>
+        <th data-key="saturday" data-type="number">Sat</th>
+        <th data-key="friday" data-type="number">Fri</th>
+        <th data-key="thursday" data-type="number">Thu</th>
+        <th data-key="wednesday" data-type="number">Wed</th>
+        <th data-key="tuesday" data-type="number">Tue</th>
+        <th data-key="monday" data-type="number">Mon</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -238,16 +182,15 @@
 
         tr.innerHTML = `
           <td class="team">${r.home_team}</td>
-          <td class="league">${r.league}</td>
           <td class="team">${r.away_team}</td>
-          <td class="${r.commence_time === null ? 'kickoff blank' : 'kickoff'}">${fmtKickoff(r.commence_time) ?? "—"}</td>
-          <td class="${r.monday === null ? 'blank' : 'num'}">${fmtSpread(r.monday) ?? "—"}</td>
-          <td class="${r.tuesday === null ? 'blank' : 'num'}">${fmtSpread(r.tuesday) ?? "—"}</td>
-          <td class="${r.wednesday === null ? 'blank' : 'num'}">${fmtSpread(r.wednesday) ?? "—"}</td>
-          <td class="${r.thursday === null ? 'blank' : 'num'}">${fmtSpread(r.thursday) ?? "—"}</td>
-          <td class="${r.friday === null ? 'blank' : 'num'}">${fmtSpread(r.friday) ?? "—"}</td>
-          <td class="${r.saturday === null ? 'blank' : 'num'}">${fmtSpread(r.saturday) ?? "—"}</td>
           <td class="${deltaClass}">${deltaText}</td>
+          <td class="${r.commence_time === null ? 'kickoff blank' : 'kickoff'}">${fmtKickoff(r.commence_time) ?? "—"}</td>
+          <td class="${r.saturday === null ? 'blank' : 'num'}">${fmtSpread(r.saturday) ?? "—"}</td>
+          <td class="${r.friday === null ? 'blank' : 'num'}">${fmtSpread(r.friday) ?? "—"}</td>
+          <td class="${r.thursday === null ? 'blank' : 'num'}">${fmtSpread(r.thursday) ?? "—"}</td>
+          <td class="${r.wednesday === null ? 'blank' : 'num'}">${fmtSpread(r.wednesday) ?? "—"}</td>
+          <td class="${r.tuesday === null ? 'blank' : 'num'}">${fmtSpread(r.tuesday) ?? "—"}</td>
+          <td class="${r.monday === null ? 'blank' : 'num'}">${fmtSpread(r.monday) ?? "—"}</td>
         `;
         tbody.appendChild(tr);
       }

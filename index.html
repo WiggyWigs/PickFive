@@ -7,6 +7,61 @@
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+  /* Lock Home Team / Lg / Away Team in place while scrolling
+     horizontally through the day columns. Fixed widths are required
+     here (not just on the first column, like Ledger's Name lock) -
+     stacking three sticky columns means each one's `left` offset has
+     to equal the combined width of the ones before it, which only
+     stays correct if those widths are pinned rather than auto-sized. */
+  #lines-table th:nth-child(1),
+  #lines-table td:nth-child(1) {
+    position: sticky;
+    left: 0;
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+  }
+
+  #lines-table th:nth-child(2),
+  #lines-table td:nth-child(2) {
+    position: sticky;
+    left: 170px;
+    width: 55px;
+    min-width: 55px;
+    max-width: 55px;
+  }
+
+  #lines-table th:nth-child(3),
+  #lines-table td:nth-child(3) {
+    position: sticky;
+    left: 225px;
+    width: 170px;
+    min-width: 170px;
+    max-width: 170px;
+  }
+
+  /* The header row is already sticky top (base stylesheet); these three
+     also need to win the top-left corner, so they get a higher z-index
+     than the plain sticky-top headers and the sticky-left body cells. */
+  #lines-table thead th:nth-child(1),
+  #lines-table thead th:nth-child(2),
+  #lines-table thead th:nth-child(3) {
+    z-index: 3;
+    background: var(--panel);
+  }
+
+  /* Body cells need an explicit background too, or the day columns
+     scrolling underneath would show through. Trade-off: the row-hover
+     tint won't visibly extend into these three locked cells, since they
+     now paint their own background on top of it. */
+  #lines-table tbody td:nth-child(1),
+  #lines-table tbody td:nth-child(2),
+  #lines-table tbody td:nth-child(3) {
+    z-index: 1;
+    background: var(--bg);
+  }
+</style>
 </head>
 <body>
 

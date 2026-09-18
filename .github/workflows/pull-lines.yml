@@ -2,13 +2,23 @@ name: Pull Lines
 
 on:
   schedule:
-    # 14:00 UTC = 9:00 AM EST (fixed UTC-5; drifts to 8 AM local once
+    # 14:07 UTC (not :00, deliberately - the top of every hour is the
+    # most congested slot for GitHub's scheduler, and offsetting a few
+    # minutes measurably reduces how often runs get delayed under load)
+    # = ~9:07 AM EST (fixed UTC-5; drifts to ~8:07 AM local once
     # daylight saving ends in November - see README for details)
-    - cron: "0 14 * * 2" # Tuesday
-    - cron: "0 14 * * 3" # Wednesday
-    - cron: "0 14 * * 4" # Thursday
-    - cron: "0 14 * * 5" # Friday
-    - cron: "0 14 * * 6" # Saturday
+    - cron: "7 14 * * 1" # Monday
+    - cron: "7 14 * * 2" # Tuesday
+    - cron: "7 14 * * 3" # Wednesday
+    - cron: "7 14 * * 4" # Thursday
+    - cron: "7 14 * * 5" # Friday
+    - cron: "7 14 * * 6" # Saturday
+    # 23:07 UTC = ~6:07 PM EST - second same-day pull for Thu/Fri only,
+    # to catch a fresher line closer to those nights' games. This
+    # overwrites that day's morning snapshot (same stage name, same
+    # file) rather than being tracked as a separate slot.
+    - cron: "7 23 * * 4" # Thursday evening
+    - cron: "7 23 * * 5" # Friday evening
   workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
 
 permissions:

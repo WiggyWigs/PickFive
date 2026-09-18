@@ -2086,5 +2086,23 @@
     "payout": 0.0,
     "net": -20.0,
     "type": "wager"
+  },
+  {
+    "date": "9/17/2026",
+    "name": "Billy",
+    "bet": "Week 1 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 24.73,
+    "net": 4.73,
+    "type": "wager"
+  },
+  {
+    "date": "9/17/2026",
+    "name": "Carlos",
+    "bet": "Week 1 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 24.73,
+    "net": 4.73,
+    "type": "wager"
   }
 ]

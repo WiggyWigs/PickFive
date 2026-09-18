@@ -4,53 +4,53 @@
     "wager": "1",
     "pick": "TNF:\nDJ Moore 50 Rec Yards, Gibbs 3 Receptions",
     "amount": 20.0,
-    "payout": 36.0,
-    "net": 16.0,
-    "total": 16.0
+    "payout": 24.73,
+    "net": 4.73,
+    "total": 4.73
   },
   {
     "week": 1,
     "wager": "2",
     "pick": "College",
-    "amount": 16.0,
+    "amount": 4.73,
     "payout": null,
-    "net": -16.0,
-    "total": 0.0
+    "net": null,
+    "total": 4.73
   },
   {
-    "week": 2,
+    "week": 1,
     "wager": "3",
     "pick": "NFL 1:00",
-    "amount": 0.0,
+    "amount": null,
     "payout": null,
-    "net": 0.0,
-    "total": 0.0
+    "net": null,
+    "total": 4.73
   },
   {
     "week": 1,
     "wager": "4",
     "pick": "NFL 4:00",
-    "amount": 0.0,
+    "amount": null,
     "payout": null,
-    "net": 0.0,
-    "total": 0.0
+    "net": null,
+    "total": 4.73
   },
   {
     "week": 1,
     "wager": "5",
     "pick": "SNF",
-    "amount": 0.0,
+    "amount": null,
     "payout": null,
-    "net": 0.0,
-    "total": 0.0
+    "net": null,
+    "total": 4.73
   },
   {
     "week": 1,
     "wager": "6",
     "pick": "MNF",
-    "amount": 0.0,
+    "amount": null,
     "payout": null,
-    "net": 0.0,
-    "total": 0.0
+    "net": null,
+    "total": 4.73
   }
 ]

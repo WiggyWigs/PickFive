@@ -94,9 +94,25 @@ def pick_spread(game: dict):
     return None, chosen.get("key")
 
 
-def build_rows(sport_key: str, league_label: str, api_key: str, cutoff: str) -> list:
+def build_rows(sport_key: str, league_label: str, api_key: str, cutoff: str, now: datetime) -> list:
     rows = []
     for game in fetch_sport(sport_key, api_key, cutoff):
+        commence_time = game.get("commence_time")
+
+        # The Odds API excludes *completed* games from /odds, but not
+        # *in-progress* ones - a Thursday night game still being played
+        # can show up in Friday's pull with a stale or live-betting
+        # line mixed in with everyone else's pre-game numbers. Drop
+        # anything whose kickoff has already passed, regardless of
+        # what the API itself considers "still live."
+        if commence_time:
+            try:
+                kickoff = datetime.strptime(commence_time, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+                if kickoff <= now:
+                    continue
+            except ValueError:
+                pass  # unexpected timestamp format - don't silently drop a game over a parse quirk
+
         point, book = pick_spread(game)
         rows.append(
             {
@@ -104,7 +120,7 @@ def build_rows(sport_key: str, league_label: str, api_key: str, cutoff: str) -> 
                 "league": league_label,
                 "home_team": game.get("home_team"),
                 "away_team": game.get("away_team"),
-                "commence_time": game.get("commence_time"),
+                "commence_time": commence_time,
                 "spread": point,  # home team's spread; negative = home favored
                 "bookmaker": book,
             }
@@ -123,9 +139,10 @@ def main():
         sys.exit(1)
 
     rows = []
+    now = datetime.now(timezone.utc)
     cutoff = compute_cutoff()
     for sport_key, league_label in SPORTS.items():
-        rows.extend(build_rows(sport_key, league_label, api_key, cutoff))
+        rows.extend(build_rows(sport_key, league_label, api_key, cutoff, now))
 
     week_id = compute_week_id().isoformat()  # this week's Monday, e.g. "2026-09-21"
 
@@ -146,3 +163,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

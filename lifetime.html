@@ -242,7 +242,7 @@
 </div>
 
 <div class="empty-state" id="empty-state" style="display:none;">
-  No picks yet. Once the sheet sync runs, picks will show up here.
+  No picks yet.
 </div>
 
 <script src="assets/picks-shared.js"></script>
@@ -379,7 +379,16 @@
   }
 
   async function init() {
-    ALL_PICKS = (await loadPicks()) || [];
+    const { picks, error } = await loadPicks();
+
+    if (error) {
+      const emptyEl = document.getElementById("empty-state");
+      emptyEl.textContent = `Couldn't load data (${error}). Check the browser console for details.`;
+      emptyEl.style.display = "block";
+      return;
+    }
+
+    ALL_PICKS = picks || [];
 
     if (ALL_PICKS.length === 0) {
       document.getElementById("empty-state").style.display = "block";

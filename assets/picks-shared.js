@@ -2,13 +2,135 @@
 // pick this season (or ever, for a brand-new roster member).
 const ROSTER = ["Carlos/Patrick", "Greg", "Kevin", "Robert", "Billy"];
 
+const PICKS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSCJ1xEWWQHvRJVkAtSH1OpjCxHtYvk1YXmKSsTspXwu3jkebG81SDs1_NB9ALOnV2zrUMvhwpyy4zi/pub?gid=997480298&single=true&output=csv";
+
+const PICKS_HEADER_ALIASES = {
+  "year": "year",
+  "week": "week",
+  "person": "person",
+  "team picked": "team_picked",
+  "team_picked": "team_picked",
+  "team": "team_picked",
+  "home/away": "home_away",
+  "home or away": "home_away",
+  "spread": "spread",
+  "result": "result",
+  "w/l": "result",
+};
+
+// Proper CSV parser - handles quoted fields with embedded commas and
+// escaped quotes, which a plain split(',') would silently corrupt.
+function parsePicksCSV(text) {
+  const rows = [];
+  let row = [];
+  let field = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; }
+        else inQuotes = false;
+      } else {
+        field += c;
+      }
+    } else {
+      if (c === '"') inQuotes = true;
+      else if (c === ",") { row.push(field); field = ""; }
+      else if (c === "\n" || c === "\r") {
+        if (c === "\r" && text[i + 1] === "\n") i++;
+        row.push(field);
+        rows.push(row);
+        row = [];
+        field = "";
+      } else {
+        field += c;
+      }
+    }
+  }
+  if (field !== "" || row.length) { row.push(field); rows.push(row); }
+  return rows.filter((r) => r.length > 1 || r[0] !== "");
+}
+
+function normalizePicksHeader(h) {
+  const key = (h || "").trim().toLowerCase();
+  return PICKS_HEADER_ALIASES[key] || key;
+}
+
+function normalizeHomeAway(v) {
+  v = (v || "").trim().toLowerCase();
+  if (v.startsWith("home")) return "Home";
+  if (v.startsWith("away")) return "Away";
+  return null;
+}
+
+function deriveFavDog(spread) {
+  if (spread === null) return null;
+  if (spread < 0) return "Favorite";
+  if (spread > 0) return "Underdog";
+  return "Pick'em";
+}
+
+function normalizePickResult(v) {
+  v = (v || "").trim().toUpperCase();
+  if (v === "W" || v === "WIN") return "W";
+  if (v === "L" || v === "LOSS") return "L";
+  return null;
+}
+
+function normalizePickYear(v) {
+  v = (v || "").trim();
+  if (!v) return null;
+  const n = parseInt(v, 10);
+  return Number.isNaN(n) ? null : n;
+}
+
+function normalizePickSpread(v) {
+  v = (v || "").trim().replace(/\+/g, "");
+  if (!v) return null;
+  const n = parseFloat(v);
+  return Number.isNaN(n) ? null : n;
+}
+
 async function loadPicks() {
   try {
-    const res = await fetch("data/picks.json", { cache: "no-store" });
-    if (!res.ok) return null;
-    return await res.json();
+    const res = await fetch(PICKS_CSV_URL, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+    const rows = parsePicksCSV(text);
+    if (rows.length < 1) return { picks: [], error: null };
+
+    const headers = rows[0].map(normalizePicksHeader);
+    const picks = [];
+
+    for (const raw of rows.slice(1)) {
+      const row = {};
+      headers.forEach((h, i) => { row[h] = raw[i]; });
+
+      const year = normalizePickYear(row.year);
+      const week = (row.week || "").trim();
+      const person = (row.person || "").trim();
+      const team_picked = (row.team_picked || "").trim();
+
+      if (year === null || !week || !person || !team_picked) continue; // mirrors the sync script's required-field check
+
+      const spread = normalizePickSpread(row.spread);
+      picks.push({
+        year,
+        week,
+        person,
+        team_picked,
+        home_away: normalizeHomeAway(row.home_away),
+        fav_dog: deriveFavDog(spread),
+        spread,
+        result: normalizePickResult(row.result),
+      });
+    }
+
+    return { picks, error: null };
   } catch (e) {
-    return null;
+    return { picks: null, error: e.message || "fetch failed" };
   }
 }
 

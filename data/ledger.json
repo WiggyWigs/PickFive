@@ -2104,5 +2104,68 @@
     "payout": 24.73,
     "net": 4.73,
     "type": "wager"
+  },
+  {
+    "date": "9/19/2026",
+    "name": "Carlos",
+    "bet": "Caterpillar",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/19/2026",
+    "name": "Carlos",
+    "bet": "Caterpillar V2",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/19/2026",
+    "name": "Billy",
+    "bet": "Georgia -24.5",
+    "bet_amount": 20.0,
+    "payout": 37.85,
+    "net": 17.85,
+    "type": "wager"
+  },
+  {
+    "date": "9/19/2026",
+    "name": "Billy",
+    "bet": "Indiana -44.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/19/2026",
+    "name": "Billy",
+    "bet": "Alabama -19.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/18/2026",
+    "name": "Billy",
+    "bet": "Bank Builder Bet 1",
+    "bet_amount": 4.73,
+    "payout": 0.0,
+    "net": -4.73,
+    "type": "wager"
+  },
+  {
+    "date": "9/18/2026",
+    "name": "Carlos",
+    "bet": "Bank Builder Bet 1",
+    "bet_amount": 4.73,
+    "payout": 0.0,
+    "net": -4.73,
+    "type": "wager"
   }
 ]

@@ -2037,9 +2037,9 @@
     "date": "9/13/2026",
     "name": "Billy",
     "bet": "Lions -7",
-    "bet_amount": -20.0,
+    "bet_amount": 20.0,
     "payout": 0.0,
-    "net": 20.0,
+    "net": -20.0,
     "type": "wager"
   },
   {

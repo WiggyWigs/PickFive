@@ -31,39 +31,56 @@ VALID_STAGES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturda
 
 
 def compute_week_id(now: datetime = None) -> "date":
-    """Return the date of the upcoming Monday (today, if today is Monday).
+    """Return the date of the upcoming Monday.
 
-    Used both as the commenceTimeTo cutoff basis and as the folder name
-    for this week's permanent archive under data/weeks/<week_id>/.
+    This NEVER returns today's own date, even when today is Monday -
+    Monday's pull is meant to preview next week's slate, not close out
+    this week's, so "upcoming Monday" always means at least 7 days out
+    on a Monday specifically.
     """
     now = now or datetime.now(timezone.utc)
     days_until_monday = (7 - now.weekday()) % 7  # Monday == 0
+    if days_until_monday == 0:
+        days_until_monday = 7  # today IS Monday - target next Monday, not today
     return (now + timedelta(days=days_until_monday)).date()
 
 
 def compute_cutoff() -> str:
     """
     Return an ISO8601 UTC timestamp for the upcoming Monday, used as
-    commenceTimeTo so we only pull this week's slate - not next
-    week's games that are already up on the board.
-
-    If today is Monday, "upcoming Monday" is today (0 days out), so
-    tonight's Monday Night Football game is still included. The
-    cutoff is set to 9 AM UTC the day *after* that Monday (not
-    midnight) to cover late-kickoff MNF games, which can commence
-    just after midnight UTC.
+    commenceTimeTo so we only pull one week's slate at a time - not
+    the week after that, which may already be up on the board.
     """
     target_monday = compute_week_id()
     cutoff = datetime.combine(target_monday + timedelta(days=1), time(9, 0), tzinfo=timezone.utc)
     return cutoff.strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def fetch_sport(sport_key: str, api_key: str, cutoff: str) -> list:
+def compute_monday_from(now: datetime) -> str:
+    """
+    Monday-only lower bound: 9 AM UTC on Tuesday - not midnight - so
+    Monday's own pull skips tonight's still-upcoming MNF game entirely
+    and jumps straight to next week's slate. A plain midnight-UTC
+    boundary isn't late enough: a typical 8:15 PM ET kickoff already
+    lands at ~00:15 UTC Tuesday, past midnight but still MNF, and an
+    occasional 10:15 PM ET kickoff lands even later. 9 AM UTC clears
+    any realistic MNF kickoff with room to spare, same buffer already
+    used for this exact reason in compute_cutoff(). That game's lines
+    were already captured all week by Tuesday-Saturday's own pulls -
+    nothing is lost by Monday morning no longer including it again.
+    """
+    tomorrow = (now + timedelta(days=1)).date()
+    return datetime.combine(tomorrow, time(9, 0), tzinfo=timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def fetch_sport(sport_key: str, api_key: str, cutoff: str, cutoff_from: str = None) -> list:
     url = (
         f"https://api.the-odds-api.com/v4/sports/{sport_key}/odds"
         f"?regions=us&markets=spreads&oddsFormat=american"
         f"&commenceTimeTo={cutoff}&apiKey={api_key}"
     )
+    if cutoff_from:
+        url += f"&commenceTimeFrom={cutoff_from}"
     req = Request(url, headers={"User-Agent": "PickFive/1.0"})
     try:
         with urlopen(req, timeout=30) as resp:
@@ -94,9 +111,9 @@ def pick_spread(game: dict):
     return None, chosen.get("key")
 
 
-def build_rows(sport_key: str, league_label: str, api_key: str, cutoff: str, now: datetime) -> list:
+def build_rows(sport_key: str, league_label: str, api_key: str, cutoff: str, now: datetime, cutoff_from: str = None) -> list:
     rows = []
-    for game in fetch_sport(sport_key, api_key, cutoff):
+    for game in fetch_sport(sport_key, api_key, cutoff, cutoff_from):
         commence_time = game.get("commence_time")
 
         # The Odds API excludes *completed* games from /odds, but not
@@ -141,10 +158,11 @@ def main():
     rows = []
     now = datetime.now(timezone.utc)
     cutoff = compute_cutoff()
+    cutoff_from = compute_monday_from(now) if args.stage == "monday" else None
     for sport_key, league_label in SPORTS.items():
-        rows.extend(build_rows(sport_key, league_label, api_key, cutoff, now))
+        rows.extend(build_rows(sport_key, league_label, api_key, cutoff, now, cutoff_from))
 
-    week_id = compute_week_id().isoformat()  # this week's Monday, e.g. "2026-09-21"
+    week_id = compute_week_id().isoformat()  # the week this pull's data belongs to
 
     DATA_DIR.mkdir(parents=True, exist_ok=True)
     out_path = DATA_DIR / f"{args.stage}.json"
@@ -159,6 +177,21 @@ def main():
     archive_path.write_text(json.dumps(rows, indent=2))
 
     print(f"Wrote {len(rows)} games ({args.stage}, week={week_id}, cutoff={cutoff}) to {out_path} and {archive_path}")
+
+    # Monday's pull now previews NEXT week's slate, so the other rolling
+    # files (Tue-Sat) still hold the week that's ending - left alone,
+    # they'd sit there mismatched against Monday's new games until each
+    # day's own pull runs later this week. Clear them immediately instead
+    # so the table doesn't show a stale, half-old/half-new mix all week.
+    # The permanent archive under data/weeks/ is untouched - this only
+    # clears the rolling "current view" files.
+    if args.stage == "monday":
+        for other_stage in VALID_STAGES:
+            if other_stage == "monday":
+                continue
+            other_path = DATA_DIR / f"{other_stage}.json"
+            other_path.write_text(json.dumps([], indent=2))
+        print("Cleared Tue-Sat rolling files (Monday now previews next week's slate)")
 
 
 if __name__ == "__main__":

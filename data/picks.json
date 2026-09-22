@@ -1698,5 +1698,55 @@
     "fav_dog": "Favorite",
     "spread": -13.5,
     "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "2",
+    "person": "Billy",
+    "team_picked": "Indiana",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -44.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "2",
+    "person": "Greg",
+    "team_picked": "Georgia",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -25.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "2",
+    "person": "Robert",
+    "team_picked": "Alabama",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -19.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "2",
+    "person": "Carlos/Patrick",
+    "team_picked": "Buccaneers",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -8.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "2",
+    "person": "Kevin",
+    "team_picked": "Northwestern",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "W"
   }
 ]

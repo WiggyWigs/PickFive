@@ -5,7 +5,7 @@
     "home_team": "Green Bay Packers",
     "away_team": "Atlanta Falcons",
     "commence_time": "2026-09-25T00:15:00Z",
-    "spread": -5.5,
+    "spread": -4.5,
     "bookmaker": "draftkings"
   },
   {
@@ -50,7 +50,7 @@
     "home_team": "Indianapolis Colts",
     "away_team": "Houston Texans",
     "commence_time": "2026-09-27T17:00:00Z",
-    "spread": 3.0,
+    "spread": 2.5,
     "bookmaker": "draftkings"
   },
   {
@@ -167,8 +167,8 @@
     "home_team": "Rutgers Scarlet Knights",
     "away_team": "Howard Bison",
     "commence_time": "2026-09-25T23:00:00Z",
-    "spread": -42.5,
-    "bookmaker": "fanduel"
+    "spread": -41.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "2e454a12c5301843ab7ec1a1eaf4f237",
@@ -239,8 +239,8 @@
     "home_team": "Pittsburgh Panthers",
     "away_team": "Bucknell Bison",
     "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -51.5,
-    "bookmaker": "fanduel"
+    "spread": -52.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "fb1e2c999364a411be347389aec1d827",
@@ -257,7 +257,7 @@
     "home_team": "Ohio State Buckeyes",
     "away_team": "Illinois Fighting Illini",
     "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -27.5,
+    "spread": -26.5,
     "bookmaker": "draftkings"
   },
   {
@@ -311,8 +311,8 @@
     "home_team": "Eastern Michigan Eagles",
     "away_team": "Lindenwood Lions",
     "commence_time": "2026-09-26T17:00:00Z",
-    "spread": -26.5,
-    "bookmaker": "fanduel"
+    "spread": -25.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "c48f042c91328d4d0c6351fc82286879",
@@ -348,7 +348,7 @@
     "away_team": "Central Arkansas Bears",
     "commence_time": "2026-09-26T19:00:00Z",
     "spread": -44.5,
-    "bookmaker": "fanduel"
+    "bookmaker": "draftkings"
   },
   {
     "id": "fc7c77e060e8ba29a61de994be1497c0",
@@ -375,7 +375,7 @@
     "away_team": "Robert Morris Colonials",
     "commence_time": "2026-09-26T19:30:00Z",
     "spread": -28.5,
-    "bookmaker": "fanduel"
+    "bookmaker": "draftkings"
   },
   {
     "id": "e7aa82b55e371e67938eb4c52562f155",
@@ -384,7 +384,7 @@
     "away_team": "William and Mary Tribe",
     "commence_time": "2026-09-26T19:30:00Z",
     "spread": -43.5,
-    "bookmaker": "fanduel"
+    "bookmaker": "draftkings"
   },
   {
     "id": "886538e98f0884df3d655d9d2d2ca567",
@@ -392,7 +392,7 @@
     "home_team": "Florida Gators",
     "away_team": "Ole Miss Rebels",
     "commence_time": "2026-09-26T19:30:00Z",
-    "spread": -3.5,
+    "spread": -3.0,
     "bookmaker": "draftkings"
   },
   {
@@ -401,8 +401,8 @@
     "home_team": "Marshall Thundering Herd",
     "away_team": "Gardner-Webb Runnin Bulldogs",
     "commence_time": "2026-09-26T19:30:00Z",
-    "spread": -22.5,
-    "bookmaker": "fanduel"
+    "spread": -23.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "3848eaee7484034f3604aed922649c4e",
@@ -455,8 +455,8 @@
     "home_team": "Ohio Bobcats",
     "away_team": "Stonehill Skyhawks",
     "commence_time": "2026-09-26T19:30:00Z",
-    "spread": -32.5,
-    "bookmaker": "fanduel"
+    "spread": -34.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "32171e03f5df71b5c9057bcba40030a7",
@@ -474,7 +474,7 @@
     "away_team": "North Carolina Central Eagles",
     "commence_time": "2026-09-26T20:00:00Z",
     "spread": -34.5,
-    "bookmaker": "fanduel"
+    "bookmaker": "draftkings"
   },
   {
     "id": "b1cdf3ac97be67ee00a53e437e4bfa78",
@@ -536,8 +536,8 @@
     "home_team": "Florida International Panthers",
     "away_team": "LIU Sharks",
     "commence_time": "2026-09-26T22:00:00Z",
-    "spread": -34.5,
-    "bookmaker": "fanduel"
+    "spread": -35.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "ed1c259773ba7494570a1611b44adb30",
@@ -545,8 +545,8 @@
     "home_team": "Texas State Bobcats",
     "away_team": "Incarnate Word Cardinals",
     "commence_time": "2026-09-26T22:00:00Z",
-    "spread": -30.5,
-    "bookmaker": "fanduel"
+    "spread": -29.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "008dd61e19c2456760593773da6a88ef",
@@ -590,7 +590,7 @@
     "home_team": "Arkansas State Red Wolves",
     "away_team": "Kennesaw State Owls",
     "commence_time": "2026-09-26T23:00:00Z",
-    "spread": -6.5,
+    "spread": -6.0,
     "bookmaker": "draftkings"
   },
   {
@@ -617,8 +617,8 @@
     "home_team": "Western Kentucky Hilltoppers",
     "away_team": "Mercyhurst Lakers",
     "commence_time": "2026-09-26T23:00:00Z",
-    "spread": -37.5,
-    "bookmaker": "fanduel"
+    "spread": -38.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "6c95114d806556a04a0d719e62c042d7",
@@ -662,8 +662,8 @@
     "home_team": "North Texas Mean Green",
     "away_team": "Houston Baptist Huskies",
     "commence_time": "2026-09-26T23:30:00Z",
-    "spread": -38.5,
-    "bookmaker": "fanduel"
+    "spread": -37.5,
+    "bookmaker": "draftkings"
   },
   {
     "id": "0c71c3230f930f30ac34160b38dbbaf0",

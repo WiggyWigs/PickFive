@@ -161,7 +161,7 @@
 <script src="assets/nav.js"></script>
 
 <header>
-  <img class="logo" src="assets/ledger_header.png" alt="The Ledger">
+  <img class="logo" id="ledger-logo" src="assets/ledger_header.png" alt="The Ledger">
   <p class="sub">Deposits, withdrawals, and wager results by person. Click any header to sort.</p>
 </header>
 
@@ -760,6 +760,12 @@
   }
 
   init();
+
+  // Hidden navigation - no visual hint (no cursor change, no link
+  // preview on hover), deliberately not referenced anywhere in nav.html.
+  document.getElementById("ledger-logo").addEventListener("click", () => {
+    window.location.href = "insider.html";
+  });
 </script>
 
 <div class="modal-overlay" id="txn-modal" style="display:none;">

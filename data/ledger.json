@@ -2167,5 +2167,23 @@
     "payout": 0.0,
     "net": -4.73,
     "type": "wager"
+  },
+  {
+    "date": "9/24/2026",
+    "name": "Carlos",
+    "bet": "Week 2 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/25/2026",
+    "name": "Billy",
+    "bet": "Parlay: Gratehouse 4 catches & TD",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
   }
 ]

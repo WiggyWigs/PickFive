@@ -234,7 +234,20 @@
       return;
     }
 
-    const weeks = groupByWeek(entries);
+    // Skip placeholder/no-data rows entirely - blank cells (null) and
+    // literal 0s are treated the same here, since either way there's
+    // nothing meaningful to show.
+    const isEmptyRow = (e) =>
+      (e.amount ?? 0) === 0 && (e.payout ?? 0) === 0 && (e.net ?? 0) === 0 && (e.total ?? 0) === 0;
+    const visibleEntries = entries.filter((e) => !isEmptyRow(e));
+
+    if (visibleEntries.length === 0) {
+      statusEl.textContent = "";
+      document.getElementById("empty-state").style.display = "block";
+      return;
+    }
+
+    const weeks = groupByWeek(visibleEntries);
     statusEl.textContent = "";
 
     const content = document.getElementById("content");

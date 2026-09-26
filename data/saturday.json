@@ -131,142 +131,7 @@
     "home_team": "Chicago Bears",
     "away_team": "Philadelphia Eagles",
     "commence_time": "2026-09-29T00:15:00Z",
-    "spread": 4.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "48683523200ecdbeb09a2e6eb0d0a1f7",
-    "league": "NCAAF",
-    "home_team": "California Golden Bears",
-    "away_team": "Clemson Tigers",
-    "commence_time": "2026-09-26T02:30:00Z",
-    "spread": 2.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "11ea90adf014a268d12caa9978b05bd8",
-    "league": "NCAAF",
-    "home_team": "Akron Zips",
-    "away_team": "UNLV Rebels",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": 13.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "a14ae60e9aac7b91d0acbdae745873b4",
-    "league": "NCAAF",
-    "home_team": "Kent State Golden Flashes",
-    "away_team": "Ball State Cardinals",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -3.0,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "90cacdc25f25e1f13b13e031a7fee9b7",
-    "league": "NCAAF",
-    "home_team": "Baylor Bears",
-    "away_team": "Colorado Buffaloes",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -9.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "9d564a10d7bc7b546b2b0cf4ec3c589e",
-    "league": "NCAAF",
-    "home_team": "Boston College Eagles",
-    "away_team": "Virginia Tech Hokies",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": 14.0,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "0224670d32f98caf247dd7d7ffaa6ee6",
-    "league": "NCAAF",
-    "home_team": "Pittsburgh Panthers",
-    "away_team": "Bucknell Bison",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -53.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "fb1e2c999364a411be347389aec1d827",
-    "league": "NCAAF",
-    "home_team": "UTSA Roadrunners",
-    "away_team": "Colorado State Rams",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -14.0,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "6de44361bd6b6afc20b9bbefcc219f2a",
-    "league": "NCAAF",
-    "home_team": "Ohio State Buckeyes",
-    "away_team": "Illinois Fighting Illini",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -26.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "f6b6590d0b66bbb4fcbb391289794963",
-    "league": "NCAAF",
-    "home_team": "Louisville Cardinals",
-    "away_team": "Wake Forest Demon Deacons",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -12.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "5c60d6ce348eae3327bc83534dd7522b",
-    "league": "NCAAF",
-    "home_team": "Texas Tech Red Raiders",
-    "away_team": "Sam Houston State Bearkats",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -34.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "e257aae5483bbfc89e2c570fc9304e1c",
-    "league": "NCAAF",
-    "home_team": "Toledo Rockets",
-    "away_team": "San Diego State Aztecs",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": -3.0,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "69b1a0ff5fb2c67c6627b5c8cf8368cb",
-    "league": "NCAAF",
-    "home_team": "Tennessee Volunteers",
-    "away_team": "Texas Longhorns",
-    "commence_time": "2026-09-26T16:00:00Z",
-    "spread": 5.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "11c5e9c2cf899388abd0dae30ea71db9",
-    "league": "NCAAF",
-    "home_team": "Kentucky Wildcats",
-    "away_team": "South Alabama Jaguars",
-    "commence_time": "2026-09-26T16:45:00Z",
-    "spread": -20.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "145de4ffc7429aeb39cab1b17c223743",
-    "league": "NCAAF",
-    "home_team": "Eastern Michigan Eagles",
-    "away_team": "Lindenwood Lions",
-    "commence_time": "2026-09-26T17:00:00Z",
-    "spread": -25.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "c48f042c91328d4d0c6351fc82286879",
-    "league": "NCAAF",
-    "home_team": "Maryland Terrapins",
-    "away_team": "UCLA Bruins",
-    "commence_time": "2026-09-26T17:30:00Z",
-    "spread": 1.5,
+    "spread": 3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -275,7 +140,7 @@
     "home_team": "Georgia State Panthers",
     "away_team": "Northern Illinois Huskies",
     "commence_time": "2026-09-26T18:00:00Z",
-    "spread": -10.5,
+    "spread": -8.5,
     "bookmaker": "draftkings"
   },
   {
@@ -293,7 +158,7 @@
     "home_team": "Florida State Seminoles",
     "away_team": "Central Arkansas Bears",
     "commence_time": "2026-09-26T19:00:00Z",
-    "spread": -45.5,
+    "spread": -46.5,
     "bookmaker": "draftkings"
   },
   {
@@ -338,7 +203,7 @@
     "home_team": "Florida Gators",
     "away_team": "Ole Miss Rebels",
     "commence_time": "2026-09-26T19:30:00Z",
-    "spread": -3.5,
+    "spread": -4.0,
     "bookmaker": "draftkings"
   },
   {
@@ -347,7 +212,7 @@
     "home_team": "Marshall Thundering Herd",
     "away_team": "Gardner-Webb Runnin Bulldogs",
     "commence_time": "2026-09-26T19:30:00Z",
-    "spread": -23.5,
+    "spread": -24.5,
     "bookmaker": "draftkings"
   },
   {
@@ -383,7 +248,7 @@
     "home_team": "Miami (OH) RedHawks",
     "away_team": "UConn Huskies",
     "commence_time": "2026-09-26T19:30:00Z",
-    "spread": -3.5,
+    "spread": -2.5,
     "bookmaker": "draftkings"
   },
   {
@@ -401,7 +266,7 @@
     "home_team": "Ohio Bobcats",
     "away_team": "Stonehill Skyhawks",
     "commence_time": "2026-09-26T19:30:00Z",
-    "spread": -33.5,
+    "spread": -32.5,
     "bookmaker": "draftkings"
   },
   {
@@ -419,7 +284,7 @@
     "home_team": "East Carolina Pirates",
     "away_team": "North Carolina Central Eagles",
     "commence_time": "2026-09-26T20:00:00Z",
-    "spread": -36.5,
+    "spread": -37.5,
     "bookmaker": "draftkings"
   },
   {
@@ -437,7 +302,7 @@
     "home_team": "Auburn Tigers",
     "away_team": "Vanderbilt Commodores",
     "commence_time": "2026-09-26T20:15:00Z",
-    "spread": -9.5,
+    "spread": -10.0,
     "bookmaker": "draftkings"
   },
   {
@@ -446,7 +311,7 @@
     "home_team": "Bowling Green Falcons",
     "away_team": "South Florida Bulls",
     "commence_time": "2026-09-26T21:00:00Z",
-    "spread": 17.5,
+    "spread": 18.5,
     "bookmaker": "draftkings"
   },
   {
@@ -482,7 +347,7 @@
     "home_team": "Florida International Panthers",
     "away_team": "LIU Sharks",
     "commence_time": "2026-09-26T22:00:00Z",
-    "spread": -36.5,
+    "spread": -37.5,
     "bookmaker": "draftkings"
   },
   {
@@ -500,7 +365,7 @@
     "home_team": "Old Dominion Monarchs",
     "away_team": "James Madison Dukes",
     "commence_time": "2026-09-26T22:00:00Z",
-    "spread": 6.0,
+    "spread": 7.0,
     "bookmaker": "draftkings"
   },
   {
@@ -545,7 +410,7 @@
     "home_team": "Cincinnati Bearcats",
     "away_team": "Kansas State Wildcats",
     "commence_time": "2026-09-26T23:00:00Z",
-    "spread": 6.5,
+    "spread": 6.0,
     "bookmaker": "draftkings"
   },
   {
@@ -554,7 +419,7 @@
     "home_team": "Jacksonville State Gamecocks",
     "away_team": "Middle Tennessee Blue Raiders",
     "commence_time": "2026-09-26T23:00:00Z",
-    "spread": -7.0,
+    "spread": -7.5,
     "bookmaker": "draftkings"
   },
   {
@@ -590,7 +455,7 @@
     "home_team": "NC State Wolfpack",
     "away_team": "Appalachian State Mountaineers",
     "commence_time": "2026-09-26T23:30:00Z",
-    "spread": -14.0,
+    "spread": -13.5,
     "bookmaker": "draftkings"
   },
   {
@@ -626,7 +491,7 @@
     "home_team": "USC Trojans",
     "away_team": "Oregon Ducks",
     "commence_time": "2026-09-26T23:30:00Z",
-    "spread": 3.0,
+    "spread": 3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -644,7 +509,7 @@
     "home_team": "Mississippi State Bulldogs",
     "away_team": "Missouri Tigers",
     "commence_time": "2026-09-26T23:45:00Z",
-    "spread": -6.0,
+    "spread": -4.5,
     "bookmaker": "draftkings"
   },
   {
@@ -671,7 +536,7 @@
     "home_team": "SMU Mustangs",
     "away_team": "Missouri State Bears",
     "commence_time": "2026-09-27T01:00:00Z",
-    "spread": -34.5,
+    "spread": -31.5,
     "bookmaker": "draftkings"
   },
   {
@@ -680,7 +545,7 @@
     "home_team": "UTEP Miners",
     "away_team": "Oregon State Beavers",
     "commence_time": "2026-09-27T01:00:00Z",
-    "spread": 10.5,
+    "spread": 11.5,
     "bookmaker": "draftkings"
   },
   {
@@ -707,7 +572,7 @@
     "home_team": "Nevada Wolf Pack",
     "away_team": "Air Force Falcons",
     "commence_time": "2026-09-27T02:30:00Z",
-    "spread": 6.0,
+    "spread": 5.5,
     "bookmaker": "draftkings"
   },
   {
@@ -716,7 +581,7 @@
     "home_team": "Stanford Cardinal",
     "away_team": "Georgia Tech Yellow Jackets",
     "commence_time": "2026-09-27T02:30:00Z",
-    "spread": 3.5,
+    "spread": 3.0,
     "bookmaker": "draftkings"
   },
   {

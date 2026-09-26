@@ -56,11 +56,11 @@
   {
     "week": 2,
     "wager": "1",
-    "pick": "TNF",
+    "pick": "TNF: Watson 50 yards Rec & Bijan 4 receptions.  Kevin's fault.",
     "amount": 20.0,
-    "payout": null,
-    "net": null,
-    "total": null
+    "payout": 0.0,
+    "net": -20.0,
+    "total": -20.0
   },
   {
     "week": 2,

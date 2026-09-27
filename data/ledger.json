@@ -2180,10 +2180,55 @@
   {
     "date": "9/25/2026",
     "name": "Billy",
-    "bet": "Parlay: Gratehouse 4 catches & TD",
+    "bet": "Parlay: Greathouse 4 catches & TD",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/25/2026",
+    "name": "Billy",
+    "bet": "Oregon ML",
     "bet_amount": 20.0,
     "payout": null,
     "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/25/2026",
+    "name": "Billy",
+    "bet": "ND vs Purdue Over",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
+  },
+  {
+    "date": "9/25/2026",
+    "name": "Billy",
+    "bet": "Georgia -13.5",
+    "bet_amount": 20.0,
+    "payout": 38.18,
+    "net": 18.18,
+    "type": "wager"
+  },
+  {
+    "date": "9/25/2026",
+    "name": "Carlos",
+    "bet": "Oregon ML and Tulsa ML",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/25/2026",
+    "name": "Carlos",
+    "bet": "Parlay: Texas Tech, Georgia, Tenn",
+    "bet_amount": 20.0,
+    "payout": 117.56,
+    "net": 97.56,
     "type": "wager"
   }
 ]

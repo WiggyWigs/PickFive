@@ -5,24 +5,46 @@ on:
     # 14:07 UTC (not :00, deliberately - the top of every hour is the
     # most congested slot for GitHub's scheduler, and offsetting a few
     # minutes measurably reduces how often runs get delayed under load)
-    # = ~9:07 AM EST (fixed UTC-5; drifts to ~8:07 AM local once
-    # daylight saving ends in November - see README for details)
+    # = ~9:07 AM EST / 10:07 AM EDT.
+    #
+    # IMPORTANT: the "Determine stage" step below matches on these exact
+    # cron strings. If you change one here, change it there too.
     - cron: "7 14 * * 1" # Monday
     - cron: "7 14 * * 2" # Tuesday
     - cron: "7 14 * * 3" # Wednesday
     - cron: "7 14 * * 4" # Thursday
     - cron: "7 14 * * 5" # Friday
     - cron: "7 14 * * 6" # Saturday
-    # 23:07 UTC = ~6:07 PM EST - second same-day pull for Thu/Fri only,
-    # to catch a fresher line closer to those nights' games. This
-    # overwrites that day's morning snapshot (same stage name, same
+    # 23:07 UTC = ~6:07 PM EST / 7:07 PM EDT - second same-day pull for
+    # Thu/Fri only, to catch a fresher line closer to those nights' games.
+    # This overwrites that day's morning snapshot (same stage name, same
     # file) rather than being tracked as a separate slot.
     - cron: "7 23 * * 4" # Thursday evening
     - cron: "7 23 * * 5" # Friday evening
-  workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: "Which day's file to write (auto = today's weekday, Eastern time)"
+        required: false
+        default: "auto"
+        type: choice
+        options:
+          - auto
+          - monday
+          - tuesday
+          - wednesday
+          - thursday
+          - friday
+          - saturday
 
 permissions:
   contents: write
+
+# Two runs writing and pushing at once (a delayed scheduled run landing
+# while you trigger one by hand, say) would race on the git push.
+concurrency:
+  group: pull-lines
+  cancel-in-progress: false
 
 jobs:
   pull:
@@ -34,9 +56,50 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Determine stage from today's UTC weekday
+      # The stage comes from WHICH SLOT FIRED, not from the clock at the
+      # moment the job happens to start. GitHub often starts scheduled
+      # runs hours late - the Thursday 7:07 PM slot has been starting
+      # after midnight UTC, which is already "friday" by the clock and
+      # used to write the wrong file.
+      - name: Determine stage
         id: stage
-        run: echo "name=$(date -u +%A | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+        env:
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT_STAGE: ${{ github.event.inputs.stage }}
+        run: |
+          case "$SCHEDULE" in
+            "7 14 * * 1") stage=monday ;;
+            "7 14 * * 2") stage=tuesday ;;
+            "7 14 * * 3") stage=wednesday ;;
+            "7 14 * * 4") stage=thursday ;;
+            "7 14 * * 5") stage=friday ;;
+            "7 14 * * 6") stage=saturday ;;
+            "7 23 * * 4") stage=thursday ;;
+            "7 23 * * 5") stage=friday ;;
+            *) stage="" ;;
+          esac
+
+          # Not a scheduled run (manual trigger): use the chosen stage, or
+          # for "auto", today's weekday in Eastern time (not UTC - a manual
+          # run at 9 PM Thursday Eastern is already Friday in UTC).
+          if [ -z "$stage" ]; then
+            if [ -n "$INPUT_STAGE" ] && [ "$INPUT_STAGE" != "auto" ]; then
+              stage="$INPUT_STAGE"
+            else
+              stage=$(TZ=America/New_York date +%A | tr '[:upper:]' '[:lower:]')
+            fi
+          fi
+
+          case "$stage" in
+            monday|tuesday|wednesday|thursday|friday|saturday) ;;
+            *)
+              echo "::error::No pull stage for '$stage' (there is no Sunday file). Re-run and pick a stage explicitly."
+              exit 1
+              ;;
+          esac
+
+          echo "Stage: $stage (schedule='$SCHEDULE', input='$INPUT_STAGE')"
+          echo "name=$stage" >> "$GITHUB_OUTPUT"
 
       - name: Fetch lines
         env:

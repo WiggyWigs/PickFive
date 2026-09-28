@@ -5,7 +5,7 @@
     "home_team": "Cleveland Browns",
     "away_team": "Pittsburgh Steelers",
     "commence_time": "2026-10-02T00:15:00Z",
-    "spread": 2.5,
+    "spread": 3.0,
     "bookmaker": "draftkings"
   },
   {
@@ -14,7 +14,7 @@
     "home_team": "Washington Commanders",
     "away_team": "Indianapolis Colts",
     "commence_time": "2026-10-04T13:30:00Z",
-    "spread": 3.0,
+    "spread": 3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -59,7 +59,7 @@
     "home_team": "Cincinnati Bengals",
     "away_team": "Jacksonville Jaguars",
     "commence_time": "2026-10-04T17:00:00Z",
-    "spread": -2.5,
+    "spread": -3.0,
     "bookmaker": "draftkings"
   },
   {
@@ -95,7 +95,7 @@
     "home_team": "Minnesota Vikings",
     "away_team": "Miami Dolphins",
     "commence_time": "2026-10-04T20:05:00Z",
-    "spread": -10.0,
+    "spread": -10.5,
     "bookmaker": "draftkings"
   },
   {
@@ -104,7 +104,7 @@
     "home_team": "San Francisco 49ers",
     "away_team": "Denver Broncos",
     "commence_time": "2026-10-04T20:25:00Z",
-    "spread": -3.0,
+    "spread": -2.5,
     "bookmaker": "draftkings"
   },
   {
@@ -113,7 +113,7 @@
     "home_team": "Las Vegas Raiders",
     "away_team": "Kansas City Chiefs",
     "commence_time": "2026-10-04T20:25:00Z",
-    "spread": 5.5,
+    "spread": 4.5,
     "bookmaker": "draftkings"
   },
   {
@@ -203,7 +203,7 @@
     "home_team": "Mississippi State Bulldogs",
     "away_team": "Alabama Crimson Tide",
     "commence_time": "2026-10-03T16:00:00Z",
-    "spread": 5.5,
+    "spread": 6.0,
     "bookmaker": "draftkings"
   },
   {
@@ -212,7 +212,7 @@
     "home_team": "SMU Mustangs",
     "away_team": "Boston College Eagles",
     "commence_time": "2026-10-03T16:00:00Z",
-    "spread": -20.5,
+    "spread": -21.0,
     "bookmaker": "draftkings"
   },
   {
@@ -275,7 +275,7 @@
     "home_team": "UConn Huskies",
     "away_team": "Syracuse Orange",
     "commence_time": "2026-10-03T16:00:00Z",
-    "spread": 6.0,
+    "spread": 6.5,
     "bookmaker": "draftkings"
   },
   {
@@ -320,7 +320,7 @@
     "home_team": "Central Michigan Chippewas",
     "away_team": "Akron Zips",
     "commence_time": "2026-10-03T19:30:00Z",
-    "spread": -6.0,
+    "spread": -6.5,
     "bookmaker": "draftkings"
   },
   {
@@ -482,7 +482,7 @@
     "home_team": "Colorado State Rams",
     "away_team": "Oregon State Beavers",
     "commence_time": "2026-10-03T22:00:00Z",
-    "spread": 5.5,
+    "spread": 6.0,
     "bookmaker": "draftkings"
   },
   {
@@ -581,7 +581,7 @@
     "home_team": "USC Trojans",
     "away_team": "Washington Huskies",
     "commence_time": "2026-10-03T23:30:00Z",
-    "spread": -8.5,
+    "spread": -9.5,
     "bookmaker": "draftkings"
   },
   {

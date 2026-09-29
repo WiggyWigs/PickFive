@@ -2257,5 +2257,41 @@
     "payout": 36.12,
     "net": 16.12,
     "type": "wager"
+  },
+  {
+    "date": "9/28/2026",
+    "name": "Billy",
+    "bet": "Eagles -3.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28/2026",
+    "name": "Carlos",
+    "bet": "Eagles -3.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/28/2026",
+    "name": "Billy",
+    "bet": "MNF Parlay",
+    "bet_amount": 20.0,
+    "payout": 55.6,
+    "net": 35.6,
+    "type": "wager"
+  },
+  {
+    "date": "9/28/2026",
+    "name": "Carlos",
+    "bet": "MNF Parlay",
+    "bet_amount": 20.0,
+    "payout": 55.6,
+    "net": 35.6,
+    "type": "wager"
   }
 ]

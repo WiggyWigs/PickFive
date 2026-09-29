@@ -1748,5 +1748,55 @@
     "fav_dog": "Favorite",
     "spread": -3.5,
     "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "3",
+    "person": "Billy",
+    "team_picked": "VA Tech",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "3",
+    "person": "Greg",
+    "team_picked": "Seahawks",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -6.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "3",
+    "person": "Robert",
+    "team_picked": "Panthers",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "3",
+    "person": "Carlos/Patrick",
+    "team_picked": "Cal",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 1.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "3",
+    "person": "Kevin",
+    "team_picked": "Florida",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "W"
   }
 ]

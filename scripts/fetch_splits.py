@@ -255,8 +255,9 @@ def splash_line_for(game, rows):
 # --- Flag rule ---------------------------------------------------------------
 
 def sharp_flag(g):
-    """Return the flagged side dict, or None. Needs splits, a line, and a Tuesday line."""
-    if g["home_money"] is None or g["line"] is None or g["tue_line"] is None:
+    """Return the flagged side dict, or None. Needs splits, a line, and a base line
+    (DraftKings at Splash-lock time, else Tuesday) to measure the move from."""
+    if g["home_money"] is None or g["line"] is None or g["move"] is None:
         return None
     home_edge = g["home_money"] - g["home_bets"]
     away_edge = g["away_money"] - g["away_bets"]
@@ -309,14 +310,7 @@ def main():
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({"pulled_at": now.isoformat(timespec="seconds"), "games": wk_games}, indent=2) + "\n")
 
-    # 2. Movement since Tuesday + flag for each game
-    cache = {}
-    for g in games:
-        g["tue_line"], g["tue_source"] = tuesday_line(g, cache)
-        g["move"] = (round(g["line"] - g["tue_line"], 1)
-                     if g["line"] is not None and g["tue_line"] is not None else None)
-        g["flag"] = sharp_flag(g)
-
+    # 2. Splash lines, and the DraftKings line captured when they came in
     splash_rows, splash_copied_at = load_splash_lines()
     for g in games:
         g["splash_line"] = splash_line_for(g, splash_rows) if splash_rows else None
@@ -324,7 +318,33 @@ def main():
         matched = sum(1 for g in games if g["splash_line"] is not None)
         print(f"Splash lines: {len(splash_rows)} rows, {matched} matched to games")
 
-    # 3. Flag log. A flag stays live until kickoff, then freezes with the
+    # "Home Line" on the page: DraftKings' line in the first run that sees a
+    # new Splash copy (the manual Pull Splits after pasting). Kept until the
+    # next copy, so later runs don't overwrite it.
+    baseline_path = SPLITS_DIR / "splash_baseline.json"
+    baseline = load_json(baseline_path, {})
+    if splash_copied_at and baseline.get("copied_at") != splash_copied_at:
+        baseline = {"copied_at": splash_copied_at, "captured_at": now.isoformat(timespec="seconds"), "lines": {}}
+    for g in games:
+        key = f"{g['league']}:{g['id']}"
+        if g["splash_line"] is not None and g["line"] is not None and key not in baseline.get("lines", {}):
+            baseline.setdefault("lines", {})[key] = g["line"]
+        g["dk_at_splash"] = baseline.get("lines", {}).get(key) if g["splash_line"] is not None else None
+    if splash_copied_at:
+        baseline_path.write_text(json.dumps(baseline, indent=2) + "\n")
+
+    # 3. Market move + sharp flag. The move is DraftKings now vs DraftKings at
+    # Splash-lock time (Tuesday's line for games not on Splash).
+    cache = {}
+    for g in games:
+        g["tue_line"], g["tue_source"] = tuesday_line(g, cache)
+        base = g["dk_at_splash"] if g["dk_at_splash"] is not None else g["tue_line"]
+        g["move"] = round(g["line"] - base, 1) if g["line"] is not None and base is not None else None
+        # With a Splash slate loaded, only its games can be flagged - the page shows nothing else
+        on_slate = g["splash_line"] is not None or not splash_rows
+        g["flag"] = sharp_flag(g) if on_slate else None
+
+    # 4. Flag log. A flag stays live until kickoff, then freezes with the
     # last pre-kickoff numbers; it is graded once the game is final.
     flags = load_json(SPLITS_DIR / "flags.json", {})
     for g in games:
@@ -346,7 +366,7 @@ def main():
         else:
             flags.pop(key, None)  # flag dropped before kickoff - never counted
 
-    # 4. Grade anything final
+    # 5. Grade anything final
     finals = {}
     for g in games:
         if g["status"] == "complete" and g["home_score"] is not None:
@@ -370,7 +390,7 @@ def main():
 
     (SPLITS_DIR / "flags.json").write_text(json.dumps(dict(sorted(flags.items())), indent=2) + "\n")
 
-    # 5. What the page reads
+    # 6. What the page reads
     for g in games:
         g.update({k: finals[f"{g['league']}:{g['id']}"][k] for k in ("home_score", "away_score")}
                  if f"{g['league']}:{g['id']}" in finals else {})
@@ -378,6 +398,7 @@ def main():
         "pulled_at": now.isoformat(timespec="seconds"),
         "edge_threshold": EDGE_THRESHOLD,
         "splash_copied_at": splash_copied_at,
+        "splash_baseline_at": baseline.get("captured_at") if splash_copied_at else None,
         "games": sorted(games, key=lambda g: g["start_time"]),
     }
     (SPLITS_DIR / "current.json").write_text(json.dumps(current, indent=2) + "\n")

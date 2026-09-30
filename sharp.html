@@ -55,6 +55,8 @@
   #splits-table td { padding: 0.45rem 0.45rem; }
   #splits-table td.team { min-width: 7.5rem; }
   #splits-table td.kickoff { font-size: 0.78rem; white-space: nowrap; }
+  /* dotted underline marks headers with a hover explanation */
+  th.has-tip { text-decoration: underline dotted; text-underline-offset: 3px; }
   .edge-tag { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; }
   .edge-tag.sharp { color: var(--up); }
   .edge-tag.trap { color: var(--down); }
@@ -152,7 +154,7 @@
         <th data-key="moveAbbr" data-type="string">Moved to</th>
         <th data-key="home_bets" data-type="number" class="group-start">Home Bets</th>
         <th data-key="home_money" data-type="number">Home Money</th>
-        <th data-key="gap" data-type="number" class="group-start">Sharp Angle ($ − Bets)</th>
+        <th data-key="gap" data-type="number" class="group-start has-tip" title="Money % minus bet % for the team whose money outruns its tickets. ARI +13 = Arizona has 13 points more of the money than of the tickets - fewer, bigger bets on Arizona.">Ticket Gap</th>
         <th data-key="angleText" data-type="string">Angle</th>
       </tr>
     </thead>
@@ -193,7 +195,7 @@
   Only games on your Splash slate are shown. All lines are the home team's spread (negative = home favored).
   Current Line = DraftKings now.
   Movement = Current Line minus Splash Line; Moved to = the team it moved toward, i.e. the side the market now likes more
-  than your Splash number does. Sharp Angle = money % minus bet % for the team whose money outruns its tickets.
+  than your Splash number does. Ticket Gap = money % minus bet % for the team whose money outruns its tickets.
   Sharp/Trap measure the line move from DraftKings' line when your Splash lines came in (the first Pull Splits after
   pasting), not from the Splash line. In 2024&ndash;26 history neither beat a coin flip: Sharp sides went 240-231 (51.0%);
   in Trap games the money side went 176-159 (52.5%) and the line side 159-176 (47.5%). Treat both as information, not picks.

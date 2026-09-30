@@ -1,0 +1,43 @@
+name: Pull Splits
+
+on:
+  schedule:
+    # 15:23 UTC = ~10:23 AM EST / 11:23 AM EDT, every day. Off the top of
+    # the hour (GitHub's busiest slot) and clear of the 14:00-14:07 lines,
+    # ledger and picks pulls. Early enough to snapshot before Saturday's
+    # noon Eastern college kickoffs.
+    - cron: "23 15 * * *"
+  workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pull-splits
+  cancel-in-progress: false
+
+jobs:
+  pull:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pull splits from Action Network
+        run: python scripts/fetch_splits.py
+
+      # Rebase before pushing: the other sync workflows push to the same
+      # branch, and this job only ever touches data/splits/, so a rebase
+      # can't conflict with them.
+      - name: Commit snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/splits/
+          git diff --staged --quiet && exit 0
+          git commit -m "Pull splits ($(date -u +%F))"
+          git pull --rebase
+          git push

@@ -1,0 +1,22 @@
+{
+  "NCAAF:289347": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 5,
+    "week_id": "2026-10-05",
+    "start_time": "2026-10-03T19:30:00.000Z",
+    "home": "North Carolina State Wolfpack",
+    "away": "Louisville Cardinals",
+    "first_flagged": "2026-09-30",
+    "last_updated": "2026-09-30",
+    "side": "home",
+    "team": "North Carolina State Wolfpack",
+    "abbr": "NCST",
+    "edge": 24,
+    "side_move": -0.5,
+    "side_line": 3.5,
+    "result": null,
+    "home_score": null,
+    "away_score": null
+  }
+}

@@ -23,7 +23,7 @@
     "home_team": "New York Giants",
     "away_team": "Arizona Cardinals",
     "commence_time": "2026-10-04T17:00:00Z",
-    "spread": 1.5,
+    "spread": 2.5,
     "bookmaker": "draftkings"
   },
   {
@@ -140,7 +140,7 @@
     "home_team": "New Orleans Saints",
     "away_team": "Atlanta Falcons",
     "commence_time": "2026-10-06T00:15:00Z",
-    "spread": -3.0,
+    "spread": -2.5,
     "bookmaker": "draftkings"
   },
   {
@@ -221,7 +221,7 @@
     "home_team": "Houston Cougars",
     "away_team": "UCF Knights",
     "commence_time": "2026-10-03T16:00:00Z",
-    "spread": -12.5,
+    "spread": -11.5,
     "bookmaker": "draftkings"
   },
   {
@@ -419,7 +419,7 @@
     "home_team": "NC State Wolfpack",
     "away_team": "Louisville Cardinals",
     "commence_time": "2026-10-03T19:30:00Z",
-    "spread": 4.0,
+    "spread": 3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -608,7 +608,7 @@
     "home_team": "LSU Tigers",
     "away_team": "McNeese State Cowboys",
     "commence_time": "2026-10-03T23:45:00Z",
-    "spread": -48.5,
+    "spread": -52.5,
     "bookmaker": "fanduel"
   },
   {

@@ -2,17 +2,15 @@ name: Pull Splits
 
 on:
   schedule:
-    # 15:23 UTC = ~10:23 AM EST / 11:23 AM EDT, every day. Off the top of
-    # the hour (GitHub's busiest slot) and clear of the 14:00-14:07 lines,
-    # ledger and picks pulls. Early enough to snapshot before Saturday's
-    # noon Eastern college kickoffs.
-    - cron: "23 15 * * *"
-    # Saturday pre-lock pulls. Contest picks lock at 11:00 AM Eastern
-    # Saturday, and the daily slot above lands after that during EDT.
-    # Two early slots because GitHub often starts scheduled runs late:
-    # 11:47 UTC = 7:47 AM EDT / 6:47 AM EST, 13:17 UTC = 9:17 AM EDT / 8:17 AM EST.
-    - cron: "47 11 * * 6"
-    - cron: "17 13 * * 6"
+    # Every 2 hours from Wednesday 5 AM Eastern until Saturday's 11 AM
+    # Eastern pick lock. Cron is UTC-only: 09:05 UTC = 5:05 AM EDT, but
+    # 4:05 AM EST once daylight saving ends in November. :05 instead of :00
+    # because the top of the hour is GitHub's most delayed slot.
+    - cron: "5 9-23/2 * * 3"   # Wed 09:05-23:05 UTC
+    - cron: "5 1-23/2 * * 4,5" # Thu, Fri - every odd UTC hour
+    - cron: "5 1-13/2 * * 6"   # Sat 01:05-13:05 UTC (last = 9:05 AM EDT / 8:05 AM EST, before lock)
+    # Once a day Sun-Tue, only to grade finished flags and keep snapshots.
+    - cron: "23 15 * * 0,1,2"
   workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
 
 permissions:

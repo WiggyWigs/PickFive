@@ -43,6 +43,18 @@
   th.group-start, td.group-start { border-left: 1px solid var(--line); }
 
   tr.started td { opacity: 0.45; }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.1rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(224, 164, 88, 0.15);
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
   td.edge { text-align: right; }
   td.edge.good { color: var(--up); font-weight: 600; }
   td.edge .rec { color: var(--muted); font-size: 0.75rem; font-weight: 400; margin-left: 0.35rem; }
@@ -86,17 +98,17 @@
 
 <header>
   <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
-  <p class="sub">Where the bets are vs. where the money is, NFL &amp; NCAAF. Pulled daily from Action Network.</p>
-  <p class="sub">Picks lock Saturday 11 AM Eastern at the Splash line. Hist. win % = how often the side the line moved toward covered at the earlier line, 2024&ndash;26.</p>
-  <p class="sub">Sharp flag: money % beats bet % by <span id="threshold">15</span>+ points on one side <em>and</em> the line has moved toward that side since Tuesday.</p>
+  <p class="sub">This week's Splash slate vs. the live DraftKings line. Pulled every 2 hours Wed&ndash;Sat morning from Action Network.</p>
+  <p class="sub">Picks lock Saturday 11 AM Eastern at the Splash line.</p>
+  <p class="sub">Sharp: the money is <span id="threshold">15</span>+ points heavier than the tickets on one team, <em>and</em> DraftKings has moved toward that team since your Splash lines came in.</p>
 </header>
 
 <div class="status" id="status">Loading splits&hellip;</div>
 
 <div class="edges" id="edges" style="display:none;">
-  <h2>Best line-move edges since Tuesday</h2>
+  <h2>Best edges vs. your Splash line</h2>
   <ol id="edges-list"></ol>
-  <p class="none" id="edges-none" style="display:none;">No game has moved 2+ points since Tuesday yet.</p>
+  <p class="none" id="edges-none" style="display:none;">No game is 2+ points off its Splash line yet.</p>
 </div>
 
 <div class="controls" id="controls" style="display:none;">
@@ -105,27 +117,24 @@
     <button data-league="NFL">NFL</button>
     <button data-league="NCAAF">NCAAF</button>
   </span>
-  <label><input type="checkbox" id="flags-only"> Sharp flags only</label>
-  <label><input type="checkbox" id="splits-only"> Hide games without splits</label>
+  <label><input type="checkbox" id="flags-only"> Sharp only</label>
 </div>
 
 <div class="table-wrap" id="table-wrap" style="display:none;">
   <table id="splits-table">
     <thead>
       <tr>
-        <th data-key="game" data-type="string">Away @ Home</th>
+        <th data-key="home" data-type="string">Home</th>
+        <th data-key="away" data-type="string">Away</th>
+        <th data-key="dk_at_splash" data-type="number" class="group-start" title="DraftKings line when your Splash lines came in">Home Line</th>
         <th data-key="start" data-type="number">Kickoff</th>
-        <th data-key="line" data-type="number" class="group-start">Line</th>
-        <th data-key="tue_line" data-type="number">Tue</th>
-        <th data-key="splash_line" data-type="number">Splash</th>
-        <th data-key="move" data-type="number">Move</th>
+        <th data-key="line" data-type="number" class="group-start">Current Line</th>
+        <th data-key="splash_line" data-type="number">Splash Line</th>
+        <th data-key="move" data-type="number">Movement</th>
         <th data-key="moveAbbr" data-type="string">Moved to</th>
-        <th data-key="edgePct" data-type="number">Hist. win %</th>
-        <th data-key="away_bets" data-type="number" class="group-start">Away Bets</th>
-        <th data-key="away_money" data-type="number">Away $</th>
         <th data-key="home_bets" data-type="number" class="group-start">Home Bets</th>
-        <th data-key="home_money" data-type="number">Home $</th>
-        <th data-key="gap" data-type="number" class="group-start">$ − Bets</th>
+        <th data-key="home_money" data-type="number">Home Money</th>
+        <th data-key="gap" data-type="number" class="group-start">Sharp Angle ($ − Bets)</th>
         <th data-key="flagText" data-type="string">Sharp</th>
       </tr>
     </thead>
@@ -134,7 +143,8 @@
 </div>
 
 <div class="empty-state" id="empty-state" style="display:none;">
-  No splits yet. Once the first daily pull runs, games will show up here.
+  No Splash lines for this week yet. Copy them with the Copy Splash Lines bookmarklet, paste into the SplashLines
+  tab, then run Pull Splits from the Actions tab.
 </div>
 
 <div class="record" id="record" style="display:none;">
@@ -162,15 +172,15 @@
 </div>
 
 <footer>
-  Hist. win % comes from scripts/backtest_moves.py: every 2024&ndash;26 NFL/FBS game whose line moved, grading the side it moved
+  Only games on your Splash slate are shown. All lines are the home team's spread (negative = home favored).
+  Home Line = DraftKings when your Splash lines came in (the first Pull Splits after pasting). Current Line = DraftKings now.
+  Movement = Current Line minus Splash Line; Moved to = the team it moved toward, i.e. the side the market now likes more
+  than your Splash number does. Sharp Angle = money % minus bet % for the team whose money outruns its tickets.
+  <br><br>
+  Hist. win % (best-edges box) comes from scripts/backtest_moves.py: every 2024&ndash;26 NFL/FBS game whose line moved, grading the side it moved
   toward at the opening line (Action Network has no past Tuesday lines, so the opener stands in for the Tuesday lock). Moves of
-  1.5 points or less are close to a coin flip. Your contest's Tuesday number may differ from DraftKings' - check it before locking.
+  1.5 points or less are close to a coin flip.
   <br><br>
-  Splash = your contest's line (from the Splash Lines sheet tab). When a game has one, Move, Moved to and Hist. win % are
-  measured from it; otherwise from DraftKings' Tuesday line.
-  <br><br>
-  Line is the home team's DraftKings spread (negative = home favored). Tue is Tuesday's DraftKings line - from our own Tuesday
-  splits pull, or the Weekly Lines Tuesday pull when that's missing. Move = Line minus the lock line (Splash if present, else Tue).
   Bets = share of tickets, $ = share of money wagered, both Action Network's consensus. A flag locks at kickoff using the
   last pull before it, and is graded against the line it was flagged at. College games without splits are FCS or small-market
   matchups Action Network doesn't report.
@@ -203,12 +213,12 @@
   }
 
   function toRow(g, threshold, edgeData) {
-    // Side the line moved toward since Tuesday (home spread down = toward home)
-    // Lock line = your actual Splash number when the sheet has it, else DraftKings' Tuesday line.
-    // Move and edge are measured from it (home spread; negative = moved toward home).
+    // Movement = DraftKings now minus your Splash line (home spread; negative = toward home).
+    // Deliberately no DraftKings fallback: a game without a Splash line gets no
+    // move/edge rather than one measured against a number you can't lock.
     const hasSplash = g.splash_line !== null && g.splash_line !== undefined;
-    const lock = hasSplash ? g.splash_line : g.tue_line;
-    const lockSrc = hasSplash ? "Splash" : "Tue";
+    const lock = hasSplash ? g.splash_line : null;
+    const lockSrc = "Splash";
     const move = lock === null || lock === undefined || g.line === null ? null : +(g.line - lock).toFixed(1);
     const moveSide = move === null || move === 0 ? null : move < 0 ? "home" : "away";
     let edgePct = null, edgeRec = null;
@@ -241,7 +251,7 @@
       moveSide,
       moveAbbr: moveSide ? g[`${moveSide}_abbr`] : null,
       moveTeam: moveSide ? g[moveSide] : null,
-      // The number you'd lock: the moved-to side's Tuesday line
+      // The number you'd lock: the moved-to side's Splash line
       move,
       lockSrc,
       lockLine: moveSide ? (moveSide === "home" ? lock : -lock) : null,
@@ -264,14 +274,13 @@
 
   function renderGames(rows) {
     const tbody = document.querySelector("#splits-table tbody");
-    const state = { league: "ALL", flagsOnly: false, splitsOnly: false, key: "edgePct", dir: -1, type: "number" };
+    const state = { league: "ALL", flagsOnly: false, key: "move", dir: -1, type: "number" };
 
     function visible() {
       return rows.filter(
         (r) =>
           (state.league === "ALL" || r.league === state.league) &&
-          (!state.flagsOnly || r.flag) &&
-          (!state.splitsOnly || r.hasSplits)
+          (!state.flagsOnly || r.flag)
       );
     }
 
@@ -297,20 +306,18 @@
         .map(
           (r) => `
         <tr class="${r.started ? "started" : r.flag ? "flagged" : ""}">
-          <td class="team game">${esc(r.away)} <span class="at">@</span> ${esc(r.home)}<span class="league">${esc(r.league)}</span></td>
+          <td class="team">${esc(r.home)}<span class="league" style="color:var(--muted);font-size:0.72rem;margin-left:0.4rem">${esc(r.league)}</span></td>
+          <td class="team">${esc(r.away)}</td>
+          ${cell(fmtSpread(r.dk_at_splash), "num group-start")}
           <td class="kickoff">${fmtKickoff(r.start)}</td>
           ${cell(fmtSpread(r.line), "num group-start")}
-          ${cell(fmtSpread(r.tue_line), "num")}
           ${cell(fmtSpread(r.splash_line), "num")}
           ${moveCell(r.move)}
           ${cell(r.moveAbbr ? esc(r.moveAbbr) : null, "num")}
-          ${r.edgePct === null ? `<td class="blank">—</td>` : `<td class="edge${r.edgePct >= 55 ? " good" : ""}">${r.edgePct}%<span class="rec">${r.edgeRec}</span></td>`}
-          ${cell(fmtPct(r.away_bets), "pct group-start")}
-          ${cell(fmtPct(r.away_money), r.hotAway ? "pct hot" : "pct")}
           ${cell(fmtPct(r.home_bets), "pct group-start")}
           ${cell(fmtPct(r.home_money), r.hotHome ? "pct hot" : "pct")}
-          ${cell(r.gap === null ? null : `${esc(r.gapAbbr)} +${r.gap}`, "gap group-start")}
-          <td class="flag">${r.flag ? `${esc(r.flag.abbr)} ${fmtSpread(r.flag.side_line)}` : ""}</td>
+          ${cell(r.gap === null ? null : `${esc(r.gapAbbr)} +${r.gap}`, (r.hotHome || r.hotAway) ? "gap group-start pct hot" : "gap group-start")}
+          <td>${r.flag ? `<span class="badge" title="Sharp: ${esc(r.flag.team)} ${fmtSpread(r.flag.side_line)}">&#10003; ${esc(r.flag.abbr)}</span>` : ""}</td>
         </tr>`
         )
         .join("");
@@ -342,9 +349,8 @@
       });
     });
     document.getElementById("flags-only").addEventListener("change", (e) => { state.flagsOnly = e.target.checked; draw(); });
-    document.getElementById("splits-only").addEventListener("change", (e) => { state.splitsOnly = e.target.checked; draw(); });
 
-    setArrow(document.querySelector('#splits-table thead th[data-key="edgePct"]'));
+    setArrow(document.querySelector('#splits-table thead th[data-key="move"]'));
     draw();
   }
 
@@ -359,7 +365,11 @@
           · <span class="pct">${r.edgePct}%</span> <span class="meta">(${r.edgeRec} historically)</span></li>`
       )
       .join("");
-    document.getElementById("edges-none").style.display = best.length ? "none" : "block";
+    const noneEl = document.getElementById("edges-none");
+    noneEl.textContent = rows.some((r) => r.splash_line !== null && r.splash_line !== undefined)
+      ? "No game is 2+ points off its Splash line yet."
+      : "No Splash lines for this week yet. Copy them with the Copy Splash Lines bookmarklet, paste into the SplashLines tab, then run Pull Splits.";
+    noneEl.style.display = best.length ? "none" : "block";
     document.getElementById("edges").style.display = "block";
   }
 
@@ -416,17 +426,25 @@
     const threshold = current.edge_threshold ?? 15;
     document.getElementById("threshold").textContent = threshold;
 
-    const rows = current.games.map((g) => toRow(g, threshold, edgeData));
+    // Only games on this week's Splash slate
+    const rows = current.games
+      .filter((g) => g.splash_line !== null && g.splash_line !== undefined)
+      .map((g) => toRow(g, threshold, edgeData));
+    if (rows.length === 0) {
+      statusEl.textContent = `pulled ${new Date(current.pulled_at).toLocaleString()}`;
+      document.getElementById("empty-state").style.display = "block";
+      renderRecord(flags);
+      return;
+    }
     const flagged = rows.filter((r) => r.flag).length;
     const withSplits = rows.filter((r) => r.hasSplits).length;
     const pulled = new Date(current.pulled_at).toLocaleString(undefined, {
       weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit",
     });
-    const withSplash = rows.filter((r) => r.lockSrc === "Splash").length;
-    const splashNote = current.splash_copied_at
-      ? ` · Splash lines for ${withSplash} (copied ${new Date(current.splash_copied_at).toLocaleString(undefined, { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })})`
-      : " · no Splash lines yet - moves measured from DraftKings' Tuesday line";
-    statusEl.textContent = `${rows.length} games · ${withSplits} with splits · ${flagged} sharp flag${flagged === 1 ? "" : "s"} · pulled ${pulled}${splashNote}`;
+    const copied = current.splash_copied_at
+      ? new Date(current.splash_copied_at).toLocaleString(undefined, { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })
+      : "?";
+    statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${flagged} sharp · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
 
     renderEdges(rows);
     renderGames(rows);

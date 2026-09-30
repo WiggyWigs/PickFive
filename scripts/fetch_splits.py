@@ -27,7 +27,10 @@ Odds API DraftKings line in data/weeks/<week_id>/tuesday.json - the same
 number the Weekly Lines page anchors to. The current line is also
 DraftKings, so the two are the same book.
 """
+import csv
+import io
 import json
+import os
 import re
 import sys
 from datetime import datetime, timedelta, timezone
@@ -190,6 +193,65 @@ def tuesday_line(game, cache):
     return None, None
 
 
+# --- Splash (contest) lines -------------------------------------------------
+
+def load_splash_lines():
+    """Rows from the Splash Lines sheet tab, filled by the Copy Splash Lines
+    bookmarklet (splash-bookmarklet.html). Optional: without the
+    SPLASH_LINES_CSV_URL variable, or if the fetch fails, the page just falls
+    back to DraftKings' Tuesday line."""
+    url = os.environ.get("SPLASH_LINES_CSV_URL", "").strip()
+    if not url:
+        return [], None
+    try:
+        with urlopen(Request(url, headers={"User-Agent": HEADERS["User-Agent"]}), timeout=30) as res:
+            text = res.read().decode("utf-8-sig")
+    except (HTTPError, URLError) as e:
+        print(f"WARNING: couldn't fetch Splash lines ({e}) - using Tuesday DraftKings lines only")
+        return [], None
+
+    rows, copied_at = [], None
+    for raw in csv.DictReader(io.StringIO(text)):
+        r = {(k or "").strip().lower(): (v or "").strip() for k, v in raw.items()}
+        try:
+            away_line = float(r["away line"]) if r.get("away line") else None
+            home_line = float(r["home line"]) if r.get("home line") else None
+        except ValueError:
+            continue
+        if not r.get("away") or not r.get("home") or (away_line is None and home_line is None):
+            continue
+        rows.append({"away": r["away"], "home": r["home"],
+                     "home_line": home_line if home_line is not None else -away_line})
+        copied_at = copied_at or r.get("copied at") or None
+    return rows, copied_at
+
+
+def contained(short, full):
+    """Share of the short name's words found in the full name. Splash shows
+    school/city names ("Western Kentucky", "NC State") while Action Network
+    uses full names ("Western Kentucky Hilltoppers"), so plain overlap
+    (similar) under-scores them."""
+    ts, tf = norm_tokens(short), norm_tokens(full)
+    return len(ts & tf) / len(ts) if ts else 0.0
+
+
+def splash_line_for(game, rows):
+    """Home-team Splash spread for this game. Both teams must match, which is
+    what keeps "Miami" from matching the wrong Miami."""
+    best, best_score = None, 0.0
+    for r in rows:
+        for flipped in (False, True):  # neutral-site games can list home/away differently
+            ra, rh = (r["home"], r["away"]) if flipped else (r["away"], r["home"])
+            a, h = contained(ra, game["away"]), contained(rh, game["home"])
+            if min(a, h) < 0.5:
+                continue
+            # tie-break on plain overlap so "Texas" prefers Texas Longhorns over Texas Tech
+            score = a + h + 0.01 * (similar(ra, game["away"]) + similar(rh, game["home"]))
+            if score > best_score:
+                best, best_score = (-r["home_line"] if flipped else r["home_line"]), score
+    return best if best_score >= 1.5 else None
+
+
 # --- Flag rule ---------------------------------------------------------------
 
 def sharp_flag(g):
@@ -255,6 +317,13 @@ def main():
                      if g["line"] is not None and g["tue_line"] is not None else None)
         g["flag"] = sharp_flag(g)
 
+    splash_rows, splash_copied_at = load_splash_lines()
+    for g in games:
+        g["splash_line"] = splash_line_for(g, splash_rows) if splash_rows else None
+    if splash_rows:
+        matched = sum(1 for g in games if g["splash_line"] is not None)
+        print(f"Splash lines: {len(splash_rows)} rows, {matched} matched to games")
+
     # 3. Flag log. A flag stays live until kickoff, then freezes with the
     # last pre-kickoff numbers; it is graded once the game is final.
     flags = load_json(SPLITS_DIR / "flags.json", {})
@@ -308,6 +377,7 @@ def main():
     current = {
         "pulled_at": now.isoformat(timespec="seconds"),
         "edge_threshold": EDGE_THRESHOLD,
+        "splash_copied_at": splash_copied_at,
         "games": sorted(games, key=lambda g: g["start_time"]),
     }
     (SPLITS_DIR / "current.json").write_text(json.dumps(current, indent=2) + "\n")

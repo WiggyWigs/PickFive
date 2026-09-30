@@ -87,7 +87,7 @@
 <header>
   <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
   <p class="sub">Where the bets are vs. where the money is, NFL &amp; NCAAF. Pulled daily from Action Network.</p>
-  <p class="sub">Picks lock Saturday 11 AM Eastern at Tuesday's line. Hist. win % = how often the side the line moved toward covered at the earlier line, 2024&ndash;26.</p>
+  <p class="sub">Picks lock Saturday 11 AM Eastern at the Splash line. Hist. win % = how often the side the line moved toward covered at the earlier line, 2024&ndash;26.</p>
   <p class="sub">Sharp flag: money % beats bet % by <span id="threshold">15</span>+ points on one side <em>and</em> the line has moved toward that side since Tuesday.</p>
 </header>
 
@@ -117,6 +117,7 @@
         <th data-key="start" data-type="number">Kickoff</th>
         <th data-key="line" data-type="number" class="group-start">Line</th>
         <th data-key="tue_line" data-type="number">Tue</th>
+        <th data-key="splash_line" data-type="number">Splash</th>
         <th data-key="move" data-type="number">Move</th>
         <th data-key="moveAbbr" data-type="string">Moved to</th>
         <th data-key="edgePct" data-type="number">Hist. win %</th>
@@ -165,8 +166,11 @@
   toward at the opening line (Action Network has no past Tuesday lines, so the opener stands in for the Tuesday lock). Moves of
   1.5 points or less are close to a coin flip. Your contest's Tuesday number may differ from DraftKings' - check it before locking.
   <br><br>
+  Splash = your contest's line (from the Splash Lines sheet tab). When a game has one, Move, Moved to and Hist. win % are
+  measured from it; otherwise from DraftKings' Tuesday line.
+  <br><br>
   Line is the home team's DraftKings spread (negative = home favored). Tue is Tuesday's DraftKings line - from our own Tuesday
-  splits pull, or the Weekly Lines Tuesday pull when that's missing. Move = Line minus Tue, same as the Weekly Lines delta.
+  splits pull, or the Weekly Lines Tuesday pull when that's missing. Move = Line minus the lock line (Splash if present, else Tue).
   Bets = share of tickets, $ = share of money wagered, both Action Network's consensus. A flag locks at kickoff using the
   last pull before it, and is graded against the line it was flagged at. College games without splits are FCS or small-market
   matchups Action Network doesn't report.
@@ -200,10 +204,16 @@
 
   function toRow(g, threshold, edgeData) {
     // Side the line moved toward since Tuesday (home spread down = toward home)
-    const moveSide = g.move === null || g.move === undefined || g.move === 0 ? null : g.move < 0 ? "home" : "away";
+    // Lock line = your actual Splash number when the sheet has it, else DraftKings' Tuesday line.
+    // Move and edge are measured from it (home spread; negative = moved toward home).
+    const hasSplash = g.splash_line !== null && g.splash_line !== undefined;
+    const lock = hasSplash ? g.splash_line : g.tue_line;
+    const lockSrc = hasSplash ? "Splash" : "Tue";
+    const move = lock === null || lock === undefined || g.line === null ? null : +(g.line - lock).toFixed(1);
+    const moveSide = move === null || move === 0 ? null : move < 0 ? "home" : "away";
     let edgePct = null, edgeRec = null;
     if (moveSide && edgeData) {
-      const b = bucketFor(edgeData, g.move);
+      const b = bucketFor(edgeData, move);
       const t = b && (edgeData.leagues[g.league] || edgeData.leagues.ALL)[b.name];
       if (t && t.w + t.l > 0) {
         edgePct = +((100 * t.w) / (t.w + t.l)).toFixed(1);
@@ -232,7 +242,9 @@
       moveAbbr: moveSide ? g[`${moveSide}_abbr`] : null,
       moveTeam: moveSide ? g[moveSide] : null,
       // The number you'd lock: the moved-to side's Tuesday line
-      lockLine: moveSide ? (moveSide === "home" ? g.tue_line : -g.tue_line) : null,
+      move,
+      lockSrc,
+      lockLine: moveSide ? (moveSide === "home" ? lock : -lock) : null,
       edgePct,
       edgeRec,
     };
@@ -289,6 +301,7 @@
           <td class="kickoff">${fmtKickoff(r.start)}</td>
           ${cell(fmtSpread(r.line), "num group-start")}
           ${cell(fmtSpread(r.tue_line), "num")}
+          ${cell(fmtSpread(r.splash_line), "num")}
           ${moveCell(r.move)}
           ${cell(r.moveAbbr ? esc(r.moveAbbr) : null, "num")}
           ${r.edgePct === null ? `<td class="blank">—</td>` : `<td class="edge${r.edgePct >= 55 ? " good" : ""}">${r.edgePct}%<span class="rec">${r.edgeRec}</span></td>`}
@@ -342,7 +355,7 @@
     document.getElementById("edges-list").innerHTML = best
       .map(
         (r) => `<li><span class="pick">${esc(r.moveTeam)} ${fmtSpread(r.lockLine)}</span>
-          <span class="meta">vs ${esc(r.moveSide === "home" ? r.away : r.home)} · ${esc(r.league)} · Tue ${fmtSpread(r.lockLine)} → now ${fmtSpread(r.moveSide === "home" ? r.line : -r.line)} · ${fmtKickoff(r.start)}</span>
+          <span class="meta">vs ${esc(r.moveSide === "home" ? r.away : r.home)} · ${esc(r.league)} · ${r.lockSrc} ${fmtSpread(r.lockLine)} → now ${fmtSpread(r.moveSide === "home" ? r.line : -r.line)} · ${fmtKickoff(r.start)}</span>
           · <span class="pct">${r.edgePct}%</span> <span class="meta">(${r.edgeRec} historically)</span></li>`
       )
       .join("");
@@ -409,7 +422,11 @@
     const pulled = new Date(current.pulled_at).toLocaleString(undefined, {
       weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit",
     });
-    statusEl.textContent = `${rows.length} games · ${withSplits} with splits · ${flagged} sharp flag${flagged === 1 ? "" : "s"} · pulled ${pulled}`;
+    const withSplash = rows.filter((r) => r.lockSrc === "Splash").length;
+    const splashNote = current.splash_copied_at
+      ? ` · Splash lines for ${withSplash} (copied ${new Date(current.splash_copied_at).toLocaleString(undefined, { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })})`
+      : " · no Splash lines yet - moves measured from DraftKings' Tuesday line";
+    statusEl.textContent = `${rows.length} games · ${withSplits} with splits · ${flagged} sharp flag${flagged === 1 ? "" : "s"} · pulled ${pulled}${splashNote}`;
 
     renderEdges(rows);
     renderGames(rows);

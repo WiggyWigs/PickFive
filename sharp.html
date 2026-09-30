@@ -65,11 +65,26 @@
   #splits-table td.kickoff { font-size: 0.78rem; white-space: nowrap; }
   /* dotted underline marks headers with a hover explanation */
   th.has-tip { text-decoration: underline dotted; text-underline-offset: 3px; }
-  .edge-tag { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; }
-  .edge-tag.sharp { color: var(--up); }
-  .edge-tag.trap { color: var(--down); }
-  .edge-tag.edge { color: var(--amber); }
-  .edge-tag + .edge-tag { margin-left: 0.4rem; }
+  /* Angle column: four fixed circles, M S T E, filled when that criterion is met */
+  :root { --edge-blue: #5b9bd5; }
+  .dots { display: inline-flex; gap: 0.25rem; }
+  .dot {
+    width: 1.3rem; height: 1.3rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--line);
+    color: var(--muted);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 0.66rem; font-weight: 700;
+    opacity: 0.55;
+  }
+  .dot.on { opacity: 1; color: var(--bg); }
+  .dot.money.on { background: var(--amber); border-color: var(--amber); }
+  .dot.sharp.on { background: var(--up); border-color: var(--up); }
+  .dot.trap.on  { background: var(--down); border-color: var(--down); }
+  .dot.edge.on  { background: var(--edge-blue); border-color: var(--edge-blue); }
+  .key { font-weight: 700; }
+  .key.money { color: var(--amber); } .key.sharp { color: var(--up); }
+  .key.trap { color: var(--down); } .key.edge { color: var(--edge-blue); }
   .badge {
     display: inline-flex;
     align-items: center;
@@ -127,9 +142,11 @@
   <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
   <p class="sub">This week's Splash slate vs. the live DraftKings line. Pulled every 2 hours Wed&ndash;Sat morning from Action Network.</p>
   <p class="sub">Picks lock Saturday 11 AM Eastern at the Splash line.</p>
-  <p class="sub">Angle: <strong style="color:var(--amber)">Edge</strong> = DraftKings is 2+ points off your Splash line.
-    <strong style="color:var(--up)">Sharp</strong> = the money is <span id="threshold">15</span>+ points heavier than the tickets on one team <em>and</em> DraftKings has moved toward that team since your Splash lines came in.
-    <strong style="color:var(--down)">Trap</strong> = same lopsided money, but the line moved the other way.</p>
+  <p class="sub">Angle circles fill in when a game meets:
+    <span class="key money">M</span> Money &ndash; the money is <span id="threshold">15</span>+ points heavier than the tickets on one team ·
+    <span class="key sharp">S</span> Sharp &ndash; that, <em>and</em> DraftKings has moved toward that team since your Splash lines came in ·
+    <span class="key trap">T</span> Trap &ndash; over 60% of the money on one team, but DraftKings has moved the other way ·
+    <span class="key edge">E</span> Edge &ndash; DraftKings is 2+ points off your Splash line.</p>
 </header>
 
 <div class="status" id="status">Loading splits&hellip;</div>
@@ -171,7 +188,7 @@
         <th data-key="home_bets" data-type="number" class="group-start">Home Bets</th>
         <th data-key="home_money" data-type="number">Home Money</th>
         <th data-key="gap" data-type="number" class="group-start has-tip" title="Money % minus bet % for the team whose money outruns its tickets. ARI +13 = Arizona has 13 points more of the money than of the tickets - fewer, bigger bets on Arizona.">Ticket Gap</th>
-        <th data-key="angleText" data-type="string">Angle</th>
+        <th data-key="angleScore" data-type="number" title="M Money · S Sharp · T Trap · E Edge - sorts by how many are filled">Angle</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -212,11 +229,15 @@
   Current Line = DraftKings now.
   Movement = Current Line minus Splash Line; Moved to = the team it moved toward, i.e. the side the market now likes more
   than your Splash number does. Ticket Gap = money % minus bet % for the team whose money outruns its tickets.
-  Sharp/Trap measure the line move from DraftKings' line when your Splash lines came in (the first Pull Splits after
-  pasting), not from the Splash line. In 2024&ndash;26 history neither beat a coin flip: Sharp sides went 240-231 (51.0%);
-  in Trap games the money side went 176-159 (52.5%) and the line side 159-176 (47.5%). Treat both as information, not picks.
-  The Sharp Money dropdown changes Sharp, Trap and the orange Ticket Gap highlight on this page only; the flag record
-  below is always graded at 15+ so it stays one consistent history.
+  Sharp and Trap measure the line move from DraftKings' line when your Splash lines came in (the first Pull Splits after
+  pasting), not from the Splash line. The Sharp Money dropdown sets the threshold for M and S (and the orange Ticket Gap
+  highlight) on this page only; T is always over 60% of the money. Games to Watch = any game with S, T or E filled.
+  <br><br>
+  2024&ndash;26 history (NFL + FBS, graded at the closing line): M alone, at 15+, sided with the money 519-480 (52.0%);
+  S at 15+ went 240-231 (51.0%); in T games the money side went 281-295 (48.8%) and the line side 295-281 (51.2%).
+  None beat a coin flip - treat them as information, not picks. E is different: in the backtest a 2&ndash;2.5 point
+  gap covered 55.5% and 3+ points 61&ndash;71% at the earlier number. The flag record below is always graded at 15+
+  so it stays one consistent history.
   <br><br>
   Hist. win % (best-edges box) comes from scripts/backtest_moves.py: every 2024&ndash;26 NFL/FBS game whose line moved, grading the side it moved
   toward at the opening line (Action Network has no past Tuesday lines, so the opener stands in for the Tuesday lock). Moves of
@@ -282,29 +303,49 @@
     // The side where money outruns tickets - that's the one the gap describes
     const gapSide = !hasSplits ? null : homeGap >= awayGap ? "home" : "away";
     const gap = !hasSplits ? null : Math.max(homeGap, awayGap);
-    // Edge column. Market move = DraftKings now vs DraftKings when the Splash lines came in.
-    //  Sharp: money outruns tickets by the threshold on a team AND the line moved toward it
-    //  (same rule as the script's logged flag, but at the dropdown's threshold instead of a fixed 15)
-    //  Trap:  money outruns tickets by the threshold on a team BUT the line moved away from it
+    // Angle circles. Market move = DraftKings now vs DraftKings when the Splash lines came in
+    // (home spread: negative = moved toward home).
+    const sgn = (v) => (v > 0 ? "+" : "") + v;
     const marketMove = g.line !== null && g.dk_at_splash !== null && g.dk_at_splash !== undefined ? +(g.line - g.dk_at_splash).toFixed(1) : null;
+    const movedToward = (side) => marketMove !== null && marketMove !== 0 && (side === "home" ? marketMove < 0 : marketMove > 0);
+    const movedAway = (side) => marketMove !== null && marketMove !== 0 && !movedToward(side);
+    const noMoveYet = marketMove === null ? "no baseline yet" : "no move yet";
+
+    //  M Money: Ticket Gap at or above the dropdown threshold, regardless of line movement
     const moneySide = hasSplits && gap >= threshold ? gapSide : null;
-    const movedAgainstMoney = moneySide && marketMove !== null && marketMove !== 0 &&
-      (moneySide === "home" ? marketMove > 0 : marketMove < 0);
-    const movedWithMoney = moneySide && marketMove !== null && marketMove !== 0 && !movedAgainstMoney;
-    //  Edge:  DraftKings is 2+ points off your Splash line (Movement column)
     const moneyAbbr = moneySide ? g[`${moneySide}_abbr`] : "";
-    const angles = [];
-    if (movedWithMoney) angles.push({ tag: "Sharp", title: `Money on ${moneyAbbr} (+${gap}) and the line moved toward them (${marketMove > 0 ? "+" : ""}${marketMove})` });
-    else if (movedAgainstMoney) angles.push({ tag: "Trap", title: `Money on ${moneyAbbr} (+${gap}) but the line moved away from them (${marketMove > 0 ? "+" : ""}${marketMove})` });
-    if (moveSide && Math.abs(move) >= 2) {
-      const sideSplash = moveSide === "home" ? lock : -lock;
-      const sideNow = moveSide === "home" ? g.line : -g.line;
-      angles.push({ tag: "Edge", title: `${g[`${moveSide}_abbr`]} is ${sideSplash > 0 ? "+" : ""}${sideSplash} on Splash vs ${sideNow > 0 ? "+" : ""}${sideNow} at DraftKings now (${Math.abs(move)} pts)` });
-    }
+    //  S Sharp: Money, and DraftKings moved toward that team
+    const sharp = !!moneySide && movedToward(moneySide);
+    //  T Trap: over 60% of the money on one team, and DraftKings moved the other way
+    const majSide = !hasSplits ? null : g.home_money > 60 ? "home" : g.away_money > 60 ? "away" : null;
+    const majPct = majSide ? g[`${majSide}_money`] : null;
+    const trap = !!majSide && movedAway(majSide);
+    //  E Edge: DraftKings is 2+ points off your Splash line (Movement column)
+    const edge = !!moveSide && Math.abs(move) >= 2;
+    const sideSplash = moveSide ? (moveSide === "home" ? lock : -lock) : null;
+    const sideNow = moveSide ? (moveSide === "home" ? g.line : -g.line) : null;
+
+    const angles = [
+      { key: "money", letter: "M", met: !!moneySide,
+        title: moneySide ? `Money: ${moneyAbbr} money outruns its tickets by ${gap} (${threshold}+ needed)`
+                         : `Money: Ticket Gap ${gap === null ? "n/a" : gap} is under ${threshold}` },
+      { key: "sharp", letter: "S", met: sharp,
+        title: sharp ? `Sharp: money on ${moneyAbbr} (+${gap}) and the line moved toward them (${sgn(marketMove)})`
+                     : `Sharp: needs Money plus a line move toward that team (${marketMove ? sgn(marketMove) : noMoveYet})` },
+      { key: "trap", letter: "T", met: trap,
+        title: trap ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]} but the line moved away from them (${sgn(marketMove)})`
+                    : majSide ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]}, line hasn't moved against them (${marketMove ? sgn(marketMove) : noMoveYet})`
+                              : "Trap: no team has over 60% of the money" },
+      { key: "edge", letter: "E", met: edge,
+        title: edge ? `Edge: ${g[`${moveSide}_abbr`]} is ${sgn(sideSplash)} on Splash vs ${sgn(sideNow)} at DraftKings now (${Math.abs(move)} pts)`
+                    : `Edge: Splash vs DraftKings gap is ${move === null ? "n/a" : Math.abs(move)} pts (2+ needed)` },
+    ];
     return {
       ...g,
       angles,
-      angleText: angles.map((a) => a.tag).join(" "),
+      angleScore: angles.filter((a) => a.met).length,
+      // Games to Watch = Sharp, Trap or Edge (Money alone is too common to watch)
+      watch: sharp || trap || edge,
       game: `${g.away} @ ${g.home}`,
       start: Date.parse(g.start_time),
       hasSplits,
@@ -347,7 +388,7 @@
       return rows.filter(
         (r) =>
           (state.league === "ALL" || r.league === state.league) &&
-          (!state.watchOnly || r.angles.length > 0)
+          (!state.watchOnly || r.watch)
       );
     }
 
@@ -383,7 +424,7 @@
           ${cell(fmtPct(r.home_bets), "pct group-start")}
           ${cell(fmtPct(r.home_money), r.hotHome ? "pct hot" : "pct")}
           ${cell(r.gap === null ? null : `${esc(r.gapAbbr)} +${r.gap}`, (r.hotHome || r.hotAway) ? "gap group-start pct hot" : "gap group-start")}
-          <td>${r.angles.map((a) => `<span class="edge-tag ${a.tag.toLowerCase()}" title="${esc(a.title)}">${a.tag}</span>`).join("")}</td>
+          <td><span class="dots">${r.angles.map((a) => `<span class="dot ${a.key}${a.met ? " on" : ""}" title="${esc(a.title)}">${a.letter}</span>`).join("")}</span></td>
         </tr>`
         )
         .join("");
@@ -517,10 +558,10 @@
       ? new Date(current.splash_copied_at).toLocaleString(undefined, { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })
       : "?";
     function showStatus() {
-      const count = (tag) => rows.filter((r) => r.angles.some((a) => a.tag === tag)).length;
+      const count = (key) => rows.filter((r) => r.angles.some((a) => a.key === key && a.met)).length;
       const withSplits = rows.filter((r) => r.hasSplits).length;
       document.getElementById("threshold").textContent = threshold;
-      statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${count("Edge")} edge · ${count("Sharp")} sharp · ${count("Trap")} trap (Sharp Money ${threshold}+) · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
+      statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${count("money")} money · ${count("sharp")} sharp · ${count("trap")} trap · ${count("edge")} edge (Sharp Money ${threshold}+) · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
     }
 
     showStatus();

@@ -7,6 +7,12 @@ on:
     # ledger and picks pulls. Early enough to snapshot before Saturday's
     # noon Eastern college kickoffs.
     - cron: "23 15 * * *"
+    # Saturday pre-lock pulls. Contest picks lock at 11:00 AM Eastern
+    # Saturday, and the daily slot above lands after that during EDT.
+    # Two early slots because GitHub often starts scheduled runs late:
+    # 11:47 UTC = 7:47 AM EDT / 6:47 AM EST, 13:17 UTC = 9:17 AM EDT / 8:17 AM EST.
+    - cron: "47 11 * * 6"
+    - cron: "17 13 * * 6"
   workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
 
 permissions:

@@ -32,6 +32,14 @@
 
   .controls button.on { color: var(--amber); border-color: var(--amber); }
   .controls label { cursor: pointer; display: flex; gap: 0.35rem; align-items: center; }
+  .controls select {
+    background: var(--panel);
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.25rem 0.4rem;
+    font: inherit;
+  }
 
   td.pct { text-align: right; }
   td.pct.hot { color: var(--amber); font-weight: 600; }
@@ -133,6 +141,14 @@
 </div>
 
 <div class="controls" id="controls" style="display:none;">
+  <label>Sharp Money
+    <select id="threshold-select" title="How many points heavier the money must be than the tickets on a team (Ticket Gap) to count toward Sharp or Trap">
+      <option value="10">10+</option>
+      <option value="15">15+</option>
+      <option value="20">20+</option>
+      <option value="25">25+</option>
+    </select>
+  </label>
   <span>
     <button data-league="ALL" class="on">All</button>
     <button data-league="NFL">NFL</button>
@@ -199,6 +215,8 @@
   Sharp/Trap measure the line move from DraftKings' line when your Splash lines came in (the first Pull Splits after
   pasting), not from the Splash line. In 2024&ndash;26 history neither beat a coin flip: Sharp sides went 240-231 (51.0%);
   in Trap games the money side went 176-159 (52.5%) and the line side 159-176 (47.5%). Treat both as information, not picks.
+  The Sharp Money dropdown changes Sharp, Trap and the orange Ticket Gap highlight on this page only; the flag record
+  below is always graded at 15+ so it stays one consistent history.
   <br><br>
   Hist. win % (best-edges box) comes from scripts/backtest_moves.py: every 2024&ndash;26 NFL/FBS game whose line moved, grading the side it moved
   toward at the opening line (Action Network has no past Tuesday lines, so the opener stands in for the Tuesday lock). Moves of
@@ -265,16 +283,18 @@
     const gapSide = !hasSplits ? null : homeGap >= awayGap ? "home" : "away";
     const gap = !hasSplits ? null : Math.max(homeGap, awayGap);
     // Edge column. Market move = DraftKings now vs DraftKings when the Splash lines came in.
-    //  Sharp: money outruns tickets by the threshold on a team AND the line moved toward it (the script's flag)
+    //  Sharp: money outruns tickets by the threshold on a team AND the line moved toward it
+    //  (same rule as the script's logged flag, but at the dropdown's threshold instead of a fixed 15)
     //  Trap:  money outruns tickets by the threshold on a team BUT the line moved away from it
     const marketMove = g.line !== null && g.dk_at_splash !== null && g.dk_at_splash !== undefined ? +(g.line - g.dk_at_splash).toFixed(1) : null;
     const moneySide = hasSplits && gap >= threshold ? gapSide : null;
     const movedAgainstMoney = moneySide && marketMove !== null && marketMove !== 0 &&
       (moneySide === "home" ? marketMove > 0 : marketMove < 0);
+    const movedWithMoney = moneySide && marketMove !== null && marketMove !== 0 && !movedAgainstMoney;
     //  Edge:  DraftKings is 2+ points off your Splash line (Movement column)
     const moneyAbbr = moneySide ? g[`${moneySide}_abbr`] : "";
     const angles = [];
-    if (g.flag) angles.push({ tag: "Sharp", title: `Money on ${g.flag.abbr} (+${g.flag.edge}) and the line moved toward them` });
+    if (movedWithMoney) angles.push({ tag: "Sharp", title: `Money on ${moneyAbbr} (+${gap}) and the line moved toward them (${marketMove > 0 ? "+" : ""}${marketMove})` });
     else if (movedAgainstMoney) angles.push({ tag: "Trap", title: `Money on ${moneyAbbr} (+${gap}) but the line moved away from them (${marketMove > 0 ? "+" : ""}${marketMove})` });
     if (moveSide && Math.abs(move) >= 2) {
       const sideSplash = moveSide === "home" ? lock : -lock;
@@ -293,7 +313,6 @@
       gapAbbr: gapSide ? g[`${gapSide}_abbr`] : null,
       hotAway: hasSplits && gapSide === "away" && gap >= threshold,
       hotHome: hasSplits && gapSide === "home" && gap >= threshold,
-      flagText: g.flag ? `${g.flag.abbr} ${fmtSpread(g.flag.side_line)}` : "",
       started: g.status !== "scheduled" || Date.parse(g.start_time) <= Date.now(),
       moveSide,
       moveAbbr: moveSide ? g[`${moveSide}_abbr`] : null,
@@ -319,7 +338,8 @@
     return `<td class="${cls}">${v > 0 ? "+" + v : v}</td>`;
   }
 
-  function renderGames(rows) {
+  function renderGames(initialRows) {
+    let rows = initialRows;
     const tbody = document.querySelector("#splits-table tbody");
     const state = { league: "ALL", watchOnly: false, key: "move", dir: -1, type: "number" };
 
@@ -398,6 +418,8 @@
 
     setArrow(document.querySelector('#splits-table thead th[data-key="move"]'));
     draw();
+    // Swap in rows rebuilt at a new threshold, keeping sort and filters
+    return { setRows(next) { rows = next; draw(); } };
   }
 
   function renderEdges(rows) {
@@ -469,32 +491,48 @@
       return;
     }
 
-    const threshold = current.edge_threshold ?? 15;
-    document.getElementById("threshold").textContent = threshold;
+    // Sharp Money threshold: last choice in this browser, else the script's default (15)
+    const select = document.getElementById("threshold-select");
+    let threshold = current.edge_threshold ?? 15;
+    try {
+      const saved = Number(localStorage.getItem("sharpThreshold"));
+      if ([10, 15, 20, 25].includes(saved)) threshold = saved;
+    } catch (e) { /* storage blocked - use the default */ }
+    select.value = String(threshold);
 
     // Only games on this week's Splash slate
-    const rows = current.games
-      .filter((g) => g.splash_line !== null && g.splash_line !== undefined)
-      .map((g) => toRow(g, threshold, edgeData));
+    const slate = current.games.filter((g) => g.splash_line !== null && g.splash_line !== undefined);
+    const build = (t) => slate.map((g) => toRow(g, t, edgeData));
+    let rows = build(threshold);
     if (rows.length === 0) {
       statusEl.textContent = `pulled ${new Date(current.pulled_at).toLocaleString()}`;
       document.getElementById("empty-state").style.display = "block";
       renderRecord(flags);
       return;
     }
-    const count = (tag) => rows.filter((r) => r.angles.some((a) => a.tag === tag)).length;
-    const flagged = count("Sharp"), traps = count("Trap"), edges = count("Edge");
-    const withSplits = rows.filter((r) => r.hasSplits).length;
     const pulled = new Date(current.pulled_at).toLocaleString(undefined, {
       weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit",
     });
     const copied = current.splash_copied_at
       ? new Date(current.splash_copied_at).toLocaleString(undefined, { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })
       : "?";
-    statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${edges} edge · ${flagged} sharp · ${traps} trap · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
+    function showStatus() {
+      const count = (tag) => rows.filter((r) => r.angles.some((a) => a.tag === tag)).length;
+      const withSplits = rows.filter((r) => r.hasSplits).length;
+      document.getElementById("threshold").textContent = threshold;
+      statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${count("Edge")} edge · ${count("Sharp")} sharp · ${count("Trap")} trap (Sharp Money ${threshold}+) · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
+    }
 
+    showStatus();
     renderEdges(rows);
-    renderGames(rows);
+    const games = renderGames(rows);
+    select.addEventListener("change", () => {
+      threshold = Number(select.value);
+      try { localStorage.setItem("sharpThreshold", String(threshold)); } catch (e) { /* not remembered - fine */ }
+      rows = build(threshold);
+      showStatus();
+      games.setRows(rows);
+    });
     document.getElementById("controls").style.display = "flex";
     document.getElementById("table-wrap").style.display = "block";
     renderRecord(flags);

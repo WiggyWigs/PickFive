@@ -7,6 +7,24 @@
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<style>
+  .photo-gallery {
+    max-width: 1100px;
+    margin: 0 auto 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .photo-gallery img {
+    height: 140px;
+    width: auto;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    object-fit: cover;
+    cursor: pointer;
+  }
+</style>
 </head>
 <body>
 
@@ -21,6 +39,8 @@
 </header>
 
 <div class="status" id="status">Loading this week's data&hellip;</div>
+
+<div class="photo-gallery" id="photo-gallery" style="display:none;"></div>
 
 <div class="table-wrap" id="table-wrap" style="display:none;">
   <table id="lines-table">
@@ -52,6 +72,39 @@
   const STAGES = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
   const LABELS = { monday: "Mon", tuesday: "Tue", wednesday: "Wed", thursday: "Thu", friday: "Fri", saturday: "Sat" };
 
+  const PHOTOS_API_URL = "https://api.github.com/repos/wiggywigs/PickFive/contents/images/weekly";
+  const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp)$/i;
+
+  async function loadWeeklyPhotos() {
+    try {
+      const res = await fetch(PHOTOS_API_URL, { cache: "no-store" });
+      if (!res.ok) return []; // folder missing, renamed, or rate-limited - fail quietly, not a page-breaking error
+      const files = await res.json();
+      if (!Array.isArray(files)) return [];
+      return files.filter((f) => f.type === "file" && IMAGE_EXTENSIONS.test(f.name));
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function renderWeeklyPhotos(files) {
+    const gallery = document.getElementById("photo-gallery");
+    if (files.length === 0) {
+      gallery.style.display = "none";
+      return;
+    }
+    gallery.innerHTML = files
+      .map(
+        (f) => `
+      <a href="${f.download_url}" target="_blank" rel="noopener">
+        <img src="${f.download_url}" alt="${f.name}">
+      </a>
+    `
+      )
+      .join("");
+    gallery.style.display = "flex";
+  }
+
   async function loadStage(stage) {
     try {
       const res = await fetch(`data/${stage}.json`, { cache: "no-store" });
@@ -76,6 +129,8 @@
   }
 
   async function init() {
+    loadWeeklyPhotos().then(renderWeeklyPhotos); // independent of the line data below - runs in parallel, never blocks it
+
     const statusEl = document.getElementById("status");
     const results = {};
     for (const stage of STAGES) {

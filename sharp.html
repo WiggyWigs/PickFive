@@ -138,7 +138,7 @@
     <button data-league="NFL">NFL</button>
     <button data-league="NCAAF">NCAAF</button>
   </span>
-  <label><input type="checkbox" id="flags-only"> Sharp / Trap / Edge only</label>
+  <label><input type="checkbox" id="edge-only"> Edge Only</label>
 </div>
 
 <div class="table-wrap" id="table-wrap" style="display:none;">
@@ -321,13 +321,13 @@
 
   function renderGames(rows) {
     const tbody = document.querySelector("#splits-table tbody");
-    const state = { league: "ALL", flagsOnly: false, key: "move", dir: -1, type: "number" };
+    const state = { league: "ALL", edgeOnly: false, key: "move", dir: -1, type: "number" };
 
     function visible() {
       return rows.filter(
         (r) =>
           (state.league === "ALL" || r.league === state.league) &&
-          (!state.flagsOnly || r.angles.length)
+          (!state.edgeOnly || r.angles.some((a) => a.tag === "Edge"))
       );
     }
 
@@ -394,7 +394,7 @@
         draw();
       });
     });
-    document.getElementById("flags-only").addEventListener("change", (e) => { state.flagsOnly = e.target.checked; draw(); });
+    document.getElementById("edge-only").addEventListener("change", (e) => { state.edgeOnly = e.target.checked; draw(); });
 
     setArrow(document.querySelector('#splits-table thead th[data-key="move"]'));
     draw();

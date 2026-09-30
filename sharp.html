@@ -58,6 +58,8 @@
   .edge-tag { font-weight: 700; font-size: 0.78rem; letter-spacing: 0.02em; }
   .edge-tag.sharp { color: var(--up); }
   .edge-tag.trap { color: var(--down); }
+  .edge-tag.edge { color: var(--amber); }
+  .edge-tag + .edge-tag { margin-left: 0.4rem; }
   .badge {
     display: inline-flex;
     align-items: center;
@@ -115,7 +117,8 @@
   <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
   <p class="sub">This week's Splash slate vs. the live DraftKings line. Pulled every 2 hours Wed&ndash;Sat morning from Action Network.</p>
   <p class="sub">Picks lock Saturday 11 AM Eastern at the Splash line.</p>
-  <p class="sub">Edge: <strong style="color:var(--up)">Sharp</strong> = the money is <span id="threshold">15</span>+ points heavier than the tickets on one team <em>and</em> DraftKings has moved toward that team since your Splash lines came in.
+  <p class="sub">Angle: <strong style="color:var(--amber)">Edge</strong> = DraftKings is 2+ points off your Splash line.
+    <strong style="color:var(--up)">Sharp</strong> = the money is <span id="threshold">15</span>+ points heavier than the tickets on one team <em>and</em> DraftKings has moved toward that team since your Splash lines came in.
     <strong style="color:var(--down)">Trap</strong> = same lopsided money, but the line moved the other way.</p>
 </header>
 
@@ -133,7 +136,7 @@
     <button data-league="NFL">NFL</button>
     <button data-league="NCAAF">NCAAF</button>
   </span>
-  <label><input type="checkbox" id="flags-only"> Sharp / Trap only</label>
+  <label><input type="checkbox" id="flags-only"> Sharp / Trap / Edge only</label>
 </div>
 
 <div class="table-wrap" id="table-wrap" style="display:none;">
@@ -150,7 +153,7 @@
         <th data-key="home_bets" data-type="number" class="group-start">Home Bets</th>
         <th data-key="home_money" data-type="number">Home Money</th>
         <th data-key="gap" data-type="number" class="group-start">Sharp Angle ($ − Bets)</th>
-        <th data-key="edgeTag" data-type="string">Edge</th>
+        <th data-key="angleText" data-type="string">Angle</th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -266,15 +269,20 @@
     const moneySide = hasSplits && gap >= threshold ? gapSide : null;
     const movedAgainstMoney = moneySide && marketMove !== null && marketMove !== 0 &&
       (moneySide === "home" ? marketMove > 0 : marketMove < 0);
-    const edgeTag = g.flag ? "Sharp" : movedAgainstMoney ? "Trap" : "";
+    //  Edge:  DraftKings is 2+ points off your Splash line (Movement column)
     const moneyAbbr = moneySide ? g[`${moneySide}_abbr`] : "";
-    const edgeTitle = g.flag
-      ? `Money on ${g.flag.abbr} (+${g.flag.edge}) and the line moved toward them`
-      : movedAgainstMoney ? `Money on ${moneyAbbr} (+${gap}) but the line moved away from them (${marketMove > 0 ? "+" : ""}${marketMove})` : "";
+    const angles = [];
+    if (g.flag) angles.push({ tag: "Sharp", title: `Money on ${g.flag.abbr} (+${g.flag.edge}) and the line moved toward them` });
+    else if (movedAgainstMoney) angles.push({ tag: "Trap", title: `Money on ${moneyAbbr} (+${gap}) but the line moved away from them (${marketMove > 0 ? "+" : ""}${marketMove})` });
+    if (moveSide && Math.abs(move) >= 2) {
+      const sideSplash = moveSide === "home" ? lock : -lock;
+      const sideNow = moveSide === "home" ? g.line : -g.line;
+      angles.push({ tag: "Edge", title: `${g[`${moveSide}_abbr`]} is ${sideSplash > 0 ? "+" : ""}${sideSplash} on Splash vs ${sideNow > 0 ? "+" : ""}${sideNow} at DraftKings now (${Math.abs(move)} pts)` });
+    }
     return {
       ...g,
-      edgeTag,
-      edgeTitle,
+      angles,
+      angleText: angles.map((a) => a.tag).join(" "),
       game: `${g.away} @ ${g.home}`,
       start: Date.parse(g.start_time),
       hasSplits,
@@ -317,7 +325,7 @@
       return rows.filter(
         (r) =>
           (state.league === "ALL" || r.league === state.league) &&
-          (!state.flagsOnly || r.edgeTag)
+          (!state.flagsOnly || r.angles.length)
       );
     }
 
@@ -353,7 +361,7 @@
           ${cell(fmtPct(r.home_bets), "pct group-start")}
           ${cell(fmtPct(r.home_money), r.hotHome ? "pct hot" : "pct")}
           ${cell(r.gap === null ? null : `${esc(r.gapAbbr)} +${r.gap}`, (r.hotHome || r.hotAway) ? "gap group-start pct hot" : "gap group-start")}
-          <td>${r.edgeTag ? `<span class="edge-tag ${r.edgeTag.toLowerCase()}" title="${esc(r.edgeTitle)}">${r.edgeTag}</span>` : ""}</td>
+          <td>${r.angles.map((a) => `<span class="edge-tag ${a.tag.toLowerCase()}" title="${esc(a.title)}">${a.tag}</span>`).join("")}</td>
         </tr>`
         )
         .join("");
@@ -472,8 +480,8 @@
       renderRecord(flags);
       return;
     }
-    const flagged = rows.filter((r) => r.edgeTag === "Sharp").length;
-    const traps = rows.filter((r) => r.edgeTag === "Trap").length;
+    const count = (tag) => rows.filter((r) => r.angles.some((a) => a.tag === tag)).length;
+    const flagged = count("Sharp"), traps = count("Trap"), edges = count("Edge");
     const withSplits = rows.filter((r) => r.hasSplits).length;
     const pulled = new Date(current.pulled_at).toLocaleString(undefined, {
       weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit",
@@ -481,7 +489,7 @@
     const copied = current.splash_copied_at
       ? new Date(current.splash_copied_at).toLocaleString(undefined, { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })
       : "?";
-    statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${flagged} sharp · ${traps} trap · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
+    statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${edges} edge · ${flagged} sharp · ${traps} trap · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
 
     renderEdges(rows);
     renderGames(rows);

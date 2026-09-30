@@ -41,7 +41,7 @@
 <main>
   <h1>Splash Lines bookmarklet</h1>
   <p>Copies every game's Splash spread from your picks page to the clipboard, ready to paste into the
-    <strong>Splash Lines</strong> tab of the sheet. It only reads what's on your screen; it stores no
+    <strong>SplashLines</strong> tab of the sheet. It only reads what's on your screen; it stores no
     password and sends nothing anywhere.</p>
 
   <h2>Install (once)</h2>
@@ -57,7 +57,7 @@
   <ol>
     <li>Open your Splash picks page and scroll to the bottom once so every game has loaded.</li>
     <li>Click <strong>Copy Splash Lines</strong>. A message tells you how many games it copied.</li>
-    <li>In the sheet, click cell <code>A1</code> of the <strong>Splash Lines</strong> tab and paste
+    <li>In the sheet, click cell <code>A1</code> of the <strong>SplashLines</strong> tab and paste
       (<code>Ctrl+V</code>), replacing last week's rows.</li>
   </ol>
   <p class="muted">Compare the count in the message with the number of games on the page. If they
@@ -136,7 +136,7 @@
       .join("\n");
 
     var msg = "Copied " + rows.length + " games." + (problems ? "\n" + problems + " game(s) couldn't be read - check the page." : "") +
-      "\n\nPaste into cell A1 of the Splash Lines tab.";
+      "\n\nPaste into cell A1 of the SplashLines tab.";
 
     function fallback() {
       // Clipboard blocked: show the text so it can be copied by hand

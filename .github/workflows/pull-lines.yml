@@ -106,10 +106,23 @@ jobs:
           ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
         run: python scripts/fetch_lines.py --stage ${{ steps.stage.outputs.name }}
 
+      # Weekly photo gallery on the Weekly Lines page: you upload photos
+      # to images/weekly/ by hand through GitHub's web UI any time during
+      # the week, and the page lists whatever's in that folder live. This
+      # step is what makes them disappear again - Monday's pull clears
+      # the folder (keeping .gitkeep so it still exists to upload into),
+      # so next week starts empty until you upload something new.
+      - name: Clear weekly photos (Monday only)
+        if: steps.stage.outputs.name == 'monday'
+        run: |
+          mkdir -p images/weekly
+          find images/weekly -type f ! -name '.gitkeep' -delete
+          touch images/weekly/.gitkeep
+
       - name: Commit snapshot
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/
+          git add data/ images/weekly/
           git diff --staged --quiet || git commit -m "Pull lines: ${{ steps.stage.outputs.name }} ($(date -u +%F))"
           git push

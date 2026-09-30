@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickFive — Splash Lines Bookmarklet</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+  }
+  main h1 { font-family: "Iowan Old Style", Georgia, serif; font-size: 1.5rem; margin: 1.5rem 0 0.5rem; }
+  main h2 { font-family: "Iowan Old Style", Georgia, serif; font-size: 1.1rem; margin: 1.75rem 0 0.5rem; }
+  main p, main li { color: var(--text); }
+  main .muted { color: var(--muted); font-size: 0.9rem; }
+  a.bookmarklet {
+    display: inline-block;
+    margin: 0.75rem 0;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--amber);
+    border-radius: 6px;
+    color: var(--amber);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: grab;
+  }
+  code, pre { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+  code { padding: 0.05rem 0.3rem; }
+  pre { padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<script src="assets/nav.js"></script>
+
+<main>
+  <h1>Splash Lines bookmarklet</h1>
+  <p>Copies every game's Splash spread from your picks page to the clipboard, ready to paste into the
+    <strong>Splash Lines</strong> tab of the sheet. It only reads what's on your screen; it stores no
+    password and sends nothing anywhere.</p>
+
+  <h2>Install (once)</h2>
+  <ol>
+    <li>Show Firefox's bookmarks toolbar: <code>Ctrl+Shift+B</code> (<code>Cmd+Shift+B</code> on a Mac).</li>
+    <li>Drag this button onto the toolbar:<br>
+      <a class="bookmarklet" id="bookmarklet" href="#">Copy Splash Lines</a></li>
+  </ol>
+  <p class="muted">If dragging doesn't work: right-click the toolbar → <em>Add Bookmark…</em>, name it
+    "Copy Splash Lines", and paste the text from the box at the bottom of this page into the URL field.</p>
+
+  <h2>Use (each week, after Splash posts the slate)</h2>
+  <ol>
+    <li>Open your Splash picks page and scroll to the bottom once so every game has loaded.</li>
+    <li>Click <strong>Copy Splash Lines</strong>. A message tells you how many games it copied.</li>
+    <li>In the sheet, click cell <code>A1</code> of the <strong>Splash Lines</strong> tab and paste
+      (<code>Ctrl+V</code>), replacing last week's rows.</li>
+  </ol>
+  <p class="muted">Compare the count in the message with the number of games on the page. If they
+    differ, or it says 0, Splash has probably changed its page layout; send a new sample of one game's
+    HTML and the bookmarklet can be updated.</p>
+
+  <h2>Bookmark URL</h2>
+  <pre id="bookmarklet-src"></pre>
+</main>
+
+<script>
+  // The bookmarklet itself. Written as a normal function, then turned into a
+  // javascript: URL below so the source here stays readable.
+  //
+  // How it finds games, keyed on things less likely to change than CSS classes:
+  //  - each game has a "Preview {Away} at {Home}" button (aria-label) with full team names
+  //  - its card holds two buttons with data-testid "team-row-...", away first then home
+  //  - each team row shows its spread as a text node like "+2.5" / "-2.5" / "PK"
+  function copySplashLines() {
+    var SPREAD = /^(?:[+-]?\d+(?:\.\d+)?|PK|EVEN)$/i;
+    var DAYTIME = /^(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\b.*\d/;
+
+    function textLeaves(root) {
+      var out = [];
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+      while (walker.nextNode()) {
+        var t = walker.currentNode.nodeValue.trim();
+        if (t) out.push(t);
+      }
+      return out;
+    }
+
+    function spreadOf(row) {
+      var hits = textLeaves(row).filter(function (t) { return SPREAD.test(t); });
+      if (!hits.length) return "";
+      var v = hits[hits.length - 1];
+      return /^(PK|EVEN)$/i.test(v) ? "0" : v.replace(/^\+/, "");
+    }
+
+    var previews = Array.prototype.slice.call(document.querySelectorAll('[aria-label^="Preview "]'));
+    var rows = [], problems = 0;
+
+    previews.forEach(function (btn) {
+      var m = btn.getAttribute("aria-label").match(/^Preview (.+) at (.+)$/);
+      if (!m) return;
+      var away = m[1].trim(), home = m[2].trim();
+
+      // Walk up to the smallest container holding this game's two team rows
+      var card = btn.parentElement, teamRows = [];
+      while (card && card !== document.body) {
+        teamRows = card.querySelectorAll('[data-testid^="team-row-"]');
+        if (teamRows.length >= 2) break;
+        card = card.parentElement;
+      }
+      if (!card || teamRows.length !== 2) { problems++; return; }
+
+      // Rows are away then home; confirm by name and swap if Splash ever reverses them
+      var a = teamRows[0], h = teamRows[1];
+      if (a.textContent.indexOf(home) !== -1 && h.textContent.indexOf(away) !== -1) { var tmp = a; a = h; h = tmp; }
+
+      var awayLine = spreadOf(a), homeLine = spreadOf(h);
+      if (!awayLine && !homeLine) { problems++; return; }
+
+      var kickoff = textLeaves(card).filter(function (t) { return DAYTIME.test(t); })[0] || "";
+      rows.push([away, home, awayLine, homeLine, kickoff]);
+    });
+
+    if (!rows.length) {
+      alert("Copy Splash Lines: found 0 games on this page.\n\nOpen your Splash picks page, scroll to the bottom, and try again. If it still finds 0, Splash's layout has changed.");
+      return;
+    }
+
+    var stamp = new Date().toISOString();
+    var tsv = ["Away\tHome\tAway Line\tHome Line\tKickoff\tCopied At"]
+      .concat(rows.map(function (r) { return r.concat(stamp).join("\t"); }))
+      .join("\n");
+
+    var msg = "Copied " + rows.length + " games." + (problems ? "\n" + problems + " game(s) couldn't be read - check the page." : "") +
+      "\n\nPaste into cell A1 of the Splash Lines tab.";
+
+    function fallback() {
+      // Clipboard blocked: show the text so it can be copied by hand
+      window.prompt("Clipboard was blocked - press Ctrl+C / Cmd+C to copy, then paste into the sheet:", tsv);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(tsv).then(function () { alert(msg); }, fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  const href = "javascript:(" + encodeURIComponent(copySplashLines.toString()) + ")();void(0);";
+  document.getElementById("bookmarklet").href = href;
+  document.getElementById("bookmarklet-src").textContent = href;
+</script>
+
+</body>
+</html>

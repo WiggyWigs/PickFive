@@ -33,6 +33,10 @@ jobs:
           python-version: "3.12"
 
       - name: Pull splits from Action Network
+        env:
+          # Optional: published CSV of the Splash Lines sheet tab. Unset = use
+          # DraftKings' Tuesday line as the lock line instead.
+          SPLASH_LINES_CSV_URL: ${{ vars.SPLASH_LINES_CSV_URL }}
         run: python scripts/fetch_splits.py
 
       # Rebase before pushing: the other sync workflows push to the same

@@ -138,6 +138,7 @@
     <button data-league="NFL">NFL</button>
     <button data-league="NCAAF">NCAAF</button>
   </span>
+  <label><input type="checkbox" id="watch-only"> Games to Watch</label>
   <label><input type="checkbox" id="edge-only"> Edge Only</label>
 </div>
 
@@ -321,12 +322,13 @@
 
   function renderGames(rows) {
     const tbody = document.querySelector("#splits-table tbody");
-    const state = { league: "ALL", edgeOnly: false, key: "move", dir: -1, type: "number" };
+    const state = { league: "ALL", watchOnly: false, edgeOnly: false, key: "move", dir: -1, type: "number" };
 
     function visible() {
       return rows.filter(
         (r) =>
           (state.league === "ALL" || r.league === state.league) &&
+          (!state.watchOnly || r.angles.length > 0) &&
           (!state.edgeOnly || r.angles.some((a) => a.tag === "Edge"))
       );
     }
@@ -394,6 +396,7 @@
         draw();
       });
     });
+    document.getElementById("watch-only").addEventListener("change", (e) => { state.watchOnly = e.target.checked; draw(); });
     document.getElementById("edge-only").addEventListener("change", (e) => { state.edgeOnly = e.target.checked; draw(); });
 
     setArrow(document.querySelector('#splits-table thead th[data-key="move"]'));

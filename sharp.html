@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickFive — Sharp Money</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .controls {
+    max-width: 1100px;
+    margin: 0 auto 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+
+  .controls button {
+    background: var(--panel);
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 0.3rem 0.7rem;
+    font: inherit;
+    cursor: pointer;
+  }
+
+  .controls button.on { color: var(--amber); border-color: var(--amber); }
+  .controls label { cursor: pointer; display: flex; gap: 0.35rem; align-items: center; }
+
+  td.pct { text-align: right; }
+  td.pct.hot { color: var(--amber); font-weight: 600; }
+  td.gap { text-align: right; }
+  td.flag { color: var(--amber); font-weight: 600; }
+  td.game .league { color: var(--muted); font-size: 0.72rem; margin-left: 0.4rem; }
+  td.game .at { color: var(--muted); }
+  tr.flagged { background: rgba(224, 164, 88, 0.06); }
+  th.group-start, td.group-start { border-left: 1px solid var(--line); }
+
+  .record {
+    max-width: 1100px;
+    margin: 2rem auto 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    align-items: baseline;
+  }
+
+  .record .section-title { margin: 0; }
+  .record .tally { font-size: 1.1rem; font-variant-numeric: tabular-nums; }
+  .record .note { color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+<script src="assets/nav.js"></script>
+
+<header>
+  <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
+  <p class="sub">Where the bets are vs. where the money is, NFL &amp; NCAAF. Pulled daily from Action Network.</p>
+  <p class="sub">Sharp flag: money % beats bet % by <span id="threshold">15</span>+ points on one side <em>and</em> the line has moved toward that side since Tuesday.</p>
+</header>
+
+<div class="status" id="status">Loading splits&hellip;</div>
+
+<div class="controls" id="controls" style="display:none;">
+  <span>
+    <button data-league="ALL" class="on">All</button>
+    <button data-league="NFL">NFL</button>
+    <button data-league="NCAAF">NCAAF</button>
+  </span>
+  <label><input type="checkbox" id="flags-only"> Sharp flags only</label>
+  <label><input type="checkbox" id="splits-only" checked> Hide games without splits</label>
+</div>
+
+<div class="table-wrap" id="table-wrap" style="display:none;">
+  <table id="splits-table">
+    <thead>
+      <tr>
+        <th data-key="game" data-type="string">Away @ Home</th>
+        <th data-key="start" data-type="number">Kickoff</th>
+        <th data-key="line" data-type="number" class="group-start">Line</th>
+        <th data-key="tue_line" data-type="number">Tue</th>
+        <th data-key="move" data-type="number">Move</th>
+        <th data-key="away_bets" data-type="number" class="group-start">Away Bets</th>
+        <th data-key="away_money" data-type="number">Away $</th>
+        <th data-key="home_bets" data-type="number" class="group-start">Home Bets</th>
+        <th data-key="home_money" data-type="number">Home $</th>
+        <th data-key="gap" data-type="number" class="group-start">$ − Bets</th>
+        <th data-key="flagText" data-type="string">Sharp</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<div class="empty-state" id="empty-state" style="display:none;">
+  No splits yet. Once the first daily pull runs, games will show up here.
+</div>
+
+<div class="record" id="record" style="display:none;">
+  <h2 class="section-title">Flag record</h2>
+  <span class="tally" id="tally"></span>
+  <span class="note" id="tally-note"></span>
+</div>
+
+<div class="table-wrap" id="record-wrap" style="display:none;">
+  <table id="record-table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Game</th>
+        <th>Flagged</th>
+        <th>Line</th>
+        <th>$ − Bets</th>
+        <th>Move</th>
+        <th>Final</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<footer>
+  Line is the home team's DraftKings spread (negative = home favored). Tue is Tuesday's DraftKings line - from our own Tuesday
+  splits pull, or the Weekly Lines Tuesday pull when that's missing. Move = Line minus Tue, same as the Weekly Lines delta.
+  Bets = share of tickets, $ = share of money wagered, both Action Network's consensus. A flag locks at kickoff using the
+  last pull before it, and is graded against the line it was flagged at. College games without splits are FCS or small-market
+  matchups Action Network doesn't report.
+</footer>
+
+<script>
+  const esc = (s) =>
+    String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+  const fmtSpread = (v) => (v === null || v === undefined ? null : v > 0 ? `+${v}` : `${v}`);
+  const fmtPct = (v) => (v === null || v === undefined ? null : `${v}%`);
+
+  function fmtKickoff(ms) {
+    const d = new Date(ms);
+    return `${d.toLocaleDateString(undefined, { weekday: "short", month: "numeric", day: "numeric" })}, ${d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })}`;
+  }
+
+  async function loadJson(path) {
+    try {
+      const res = await fetch(path, { cache: "no-store" });
+      return res.ok ? await res.json() : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function toRow(g, threshold) {
+    const hasSplits = g.home_money !== null && g.home_money !== undefined;
+    const homeGap = hasSplits ? g.home_money - g.home_bets : null;
+    const awayGap = hasSplits ? g.away_money - g.away_bets : null;
+    // The side where money outruns tickets - that's the one the gap describes
+    const gapSide = !hasSplits ? null : homeGap >= awayGap ? "home" : "away";
+    const gap = !hasSplits ? null : Math.max(homeGap, awayGap);
+    return {
+      ...g,
+      game: `${g.away} @ ${g.home}`,
+      start: Date.parse(g.start_time),
+      hasSplits,
+      gap,
+      gapSide,
+      gapAbbr: gapSide ? g[`${gapSide}_abbr`] : null,
+      hotAway: hasSplits && gapSide === "away" && gap >= threshold,
+      hotHome: hasSplits && gapSide === "home" && gap >= threshold,
+      flagText: g.flag ? `${g.flag.abbr} ${fmtSpread(g.flag.side_line)}` : "",
+    };
+  }
+
+  function cell(value, cls) {
+    return value === null || value === undefined
+      ? `<td class="blank">—</td>`
+      : `<td class="${cls}">${value}</td>`;
+  }
+
+  function moveCell(v) {
+    if (v === null || v === undefined) return `<td class="blank">—</td>`;
+    const cls = v > 0 ? "delta-up" : v < 0 ? "delta-down" : "delta-flat";
+    return `<td class="${cls}">${v > 0 ? "+" + v : v}</td>`;
+  }
+
+  function renderGames(rows) {
+    const tbody = document.querySelector("#splits-table tbody");
+    const state = { league: "ALL", flagsOnly: false, splitsOnly: true, key: "gap", dir: -1, type: "number" };
+
+    function visible() {
+      return rows.filter(
+        (r) =>
+          (state.league === "ALL" || r.league === state.league) &&
+          (!state.flagsOnly || r.flag) &&
+          (!state.splitsOnly || r.hasSplits)
+      );
+    }
+
+    function sorted(data) {
+      const { key, dir, type } = state;
+      return [...data].sort((a, b) => {
+        let av = a[key], bv = b[key];
+        if (type === "number") {
+          av = av === null || av === undefined ? -Infinity : av;
+          bv = bv === null || bv === undefined ? -Infinity : bv;
+          if (key === "move") { // by size of the move, either direction
+            av = av === -Infinity ? av : Math.abs(av);
+            bv = bv === -Infinity ? bv : Math.abs(bv);
+          }
+          return (av - bv) * dir;
+        }
+        return String(av ?? "").toLowerCase().localeCompare(String(bv ?? "").toLowerCase()) * dir;
+      });
+    }
+
+    function draw() {
+      tbody.innerHTML = sorted(visible())
+        .map(
+          (r) => `
+        <tr class="${r.flag ? "flagged" : ""}">
+          <td class="team game">${esc(r.away)} <span class="at">@</span> ${esc(r.home)}<span class="league">${esc(r.league)}</span></td>
+          <td class="kickoff">${fmtKickoff(r.start)}</td>
+          ${cell(fmtSpread(r.line), "num group-start")}
+          ${cell(fmtSpread(r.tue_line), "num")}
+          ${moveCell(r.move)}
+          ${cell(fmtPct(r.away_bets), "pct group-start")}
+          ${cell(fmtPct(r.away_money), r.hotAway ? "pct hot" : "pct")}
+          ${cell(fmtPct(r.home_bets), "pct group-start")}
+          ${cell(fmtPct(r.home_money), r.hotHome ? "pct hot" : "pct")}
+          ${cell(r.gap === null ? null : `${esc(r.gapAbbr)} +${r.gap}`, "gap group-start")}
+          <td class="flag">${r.flag ? `${esc(r.flag.abbr)} ${fmtSpread(r.flag.side_line)}` : ""}</td>
+        </tr>`
+        )
+        .join("");
+    }
+
+    function setArrow(th) {
+      document.querySelectorAll("#splits-table thead th .arrow").forEach((a) => a.remove());
+      const arrow = document.createElement("span");
+      arrow.className = "arrow";
+      arrow.textContent = state.dir === 1 ? "▲" : "▼";
+      th.appendChild(arrow);
+    }
+
+    document.querySelectorAll("#splits-table thead th").forEach((th) => {
+      th.addEventListener("click", () => {
+        state.dir = state.key === th.dataset.key ? -state.dir : th.dataset.type === "number" ? -1 : 1;
+        state.key = th.dataset.key;
+        state.type = th.dataset.type;
+        setArrow(th);
+        draw();
+      });
+    });
+
+    document.querySelectorAll("#controls button").forEach((b) => {
+      b.addEventListener("click", () => {
+        state.league = b.dataset.league;
+        document.querySelectorAll("#controls button").forEach((x) => x.classList.toggle("on", x === b));
+        draw();
+      });
+    });
+    document.getElementById("flags-only").addEventListener("change", (e) => { state.flagsOnly = e.target.checked; draw(); });
+    document.getElementById("splits-only").addEventListener("change", (e) => { state.splitsOnly = e.target.checked; draw(); });
+
+    setArrow(document.querySelector('#splits-table thead th[data-key="gap"]'));
+    draw();
+  }
+
+  function renderRecord(flags) {
+    const list = Object.values(flags || {}).sort((a, b) => b.start_time.localeCompare(a.start_time));
+    if (list.length === 0) return;
+
+    const w = list.filter((f) => f.result === "W").length;
+    const l = list.filter((f) => f.result === "L").length;
+    const p = list.filter((f) => f.result === "P").length;
+    const pending = list.length - w - l - p;
+    const pct = w + l > 0 ? ` (${((100 * w) / (w + l)).toFixed(1)}%)` : "";
+    document.getElementById("tally").textContent = `${w}-${l}${p ? `-${p}` : ""}${pct}`;
+    document.getElementById("tally-note").textContent =
+      `${pending} pending · break-even at -110 is 52.4% · treat anything under ~100 graded flags as noise`;
+
+    document.querySelector("#record-table tbody").innerHTML = list
+      .map((f) => {
+        const final = f.home_score === null ? "—" : `${esc(f.away)} ${f.away_score}, ${esc(f.home)} ${f.home_score}`;
+        const resCls = f.result === "W" ? "result-w" : f.result === "L" ? "result-l" : "result-pending";
+        return `
+        <tr>
+          <td class="kickoff">${esc(f.week_id)}</td>
+          <td class="team">${esc(f.away)} @ ${esc(f.home)} <span class="league" style="color:var(--muted);font-size:0.72rem">${esc(f.league)}</span></td>
+          <td class="flag" style="color:var(--amber);font-weight:600">${esc(f.team)}</td>
+          <td class="num">${fmtSpread(f.side_line)}</td>
+          <td class="num">+${f.edge}</td>
+          <td class="num">${fmtSpread(f.side_move)}</td>
+          <td class="kickoff">${final}</td>
+          <td class="${resCls}">${f.result ?? "pending"}</td>
+        </tr>`;
+      })
+      .join("");
+
+    document.getElementById("record").style.display = "flex";
+    document.getElementById("record-wrap").style.display = "block";
+  }
+
+  async function init() {
+    const [current, flags] = await Promise.all([loadJson("data/splits/current.json"), loadJson("data/splits/flags.json")]);
+    const statusEl = document.getElementById("status");
+
+    if (!current || !current.games || current.games.length === 0) {
+      statusEl.textContent = "";
+      document.getElementById("empty-state").style.display = "block";
+      renderRecord(flags);
+      return;
+    }
+
+    const threshold = current.edge_threshold ?? 15;
+    document.getElementById("threshold").textContent = threshold;
+
+    const rows = current.games.map((g) => toRow(g, threshold));
+    const flagged = rows.filter((r) => r.flag).length;
+    const withSplits = rows.filter((r) => r.hasSplits).length;
+    const pulled = new Date(current.pulled_at).toLocaleString(undefined, {
+      weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit",
+    });
+    statusEl.textContent = `${rows.length} games · ${withSplits} with splits · ${flagged} sharp flag${flagged === 1 ? "" : "s"} · pulled ${pulled}`;
+
+    renderGames(rows);
+    document.getElementById("controls").style.display = "flex";
+    document.getElementById("table-wrap").style.display = "block";
+    renderRecord(flags);
+  }
+
+  init();
+</script>
+
+</body>
+</html>

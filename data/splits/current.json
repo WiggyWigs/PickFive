@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-01T01:56:38+00:00",
+  "pulled_at": "2026-10-01T02:00:42+00:00",
   "edge_threshold": 15,
   "splash_copied_at": "2026-09-30T19:19:46.077Z",
   "splash_baseline_at": "2026-09-30T19:22:01+00:00",
@@ -17,6 +17,7 @@
       "home_abbr": "NMSU",
       "away_abbr": "WKU",
       "line": -2.5,
+      "open_line": -1.5,
       "home_bets": 47,
       "home_money": 49,
       "away_bets": 53,
@@ -27,7 +28,7 @@
       "dk_at_splash": -2.5,
       "tue_line": -2.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -1.0,
       "flag": null
     },
     {
@@ -43,6 +44,7 @@
       "home_abbr": "CLE",
       "away_abbr": "PIT",
       "line": 2.5,
+      "open_line": 2.5,
       "home_bets": 44,
       "home_money": 39,
       "away_bets": 56,
@@ -69,6 +71,7 @@
       "home_abbr": "TLSA",
       "away_abbr": "UNT",
       "line": 1.5,
+      "open_line": -3.5,
       "home_bets": 44,
       "home_money": 35,
       "away_bets": 56,
@@ -79,7 +82,7 @@
       "dk_at_splash": -1.5,
       "tue_line": -1.5,
       "tue_source": "odds_api",
-      "move": 3.0,
+      "move": 5.0,
       "flag": null
     },
     {
@@ -95,6 +98,7 @@
       "home_abbr": "VT",
       "away_abbr": "PITT",
       "line": -3,
+      "open_line": -5.5,
       "home_bets": 44,
       "home_money": 62,
       "away_bets": 56,
@@ -105,7 +109,7 @@
       "dk_at_splash": -3,
       "tue_line": -3.5,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 2.5,
       "flag": null
     },
     {
@@ -121,8 +125,9 @@
       "home_abbr": "DEL",
       "away_abbr": "LIB",
       "line": 7,
+      "open_line": 7.5,
       "home_bets": 45,
-      "home_money": 54,
+      "home_money": 55,
       "away_bets": 55,
       "away_money": 46,
       "home_score": null,
@@ -131,7 +136,7 @@
       "dk_at_splash": 7,
       "tue_line": 7.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": -0.5,
       "flag": null
     },
     {
@@ -147,6 +152,7 @@
       "home_abbr": "NW",
       "away_abbr": "PSU",
       "line": 2.5,
+      "open_line": 7,
       "home_bets": 35,
       "home_money": 40,
       "away_bets": 65,
@@ -157,7 +163,7 @@
       "dk_at_splash": 2.5,
       "tue_line": 3.0,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -4.5,
       "flag": null
     },
     {
@@ -173,6 +179,7 @@
       "home_abbr": "ISU",
       "away_abbr": "WVU",
       "line": -3,
+      "open_line": 1.5,
       "home_bets": 50,
       "home_money": 41,
       "away_bets": 50,
@@ -183,7 +190,7 @@
       "dk_at_splash": -3.5,
       "tue_line": -3.0,
       "tue_source": "odds_api",
-      "move": 0.5,
+      "move": -4.5,
       "flag": null
     },
     {
@@ -199,6 +206,7 @@
       "home_abbr": "HOU",
       "away_abbr": "UCF",
       "line": -11.5,
+      "open_line": -11.5,
       "home_bets": 37,
       "home_money": 28,
       "away_bets": 63,
@@ -225,6 +233,7 @@
       "home_abbr": "MSST",
       "away_abbr": "BAMA",
       "line": 6,
+      "open_line": 3,
       "home_bets": 35,
       "home_money": 24,
       "away_bets": 65,
@@ -235,7 +244,7 @@
       "dk_at_splash": 6,
       "tue_line": 6.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 3,
       "flag": null
     },
     {
@@ -251,6 +260,7 @@
       "home_abbr": "AFA",
       "away_abbr": "NAVY",
       "line": -3.5,
+      "open_line": 1.5,
       "home_bets": 47,
       "home_money": 58,
       "away_bets": 53,
@@ -261,7 +271,7 @@
       "dk_at_splash": -3,
       "tue_line": -3.0,
       "tue_source": "odds_api",
-      "move": -0.5,
+      "move": -5.0,
       "flag": null
     },
     {
@@ -277,6 +287,7 @@
       "home_abbr": "UNC",
       "away_abbr": "ND",
       "line": 21,
+      "open_line": 23.5,
       "home_bets": 59,
       "home_money": 54,
       "away_bets": 41,
@@ -287,7 +298,7 @@
       "dk_at_splash": 21,
       "tue_line": 21.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": -2.5,
       "flag": null
     },
     {
@@ -303,6 +314,7 @@
       "home_abbr": "SMU",
       "away_abbr": "BC",
       "line": -21,
+      "open_line": -20.5,
       "home_bets": 35,
       "home_money": 20,
       "away_bets": 65,
@@ -313,7 +325,7 @@
       "dk_at_splash": -21,
       "tue_line": -21.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": -0.5,
       "flag": null
     },
     {
@@ -329,6 +341,7 @@
       "home_abbr": "MINN",
       "away_abbr": "MICH",
       "line": 5.5,
+      "open_line": 8.5,
       "home_bets": 40,
       "home_money": 36,
       "away_bets": 60,
@@ -339,7 +352,7 @@
       "dk_at_splash": 5.5,
       "tue_line": 5.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -3.0,
       "flag": null
     },
     {
@@ -355,6 +368,7 @@
       "home_abbr": "WF",
       "away_abbr": "STAN",
       "line": -13.5,
+      "open_line": -11.5,
       "home_bets": 51,
       "home_money": 56,
       "away_bets": 49,
@@ -365,7 +379,7 @@
       "dk_at_splash": -12.5,
       "tue_line": -12.5,
       "tue_source": "odds_api",
-      "move": -1.0,
+      "move": -2.0,
       "flag": null
     },
     {
@@ -381,6 +395,7 @@
       "home_abbr": "UCONN",
       "away_abbr": "SYR",
       "line": 6.5,
+      "open_line": 7.5,
       "home_bets": 46,
       "home_money": 52,
       "away_bets": 54,
@@ -391,7 +406,7 @@
       "dk_at_splash": 6.5,
       "tue_line": 6.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -1.0,
       "flag": null
     },
     {
@@ -407,6 +422,7 @@
       "home_abbr": "KU",
       "away_abbr": "MTSU",
       "line": -18.5,
+      "open_line": -21.5,
       "home_bets": 55,
       "home_money": 36,
       "away_bets": 45,
@@ -417,7 +433,7 @@
       "dk_at_splash": -18.5,
       "tue_line": -18.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 3.0,
       "flag": null
     },
     {
@@ -433,6 +449,7 @@
       "home_abbr": "WIS",
       "away_abbr": "MSU",
       "line": -10,
+      "open_line": -10,
       "home_bets": 43,
       "home_money": 38,
       "away_bets": 57,
@@ -459,6 +476,7 @@
       "home_abbr": "UGA",
       "away_abbr": "VAN",
       "line": -25.5,
+      "open_line": -23.5,
       "home_bets": 71,
       "home_money": 78,
       "away_bets": 29,
@@ -469,7 +487,7 @@
       "dk_at_splash": -24.5,
       "tue_line": -24.5,
       "tue_source": "odds_api",
-      "move": -1.0,
+      "move": -2.0,
       "flag": null
     },
     {
@@ -485,6 +503,7 @@
       "home_abbr": "BUFF",
       "away_abbr": "WMU",
       "line": 13.5,
+      "open_line": 16.5,
       "home_bets": 72,
       "home_money": 80,
       "away_bets": 28,
@@ -495,7 +514,7 @@
       "dk_at_splash": 13.5,
       "tue_line": 13.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -3.0,
       "flag": null
     },
     {
@@ -511,6 +530,7 @@
       "home_abbr": "BALL",
       "away_abbr": "TOL",
       "line": 19.5,
+      "open_line": 13.5,
       "home_bets": 55,
       "home_money": 53,
       "away_bets": 45,
@@ -521,7 +541,7 @@
       "dk_at_splash": 19.5,
       "tue_line": 19.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 6.0,
       "flag": null
     },
     {
@@ -537,6 +557,7 @@
       "home_abbr": "IOWA",
       "away_abbr": "OSU",
       "line": 14.5,
+      "open_line": 14,
       "home_bets": 40,
       "home_money": 59,
       "away_bets": 60,
@@ -563,6 +584,7 @@
       "home_abbr": "GAST",
       "away_abbr": "ODU",
       "line": -2.5,
+      "open_line": 1.5,
       "home_bets": 71,
       "home_money": 56,
       "away_bets": 29,
@@ -573,7 +595,7 @@
       "dk_at_splash": -2.5,
       "tue_line": -1.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -4.0,
       "flag": null
     },
     {
@@ -589,6 +611,7 @@
       "home_abbr": "FSU",
       "away_abbr": "UVA",
       "line": 2.5,
+      "open_line": 1.5,
       "home_bets": 50,
       "home_money": 21,
       "away_bets": 50,
@@ -599,7 +622,7 @@
       "dk_at_splash": 2.5,
       "tue_line": 2.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 1.0,
       "flag": null
     },
     {
@@ -615,6 +638,7 @@
       "home_abbr": "NDSU",
       "away_abbr": "WYO",
       "line": -18.5,
+      "open_line": -21,
       "home_bets": 33,
       "home_money": 31,
       "away_bets": 67,
@@ -625,7 +649,7 @@
       "dk_at_splash": -18.5,
       "tue_line": -18.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 2.5,
       "flag": null
     },
     {
@@ -641,6 +665,7 @@
       "home_abbr": "MASS",
       "away_abbr": "EMU",
       "line": -6.5,
+      "open_line": -2.5,
       "home_bets": 69,
       "home_money": 63,
       "away_bets": 31,
@@ -651,7 +676,7 @@
       "dk_at_splash": -6.5,
       "tue_line": -6.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -4.0,
       "flag": null
     },
     {
@@ -667,6 +692,7 @@
       "home_abbr": "CHA",
       "away_abbr": "MEM",
       "line": 20.5,
+      "open_line": 21.5,
       "home_bets": 69,
       "home_money": 62,
       "away_bets": 31,
@@ -677,7 +703,7 @@
       "dk_at_splash": 20.5,
       "tue_line": 20.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -1.0,
       "flag": null
     },
     {
@@ -693,6 +719,7 @@
       "home_abbr": "TENN",
       "away_abbr": "AUB",
       "line": -7,
+      "open_line": -7.5,
       "home_bets": 55,
       "home_money": 49,
       "away_bets": 45,
@@ -703,7 +730,7 @@
       "dk_at_splash": -7,
       "tue_line": -7.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 0.5,
       "flag": null
     },
     {
@@ -719,6 +746,7 @@
       "home_abbr": "M-OH",
       "away_abbr": "BGSU",
       "line": -13.5,
+      "open_line": -15.5,
       "home_bets": 50,
       "home_money": 59,
       "away_bets": 50,
@@ -729,7 +757,7 @@
       "dk_at_splash": -13.5,
       "tue_line": -13.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 2.0,
       "flag": null
     },
     {
@@ -745,6 +773,7 @@
       "home_abbr": "UNLV",
       "away_abbr": "CAL",
       "line": -2.5,
+      "open_line": 1.5,
       "home_bets": 54,
       "home_money": 32,
       "away_bets": 46,
@@ -755,7 +784,7 @@
       "dk_at_splash": -2.5,
       "tue_line": -2.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -4.0,
       "flag": null
     },
     {
@@ -771,6 +800,7 @@
       "home_abbr": "MIZ",
       "away_abbr": "FLA",
       "line": 5.5,
+      "open_line": 2.5,
       "home_bets": 16,
       "home_money": 6,
       "away_bets": 84,
@@ -781,7 +811,7 @@
       "dk_at_splash": 5.5,
       "tue_line": 5.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 3.0,
       "flag": null
     },
     {
@@ -797,6 +827,7 @@
       "home_abbr": "KENT",
       "away_abbr": "OHIO",
       "line": 3.5,
+      "open_line": 3.5,
       "home_bets": 44,
       "home_money": 30,
       "away_bets": 56,
@@ -807,7 +838,7 @@
       "dk_at_splash": 3,
       "tue_line": 3.0,
       "tue_source": "odds_api",
-      "move": 0.5,
+      "move": 0.0,
       "flag": null
     },
     {
@@ -823,6 +854,7 @@
       "home_abbr": "CMU",
       "away_abbr": "AKR",
       "line": -6.5,
+      "open_line": -5.5,
       "home_bets": 48,
       "home_money": 49,
       "away_bets": 52,
@@ -833,7 +865,7 @@
       "dk_at_splash": -6.5,
       "tue_line": -6.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -1.0,
       "flag": null
     },
     {
@@ -849,6 +881,7 @@
       "home_abbr": "NCST",
       "away_abbr": "LOU",
       "line": 3.5,
+      "open_line": 7.5,
       "home_bets": 35,
       "home_money": 54,
       "away_bets": 65,
@@ -859,8 +892,15 @@
       "dk_at_splash": 3.5,
       "tue_line": 4.0,
       "tue_source": "odds_api",
-      "move": 0.0,
-      "flag": null
+      "move": -4.0,
+      "flag": {
+        "side": "home",
+        "team": "North Carolina State Wolfpack",
+        "abbr": "NCST",
+        "edge": 19,
+        "side_move": -4.0,
+        "side_line": 3.5
+      }
     },
     {
       "id": 289362,
@@ -875,6 +915,7 @@
       "home_abbr": "UAB",
       "away_abbr": "SAM",
       "line": -30.5,
+      "open_line": -30.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -885,7 +926,7 @@
       "dk_at_splash": null,
       "tue_line": null,
       "tue_source": null,
-      "move": null,
+      "move": 0.0,
       "flag": null
     },
     {
@@ -901,6 +942,7 @@
       "home_abbr": "JMU",
       "away_abbr": "MRSH",
       "line": -19.5,
+      "open_line": -14.5,
       "home_bets": 45,
       "home_money": 50,
       "away_bets": 55,
@@ -911,7 +953,7 @@
       "dk_at_splash": -18.5,
       "tue_line": -18.5,
       "tue_source": "odds_api",
-      "move": -1.0,
+      "move": -5.0,
       "flag": null
     },
     {
@@ -927,6 +969,7 @@
       "home_abbr": "NEB",
       "away_abbr": "UMD",
       "line": -14.5,
+      "open_line": -11.5,
       "home_bets": 42,
       "home_money": 32,
       "away_bets": 58,
@@ -937,7 +980,7 @@
       "dk_at_splash": -14.5,
       "tue_line": -14.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -3.0,
       "flag": null
     },
     {
@@ -953,6 +996,7 @@
       "home_abbr": "UNM",
       "away_abbr": "UTEP",
       "line": -22.5,
+      "open_line": -21,
       "home_bets": 34,
       "home_money": 45,
       "away_bets": 66,
@@ -963,7 +1007,7 @@
       "dk_at_splash": -22.5,
       "tue_line": -22.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -1.5,
       "flag": null
     },
     {
@@ -979,6 +1023,7 @@
       "home_abbr": "SC",
       "away_abbr": "UK",
       "line": -2.5,
+      "open_line": -7,
       "home_bets": 48,
       "home_money": 48,
       "away_bets": 52,
@@ -989,7 +1034,7 @@
       "dk_at_splash": -3,
       "tue_line": -2.5,
       "tue_source": "odds_api",
-      "move": 0.5,
+      "move": 4.5,
       "flag": null
     },
     {
@@ -1005,6 +1050,7 @@
       "home_abbr": "ILL",
       "away_abbr": "PUR",
       "line": -10,
+      "open_line": -9.5,
       "home_bets": 51,
       "home_money": 51,
       "away_bets": 49,
@@ -1015,7 +1061,7 @@
       "dk_at_splash": -10,
       "tue_line": -10.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": -0.5,
       "flag": null
     },
     {
@@ -1031,6 +1077,7 @@
       "home_abbr": "FAU",
       "away_abbr": "TXSO",
       "line": -43.5,
+      "open_line": -40.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1041,7 +1088,7 @@
       "dk_at_splash": null,
       "tue_line": null,
       "tue_source": null,
-      "move": null,
+      "move": -3.0,
       "flag": null
     },
     {
@@ -1057,6 +1104,7 @@
       "home_abbr": "CSU",
       "away_abbr": "ORST",
       "line": 6,
+      "open_line": 5.5,
       "home_bets": 30,
       "home_money": 29,
       "away_bets": 70,
@@ -1067,7 +1115,7 @@
       "dk_at_splash": 6,
       "tue_line": 6.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 0.5,
       "flag": null
     },
     {
@@ -1083,6 +1131,7 @@
       "home_abbr": "RICE",
       "away_abbr": "UTSA",
       "line": 11.5,
+      "open_line": 10.5,
       "home_bets": 44,
       "home_money": 49,
       "away_bets": 56,
@@ -1093,7 +1142,7 @@
       "dk_at_splash": 11.5,
       "tue_line": 11.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 1.0,
       "flag": null
     },
     {
@@ -1109,6 +1158,7 @@
       "home_abbr": "CC",
       "away_abbr": "GASO",
       "line": 2.5,
+      "open_line": -1.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1119,7 +1169,7 @@
       "dk_at_splash": 2.5,
       "tue_line": 2.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 4.0,
       "flag": null
     },
     {
@@ -1135,6 +1185,7 @@
       "home_abbr": "USA",
       "away_abbr": "ULM",
       "line": -14,
+      "open_line": -15.5,
       "home_bets": 46,
       "home_money": 33,
       "away_bets": 54,
@@ -1145,7 +1196,7 @@
       "dk_at_splash": -14,
       "tue_line": -14.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 1.5,
       "flag": null
     },
     {
@@ -1161,6 +1212,7 @@
       "home_abbr": "TCU",
       "away_abbr": "BYU",
       "line": 6.5,
+      "open_line": 5.5,
       "home_bets": 21,
       "home_money": 14,
       "away_bets": 79,
@@ -1171,7 +1223,7 @@
       "dk_at_splash": 6.5,
       "tue_line": 6.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 1.0,
       "flag": null
     },
     {
@@ -1187,6 +1239,7 @@
       "home_abbr": "TA&M",
       "away_abbr": "ARK",
       "line": -14,
+      "open_line": -15.5,
       "home_bets": 49,
       "home_money": 53,
       "away_bets": 51,
@@ -1197,7 +1250,7 @@
       "dk_at_splash": -14,
       "tue_line": -14.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 1.5,
       "flag": null
     },
     {
@@ -1213,6 +1266,7 @@
       "home_abbr": "LT",
       "away_abbr": "ARMY",
       "line": 2.5,
+      "open_line": 3.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1223,7 +1277,7 @@
       "dk_at_splash": 2.5,
       "tue_line": 2.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -1.0,
       "flag": null
     },
     {
@@ -1239,6 +1293,7 @@
       "home_abbr": "USF",
       "away_abbr": "TEM",
       "line": -6.5,
+      "open_line": -6.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1265,6 +1320,7 @@
       "home_abbr": "BOISE",
       "away_abbr": "USU",
       "line": -20.5,
+      "open_line": -20.5,
       "home_bets": 61,
       "home_money": 59,
       "away_bets": 39,
@@ -1291,6 +1347,7 @@
       "home_abbr": "COLO",
       "away_abbr": "TTU",
       "line": 12.5,
+      "open_line": 15.5,
       "home_bets": 40,
       "home_money": 46,
       "away_bets": 60,
@@ -1301,7 +1358,7 @@
       "dk_at_splash": 12.5,
       "tue_line": 13.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -3.0,
       "flag": null
     },
     {
@@ -1317,6 +1374,7 @@
       "home_abbr": "CLEM",
       "away_abbr": "MIA",
       "line": 16.5,
+      "open_line": 7,
       "home_bets": 41,
       "home_money": 50,
       "away_bets": 59,
@@ -1327,7 +1385,7 @@
       "dk_at_splash": 16.5,
       "tue_line": 16.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 9.5,
       "flag": null
     },
     {
@@ -1343,6 +1401,7 @@
       "home_abbr": "USC",
       "away_abbr": "WASH",
       "line": -9.5,
+      "open_line": -10,
       "home_bets": 56,
       "home_money": 86,
       "away_bets": 44,
@@ -1353,7 +1412,7 @@
       "dk_at_splash": -9.5,
       "tue_line": -9.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 0.5,
       "flag": null
     },
     {
@@ -1369,6 +1428,7 @@
       "home_abbr": "LSU",
       "away_abbr": "MCN",
       "line": -53.5,
+      "open_line": -48.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1379,7 +1439,7 @@
       "dk_at_splash": null,
       "tue_line": null,
       "tue_source": null,
-      "move": null,
+      "move": -5.0,
       "flag": null
     },
     {
@@ -1395,6 +1455,7 @@
       "home_abbr": "UL",
       "away_abbr": "ARST",
       "line": -6.5,
+      "open_line": -4,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1405,7 +1466,7 @@
       "dk_at_splash": -6.5,
       "tue_line": -6.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -2.5,
       "flag": null
     },
     {
@@ -1421,6 +1482,7 @@
       "home_abbr": "RUT",
       "away_abbr": "IU",
       "line": 23.5,
+      "open_line": 23.5,
       "home_bets": 48,
       "home_money": 57,
       "away_bets": 52,
@@ -1431,7 +1493,7 @@
       "dk_at_splash": 24.5,
       "tue_line": 24.5,
       "tue_source": "odds_api",
-      "move": -1.0,
+      "move": 0.0,
       "flag": null
     },
     {
@@ -1447,6 +1509,7 @@
       "home_abbr": "WSU",
       "away_abbr": "FRES",
       "line": -1.5,
+      "open_line": -1.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1457,7 +1520,7 @@
       "dk_at_splash": -2.5,
       "tue_line": -2.5,
       "tue_source": "odds_api",
-      "move": 1.0,
+      "move": 0.0,
       "flag": null
     },
     {
@@ -1473,6 +1536,7 @@
       "home_abbr": "ASU",
       "away_abbr": "BAY",
       "line": -4,
+      "open_line": -4.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1483,7 +1547,7 @@
       "dk_at_splash": -4,
       "tue_line": -4.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 0.5,
       "flag": null
     },
     {
@@ -1499,6 +1563,7 @@
       "home_abbr": "SDSU",
       "away_abbr": "TXST",
       "line": 6.5,
+      "open_line": 3.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1509,7 +1574,7 @@
       "dk_at_splash": 4.5,
       "tue_line": 4.5,
       "tue_source": "odds_api",
-      "move": 2.0,
+      "move": 3.0,
       "flag": null
     },
     {
@@ -1525,6 +1590,7 @@
       "home_abbr": "ARI",
       "away_abbr": "CIN",
       "line": -6.5,
+      "open_line": -7.5,
       "home_bets": 25,
       "home_money": 21,
       "away_bets": 75,
@@ -1535,7 +1601,7 @@
       "dk_at_splash": -7,
       "tue_line": -7.0,
       "tue_source": "odds_api",
-      "move": 0.5,
+      "move": 1.0,
       "flag": null
     },
     {
@@ -1551,6 +1617,7 @@
       "home_abbr": "HAW",
       "away_abbr": "SJSU",
       "line": -3,
+      "open_line": -3.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1561,7 +1628,7 @@
       "dk_at_splash": -3,
       "tue_line": -3.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 0.5,
       "flag": null
     },
     {
@@ -1577,6 +1644,7 @@
       "home_abbr": "WAS",
       "away_abbr": "IND",
       "line": 3.5,
+      "open_line": -1.5,
       "home_bets": 71,
       "home_money": 72,
       "away_bets": 29,
@@ -1587,7 +1655,7 @@
       "dk_at_splash": 3.5,
       "tue_line": 3.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 5.0,
       "flag": null
     },
     {
@@ -1603,6 +1671,7 @@
       "home_abbr": "PHI",
       "away_abbr": "LA",
       "line": 3,
+      "open_line": 1.5,
       "home_bets": 39,
       "home_money": 37,
       "away_bets": 61,
@@ -1613,7 +1682,7 @@
       "dk_at_splash": 3,
       "tue_line": 3.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": 1.5,
       "flag": null
     },
     {
@@ -1629,6 +1698,7 @@
       "home_abbr": "TB",
       "away_abbr": "GB",
       "line": 3.5,
+      "open_line": 1.5,
       "home_bets": 51,
       "home_money": 33,
       "away_bets": 49,
@@ -1639,7 +1709,7 @@
       "dk_at_splash": 3.5,
       "tue_line": 3.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 2.0,
       "flag": null
     },
     {
@@ -1655,6 +1725,7 @@
       "home_abbr": "CHI",
       "away_abbr": "NYJ",
       "line": -3.5,
+      "open_line": -8.5,
       "home_bets": 57,
       "home_money": 66,
       "away_bets": 43,
@@ -1665,7 +1736,7 @@
       "dk_at_splash": -3.5,
       "tue_line": -3.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 5.0,
       "flag": null
     },
     {
@@ -1681,6 +1752,7 @@
       "home_abbr": "BUF",
       "away_abbr": "NE",
       "line": -6.5,
+      "open_line": -3,
       "home_bets": 65,
       "home_money": 76,
       "away_bets": 35,
@@ -1691,7 +1763,7 @@
       "dk_at_splash": -6.5,
       "tue_line": -7.0,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -3.5,
       "flag": null
     },
     {
@@ -1707,6 +1779,7 @@
       "home_abbr": "CIN",
       "away_abbr": "JAC",
       "line": -2.5,
+      "open_line": -2.5,
       "home_bets": 39,
       "home_money": 37,
       "away_bets": 61,
@@ -1733,6 +1806,7 @@
       "home_abbr": "BAL",
       "away_abbr": "TEN",
       "line": -11.5,
+      "open_line": -8.5,
       "home_bets": 71,
       "home_money": 82,
       "away_bets": 29,
@@ -1743,7 +1817,7 @@
       "dk_at_splash": -11.5,
       "tue_line": -11.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -3.0,
       "flag": null
     },
     {
@@ -1759,6 +1833,7 @@
       "home_abbr": "HOU",
       "away_abbr": "DAL",
       "line": -3,
+      "open_line": -2.5,
       "home_bets": 23,
       "home_money": 23,
       "away_bets": 77,
@@ -1785,6 +1860,7 @@
       "home_abbr": "NYG",
       "away_abbr": "ARI",
       "line": 2.5,
+      "open_line": -7,
       "home_bets": 39,
       "home_money": 25,
       "away_bets": 61,
@@ -1795,7 +1871,7 @@
       "dk_at_splash": 2.5,
       "tue_line": 1.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 9.5,
       "flag": null
     },
     {
@@ -1811,6 +1887,7 @@
       "home_abbr": "MIN",
       "away_abbr": "MIA",
       "line": -10.5,
+      "open_line": -7.5,
       "home_bets": 72,
       "home_money": 74,
       "away_bets": 28,
@@ -1821,7 +1898,7 @@
       "dk_at_splash": -10.5,
       "tue_line": -11.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -3.0,
       "flag": null
     },
     {
@@ -1837,6 +1914,7 @@
       "home_abbr": "SF",
       "away_abbr": "DEN",
       "line": -3,
+      "open_line": -2.5,
       "home_bets": 59,
       "home_money": 67,
       "away_bets": 41,
@@ -1847,7 +1925,7 @@
       "dk_at_splash": -3,
       "tue_line": -3.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": -0.5,
       "flag": null
     },
     {
@@ -1863,6 +1941,7 @@
       "home_abbr": "SEA",
       "away_abbr": "LAC",
       "line": -7,
+      "open_line": -3,
       "home_bets": 51,
       "home_money": 60,
       "away_bets": 49,
@@ -1873,7 +1952,7 @@
       "dk_at_splash": -7,
       "tue_line": -7.0,
       "tue_source": "odds_api",
-      "move": 0,
+      "move": -4,
       "flag": null
     },
     {
@@ -1889,6 +1968,7 @@
       "home_abbr": "LV",
       "away_abbr": "KC",
       "line": 4.5,
+      "open_line": 5.5,
       "home_bets": 44,
       "home_money": 35,
       "away_bets": 56,
@@ -1899,7 +1979,7 @@
       "dk_at_splash": 4.5,
       "tue_line": 4.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": -1.0,
       "flag": null
     },
     {
@@ -1915,6 +1995,7 @@
       "home_abbr": "CAR",
       "away_abbr": "DET",
       "line": 3.5,
+      "open_line": 3,
       "home_bets": 33,
       "home_money": 28,
       "away_bets": 67,
@@ -1925,7 +2006,7 @@
       "dk_at_splash": 3.5,
       "tue_line": 3.5,
       "tue_source": "odds_api",
-      "move": 0.0,
+      "move": 0.5,
       "flag": null
     },
     {
@@ -1941,6 +2022,7 @@
       "home_abbr": "NO",
       "away_abbr": "ATL",
       "line": -2.5,
+      "open_line": -2.5,
       "home_bets": 50,
       "home_money": 45,
       "away_bets": 50,

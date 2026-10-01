@@ -55,7 +55,7 @@
   #splits-table { font-size: 0.82rem; }
   #splits-table thead th {
     white-space: normal;
-    vertical-align: bottom;
+    vertical-align: middle;
     line-height: 1.2;
     padding: 0.5rem 0.45rem;
     font-size: 0.78rem;
@@ -65,7 +65,9 @@
   #splits-table td.kickoff { font-size: 0.78rem; white-space: nowrap; }
   /* dashed underline marks headers with a hover explanation */
   th.has-tip { text-decoration: underline dashed; text-underline-offset: 3px; text-decoration-thickness: 1px; }
-  #splits-table thead th { text-align: center; }
+  #splits-table thead th { text-align: center; vertical-align: middle; }
+  /* Exactly two lines: break only at the <br>, so the column widens just enough for "(Home Team) i" */
+  #splits-table thead th[data-key="splash_line"] { white-space: nowrap; }
   .intro { max-width: 900px; margin: 0 auto; text-align: center; color: var(--muted); font-size: 0.78rem; line-height: 1.6; } /* same size as the footer */
   .intro p { margin: 0 0 0.6rem; }
   /* Angle column: four fixed circles, M S T E, filled when that criterion is met */

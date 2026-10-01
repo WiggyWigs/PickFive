@@ -6,7 +6,7 @@ toward that side, how often does it cover at your locked line?
 Pulls completed NFL + NCAAF (FBS) weeks from Action Network for the seasons
 below, and for every game with an opening and closing line and a final
 score, grades the side the line moved TOWARD at the opening line, grouped
-by how far it moved. Writes data/splits/move_edge.json, which sharp.html
+by how far it moved. Writes data/splits/move_edge.json, which index.html (the Sharp page)
 uses to put a historical win rate next to each game's Tuesday -> now move.
 
 The opening line stands in for the contest's Tuesday lock and the closing

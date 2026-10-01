@@ -144,7 +144,7 @@
   <p class="sub">Picks lock Saturday 11 AM Eastern at the Splash line.</p>
   <p class="sub">Angle circles fill in when a game meets:
     <span class="key money">M</span> Money &ndash; the money is <span id="threshold">15</span>+ points heavier than the tickets on one team ·
-    <span class="key sharp">S</span> Sharp &ndash; that, <em>and</em> DraftKings has moved toward that team since your Splash lines came in ·
+    <span class="key sharp">S</span> Sharp &ndash; that, <em>and</em> the DraftKings line has moved 1+ point toward that team since your Splash lines came in ·
     <span class="key trap">T</span> Trap &ndash; over 60% of the money on one team, but DraftKings has moved the other way ·
     <span class="key edge">E</span> Edge &ndash; DraftKings is 2+ points off your Splash line.</p>
 </header>
@@ -234,7 +234,7 @@
   highlight) on this page only; T is always over 60% of the money. Games to Watch = any game with at least one circle filled.
   <br><br>
   2024&ndash;26 history (NFL + FBS, graded at the closing line): M alone, at 15+, sided with the money 519-480 (52.0%);
-  S at 15+ went 240-231 (51.0%); in T games the money side went 281-295 (48.8%) and the line side 295-281 (51.2%).
+  S at 15+ (any size move) went 240-231 (51.0%); in T games the money side went 281-295 (48.8%) and the line side 295-281 (51.2%).
   None beat a coin flip - treat them as information, not picks. E is different: in the backtest a 2&ndash;2.5 point
   gap covered 55.5% and 3+ points 61&ndash;71% at the earlier number. The flag record below is always graded at 15+
   so it stays one consistent history.
@@ -315,7 +315,14 @@
     const moneySide = hasSplits && gap >= threshold ? gapSide : null;
     const moneyAbbr = moneySide ? g[`${moneySide}_abbr`] : "";
     //  S Sharp: Money, and DraftKings moved toward that team
-    const sharp = !!moneySide && movedToward(moneySide);
+    const SHARP_MIN_MOVE = 1; // points, same as the pull script
+    const sharp = !!moneySide && movedToward(moneySide) && Math.abs(marketMove) >= SHARP_MIN_MOVE;
+    // Real DraftKings move for the hover, from that team's side: "-14 → -13.5"
+    const dkMoveText = (side) => {
+      if (marketMove === null) return "no DraftKings baseline yet";
+      const f = (v) => sgn(side === "home" ? v : -v);
+      return `DraftKings ${g[`${side}_abbr`]} ${f(g.dk_at_splash)} → ${f(g.line)} since your Splash paste`;
+    };
     //  T Trap: over 60% of the money on one team, and DraftKings moved the other way
     const majSide = !hasSplits ? null : g.home_money > 60 ? "home" : g.away_money > 60 ? "away" : null;
     const majPct = majSide ? g[`${majSide}_money`] : null;
@@ -330,8 +337,9 @@
         title: moneySide ? `Money: ${moneyAbbr} money outruns its tickets by ${gap} (${threshold}+ needed)`
                          : `Money: Ticket Gap ${gap === null ? "n/a" : gap} is under ${threshold}` },
       { key: "sharp", letter: "S", met: sharp,
-        title: sharp ? `Sharp: money on ${moneyAbbr} (+${gap}) and the line moved toward them (${sgn(marketMove)})`
-                     : `Sharp: needs Money plus a line move toward that team (${marketMove ? sgn(marketMove) : noMoveYet})` },
+        title: sharp ? `Sharp: sharp money on ${moneyAbbr} (Ticket Gap +${gap}) and the DraftKings line moved toward them: ${dkMoveText(moneySide)}`
+                     : moneySide ? `Sharp: sharp money on ${moneyAbbr} (+${gap}), but the DraftKings line hasn't moved 1+ point toward them: ${dkMoveText(moneySide)}`
+                                 : `Sharp: needs Money (Ticket Gap ${threshold}+) plus a 1+ point DraftKings move toward that team` },
       { key: "trap", letter: "T", met: trap,
         title: trap ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]} but the line moved away from them (${sgn(marketMove)})`
                     : majSide ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]}, line hasn't moved against them (${marketMove ? sgn(marketMove) : noMoveYet})`

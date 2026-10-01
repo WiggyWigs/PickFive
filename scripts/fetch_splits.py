@@ -18,8 +18,9 @@ data/weeks/), computed from kickoff in Eastern time.
 
 Sharp flag rule (kept deliberately simple so it can be checked by hand):
   money % - bet % >= EDGE_THRESHOLD on one side, AND
-  that side's spread has moved toward it since Tuesday (its number got
-  worse for new bettors, e.g. -3 -> -3.5 or +7 -> +6.5).
+  the DraftKings spread has moved SHARP_MIN_MOVE+ points toward that side
+  since the Splash lines came in (Tuesday's line for games not on Splash) -
+  its number got worse for new bettors, e.g. -3 -> -4 or +7 -> +6.
 
 Tuesday's line comes from our own Tuesday splits snapshot. If there
 isn't one (first week, or a failed Tuesday run) it falls back to the
@@ -50,6 +51,7 @@ PUBLIC_API = "https://api.actionnetwork.com/web/v2/scoreboard/publicbetting/{spo
 SPLITS_BOOK = "15"  # Action Network "Consensus" - carries their bet/money %
 LINE_BOOK = "68"    # DraftKings - same book as the Odds API lines pull
 EDGE_THRESHOLD = 15  # money % minus bet %, in percentage points
+SHARP_MIN_MOVE = 1.0  # points the DraftKings line must move toward the money side
 
 EASTERN = ZoneInfo("America/New_York")
 HEADERS = {
@@ -262,9 +264,9 @@ def sharp_flag(g):
     home_edge = g["home_money"] - g["home_bets"]
     away_edge = g["away_money"] - g["away_bets"]
     # move is in the home spread; the away spread is its negative
-    if home_edge >= EDGE_THRESHOLD and g["move"] < 0:
+    if home_edge >= EDGE_THRESHOLD and g["move"] <= -SHARP_MIN_MOVE:
         side, edge, side_move, side_line = "home", home_edge, g["move"], g["line"]
-    elif away_edge >= EDGE_THRESHOLD and g["move"] > 0:
+    elif away_edge >= EDGE_THRESHOLD and g["move"] >= SHARP_MIN_MOVE:
         side, edge, side_move, side_line = "away", away_edge, -g["move"], -g["line"]
     else:
         return None

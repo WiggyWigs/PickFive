@@ -250,6 +250,12 @@
   }
 
   const ANGLE_WEIGHT = { edge: 8, sharp: 4, money: 1, trap: 1 };
+  let pulledAtLabel = ""; // set in init from current.pulled_at
+
+  const fmtDayTime = (iso) => {
+    const d = new Date(iso);
+    return `${d.toLocaleDateString(undefined, { weekday: "short" })} ${d.toLocaleTimeString(undefined, { hour: "numeric", minute: "2-digit" })}`;
+  };
 
   function bucketFor(edgeData, move) {
     const a = Math.abs(move);
@@ -286,7 +292,7 @@
     const sgn = (v) => (v > 0 ? "+" : "") + v;
     const hasOpen = g.open_line !== null && g.open_line !== undefined;
     const baseLine = hasOpen ? g.open_line : g.dk_at_splash;
-    const baseLabel = hasOpen ? "was Mon 9 AM" : "was";
+    const baseLabel = hasOpen ? "at Mon 9 AM" : "when your Splash lines came in";
     const marketMove = g.line !== null && baseLine !== null && baseLine !== undefined ? +(g.line - baseLine).toFixed(1) : null;
     const movedToward = (side) => marketMove !== null && marketMove !== 0 && (side === "home" ? marketMove < 0 : marketMove > 0);
     const movedAway = (side) => marketMove !== null && marketMove !== 0 && !movedToward(side);
@@ -305,7 +311,7 @@
     const dkMoveText = (side) => {
       if (marketMove === null) return "no opening line yet";
       const f = (v) => sgn(side === "home" ? v : -v);
-      return `${g[`${side}_abbr`]} ${baseLabel} ${f(baseLine)}, DraftKings now ${f(g.line)}`;
+      return `${g[`${side}_abbr`]} was ${f(baseLine)} ${baseLabel}, line is now ${f(g.line)} (${pulledAtLabel})`;
     };
     //  T Trap: over 60% of the money on one team, and DraftKings moved 1+ point the other way
     const TRAP_MIN_MOVE = 1; // points
@@ -496,7 +502,7 @@
         const team = s.side === "home" ? r.home : r.away, opp = s.side === "home" ? r.away : r.home;
         return `<li><span class="pick">${esc(team)} ${fmtSpread(s.splashLine)}</span>
           <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · Splash ${fmtSpread(s.splashLine)} ·
-          ${s.money}% of the money on ${s.tickets}% of the tickets (gap +${s.gap}) · ${esc(s.moveText)} · ${fmtKickoff(r.start)}</span></li>`;
+          ${s.money}% of the money on ${s.tickets}% of the tickets (gap +${s.gap}) · ${esc(s.moveText)} · Kickoff ${fmtKickoff(r.start)}</span></li>`;
       })
       .join("");
     const noneEl = document.getElementById("sharps-none");
@@ -538,6 +544,7 @@
 
     // Only games on this week's Splash slate
     const slate = current.games.filter((g) => g.splash_line !== null && g.splash_line !== undefined);
+    pulledAtLabel = fmtDayTime(current.pulled_at);
     const build = (t) => slate.map((g) => toRow(g, t, edgeData, ticketCut));
     let rows = build(threshold);
     if (rows.length === 0) {

@@ -119,18 +119,6 @@
   .edges .pct { color: var(--up); font-weight: 600; }
   .edges .none { color: var(--muted); margin: 0; }
 
-  .record {
-    max-width: 1100px;
-    margin: 2rem auto 0.75rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    align-items: baseline;
-  }
-
-  .record .section-title { margin: 0; }
-  .record .tally { font-size: 1.1rem; font-variant-numeric: tabular-nums; }
-  .record .note { color: var(--muted); font-size: 0.85rem; }
 </style>
 </head>
 <body>
@@ -200,30 +188,6 @@
   tab, then run Pull Splits from the Actions tab.
 </div>
 
-<div class="record" id="record" style="display:none;">
-  <h2 class="section-title">Flag record</h2>
-  <span class="tally" id="tally"></span>
-  <span class="note" id="tally-note"></span>
-</div>
-
-<div class="table-wrap" id="record-wrap" style="display:none;">
-  <table id="record-table">
-    <thead>
-      <tr>
-        <th>Week</th>
-        <th>Game</th>
-        <th>Flagged</th>
-        <th>Line</th>
-        <th>$ − Bets</th>
-        <th>Move</th>
-        <th>Final</th>
-        <th>Result</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
-</div>
-
 <footer>
   Only games on your Splash slate are shown. All lines are the home team's spread (negative = home favored).
   Current Line = DraftKings now.
@@ -236,8 +200,7 @@
   2024&ndash;26 history (NFL + FBS, graded at the closing line): M alone, at 15+, sided with the money 519-480 (52.0%);
   S at 15+ (any size move) went 240-231 (51.0%); in T games the money side went 281-295 (48.8%) and the line side 295-281 (51.2%).
   None beat a coin flip - treat them as information, not picks. E is different: in the backtest a 2&ndash;2.5 point
-  gap covered 55.5% and 3+ points 61&ndash;71% at the earlier number. The flag record below is always graded at 15+
-  so it stays one consistent history.
+  gap covered 55.5% and 3+ points 61&ndash;71% at the earlier number.
   <br><br>
   Hist. win % (best-edges box) comes from scripts/backtest_moves.py: every 2024&ndash;26 NFL/FBS game whose line moved, grading the side it moved
   toward at the opening line (Action Network has no past Tuesday lines, so the opener stands in for the Tuesday lock). Moves of
@@ -490,45 +453,9 @@
     document.getElementById("edges").style.display = "block";
   }
 
-  function renderRecord(flags) {
-    const list = Object.values(flags || {}).sort((a, b) => b.start_time.localeCompare(a.start_time));
-    if (list.length === 0) return;
-
-    const w = list.filter((f) => f.result === "W").length;
-    const l = list.filter((f) => f.result === "L").length;
-    const p = list.filter((f) => f.result === "P").length;
-    const pending = list.length - w - l - p;
-    const pct = w + l > 0 ? ` (${((100 * w) / (w + l)).toFixed(1)}%)` : "";
-    document.getElementById("tally").textContent = `${w}-${l}${p ? `-${p}` : ""}${pct}`;
-    document.getElementById("tally-note").textContent =
-      `${pending} pending · break-even at -110 is 52.4% · treat anything under ~100 graded flags as noise`;
-
-    document.querySelector("#record-table tbody").innerHTML = list
-      .map((f) => {
-        const final = f.home_score === null ? "—" : `${esc(f.away)} ${f.away_score}, ${esc(f.home)} ${f.home_score}`;
-        const resCls = f.result === "W" ? "result-w" : f.result === "L" ? "result-l" : "result-pending";
-        return `
-        <tr>
-          <td class="kickoff">${esc(f.week_id)}</td>
-          <td class="team">${esc(f.away)} @ ${esc(f.home)} <span class="league" style="color:var(--muted);font-size:0.72rem">${esc(f.league)}</span></td>
-          <td class="flag" style="color:var(--amber);font-weight:600">${esc(f.team)}</td>
-          <td class="num">${fmtSpread(f.side_line)}</td>
-          <td class="num">+${f.edge}</td>
-          <td class="num">${fmtSpread(f.side_move)}</td>
-          <td class="kickoff">${final}</td>
-          <td class="${resCls}">${f.result ?? "pending"}</td>
-        </tr>`;
-      })
-      .join("");
-
-    document.getElementById("record").style.display = "flex";
-    document.getElementById("record-wrap").style.display = "block";
-  }
-
   async function init() {
-    const [current, flags, edgeData] = await Promise.all([
+    const [current, edgeData] = await Promise.all([
       loadJson("data/splits/current.json"),
-      loadJson("data/splits/flags.json"),
       loadJson("data/splits/move_edge.json"),
     ]);
     const statusEl = document.getElementById("status");
@@ -536,7 +463,6 @@
     if (!current || !current.games || current.games.length === 0) {
       statusEl.textContent = "";
       document.getElementById("empty-state").style.display = "block";
-      renderRecord(flags);
       return;
     }
 
@@ -556,7 +482,6 @@
     if (rows.length === 0) {
       statusEl.textContent = `pulled ${new Date(current.pulled_at).toLocaleString()}`;
       document.getElementById("empty-state").style.display = "block";
-      renderRecord(flags);
       return;
     }
     const pulled = new Date(current.pulled_at).toLocaleString(undefined, {
@@ -584,7 +509,6 @@
     });
     document.getElementById("controls").style.display = "flex";
     document.getElementById("table-wrap").style.display = "block";
-    renderRecord(flags);
   }
 
   init();

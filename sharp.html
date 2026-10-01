@@ -231,7 +231,7 @@
   than your Splash number does. Ticket Gap = money % minus bet % for the team whose money outruns its tickets.
   Sharp and Trap measure the line move from DraftKings' line when your Splash lines came in (the first Pull Splits after
   pasting), not from the Splash line. The Sharp Money dropdown sets the threshold for M and S (and the orange Ticket Gap
-  highlight) on this page only; T is always over 60% of the money. Games to Watch = any game with S, T or E filled.
+  highlight) on this page only; T is always over 60% of the money. Games to Watch = any game with at least one circle filled.
   <br><br>
   2024&ndash;26 history (NFL + FBS, graded at the closing line): M alone, at 15+, sided with the money 519-480 (52.0%);
   S at 15+ went 240-231 (51.0%); in T games the money side went 281-295 (48.8%) and the line side 295-281 (51.2%).
@@ -344,8 +344,8 @@
       ...g,
       angles,
       angleScore: angles.filter((a) => a.met).length,
-      // Games to Watch = Sharp, Trap or Edge (Money alone is too common to watch)
-      watch: sharp || trap || edge,
+      // Games to Watch = any of the four circles filled
+      watch: !!moneySide || sharp || trap || edge,
       game: `${g.away} @ ${g.home}`,
       start: Date.parse(g.start_time),
       hasSplits,

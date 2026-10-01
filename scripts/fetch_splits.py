@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Pull NFL + NCAAF betting splits (bet % and money %) from Action Network,
-save a daily snapshot, and build the data behind sharp.html.
+save a daily snapshot, and build the data behind index.html (the Sharp page).
 
 Run daily via .github/workflows/pull-splits.yml. No API key needed -
 this reads the same public JSON Action Network's own public-betting

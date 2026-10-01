@@ -18,6 +18,7 @@ data/weeks/), computed from kickoff in Eastern time.
 
 Sharp flag rule (kept deliberately simple so it can be checked by hand):
   money % - bet % >= EDGE_THRESHOLD on one side, AND
+  that side has under SHARP_MAX_TICKETS % of the tickets, AND
   the DraftKings spread has moved SHARP_MIN_MOVE+ points toward that side
   from the opening line (market open; DraftKings at Splash time, then
   Tuesday's line, if there's no open) -
@@ -54,6 +55,7 @@ LINE_BOOK = "68"    # DraftKings - same book as the Odds API lines pull
 OPEN_BOOK = "30"    # Action Network "Open" - the market's opening line (no DraftKings-only opener is published)
 EDGE_THRESHOLD = 15  # money % minus bet %, in percentage points
 SHARP_MIN_MOVE = 1.0  # points the DraftKings line must move toward the money side
+SHARP_MAX_TICKETS = 40  # money side must have under this % of the tickets (page default; page can change it)
 
 EASTERN = ZoneInfo("America/New_York")
 HEADERS = {
@@ -270,9 +272,9 @@ def sharp_flag(g):
     home_edge = g["home_money"] - g["home_bets"]
     away_edge = g["away_money"] - g["away_bets"]
     # move is in the home spread; the away spread is its negative
-    if home_edge >= EDGE_THRESHOLD and g["move"] <= -SHARP_MIN_MOVE:
+    if home_edge >= EDGE_THRESHOLD and g["home_bets"] < SHARP_MAX_TICKETS and g["move"] <= -SHARP_MIN_MOVE:
         side, edge, side_move, side_line = "home", home_edge, g["move"], g["line"]
-    elif away_edge >= EDGE_THRESHOLD and g["move"] >= SHARP_MIN_MOVE:
+    elif away_edge >= EDGE_THRESHOLD and g["away_bets"] < SHARP_MAX_TICKETS and g["move"] >= SHARP_MIN_MOVE:
         side, edge, side_move, side_line = "away", away_edge, -g["move"], -g["line"]
     else:
         return None

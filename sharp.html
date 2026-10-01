@@ -135,10 +135,10 @@
     <p>This week's Splash slate vs. the live DraftKings line. Pulled every 2 hours Wed&ndash;Sat morning from Action Network.</p>
     <p>Angle circles fill in when a game meets:<br>
       <span class="key money">M</span> - Money: the money is <span id="threshold">15</span>+ (or whatever value is selected below) points heavier than the tickets on one team<br>
-      <span class="key sharp">S</span> - Sharp: Money criteria above and the DraftKings line has moved 1+ point toward that team since the opening line<br>
+      <span class="key sharp">S</span> - Sharp: Money criteria above, that team has under <span id="ticket-cut">40</span>% of the tickets (or whatever value is selected below), and the DraftKings line has moved 1+ point toward that team since the opening line<br>
       <span class="key trap">T</span> - Trap: Over 60% of the money on one team, but DraftKings has moved the other way since the opening line<br>
       <span class="key edge">E</span> - Edge: The current DraftKings line is 2+ points off your Splash line</p>
-    <p>The Sharp Money dropdown sets the threshold for M and S (and the orange Ticket Gap highlight) on this page only;
+    <p>The Sharp Money dropdown sets the threshold for M and S (and the orange Ticket Gap highlight), and Sharp Tickets sets S's ticket cutoff, on this page only;
       T is always over 60% of the money. Games to Watch = any game with at least one circle filled.</p>
   </div>
 </header>
@@ -158,6 +158,13 @@
       <option value="15">15+</option>
       <option value="20">20+</option>
       <option value="25">25+</option>
+    </select>
+  </label>
+  <label>Sharp Tickets
+    <select id="tickets-select" title="For S (Sharp), the money team must also have less than this share of the tickets - most bettors are on the other side">
+      <option value="50">under 50%</option>
+      <option value="40">under 40%</option>
+      <option value="30">under 30%</option>
     </select>
   </label>
   <span>
@@ -203,9 +210,9 @@
   <br><br>
   2024&ndash;26 history (NFL + FBS, graded at the closing line):<br>
   M alone, at 15+, sided with the money 519-480 (52.0%)<br>
-  S at 15+ (any size move) went 240-231 (51.0%)<br>
+  S at 15+ with under 40% of the tickets and a 1+ point move from the open went 95-59 (61.7%, &plusmn;8%) - only ~3 games a week, and the best of several rules tried, so treat it as promising, not proven<br>
   In T games the money side went 281-295 (48.8%) and the line side 295-281 (51.2%).<br>
-  None beat a coin flip - treat them as information, not picks.<br>
+  M and T don't beat a coin flip - treat them as information, not picks.<br>
   E is different: in the backtest a 2&ndash;2.5 point gap covered 55.5% and 3+ points 61&ndash;71% at the earlier number.
 </footer>
 
@@ -242,7 +249,7 @@
     return edgeData.buckets.find((b) => a >= b.min && a <= b.max) || null;
   }
 
-  function toRow(g, threshold, edgeData) {
+  function toRow(g, threshold, edgeData, ticketCut) {
     // Movement = DraftKings now minus your Splash line (home spread; negative = toward home).
     // Deliberately no DraftKings fallback: a game without a Splash line gets no
     // move/edge rather than one measured against a number you can't lock.
@@ -282,8 +289,11 @@
     const moneySide = hasSplits && gap >= threshold ? gapSide : null;
     const moneyAbbr = moneySide ? g[`${moneySide}_abbr`] : "";
     //  S Sharp: Money, and DraftKings moved toward that team
+    // S also needs the money team to be a ticket minority (most bettors on the other side)
     const SHARP_MIN_MOVE = 1; // points, same as the pull script
-    const sharp = !!moneySide && movedToward(moneySide) && Math.abs(marketMove) >= SHARP_MIN_MOVE;
+    const moneyTickets = moneySide ? g[`${moneySide}_bets`] : null;
+    const fewTickets = moneyTickets !== null && moneyTickets < ticketCut;
+    const sharp = !!moneySide && fewTickets && movedToward(moneySide) && Math.abs(marketMove) >= SHARP_MIN_MOVE;
     // Real DraftKings move for the hover, from that team's side: "-14 → -13.5"
     const dkMoveText = (side) => {
       if (marketMove === null) return "no opening line yet";
@@ -304,9 +314,12 @@
         title: moneySide ? `Money: ${moneyAbbr} money outruns its tickets by ${gap} (${threshold}+ needed; line movement not required)`
                          : `Money: Ticket Gap ${gap === null ? "n/a" : gap} is under ${threshold}` },
       { key: "sharp", letter: "S", met: sharp,
-        title: sharp ? `Sharp: sharp money on ${moneyAbbr} (Ticket Gap +${gap}) and the DraftKings line moved toward them: ${dkMoveText(moneySide)}`
-                     : moneySide ? `Sharp: sharp money on ${moneyAbbr} (+${gap}), but the DraftKings line hasn't moved 1+ point toward them: ${dkMoveText(moneySide)}`
-                                 : `Sharp: needs Money (Ticket Gap ${threshold}+) plus a 1+ point DraftKings move toward that team` },
+        title: sharp ? `Sharp: sharp money on ${moneyAbbr} (Ticket Gap +${gap}, only ${moneyTickets}% of the tickets) and the DraftKings line moved toward them: ${dkMoveText(moneySide)}`
+                     : moneySide ? `Sharp: money on ${moneyAbbr} (+${gap}), but ${[
+                         !fewTickets ? `they have ${moneyTickets}% of the tickets (under ${ticketCut}% needed)` : null,
+                         !(movedToward(moneySide) && Math.abs(marketMove) >= SHARP_MIN_MOVE) ? `the DraftKings line hasn't moved 1+ point toward them` : null,
+                       ].filter(Boolean).join(" and ")}: ${dkMoveText(moneySide)}`
+                                 : `Sharp: needs Money (Ticket Gap ${threshold}+), under ${ticketCut}% of the tickets, and a 1+ point DraftKings move toward that team` },
       { key: "trap", letter: "T", met: trap,
         title: trap ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]} but the DraftKings line moved away from them: ${dkMoveText(majSide)}`
                     : majSide ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]}, but the DraftKings line hasn't moved away from them: ${dkMoveText(majSide)}`
@@ -481,9 +494,18 @@
     } catch (e) { /* storage blocked - use the default */ }
     select.value = String(threshold);
 
+    // Sharp Tickets cutoff: last choice in this browser, else 40
+    const ticketSelect = document.getElementById("tickets-select");
+    let ticketCut = 40;
+    try {
+      const saved = Number(localStorage.getItem("sharpTicketCut"));
+      if ([50, 40, 30].includes(saved)) ticketCut = saved;
+    } catch (e) { /* storage blocked - use the default */ }
+    ticketSelect.value = String(ticketCut);
+
     // Only games on this week's Splash slate
     const slate = current.games.filter((g) => g.splash_line !== null && g.splash_line !== undefined);
-    const build = (t) => slate.map((g) => toRow(g, t, edgeData));
+    const build = (t) => slate.map((g) => toRow(g, t, edgeData, ticketCut));
     let rows = build(threshold);
     if (rows.length === 0) {
       statusEl.textContent = `pulled ${new Date(current.pulled_at).toLocaleString()}`;
@@ -500,6 +522,7 @@
       const count = (key) => rows.filter((r) => r.angles.some((a) => a.key === key && a.met)).length;
       const withSplits = rows.filter((r) => r.hasSplits).length;
       document.getElementById("threshold").textContent = threshold;
+      document.getElementById("ticket-cut").textContent = ticketCut;
       statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${count("money")} money · ${count("sharp")} sharp · ${count("trap")} trap · ${count("edge")} edge (Sharp Money ${threshold}+) · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
     }
 
@@ -509,6 +532,13 @@
     select.addEventListener("change", () => {
       threshold = Number(select.value);
       try { localStorage.setItem("sharpThreshold", String(threshold)); } catch (e) { /* not remembered - fine */ }
+      rows = build(threshold);
+      showStatus();
+      games.setRows(rows);
+    });
+    ticketSelect.addEventListener("change", () => {
+      ticketCut = Number(ticketSelect.value);
+      try { localStorage.setItem("sharpTicketCut", String(ticketCut)); } catch (e) { /* not remembered - fine */ }
       rows = build(threshold);
       showStatus();
       games.setRows(rows);

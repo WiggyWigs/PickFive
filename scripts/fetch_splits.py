@@ -19,7 +19,8 @@ data/weeks/), computed from kickoff in Eastern time.
 Sharp flag rule (kept deliberately simple so it can be checked by hand):
   money % - bet % >= EDGE_THRESHOLD on one side, AND
   the DraftKings spread has moved SHARP_MIN_MOVE+ points toward that side
-  since the Splash lines came in (Tuesday's line for games not on Splash) -
+  from the opening line (market open; DraftKings at Splash time, then
+  Tuesday's line, if there's no open) -
   its number got worse for new bettors, e.g. -3 -> -4 or +7 -> +6.
 
 Tuesday's line comes from our own Tuesday splits snapshot. If there
@@ -50,6 +51,7 @@ PUBLIC_API = "https://api.actionnetwork.com/web/v2/scoreboard/publicbetting/{spo
 
 SPLITS_BOOK = "15"  # Action Network "Consensus" - carries their bet/money %
 LINE_BOOK = "68"    # DraftKings - same book as the Odds API lines pull
+OPEN_BOOK = "30"    # Action Network "Open" - the market's opening line (no DraftKings-only opener is published)
 EDGE_THRESHOLD = 15  # money % minus bet %, in percentage points
 SHARP_MIN_MOVE = 1.0  # points the DraftKings line must move toward the money side
 
@@ -90,6 +92,9 @@ def parse_game(game, league):
     home = teams.get(game["home_team_id"], {})
     away = teams.get(game["away_team_id"], {})
 
+    open_line = next((o["value"] for o in spread_outcomes(game, OPEN_BOOK)
+                      if o.get("side") == "home" and o.get("value") is not None), None)
+
     line = None
     for book in (LINE_BOOK, SPLITS_BOOK):
         for o in spread_outcomes(game, book):
@@ -123,6 +128,7 @@ def parse_game(game, league):
         "home_abbr": home.get("abbr"),
         "away_abbr": away.get("abbr"),
         "line": line,  # home team's spread, DraftKings
+        "open_line": open_line,  # home team's opening spread (market open)
         "home_bets": splits["home"]["bets"] if has_splits else None,
         "home_money": splits["home"]["money"] if has_splits else None,
         "away_bets": splits["away"]["bets"] if has_splits else None,
@@ -293,7 +299,7 @@ def main():
 
     games = []
     for sport, league in LEAGUES.items():
-        data = get_json(PUBLIC_API.format(sport=sport) + f"?bookIds={SPLITS_BOOK},{LINE_BOOK}&periods=event")
+        data = get_json(PUBLIC_API.format(sport=sport) + f"?bookIds={SPLITS_BOOK},{LINE_BOOK},{OPEN_BOOK}&periods=event")
         if "games" not in data:
             sys.exit(f"Unexpected response shape for {sport}: keys={list(data)}")
         games += [parse_game(g, league) for g in data["games"]]
@@ -335,12 +341,13 @@ def main():
     if splash_copied_at:
         baseline_path.write_text(json.dumps(baseline, indent=2) + "\n")
 
-    # 3. Market move + sharp flag. The move is DraftKings now vs DraftKings at
-    # Splash-lock time (Tuesday's line for games not on Splash).
+    # 3. Market move + sharp flag. The move is DraftKings now vs the opening
+    # line - the same open-to-current move the 2024-26 backtest measured.
+    # Falls back to DraftKings at Splash time, then Tuesday, if there's no open.
     cache = {}
     for g in games:
         g["tue_line"], g["tue_source"] = tuesday_line(g, cache)
-        base = g["dk_at_splash"] if g["dk_at_splash"] is not None else g["tue_line"]
+        base = next((b for b in (g["open_line"], g["dk_at_splash"], g["tue_line"]) if b is not None), None)
         g["move"] = round(g["line"] - base, 1) if g["line"] is not None and base is not None else None
         # With a Splash slate loaded, only its games can be flagged - the page shows nothing else
         on_slate = g["splash_line"] is not None or not splash_rows

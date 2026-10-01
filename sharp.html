@@ -334,15 +334,15 @@
 
     const angles = [
       { key: "money", letter: "M", met: !!moneySide,
-        title: moneySide ? `Money: ${moneyAbbr} money outruns its tickets by ${gap} (${threshold}+ needed)`
+        title: moneySide ? `Money: ${moneyAbbr} money outruns its tickets by ${gap} (${threshold}+ needed; line movement not required)`
                          : `Money: Ticket Gap ${gap === null ? "n/a" : gap} is under ${threshold}` },
       { key: "sharp", letter: "S", met: sharp,
         title: sharp ? `Sharp: sharp money on ${moneyAbbr} (Ticket Gap +${gap}) and the DraftKings line moved toward them: ${dkMoveText(moneySide)}`
                      : moneySide ? `Sharp: sharp money on ${moneyAbbr} (+${gap}), but the DraftKings line hasn't moved 1+ point toward them: ${dkMoveText(moneySide)}`
                                  : `Sharp: needs Money (Ticket Gap ${threshold}+) plus a 1+ point DraftKings move toward that team` },
       { key: "trap", letter: "T", met: trap,
-        title: trap ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]} but the line moved away from them (${sgn(marketMove)})`
-                    : majSide ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]}, line hasn't moved against them (${marketMove ? sgn(marketMove) : noMoveYet})`
+        title: trap ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]} but the DraftKings line moved away from them: ${dkMoveText(majSide)}`
+                    : majSide ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]}, but the DraftKings line hasn't moved away from them: ${dkMoveText(majSide)}`
                               : "Trap: no team has over 60% of the money" },
       { key: "edge", letter: "E", met: edge,
         title: edge ? `Edge: ${g[`${moveSide}_abbr`]} is ${sgn(sideSplash)} on Splash vs ${sgn(sideNow)} at DraftKings now (${Math.abs(move)} pts)`

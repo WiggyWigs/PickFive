@@ -123,6 +123,27 @@
   .edges .none { color: var(--muted); margin: 0; }
   #sharps .pick { color: var(--up); }
 
+  /* Info buttons + tap/hover pop-up (replaces browser title tooltips, which phones don't show) */
+  .info {
+    background: none; border: none; padding: 0 0.1rem; margin-left: 0.1rem;
+    color: var(--muted); font-size: 0.85em; cursor: pointer; line-height: 1;
+  }
+  .info:hover, .info:focus-visible { color: var(--amber); }
+  .controls button.info { border: none; background: none; padding: 0 0.15rem; }
+  #tip {
+    position: fixed; z-index: 50; max-width: 280px;
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--amber); border-radius: 6px;
+    padding: 0.5rem 0.65rem; font-size: 0.8rem; line-height: 1.4; text-align: left;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4); pointer-events: none;
+  }
+  .dot { cursor: help; }
+  #team-search {
+    background: var(--panel); color: var(--text);
+    border: 1px solid var(--line); border-radius: 4px;
+    padding: 0.3rem 0.55rem; font: inherit; min-width: 11rem;
+  }
 </style>
 </head>
 <body>
@@ -160,19 +181,21 @@
 
 <div class="controls" id="controls" style="display:none;">
   <label>Sharp Money
-    <select id="threshold-select" title="How many points heavier the money must be than the tickets on a team (Ticket Gap) to count toward Sharp or Trap">
+    <select id="threshold-select">
       <option value="10">10+</option>
       <option value="15">15+</option>
       <option value="20">20+</option>
       <option value="25">25+</option>
     </select>
+    <button type="button" class="info" data-tip="How many points heavier the money must be than the tickets on a team (Ticket Gap) to count toward Sharp or Trap" aria-label="About this setting">&#9432;</button>
   </label>
   <label>Sharp Tickets
-    <select id="tickets-select" title="For S (Sharp), the money team must also have less than this share of the tickets - most bettors are on the other side">
+    <select id="tickets-select">
       <option value="50">under 50%</option>
       <option value="40">under 40%</option>
       <option value="30">under 30%</option>
     </select>
+    <button type="button" class="info" data-tip="For S (Sharp), the money team must also have less than this share of the tickets - most bettors are on the other side" aria-label="About this setting">&#9432;</button>
   </label>
   <span>
     <button data-league="ALL" class="on">All</button>
@@ -180,6 +203,7 @@
     <button data-league="NCAAF">NCAAF</button>
   </span>
   <label><input type="checkbox" id="watch-only"> Games to Watch</label>
+  <input type="search" id="team-search" placeholder="Search team" aria-label="Search by team name" autocomplete="off">
 </div>
 
 <div class="table-wrap" id="table-wrap" style="display:none;">
@@ -189,13 +213,13 @@
         <th data-key="home" data-type="string">Home</th>
         <th data-key="away" data-type="string">Away</th>
         <th data-key="start" data-type="number" class="group-start">Kickoff</th>
-        <th data-key="line" data-type="number" class="group-start has-tip" title="The current DraftKings line for the home team">Current Line</th>
-        <th data-key="splash_line" data-type="number" class="has-tip" title="The line for the home team for Pick5">Splash Line (Home Team)</th>
-        <th data-key="move" data-type="number" class="has-tip" title="The difference between the current DraftKings line and the Splash line">Movement</th>
-        <th data-key="home_bets" data-type="number" class="group-start has-tip" title="The percent of tickets placed on the home team to cover the line">Home Bets</th>
-        <th data-key="home_money" data-type="number" class="has-tip" title="The amount of money placed on the home team to cover the line">Home Money</th>
-        <th data-key="gap" data-type="number" class="group-start has-tip" title="Money % minus bet % for the team whose money outruns its tickets. ARI +13 = Arizona has 13 points more of the money than of the tickets - fewer, bigger bets on Arizona.">Ticket Gap</th>
-        <th data-key="angleScore" data-type="number" class="has-tip" title="The various angles based on betting data analytics (sorted Edge > Sharp > Money & Trap)">Angle</th>
+        <th data-key="line" data-type="number" class="group-start has-tip" data-tip="The current DraftKings line for the home team">Current Line <button type="button" class="info" data-tip="The current DraftKings line for the home team" aria-label="What is Current Line?">&#9432;</button></th>
+        <th data-key="splash_line" data-type="number" class="has-tip" data-tip="The line for the home team for Pick5">Splash Line (Home Team) <button type="button" class="info" data-tip="The line for the home team for Pick5" aria-label="What is Splash Line (Home Team)?">&#9432;</button></th>
+        <th data-key="move" data-type="number" class="has-tip" data-tip="The difference between the current DraftKings line and the Splash line">Movement <button type="button" class="info" data-tip="The difference between the current DraftKings line and the Splash line" aria-label="What is Movement?">&#9432;</button></th>
+        <th data-key="home_bets" data-type="number" class="group-start has-tip" data-tip="The percent of tickets placed on the home team to cover the line">Home Bets <button type="button" class="info" data-tip="The percent of tickets placed on the home team to cover the line" aria-label="What is Home Bets?">&#9432;</button></th>
+        <th data-key="home_money" data-type="number" class="has-tip" data-tip="The amount of money placed on the home team to cover the line">Home Money <button type="button" class="info" data-tip="The amount of money placed on the home team to cover the line" aria-label="What is Home Money?">&#9432;</button></th>
+        <th data-key="gap" data-type="number" class="group-start has-tip" data-tip="Money % minus bet % for the team whose money outruns its tickets. ARI +13 = Arizona has 13 points more of the money than of the tickets - fewer, bigger bets on Arizona.">Ticket Gap <button type="button" class="info" data-tip="Money % minus bet % for the team whose money outruns its tickets. ARI +13 = Arizona has 13 points more of the money than of the tickets - fewer, bigger bets on Arizona." aria-label="What is Ticket Gap?">&#9432;</button></th>
+        <th data-key="angleScore" data-type="number" class="has-tip" data-tip="The various angles based on betting data analytics (sorted Edge > Sharp > Money & Trap)">Angle <button type="button" class="info" data-tip="The various angles based on betting data analytics (sorted Edge > Sharp > Money & Trap)" aria-label="What is Angle?">&#9432;</button></th>
       </tr>
     </thead>
     <tbody></tbody>
@@ -390,13 +414,14 @@
   function renderGames(initialRows) {
     let rows = initialRows;
     const tbody = document.querySelector("#splits-table tbody");
-    const state = { league: "ALL", watchOnly: false, key: "angleScore", dir: -1, type: "number" };
+    const state = { league: "ALL", watchOnly: false, query: "", key: "angleScore", dir: -1, type: "number" };
 
     function visible() {
       return rows.filter(
         (r) =>
           (state.league === "ALL" || r.league === state.league) &&
-          (!state.watchOnly || r.watch)
+          (!state.watchOnly || r.watch) &&
+          (!state.query || [r.home, r.away, r.home_abbr, r.away_abbr].some((n) => (n || "").toLowerCase().includes(state.query)))
       );
     }
 
@@ -433,7 +458,7 @@
           ${cell(fmtPct(r.home_bets), "pct group-start")}
           ${cell(fmtPct(r.home_money), r.hotHome ? "pct hot" : "pct")}
           ${cell(r.gap === null ? null : `${esc(r.gapAbbr)} +${r.gap}`, (r.hotHome || r.hotAway) ? "gap group-start pct hot" : "gap group-start")}
-          <td><span class="dots">${r.angles.map((a) => `<span class="dot ${a.key}${a.met ? " on" : ""}" title="${esc(a.title)}">${a.letter}</span>`).join("")}</span></td>
+          <td><span class="dots">${r.angles.map((a) => `<span class="dot ${a.key}${a.met ? " on" : ""}" tabindex="0" data-tip="${esc(a.title)}">${a.letter}</span>`).join("")}</span></td>
         </tr>`
         )
         .join("");
@@ -448,7 +473,8 @@
     }
 
     document.querySelectorAll("#splits-table thead th").forEach((th) => {
-      th.addEventListener("click", () => {
+      th.addEventListener("click", (e) => {
+        if (e.target.closest(".info")) return;
         state.dir = state.key === th.dataset.key ? -state.dir : th.dataset.type === "number" ? -1 : 1;
         state.key = th.dataset.key;
         state.type = th.dataset.type;
@@ -457,14 +483,15 @@
       });
     });
 
-    document.querySelectorAll("#controls button").forEach((b) => {
+    document.querySelectorAll("#controls button[data-league]").forEach((b) => {
       b.addEventListener("click", () => {
         state.league = b.dataset.league;
-        document.querySelectorAll("#controls button").forEach((x) => x.classList.toggle("on", x === b));
+        document.querySelectorAll("#controls button[data-league]").forEach((x) => x.classList.toggle("on", x === b));
         draw();
       });
     });
     document.getElementById("watch-only").addEventListener("change", (e) => { state.watchOnly = e.target.checked; draw(); });
+    document.getElementById("team-search").addEventListener("input", (e) => { state.query = e.target.value.trim().toLowerCase(); draw(); });
 
     setArrow(document.querySelector('#splits-table thead th[data-key="angleScore"]'));
     draw();
@@ -589,6 +616,58 @@
     document.getElementById("controls").style.display = "flex";
     document.getElementById("table-wrap").style.display = "block";
   }
+
+  // Pop-up for anything with data-tip: hover with a mouse, tap on a phone.
+  // (Browser title tooltips never show on iPhone and rarely on Android.)
+  (function setupTips() {
+    const tip = document.createElement("div");
+    tip.id = "tip"; tip.setAttribute("role", "tooltip"); tip.hidden = true;
+    document.body.appendChild(tip);
+    let current = null, lastPointer = "mouse";
+
+    function show(el) {
+      current = el;
+      tip.textContent = el.dataset.tip;
+      tip.hidden = false;
+      const r = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+      const left = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
+      const below = r.bottom + 8 + h <= window.innerHeight;
+      tip.style.left = `${left}px`;
+      tip.style.top = `${below ? r.bottom + 8 : Math.max(8, r.top - h - 8)}px`;
+    }
+    function hide() { tip.hidden = true; current = null; }
+
+    document.addEventListener("pointerdown", (e) => { lastPointer = e.pointerType || "mouse"; }, true);
+    document.addEventListener("pointerover", (e) => {
+      if (e.pointerType !== "mouse") return;
+      const el = e.target.closest("[data-tip]");
+      if (el) show(el);
+    });
+    document.addEventListener("pointerout", (e) => {
+      if (e.pointerType !== "mouse") return;
+      const el = e.target.closest("[data-tip]");
+      if (el && !el.contains(e.relatedTarget)) hide();
+    });
+    document.addEventListener("click", (e) => {
+      // Column headers sort on tap; their explanation is on the info button instead
+      const el = e.target.closest("[data-tip]:not(th)");
+      if (el && (lastPointer !== "mouse" || el.classList.contains("info"))) {
+        // Mouse: hovering already opened it, so a click keeps it open. Touch: tap toggles.
+        if (lastPointer === "mouse") show(el); else if (current === el) hide(); else show(el);
+        if (el.classList.contains("info")) e.stopPropagation();
+      } else if (!el) {
+        hide();
+      }
+    });
+    // Keyboard (Tab) focus opens the pop-up too - but not the focus a tap or click
+    // gives as a side effect, which would fight with the click toggle above.
+    document.addEventListener("focusin", (e) => {
+      if (e.target.matches?.(".dot, .info") && e.target.matches(":focus-visible")) show(e.target);
+    });
+    document.addEventListener("focusout", (e) => { if (e.target.matches?.(".dot, .info")) hide(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape") hide(); });
+    window.addEventListener("scroll", hide, { passive: true });
+  })();
 
   init();
 </script>

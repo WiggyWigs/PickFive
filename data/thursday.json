@@ -1,14 +1,5 @@
 [
   {
-    "id": "d55cb69fed50a09170560b5b75d8de86",
-    "league": "NFL",
-    "home_team": "Cleveland Browns",
-    "away_team": "Pittsburgh Steelers",
-    "commence_time": "2026-10-02T00:15:00Z",
-    "spread": 2.5,
-    "bookmaker": "draftkings"
-  },
-  {
     "id": "c9d8ed8aa4889486eaf10a630138ede0",
     "league": "NFL",
     "home_team": "Washington Commanders",
@@ -86,7 +77,7 @@
     "home_team": "Philadelphia Eagles",
     "away_team": "Los Angeles Rams",
     "commence_time": "2026-10-04T17:00:00Z",
-    "spread": 3.0,
+    "spread": 3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -144,24 +135,6 @@
     "bookmaker": "draftkings"
   },
   {
-    "id": "b0998b3474fea9dee080784b8da01048",
-    "league": "NCAAF",
-    "home_team": "New Mexico State Aggies",
-    "away_team": "Western Kentucky Hilltoppers",
-    "commence_time": "2026-10-02T00:00:00Z",
-    "spread": -2.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "3c64f3dd8efd756a90f09303e5517006",
-    "league": "NCAAF",
-    "home_team": "Tulsa Golden Hurricane",
-    "away_team": "North Texas Mean Green",
-    "commence_time": "2026-10-02T01:00:00Z",
-    "spread": 2.5,
-    "bookmaker": "draftkings"
-  },
-  {
     "id": "a39f3695781e9b2f76011e921d63b124",
     "league": "NCAAF",
     "home_team": "Delaware Blue Hens",
@@ -185,7 +158,16 @@
     "home_team": "Northwestern Wildcats",
     "away_team": "Penn State Nittany Lions",
     "commence_time": "2026-10-03T00:00:00Z",
-    "spread": 3.0,
+    "spread": 2.5,
+    "bookmaker": "draftkings"
+  },
+  {
+    "id": "9b2bcb758c7d7f4cb25d5102e4e9068e",
+    "league": "NCAAF",
+    "home_team": "Charlotte 49ers",
+    "away_team": "Memphis Tigers",
+    "commence_time": "2026-10-03T15:00:00Z",
+    "spread": 20.5,
     "bookmaker": "draftkings"
   },
   {
@@ -257,7 +239,7 @@
     "home_team": "North Carolina Tar Heels",
     "away_team": "Notre Dame Fighting Irish",
     "commence_time": "2026-10-03T16:00:00Z",
-    "spread": 21.5,
+    "spread": 22.5,
     "bookmaker": "draftkings"
   },
   {
@@ -266,7 +248,7 @@
     "home_team": "Wake Forest Demon Deacons",
     "away_team": "Stanford Cardinal",
     "commence_time": "2026-10-03T16:00:00Z",
-    "spread": -13.5,
+    "spread": -14.0,
     "bookmaker": "draftkings"
   },
   {
@@ -348,15 +330,6 @@
     "away_team": "California Golden Bears",
     "commence_time": "2026-10-03T19:30:00Z",
     "spread": -2.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "9b2bcb758c7d7f4cb25d5102e4e9068e",
-    "league": "NCAAF",
-    "home_team": "Charlotte 49ers",
-    "away_team": "Memphis Tigers",
-    "commence_time": "2026-10-03T19:30:00Z",
-    "spread": 20.5,
     "bookmaker": "draftkings"
   },
   {
@@ -446,7 +419,7 @@
     "home_team": "James Madison Dukes",
     "away_team": "Marshall Thundering Herd",
     "commence_time": "2026-10-03T19:45:00Z",
-    "spread": -19.5,
+    "spread": -18.5,
     "bookmaker": "draftkings"
   },
   {
@@ -509,7 +482,7 @@
     "home_team": "Texas A&M Aggies",
     "away_team": "Arkansas Razorbacks",
     "commence_time": "2026-10-03T23:00:00Z",
-    "spread": -14.0,
+    "spread": -13.5,
     "bookmaker": "draftkings"
   },
   {
@@ -536,7 +509,7 @@
     "home_team": "Rice Owls",
     "away_team": "UTSA Roadrunners",
     "commence_time": "2026-10-03T23:00:00Z",
-    "spread": 11.5,
+    "spread": 12.5,
     "bookmaker": "draftkings"
   },
   {
@@ -554,7 +527,7 @@
     "home_team": "Louisiana Tech Bulldogs",
     "away_team": "Army Black Knights",
     "commence_time": "2026-10-03T23:30:00Z",
-    "spread": 1.5,
+    "spread": 2.5,
     "bookmaker": "draftkings"
   },
   {
@@ -563,7 +536,7 @@
     "home_team": "Boise State Broncos",
     "away_team": "Utah State Aggies",
     "commence_time": "2026-10-03T23:30:00Z",
-    "spread": -20.5,
+    "spread": -18.5,
     "bookmaker": "draftkings"
   },
   {
@@ -590,7 +563,7 @@
     "home_team": "USC Trojans",
     "away_team": "Washington Huskies",
     "commence_time": "2026-10-03T23:30:00Z",
-    "spread": -9.5,
+    "spread": -8.5,
     "bookmaker": "draftkings"
   },
   {
@@ -599,7 +572,7 @@
     "home_team": "Colorado Buffaloes",
     "away_team": "Texas Tech Red Raiders",
     "commence_time": "2026-10-03T23:31:00Z",
-    "spread": 12.5,
+    "spread": 13.5,
     "bookmaker": "draftkings"
   },
   {
@@ -653,7 +626,7 @@
     "home_team": "San Diego State Aztecs",
     "away_team": "Texas State Bobcats",
     "commence_time": "2026-10-04T02:30:00Z",
-    "spread": 7.5,
+    "spread": 8.5,
     "bookmaker": "draftkings"
   },
   {

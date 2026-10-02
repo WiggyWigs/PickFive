@@ -2293,5 +2293,50 @@
     "payout": 55.6,
     "net": 35.6,
     "type": "wager"
+  },
+  {
+    "date": "10/1/2026",
+    "name": "Billy",
+    "bet": "Week 3 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 36.0,
+    "net": 16.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/1/2026",
+    "name": "Carlos",
+    "bet": "Week 3 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 36.0,
+    "net": 16.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/3/2026",
+    "name": "Carlos",
+    "bet": "Caterpillar",
+    "bet_amount": 18.0,
+    "payout": null,
+    "net": -18.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/3/2026",
+    "name": "Billy",
+    "bet": "Week 3 Bank Builder Bet 1",
+    "bet_amount": 16.0,
+    "payout": null,
+    "net": -16.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/3/2026",
+    "name": "Carlos",
+    "bet": "Week 3 Bank Builder Bet 1",
+    "bet_amount": 16.0,
+    "payout": null,
+    "net": -16.0,
+    "type": "wager"
   }
 ]

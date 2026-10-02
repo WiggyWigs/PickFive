@@ -300,6 +300,65 @@ def grade(side_line, side_score, opp_score):
     return "W" if margin > 0 else "L" if margin < 0 else "P"
 
 
+# --- Freeze games at kickoff ---------------------------------------------------
+
+FROZEN_FIELDS = ("line", "home_bets", "home_money", "away_bets", "away_money")
+
+
+def parse_time(ts):
+    return datetime.fromisoformat(ts.replace("Z", "+00:00"))
+
+
+def freeze_started_games(games, now):
+    """Once a game kicks off, Action Network's feed switches to live in-game
+    lines and splits (e.g. CLE +2.5 pre-game became -7.5 at 21-10 on
+    2026-10-01). Keep each started game's last pre-kickoff numbers instead:
+    from the previous pull if it ran before kickoff (or was already frozen),
+    else from the latest of this week's snapshots taken before kickoff.
+    Scores and status stay live - grading needs them.
+
+    The first frozen numbers for each game are also kept in kickoff_lines.json,
+    which is never rewritten for that game, so a later pull or an overwritten
+    daily snapshot can't lose them."""
+    store_path = SPLITS_DIR / "kickoff_lines.json"
+    store = load_json(store_path, {})
+    prev = load_json(SPLITS_DIR / "current.json", {})
+    prev_at = parse_time(prev["pulled_at"]) if prev.get("pulled_at") else None
+    prev_games = {f"{g['league']}:{g['id']}": g for g in prev.get("games", [])}
+    snapshots = {}
+
+    for g in games:
+        kickoff = parse_time(g["start_time"])
+        if kickoff > now and g["status"] == "scheduled":
+            continue
+        key = f"{g['league']}:{g['id']}"
+        src, src_at = None, None
+        p = prev_games.get(key)
+        if key in store:
+            src, src_at = store[key], store[key]["frozen_at"]
+        elif p and p.get("frozen_at"):
+            src, src_at = p, p["frozen_at"]
+        elif p and prev_at and prev_at < kickoff:
+            src, src_at = p, prev["pulled_at"]
+        else:
+            wk = g["week_id"]
+            if wk not in snapshots:
+                snapshots[wk] = [load_json(f, {}) for f in sorted((SPLITS_DIR / "weeks" / wk).glob("*.json"))]
+            for snap in snapshots[wk]:
+                at = snap.get("pulled_at")
+                hit = next((x for x in snap.get("games", []) if x["id"] == g["id"] and x["league"] == g["league"]), None)
+                if hit and at and parse_time(at) < kickoff and (src_at is None or parse_time(at) > parse_time(src_at)):
+                    src, src_at = hit, at
+        for f in FROZEN_FIELDS:
+            g[f] = src.get(f) if src else None  # no pre-kickoff numbers: blank, never live ones
+        g["frozen_at"] = src_at
+        if src and key not in store:
+            store[key] = {**{f: g[f] for f in FROZEN_FIELDS}, "frozen_at": src_at,
+                          "away": g["away"], "home": g["home"], "start_time": g["start_time"]}
+
+    store_path.write_text(json.dumps(dict(sorted(store.items())), indent=2) + "\n")
+
+
 # --- Main --------------------------------------------------------------------
 
 def main():
@@ -317,6 +376,8 @@ def main():
         sys.exit("No games returned - refusing to overwrite data with an empty pull.")
     if not any(g["home_money"] is not None for g in games):
         sys.exit("Games returned but none carry bet/money % - Action Network may have changed or paywalled it.")
+
+    freeze_started_games(games, now)
 
     # 1. Raw daily snapshot, grouped by each game's own week
     by_week = {}

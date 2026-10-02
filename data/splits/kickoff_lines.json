@@ -1,0 +1,35 @@
+{
+  "NCAAF:289264": {
+    "line": 2.5,
+    "home_bets": 44,
+    "home_money": 42,
+    "away_bets": 56,
+    "away_money": 58,
+    "frozen_at": "2026-10-01T21:45:43+00:00",
+    "away": "North Texas Mean Green",
+    "home": "Tulsa Golden Hurricane",
+    "start_time": "2026-10-02T01:00:00.000Z"
+  },
+  "NCAAF:289378": {
+    "line": -2.5,
+    "home_bets": 44,
+    "home_money": 36,
+    "away_bets": 56,
+    "away_money": 64,
+    "frozen_at": "2026-10-01T21:45:43+00:00",
+    "away": "Western Kentucky Hilltoppers",
+    "home": "New Mexico State Aggies",
+    "start_time": "2026-10-02T00:00:00.000Z"
+  },
+  "NFL:290888": {
+    "line": 2.5,
+    "home_bets": 49,
+    "home_money": 52,
+    "away_bets": 51,
+    "away_money": 48,
+    "frozen_at": "2026-10-01T21:45:43+00:00",
+    "away": "Pittsburgh Steelers",
+    "home": "Cleveland Browns",
+    "start_time": "2026-10-02T00:15:00.000Z"
+  }
+}

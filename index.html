@@ -337,7 +337,9 @@
     const dkMoveText = (side) => {
       if (marketMove === null) return "no opening line yet";
       const f = (v) => sgn(side === "home" ? v : -v);
-      return `${g[`${side}_abbr`]} was ${f(baseLine)} ${baseLabel}, line is now ${f(g.line)} (${pulledAtLabel})`;
+      // Started games are frozen at their last pre-kickoff pull, so say so instead of "now"
+      const nowText = g.frozen_at ? `line at kickoff ${f(g.line)} (${fmtDayTime(g.frozen_at)} pull)` : `line is now ${f(g.line)} (${pulledAtLabel})`;
+      return `${g[`${side}_abbr`]} was ${f(baseLine)} ${baseLabel}, ${nowText}`;
     };
     //  T Trap: over 60% of the money on one team, and DraftKings moved 1+ point the other way
     const TRAP_MIN_MOVE = 1; // points

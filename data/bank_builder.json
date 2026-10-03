@@ -110,17 +110,17 @@
   {
     "week": 3,
     "wager": "1",
-    "pick": "TNF",
+    "pick": "TNF:\nFannin 25+ yards, Freiermuth 2 receptions, Warren 80 R&R",
     "amount": 20.0,
-    "payout": null,
-    "net": null,
-    "total": null
+    "payout": 36.0,
+    "net": 16.0,
+    "total": 16.0
   },
   {
     "week": 3,
     "wager": "2",
     "pick": "College",
-    "amount": null,
+    "amount": 16.0,
     "payout": null,
     "net": null,
     "total": null

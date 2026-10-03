@@ -10,6 +10,39 @@
     "home": "Tulsa Golden Hurricane",
     "start_time": "2026-10-02T01:00:00.000Z"
   },
+  "NCAAF:289266": {
+    "line": 2.5,
+    "home_bets": 37,
+    "home_money": 28,
+    "away_bets": 63,
+    "away_money": 72,
+    "frozen_at": "2026-10-02T21:16:45+00:00",
+    "away": "Penn State Nittany Lions",
+    "home": "Northwestern Wildcats",
+    "start_time": "2026-10-03T00:00:00.000Z"
+  },
+  "NCAAF:289268": {
+    "line": -2.5,
+    "home_bets": 46,
+    "home_money": 65,
+    "away_bets": 54,
+    "away_money": 35,
+    "frozen_at": "2026-10-02T21:16:45+00:00",
+    "away": "Pittsburgh Panthers",
+    "home": "Virginia Tech Hokies",
+    "start_time": "2026-10-02T23:00:00.000Z"
+  },
+  "NCAAF:289269": {
+    "line": 6.5,
+    "home_bets": 29,
+    "home_money": 40,
+    "away_bets": 71,
+    "away_money": 60,
+    "frozen_at": "2026-10-02T21:16:45+00:00",
+    "away": "Liberty Flames",
+    "home": "Delaware Fightin Blue Hens",
+    "start_time": "2026-10-02T23:00:00.000Z"
+  },
   "NCAAF:289378": {
     "line": -2.5,
     "home_bets": 44,

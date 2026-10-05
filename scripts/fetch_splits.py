@@ -297,13 +297,15 @@ def assign_splash_lines(games, rows, slate_week):
 
 def slate_week_for(copied_at):
     """week_id of the Splash slate: the Monday ending the week it was copied in."""
+    if not copied_at:
+        return None
     try:
         return week_id_for(copied_at)
-    except (TypeError, ValueError):
+    except ValueError:
         return None
 
 
-def carry_over_week(games, week_id):
+def carry_over_week(games, week_id, prev_name="current.json"):
     """Action Network drops a week's college games from its feed once they're
     played (Sunday/Monday), while the Splash slate - and this page - still
     covers them until the next Splash copy. Put back any game of that week
@@ -312,7 +314,7 @@ def carry_over_week(games, week_id):
     have = {f"{g['league']}:{g['id']}" for g in games}
     latest = {}
     sources = [load_json(f, {}) for f in sorted((SPLITS_DIR / "weeks" / week_id).glob("*.json"))]
-    sources.append(load_json(SPLITS_DIR / "current.json", {}))
+    sources.append(load_json(SPLITS_DIR / prev_name, {}))
     for snap in sources:
         for g in snap.get("games", []):
             if g.get("week_id") == week_id:
@@ -321,6 +323,17 @@ def carry_over_week(games, week_id):
     for g in carried:
         g["carried"] = True
     return carried
+
+
+def live_week_for(now):
+    """Week the Live Lines page shows: the one ending this coming Monday, from
+    the moment its Tuesday line exists (the Tuesday pull). Until then - Tuesday
+    morning - it keeps showing the week that just ended."""
+    wk = week_id_for(now.isoformat())
+    tuesday = (datetime.fromisoformat(wk) - timedelta(days=6)).date().isoformat()
+    if (SPLITS_DIR / "weeks" / wk / f"{tuesday}.json").exists() or (LINES_WEEKS_DIR / wk / "tuesday.json").exists():
+        return wk
+    return (datetime.fromisoformat(wk) - timedelta(days=7)).date().isoformat()
 
 
 # --- Flag rule ---------------------------------------------------------------
@@ -420,8 +433,9 @@ def freeze_started_games(games, now, use_lock=True, store_name="kickoff_lines.js
             if wk not in snapshots:
                 snapshots[wk] = [load_json(f, {}) for f in sorted((SPLITS_DIR / "weeks" / wk).glob("*.json"))]
             for snap in snapshots[wk]:
-                at = snap.get("pulled_at")
                 hit = next((x for x in snap.get("games", []) if x["id"] == g["id"] and x["league"] == g["league"]), None)
+                # an entry already frozen in that snapshot holds numbers from its frozen_at pull
+                at = (hit or {}).get("frozen_at") or snap.get("pulled_at")
                 if hit and at and parse_time(at) < cutoff and (src_at is None or parse_time(at) > parse_time(src_at)):
                     src, src_at = hit, at
         for f in FROZEN_FIELDS:
@@ -476,8 +490,12 @@ def main():
         sys.exit("Games returned but none carry bet/money % - Action Network may have changed or paywalled it.")
 
     # The live-lines page (live-lines.html) gets its own copy that keeps updating
-    # until kickoff - no Saturday lock, nothing to do with Splash.
-    live_games = copy.deepcopy(games)
+    # until kickoff - no Saturday lock, nothing to do with Splash. One week at a
+    # time: the feed mixes next week's college games with this week's NFL, and
+    # drops this week's college games once played, so put those back.
+    live_week = live_week_for(now)
+    live_games = [copy.deepcopy(g) for g in games if g["week_id"] == live_week]
+    live_games += carry_over_week(games, live_week, prev_name="live.json")
 
     # Last week's Splash slate stays on the main page until the next Splash
     # copy, even after its games leave Action Network's feed.

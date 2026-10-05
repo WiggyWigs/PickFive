@@ -10,7 +10,8 @@ on:
     # IMPORTANT: the "Determine stage" step below matches on these exact
     # cron strings. If you change one here, change it there too.
     - cron: "7 14 * * 1" # Monday
-    - cron: "7 14 * * 2" # Tuesday
+    # No Tuesday slot: run Pull Lines by hand on Tuesday (stage auto or
+    # tuesday) to take the Tuesday line.
     - cron: "7 14 * * 3" # Wednesday
     - cron: "7 14 * * 4" # Thursday
     - cron: "7 14 * * 5" # Friday
@@ -69,7 +70,6 @@ jobs:
         run: |
           case "$SCHEDULE" in
             "7 14 * * 1") stage=monday ;;
-            "7 14 * * 2") stage=tuesday ;;
             "7 14 * * 3") stage=wednesday ;;
             "7 14 * * 4") stage=thursday ;;
             "7 14 * * 5") stage=friday ;;

@@ -167,8 +167,8 @@
     <p>This week's Splash slate vs. the live DraftKings line. Pulled every 2 hours Wed&ndash;Sat morning from Action Network.</p>
     <p>Angle circles fill in when a game meets:<br>
       <span class="key money">M</span> - Money: the money is <span id="threshold">15</span>+ (or whatever value is selected below) points heavier than the tickets on one team<br>
-      <span class="key sharp">S</span> - Sharp: Money criteria above, that team has under <span id="ticket-cut">40</span>% of the tickets (or whatever value is selected below), and the DraftKings line has moved 1+ point toward that team since the opening line (DraftKings, Monday 9 AM)<br>
-      <span class="key trap">T</span> - Trap: Over 60% of the money on one team, but DraftKings has moved 1+ point the other way since the opening line (DraftKings, Monday 9 AM)<br>
+      <span class="key sharp">S</span> - Sharp: Money criteria above, that team has under <span id="ticket-cut">40</span>% of the tickets (or whatever value is selected below), and the DraftKings line has moved 1+ point toward that team since the Tuesday line (DraftKings, from your Tuesday pull)<br>
+      <span class="key trap">T</span> - Trap: Over 60% of the money on one team, but DraftKings has moved 1+ point the other way since the Tuesday line (DraftKings, from your Tuesday pull)<br>
       <span class="key edge">E</span> - Edge: The current DraftKings line is 2+ points off your Splash line</p>
     <p>The Sharp Money dropdown sets the threshold for M and S (and the orange Ticket Gap highlight), and Sharp Tickets sets S's ticket cutoff, on this page only;
       T is always over 60% of the money. Games to Watch = any game with at least one circle filled.</p>
@@ -265,7 +265,7 @@
   Only games on your Splash slate are shown. All lines are the home team's spread (negative = home favored).<br>
   Current Line = DraftKings now. Movement = Current Line minus Splash Line.<br>
   Ticket Gap = money % minus bet % for the team whose money outruns its tickets.<br>
-  Sharp and Trap measure the line move from the opening line - DraftKings' line on Monday around 9 AM Eastern - to the
+  Sharp and Trap measure the line move from DraftKings' Tuesday line (taken when you run the pulls on Tuesday) to the
   current DraftKings line. The history below used Action Network's "open", which can be a stale lookahead number posted
   weeks early, so treat its Sharp and Trap records as rough.
   <br><br>
@@ -340,13 +340,13 @@
     // The side where money outruns tickets - that's the one the gap describes
     const gapSide = !hasSplits ? null : homeGap >= awayGap ? "home" : "away";
     const gap = !hasSplits ? null : Math.max(homeGap, awayGap);
-    // Angle circles. Market move = DraftKings now vs the opening line (home spread:
-    // negative = moved toward home). open_line is DraftKings' Monday ~9 AM line (set by the pull).
-    // Falls back to DraftKings when the Splash lines came in if a game has no Monday line.
+    // Angle circles. Market move = DraftKings now vs DraftKings' Tuesday line (home spread:
+    // negative = moved toward home). tue_line comes from the Tuesday Pull Splits / Pull Lines run.
+    // Falls back to DraftKings when the Splash lines came in if a game has no Tuesday line.
     const sgn = (v) => (v > 0 ? "+" : "") + v;
-    const hasOpen = g.open_line !== null && g.open_line !== undefined;
-    const baseLine = hasOpen ? g.open_line : g.dk_at_splash;
-    const baseLabel = hasOpen ? "at Mon 9 AM" : "when your Splash lines came in";
+    const hasTue = g.tue_line !== null && g.tue_line !== undefined;
+    const baseLine = hasTue ? g.tue_line : g.dk_at_splash;
+    const baseLabel = hasTue ? "on Tuesday" : "when your Splash lines came in";
     const marketMove = g.line !== null && baseLine !== null && baseLine !== undefined ? +(g.line - baseLine).toFixed(1) : null;
     const movedToward = (side) => marketMove !== null && marketMove !== 0 && (side === "home" ? marketMove < 0 : marketMove > 0);
     const movedAway = (side) => marketMove !== null && marketMove !== 0 && !movedToward(side);
@@ -363,7 +363,7 @@
     const sharp = !!moneySide && fewTickets && movedToward(moneySide) && Math.abs(marketMove) >= SHARP_MIN_MOVE;
     // Real DraftKings move for the hover, from that team's side: "-14 → -13.5"
     const dkMoveText = (side) => {
-      if (marketMove === null) return "no opening line yet";
+      if (marketMove === null) return "no Tuesday line yet";
       const f = (v) => sgn(side === "home" ? v : -v);
       // Started games are frozen at their last pre-kickoff pull, so say so instead of "now"
       const nowText = !g.frozen_at ? `line is now ${f(g.line)} (${pulledAtLabel})`

@@ -16,8 +16,9 @@ on:
     - cron: "5 1-23/2 * * 4,5,6" # Thu, Fri, Sat - every odd UTC hour
     - cron: "5 14 * * 6"         # Sat 14:05 UTC = 10:05 AM EDT / 9:05 AM EST, closest slot to the lock
     - cron: "5 1-23/2 * * 0,1"   # Sun, Mon - every odd UTC hour (last before MNF kickoff: Mon 23:05)
-    # Tuesday once, to grade Monday night's finished games.
-    - cron: "23 15 * * 2"
+    # No Tuesday runs: the Tuesday line comes from the Pull Splits run you
+    # start by hand on Tuesday (after pasting the Splash lines). Monday
+    # night's games get graded by that run, or by Wednesday's first.
   workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
 
 permissions:

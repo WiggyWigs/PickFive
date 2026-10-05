@@ -1,5 +1,0 @@
-This file exists only so the images/weekly/ folder is tracked by git
-even when empty. Upload your photos into this same folder through
-GitHub's web UI ("Add file" -> "Upload files") - they'll show up on
-the Weekly Lines page automatically, and get cleared out again every
-Monday when the line pull runs.

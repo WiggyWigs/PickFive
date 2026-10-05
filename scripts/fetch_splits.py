@@ -30,6 +30,7 @@ Odds API DraftKings line in data/weeks/<week_id>/tuesday.json - the same
 number the Weekly Lines page anchors to. The current line is also
 DraftKings, so the two are the same book.
 """
+import copy
 import csv
 import io
 import json
@@ -322,7 +323,7 @@ def parse_time(ts):
     return datetime.fromisoformat(ts.replace("Z", "+00:00"))
 
 
-def freeze_started_games(games, now):
+def freeze_started_games(games, now, use_lock=True, store_name="kickoff_lines.json", prev_name="current.json"):
     """Freeze each game at kickoff or at the Saturday 10:30 AM Eastern lock,
     whichever comes first.
 
@@ -336,16 +337,18 @@ def freeze_started_games(games, now):
     The first frozen numbers for each game are also kept in kickoff_lines.json,
     which is never rewritten for that game, so a later pull or an overwritten
     daily snapshot can't lose them."""
-    store_path = SPLITS_DIR / "kickoff_lines.json"
+    # use_lock=False is the live-lines page: frozen at kickoff only, kept in its own
+    # store and compared against its own previous file (live.json).
+    store_path = SPLITS_DIR / store_name
     store = load_json(store_path, {})
-    prev = load_json(SPLITS_DIR / "current.json", {})
+    prev = load_json(SPLITS_DIR / prev_name, {})
     prev_at = parse_time(prev["pulled_at"]) if prev.get("pulled_at") else None
     prev_games = {f"{g['league']}:{g['id']}": g for g in prev.get("games", [])}
     snapshots = {}
 
     for g in games:
         kickoff = parse_time(g["start_time"])
-        lock = lock_time(g["week_id"])
+        lock = lock_time(g["week_id"]) if use_lock else kickoff
         cutoff = min(kickoff, lock)
         frozen_for = "lock" if lock < kickoff else "kickoff"
         if cutoff > now and g["status"] == "scheduled":
@@ -419,7 +422,12 @@ def main():
     if not any(g["home_money"] is not None for g in games):
         sys.exit("Games returned but none carry bet/money % - Action Network may have changed or paywalled it.")
 
+    # The live-lines page (live-lines.html) gets its own copy that keeps updating
+    # until kickoff - no Saturday lock, nothing to do with Splash.
+    live_games = copy.deepcopy(games)
     freeze_started_games(games, now)
+    freeze_started_games(live_games, now, use_lock=False,
+                         store_name="live_kickoff_lines.json", prev_name="live.json")
 
     # 1. Raw daily snapshot, grouped by each game's own week
     by_week = {}
@@ -536,6 +544,22 @@ def main():
         "games": sorted(games, key=lambda g: g["start_time"]),
     }
     (SPLITS_DIR / "current.json").write_text(json.dumps(current, indent=2) + "\n")
+
+    # 7. Live-lines page: every game, frozen only at kickoff, with DraftKings'
+    # Monday (opening) and Tuesday lines for the M/S/T circles and Movement.
+    live_monday, live_tuesday = {}, {}
+    for g in live_games:
+        g["open_line"] = monday_line(g, live_monday)
+        g["tue_line"], g["tue_source"] = tuesday_line(g, live_tuesday)
+        if g["home_score"] is None and f"{g['league']}:{g['id']}" in finals:
+            fin = finals[f"{g['league']}:{g['id']}"]
+            g.update(home_score=fin["home_score"], away_score=fin["away_score"])
+    live = {
+        "pulled_at": now.isoformat(timespec="seconds"),
+        "edge_threshold": EDGE_THRESHOLD,
+        "games": sorted(live_games, key=lambda g: g["start_time"]),
+    }
+    (SPLITS_DIR / "live.json").write_text(json.dumps(live, indent=2) + "\n")
 
     flagged = sum(1 for g in games if g["flag"])
     with_splits = sum(1 for g in games if g["home_money"] is not None)

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PickFive — Sharp Money</title>
+<title>PickFive — Live Lines</title>
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
@@ -67,11 +67,10 @@
   th.has-tip { text-decoration: underline dashed; text-underline-offset: 3px; text-decoration-thickness: 1px; }
   #splits-table thead th { text-align: center; vertical-align: middle; }
   /* Exactly two lines: break only at the <br>, so the column widens just enough for "(Home Team) i" */
-  #splits-table thead th[data-key="splash_line"] { white-space: nowrap; }
+  #splits-table thead th[data-key="tue_line"] { white-space: nowrap; }
   .intro { max-width: 900px; margin: 0 auto; text-align: center; color: var(--muted); font-size: 0.78rem; line-height: 1.6; } /* same size as the footer */
   .intro p { margin: 0 0 0.6rem; }
   /* Angle column: four fixed circles, M S T E, filled when that criterion is met */
-  :root { --edge-blue: #5b9bd5; }
   .dots { display: inline-flex; gap: 0.25rem; }
   .dot {
     width: 1.3rem; height: 1.3rem;
@@ -86,10 +85,9 @@
   .dot.money.on { background: var(--amber); border-color: var(--amber); }
   .dot.sharp.on { background: var(--up); border-color: var(--up); }
   .dot.trap.on  { background: var(--down); border-color: var(--down); }
-  .dot.edge.on  { background: var(--edge-blue); border-color: var(--edge-blue); }
   .key { font-weight: 700; }
   .key.money { color: var(--amber); } .key.sharp { color: var(--up); }
-  .key.trap { color: var(--down); } .key.edge { color: var(--edge-blue); }
+  .key.trap { color: var(--down); }
   .badge {
     display: inline-flex;
     align-items: center;
@@ -102,9 +100,6 @@
     font-size: 0.78rem;
     font-weight: 700;
   }
-  td.edge { text-align: right; }
-  td.edge.good { color: var(--up); font-weight: 600; }
-  td.edge .rec { color: var(--muted); font-size: 0.75rem; font-weight: 400; margin-left: 0.35rem; }
 
   .edges {
     max-width: 1100px;
@@ -146,13 +141,6 @@
     border: 1px solid var(--line); border-radius: 4px;
     padding: 0.3rem 0.55rem; font: inherit; min-width: 11rem;
   }
-  .season { max-width: 1100px; margin: 2rem auto 0; }
-  .season .section-title { margin: 0 0 0.35rem; }
-  .season-note { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.75rem; }
-  #season-table td, #season-table th, #season-games td, #season-games th { text-align: center; }
-  #season-table td:first-child { font-weight: 700; }
-  .season-games { margin-top: 0.75rem; font-size: 0.85rem; }
-  .season-games summary { cursor: pointer; color: var(--muted); margin-bottom: 0.5rem; }
   .res-W { color: var(--up); font-weight: 700; } .res-L { color: var(--down); font-weight: 700; }
 </style>
 </head>
@@ -162,26 +150,19 @@
 <script src="assets/nav.js"></script>
 
 <header>
-  <a href="live-lines.html" class="logo-link" aria-label="PickFive"><img class="logo" src="assets/pickfive_header.png" alt="PickFive"></a>
+  <a href="index.html" class="logo-link" aria-label="PickFive"><img class="logo" src="assets/pickfive_header.png" alt="PickFive"></a>
   <div class="intro">
-    <p>This week's Splash slate vs. the live DraftKings line. Pulled every 2 hours Wed&ndash;Sat morning from Action Network.</p>
+    <p>Live Lines: every game vs. DraftKings' Tuesday line, with the current DraftKings line updating right up to kickoff. Pulled from Action Network.</p>
     <p>Angle circles fill in when a game meets:<br>
       <span class="key money">M</span> - Money: the money is <span id="threshold">15</span>+ (or whatever value is selected below) points heavier than the tickets on one team<br>
       <span class="key sharp">S</span> - Sharp: Money criteria above, that team has under <span id="ticket-cut">40</span>% of the tickets (or whatever value is selected below), and the DraftKings line has moved 1+ point toward that team since the opening line (DraftKings, Monday 9 AM)<br>
-      <span class="key trap">T</span> - Trap: Over 60% of the money on one team, but DraftKings has moved 1+ point the other way since the opening line (DraftKings, Monday 9 AM)<br>
-      <span class="key edge">E</span> - Edge: The current DraftKings line is 2+ points off your Splash line</p>
+      <span class="key trap">T</span> - Trap: Over 60% of the money on one team, but DraftKings has moved 1+ point the other way since the opening line (DraftKings, Monday 9 AM)</p>
     <p>The Sharp Money dropdown sets the threshold for M and S (and the orange Ticket Gap highlight), and Sharp Tickets sets S's ticket cutoff, on this page only;
       T is always over 60% of the money. Games to Watch = any game with at least one circle filled.</p>
   </div>
 </header>
 
 <div id="status" hidden></div>
-
-<div class="edges" id="edges" style="display:none;">
-  <h2>Best edges vs. your Splash line</h2>
-  <ol id="edges-list"></ol>
-  <p class="none" id="edges-none" style="display:none;">No game is 2+ points off its Splash line yet.</p>
-</div>
 
 <div class="edges" id="sharps" style="display:none;">
   <h2>Best Sharp Plays</h2>
@@ -224,46 +205,26 @@
         <th data-key="away" data-type="string">Away</th>
         <th data-key="start" data-type="number" class="group-start">Kickoff</th>
         <th data-key="line" data-type="number" class="group-start has-tip" data-tip="The current DraftKings line for the home team">Current Line <button type="button" class="info" data-tip="The current DraftKings line for the home team" aria-label="What is Current Line?">&#9432;</button></th>
-        <th data-key="splash_line" data-type="number" class="has-tip" data-tip="The line for the home team for Pick5">Splash Line<br>(Home Team) <button type="button" class="info" data-tip="The line for the home team for Pick5" aria-label="What is Splash Line (Home Team)?">&#9432;</button></th>
-        <th data-key="move" data-type="number" class="has-tip" data-tip="The difference between the current DraftKings line and the Splash line">Movement <button type="button" class="info" data-tip="The difference between the current DraftKings line and the Splash line" aria-label="What is Movement?">&#9432;</button></th>
+        <th data-key="tue_line" data-type="number" class="has-tip" data-tip="DraftKings' Tuesday line for the home team, locked in">Tuesday Line<br>(Home Team) <button type="button" class="info" data-tip="DraftKings' Tuesday line for the home team, locked in" aria-label="What is Tuesday Line (Home Team)?">&#9432;</button></th>
+        <th data-key="move" data-type="number" class="has-tip" data-tip="The difference between the current DraftKings line and the Tuesday line">Movement <button type="button" class="info" data-tip="The difference between the current DraftKings line and the Tuesday line" aria-label="What is Movement?">&#9432;</button></th>
         <th data-key="home_bets" data-type="number" class="group-start has-tip" data-tip="The percent of tickets placed on the home team to cover the line">Home Bets <button type="button" class="info" data-tip="The percent of tickets placed on the home team to cover the line" aria-label="What is Home Bets?">&#9432;</button></th>
         <th data-key="home_money" data-type="number" class="has-tip" data-tip="The amount of money placed on the home team to cover the line">Home Money <button type="button" class="info" data-tip="The amount of money placed on the home team to cover the line" aria-label="What is Home Money?">&#9432;</button></th>
         <th data-key="gap" data-type="number" class="group-start has-tip" data-tip="Money % minus bet % for the team whose money outruns its tickets. ARI +13 = Arizona has 13 points more of the money than of the tickets - fewer, bigger bets on Arizona.">Ticket Gap <button type="button" class="info" data-tip="Money % minus bet % for the team whose money outruns its tickets. ARI +13 = Arizona has 13 points more of the money than of the tickets - fewer, bigger bets on Arizona." aria-label="What is Ticket Gap?">&#9432;</button></th>
-        <th data-key="angleScore" data-type="number" class="has-tip" data-tip="The various angles based on betting data analytics (sorted Edge > Sharp > Money & Trap)">Angle <button type="button" class="info" data-tip="The various angles based on betting data analytics (sorted Edge > Sharp > Money & Trap)" aria-label="What is Angle?">&#9432;</button></th>
+        <th data-key="angleScore" data-type="number" class="has-tip" data-tip="The various angles based on betting data analytics (sorted Sharp > Money & Trap)">Angle <button type="button" class="info" data-tip="The various angles based on betting data analytics (sorted Sharp > Money & Trap)" aria-label="What is Angle?">&#9432;</button></th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
 </div>
 
-<div class="season" id="season" style="display:none;">
-  <h2 class="section-title">Season Record</h2>
-  <p class="season-note" id="season-note"></p>
-  <div class="table-wrap">
-    <table id="season-table">
-      <thead><tr><th>Angle</th><th>Side graded</th><th>Record</th><th>Win %</th><th>Pending</th></tr></thead>
-      <tbody></tbody>
-    </table>
-  </div>
-  <details class="season-games">
-    <summary>Show every graded play</summary>
-    <div class="table-wrap">
-      <table id="season-games">
-        <thead><tr><th>Week</th><th>Game</th><th>Angle</th><th>Pick (Splash line)</th><th>Final</th><th>Result</th></tr></thead>
-        <tbody></tbody>
-      </table>
-    </div>
-  </details>
-</div>
-
 <div class="empty-state" id="empty-state" style="display:none;">
-  No Splash lines for this week yet. Copy them with the Copy Splash Lines bookmarklet, paste into the SplashLines
-  tab, then run Pull Splits from the Actions tab.
+  No games yet. Once the next Pull Splits runs, this week's games will show up here.
 </div>
 
 <footer>
-  Only games on your Splash slate are shown. All lines are the home team's spread (negative = home favored).<br>
-  Current Line = DraftKings now. Movement = Current Line minus Splash Line.<br>
+  Every game Action Network reports is shown. All lines are the home team's spread (negative = home favored).<br>
+  Current Line = DraftKings, updated on each pull until kickoff, then frozen at the last pre-kickoff pull.
+  Tuesday Line = DraftKings' Tuesday line, locked in. Movement = Current Line minus Tuesday Line.<br>
   Ticket Gap = money % minus bet % for the team whose money outruns its tickets.<br>
   Sharp and Trap measure the line move from the opening line - DraftKings' line on Monday around 9 AM Eastern - to the
   current DraftKings line. The history below used Action Network's "open", which can be a stale lookahead number posted
@@ -273,8 +234,7 @@
   Money alone, at 15+, sided with the money 519-480 (52.0%)<br>
   Sharps at 15+ with under 40% of the tickets and a 1+ point move from the open went 95-59 (61.7%, &plusmn;8%) - only ~3 games a week, and the best of several rules tried, so treat it as promising, not proven<br>
   In Trap games (1+ point move from the open) the money side went 246-253 (49.3%) and the line side 253-246 (50.7%).<br>
-  Money and Trap don't beat a coin flip - treat them as information, not picks.<br>
-  Edge is different: in the backtest a 2&ndash;2.5 point gap covered 55.5% and 3+ points 61&ndash;71% at the earlier number.
+  Money and Trap don't beat a coin flip - treat them as information, not picks.
 </footer>
 
 <script>
@@ -303,7 +263,7 @@
     }
   }
 
-  const ANGLE_WEIGHT = { edge: 8, sharp: 4, money: 1, trap: 1 };
+  const ANGLE_WEIGHT = { sharp: 4, money: 1, trap: 1 };
   let pulledAtLabel = ""; // set in init from current.pulled_at
 
   const fmtDayTime = (iso) => {
@@ -317,12 +277,9 @@
   }
 
   function toRow(g, threshold, edgeData, ticketCut) {
-    // Movement = DraftKings now minus your Splash line (home spread; negative = toward home).
-    // Deliberately no DraftKings fallback: a game without a Splash line gets no
-    // move/edge rather than one measured against a number you can't lock.
-    const hasSplash = g.splash_line !== null && g.splash_line !== undefined;
-    const lock = hasSplash ? g.splash_line : null;
-    const lockSrc = "Splash";
+    // Movement = DraftKings now minus DraftKings' locked Tuesday line (home spread; negative = toward home).
+    const lock = g.tue_line === null || g.tue_line === undefined ? null : g.tue_line;
+    const lockSrc = "Tue";
     const move = lock === null || lock === undefined || g.line === null ? null : +(g.line - lock).toFixed(1);
     const moveSide = move === null || move === 0 ? null : move < 0 ? "home" : "away";
     let edgePct = null, edgeRec = null;
@@ -342,11 +299,11 @@
     const gap = !hasSplits ? null : Math.max(homeGap, awayGap);
     // Angle circles. Market move = DraftKings now vs the opening line (home spread:
     // negative = moved toward home). open_line is DraftKings' Monday ~9 AM line (set by the pull).
-    // Falls back to DraftKings when the Splash lines came in if a game has no Monday line.
+    // Falls back to the Tuesday line if a game has no Monday line.
     const sgn = (v) => (v > 0 ? "+" : "") + v;
     const hasOpen = g.open_line !== null && g.open_line !== undefined;
-    const baseLine = hasOpen ? g.open_line : g.dk_at_splash;
-    const baseLabel = hasOpen ? "at Mon 9 AM" : "when your Splash lines came in";
+    const baseLine = hasOpen ? g.open_line : g.tue_line;
+    const baseLabel = hasOpen ? "at Mon 9 AM" : "on Tuesday";
     const marketMove = g.line !== null && baseLine !== null && baseLine !== undefined ? +(g.line - baseLine).toFixed(1) : null;
     const movedToward = (side) => marketMove !== null && marketMove !== 0 && (side === "home" ? marketMove < 0 : marketMove > 0);
     const movedAway = (side) => marketMove !== null && marketMove !== 0 && !movedToward(side);
@@ -376,11 +333,6 @@
     const majSide = !hasSplits ? null : g.home_money > 60 ? "home" : g.away_money > 60 ? "away" : null;
     const majPct = majSide ? g[`${majSide}_money`] : null;
     const trap = !!majSide && movedAway(majSide) && Math.abs(marketMove) >= TRAP_MIN_MOVE;
-    //  E Edge: DraftKings is 2+ points off your Splash line (Movement column)
-    const edge = !!moveSide && Math.abs(move) >= 2;
-    const sideSplash = moveSide ? (moveSide === "home" ? lock : -lock) : null;
-    const sideNow = moveSide ? (moveSide === "home" ? g.line : -g.line) : null;
-
     const angles = [
       { key: "money", letter: "M", met: !!moneySide,
         title: moneySide ? `Money: ${moneyAbbr} money outruns its tickets by ${gap} (${threshold}+ needed; line movement not required)`
@@ -396,9 +348,6 @@
         title: trap ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]} but the DraftKings line moved away from them: ${dkMoveText(majSide)}`
                     : majSide ? `Trap: ${majPct}% of the money on ${g[`${majSide}_abbr`]}, but the DraftKings line hasn't moved 1+ point away from them: ${dkMoveText(majSide)}`
                               : "Trap: no team has over 60% of the money" },
-      { key: "edge", letter: "E", met: edge,
-        title: edge ? `Edge: ${g[`${moveSide}_abbr`]} is ${sgn(sideSplash)} on Splash vs ${sgn(sideNow)} at DraftKings now (${Math.abs(move)} pts)`
-                    : `Edge: Splash vs DraftKings gap is ${move === null ? "n/a" : Math.abs(move)} pts (2+ needed)` },
     ];
     return {
       ...g,
@@ -406,12 +355,12 @@
       sharpInfo: sharp ? {
         side: moneySide, abbr: moneyAbbr, gap, tickets: moneyTickets, money: g[`${moneySide}_money`],
         move: Math.abs(marketMove), moveText: dkMoveText(moneySide),
-        splashLine: lock === null || lock === undefined ? null : moneySide === "home" ? lock : -lock,
+        tueLine: lock === null || lock === undefined ? null : moneySide === "home" ? lock : -lock,
       } : null,
-      // Weighted so any Edge outranks any Sharp, which outranks Money/Trap
+      // Weighted so any Sharp outranks Money/Trap
       angleScore: angles.reduce((t, a) => t + (a.met ? ANGLE_WEIGHT[a.key] : 0), 0),
       // Games to Watch = any of the four circles filled
-      watch: !!moneySide || sharp || trap || edge,
+      watch: !!moneySide || sharp || trap,
       game: `${g.away} @ ${g.home}`,
       start: Date.parse(g.start_time),
       hasSplits,
@@ -424,7 +373,7 @@
       moveSide,
       moveAbbr: moveSide ? g[`${moveSide}_abbr`] : null,
       moveTeam: moveSide ? g[moveSide] : null,
-      // The number you'd lock: the moved-to side's Splash line
+      // The moved-to side's Tuesday line
       move,
       lockSrc,
       lockLine: moveSide ? (moveSide === "home" ? lock : -lock) : null,
@@ -487,7 +436,7 @@
           <td class="team">${esc(r.away)}</td>
           <td class="kickoff group-start">${fmtKickoffShort(r.start)}</td>
           ${cell(fmtSpread(r.line), "num group-start")}
-          ${cell(fmtSpread(r.splash_line), "num")}
+          ${cell(fmtSpread(r.tue_line), "num")}
           ${moveCell(r.move)}
           ${cell(fmtPct(r.home_bets), "pct group-start")}
           ${cell(fmtPct(r.home_money), r.hotHome ? "pct hot" : "pct")}
@@ -533,25 +482,6 @@
     return { setRows(next) { rows = next; draw(); } };
   }
 
-  function renderEdges(rows) {
-    const best = rows
-      .filter((r) => !r.started && r.edgePct !== null && Math.abs(r.move) >= 2)
-      .sort((a, b) => b.edgePct - a.edgePct || Math.abs(b.move) - Math.abs(a.move));
-    document.getElementById("edges-list").innerHTML = best
-      .map(
-        (r) => `<li><span class="pick">${esc(r.moveTeam)} ${fmtSpread(r.lockLine)}</span>
-          <span class="meta">vs ${esc(r.moveSide === "home" ? r.away : r.home)} · ${esc(r.league)} · ${r.lockSrc} ${fmtSpread(r.lockLine)} → now ${fmtSpread(r.moveSide === "home" ? r.line : -r.line)} · ${fmtKickoff(r.start)}</span>
-          · <span class="pct">${r.edgePct}%</span> <span class="meta">(${r.edgeRec} historically)</span></li>`
-      )
-      .join("");
-    const noneEl = document.getElementById("edges-none");
-    noneEl.textContent = rows.some((r) => r.splash_line !== null && r.splash_line !== undefined)
-      ? "No game is 2+ points off its Splash line yet."
-      : "No Splash lines for this week yet. Copy them with the Copy Splash Lines bookmarklet, paste into the SplashLines tab, then run Pull Splits.";
-    noneEl.style.display = best.length ? "none" : "block";
-    document.getElementById("edges").style.display = "block";
-  }
-
   // Sharp games under the current dropdowns, biggest Ticket Gap first
   function renderSharps(rows, threshold, ticketCut) {
     const best = rows
@@ -561,8 +491,8 @@
       .map((r) => {
         const s = r.sharpInfo;
         const team = s.side === "home" ? r.home : r.away, opp = s.side === "home" ? r.away : r.home;
-        return `<li><span class="pick">${esc(team)} ${fmtSpread(s.splashLine)}</span>
-          <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · Splash ${fmtSpread(s.splashLine)} ·
+        return `<li><span class="pick">${esc(team)} ${fmtSpread(s.tueLine)}</span>
+          <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · Tue ${fmtSpread(s.tueLine)} ·
           ${s.money}% of the money on ${s.tickets}% of the tickets (gap +${s.gap}) · ${esc(s.moveText)} · Kickoff ${fmtKickoff(r.start)}</span></li>`;
       })
       .join("");
@@ -572,61 +502,10 @@
     document.getElementById("sharps").style.display = "block";
   }
 
-  // Season Record: every locked Splash game, circles worked out exactly as in the
-  // table (same toRow) at the current dropdowns, graded at the Splash line.
-  function renderSeason(record, threshold, ticketCut, edgeData) {
-    const games = Object.values(record || {});
-    if (!games.length) return;
-    const rowsOut = [], plays = [];
-    const tally = {};
-    const add = (key, label, side, r, angleName) => {
-      const t = (tally[key] = tally[key] || { label, side, w: 0, l: 0, p: 0, pending: 0 });
-      if (!r.final) { t.pending++; return; }
-      const sideLine = side === "home" ? r.splash_line : -r.splash_line;
-      const margin = (side === "home" ? r.home_score - r.away_score : r.away_score - r.home_score) + sideLine;
-      const res = margin > 0 ? "W" : margin < 0 ? "L" : "P";
-      t[res === "W" ? "w" : res === "L" ? "l" : "p"]++;
-      plays.push({ r, angleName, side, sideLine, res });
-    };
-    for (const r of games) {
-      const row = toRow({ ...r, status: r.final ? "complete" : "scheduled" }, threshold, edgeData, ticketCut);
-      const met = Object.fromEntries(row.angles.map((a) => [a.key, a.met]));
-      const moneySide = row.gapSide;
-      const majSide = r.home_money > 60 ? "home" : r.away_money > 60 ? "away" : null;
-      if (met.money) add("money", "M - Money", moneySide, r, "Money");
-      if (met.sharp) add("sharp", "S - Sharp", moneySide, r, "Sharp");
-      if (met.trap) {
-        add("trapM", "T - Trap", majSide, r, "Trap (money side)");
-        add("trapL", "T - Trap", majSide === "home" ? "away" : "home", r, "Trap (line side)");
-      }
-      if (met.edge) add("edge", "E - Edge", row.moveSide, r, "Edge");
-    }
-    const order = [["money", "money side"], ["sharp", "money side"], ["trapM", "money side"], ["trapL", "line side"], ["edge", "team the line moved toward"]];
-    document.querySelector("#season-table tbody").innerHTML = order.map(([k, sideText]) => {
-      const t = tally[k] || { label: { money: "M - Money", sharp: "S - Sharp", trapM: "T - Trap", trapL: "T - Trap", edge: "E - Edge" }[k], w: 0, l: 0, p: 0, pending: 0 };
-      const n = t.w + t.l;
-      return `<tr><td>${t.label}</td><td>${sideText}</td><td>${t.w}-${t.l}${t.p ? `-${t.p}` : ""}</td>
-        <td>${n ? ((100 * t.w) / n).toFixed(1) + "%" : "—"}</td><td>${t.pending}</td></tr>`;
-    }).join("");
-    const weeks = new Set(games.map((g) => g.week_id)).size;
-    document.getElementById("season-note").textContent =
-      `${games.length} Splash games over ${weeks} week${weeks === 1 ? "" : "s"}, using the numbers locked at kickoff or the Saturday 10:30 AM lock. ` +
-      `Circles use the current dropdowns (Sharp Money ${threshold}+, Sharp Tickets under ${ticketCut}%); every play is graded at your Splash line. ` +
-      `A small sample - treat records under ~100 plays as noise.`;
-    plays.sort((a, b) => b.r.start_time.localeCompare(a.r.start_time) || a.angleName.localeCompare(b.angleName));
-    document.querySelector("#season-games tbody").innerHTML = plays.map(({ r, angleName, side, sideLine, res }) => `
-      <tr><td>${esc(r.week_id)}</td><td>${esc(r.away)} @ ${esc(r.home)}</td><td>${esc(angleName)}</td>
-        <td>${esc(r[`${side}_abbr`])} ${fmtSpread(sideLine)}</td>
-        <td>${esc(r.away_abbr)} ${r.away_score} - ${esc(r.home_abbr)} ${r.home_score}</td>
-        <td class="res-${res}">${res}</td></tr>`).join("");
-    document.getElementById("season").style.display = "block";
-  }
-
   async function init() {
-    const [current, edgeData, seasonRecord] = await Promise.all([
-      loadJson("data/splits/current.json"),
+    const [current, edgeData] = await Promise.all([
+      loadJson("data/splits/live.json"),
       loadJson("data/splits/move_edge.json"),
-      loadJson("data/splits/angle_record.json"),
     ]);
     const statusEl = document.getElementById("status");
 
@@ -654,8 +533,8 @@
     } catch (e) { /* storage blocked - use the default */ }
     ticketSelect.value = String(ticketCut);
 
-    // Only games on this week's Splash slate
-    const slate = current.games.filter((g) => g.splash_line !== null && g.splash_line !== undefined);
+    // Every game in the feed
+    const slate = current.games;
     pulledAtLabel = fmtDayTime(current.pulled_at);
     const build = (t) => slate.map((g) => toRow(g, t, edgeData, ticketCut));
     let rows = build(threshold);
@@ -667,21 +546,17 @@
     const pulled = new Date(current.pulled_at).toLocaleString(undefined, {
       weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit",
     });
-    const copied = current.splash_copied_at
-      ? new Date(current.splash_copied_at).toLocaleString(undefined, { weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit" })
-      : "?";
+
     function showStatus() {
       const count = (key) => rows.filter((r) => r.angles.some((a) => a.key === key && a.met)).length;
       const withSplits = rows.filter((r) => r.hasSplits).length;
       document.getElementById("threshold").textContent = threshold;
       document.getElementById("ticket-cut").textContent = ticketCut;
-      statusEl.textContent = `${rows.length} Splash games · ${withSplits} with splits · ${count("money")} money · ${count("sharp")} sharp · ${count("trap")} trap · ${count("edge")} edge (Sharp Money ${threshold}+) · Splash lines copied ${copied} · DraftKings pulled ${pulled}`;
+      statusEl.textContent = `${rows.length} games · ${withSplits} with splits · ${count("money")} money · ${count("sharp")} sharp · ${count("trap")} trap (Sharp Money ${threshold}+) · DraftKings pulled ${pulled}`;
     }
 
     showStatus();
-    renderEdges(rows);
     renderSharps(rows, threshold, ticketCut);
-    renderSeason(seasonRecord, threshold, ticketCut, edgeData);
     const games = renderGames(rows);
     select.addEventListener("change", () => {
       threshold = Number(select.value);
@@ -690,8 +565,7 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
-      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
-    });
+      });
     ticketSelect.addEventListener("change", () => {
       ticketCut = Number(ticketSelect.value);
       try { localStorage.setItem("sharpTicketCut", String(ticketCut)); } catch (e) { /* not remembered - fine */ }
@@ -699,8 +573,7 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
-      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
-    });
+      });
     document.getElementById("controls").style.display = "flex";
     document.getElementById("table-wrap").style.display = "block";
   }

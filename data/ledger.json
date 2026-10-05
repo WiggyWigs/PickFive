@@ -1935,15 +1935,6 @@
     "type": "wager"
   },
   {
-    "date": "8/31/2026",
-    "name": "Carlos",
-    "bet": "Transfer (Deposit - Honors Winnings)",
-    "bet_amount": 0.0,
-    "payout": 39.0,
-    "net": 39.0,
-    "type": "deposit"
-  },
-  {
     "date": "8/17/2026",
     "name": "Kevin",
     "bet": "Transfer",
@@ -1962,6 +1953,15 @@
     "type": "deposit"
   },
   {
+    "date": "8/31/2026",
+    "name": "Carlos",
+    "bet": "Transfer (Deposit - Honors Winnings)",
+    "bet_amount": 0.0,
+    "payout": 39.0,
+    "net": 39.0,
+    "type": "deposit"
+  },
+  {
     "date": "9/1/2026",
     "name": "Carlos",
     "bet": "Transfer (Withdraw - Pick 5 Buy In)",
@@ -1969,6 +1969,15 @@
     "payout": -100.0,
     "net": -100.0,
     "type": "withdraw"
+  },
+  {
+    "date": "9/5/2026",
+    "name": "Carlos",
+    "bet": "Transfer (Deposit)",
+    "bet_amount": 0.0,
+    "payout": 200.0,
+    "net": 200.0,
+    "type": "deposit"
   },
   {
     "date": "9/6/2026",
@@ -1987,15 +1996,6 @@
     "payout": 33.08,
     "net": 24.75,
     "type": "wager"
-  },
-  {
-    "date": "9/5/2026",
-    "name": "Carlos",
-    "bet": "Transfer (Deposit)",
-    "bet_amount": 0.0,
-    "payout": 200.0,
-    "net": 200.0,
-    "type": "deposit"
   },
   {
     "date": "9/6/2026",
@@ -2034,15 +2034,6 @@
     "type": "wager"
   },
   {
-    "date": "9/13/2026",
-    "name": "Billy",
-    "bet": "Lions -7",
-    "bet_amount": 20.0,
-    "payout": 0.0,
-    "net": -20.0,
-    "type": "wager"
-  },
-  {
     "date": "9/12/2026",
     "name": "Billy",
     "bet": "UGA -39.5",
@@ -2058,15 +2049,6 @@
     "bet_amount": 10.0,
     "payout": 0.0,
     "net": -10.0,
-    "type": "wager"
-  },
-  {
-    "date": "9/14/2026",
-    "name": "Carlos",
-    "bet": "Tiafoe US Open Winner",
-    "bet_amount": 20.0,
-    "payout": 0.0,
-    "net": -20.0,
     "type": "wager"
   },
   {
@@ -2088,6 +2070,24 @@
     "type": "wager"
   },
   {
+    "date": "9/13/2026",
+    "name": "Billy",
+    "bet": "Lions -7",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "9/14/2026",
+    "name": "Carlos",
+    "bet": "Tiafoe US Open Winner",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
     "date": "9/17/2026",
     "name": "Billy",
     "bet": "Week 1 Bank Builder Seed",
@@ -2103,6 +2103,24 @@
     "bet_amount": 20.0,
     "payout": 24.73,
     "net": 4.73,
+    "type": "wager"
+  },
+  {
+    "date": "9/18/2026",
+    "name": "Billy",
+    "bet": "Bank Builder Bet 1",
+    "bet_amount": 4.73,
+    "payout": 0.0,
+    "net": -4.73,
+    "type": "wager"
+  },
+  {
+    "date": "9/18/2026",
+    "name": "Carlos",
+    "bet": "Bank Builder Bet 1",
+    "bet_amount": 4.73,
+    "payout": 0.0,
+    "net": -4.73,
     "type": "wager"
   },
   {
@@ -2148,24 +2166,6 @@
     "bet_amount": 20.0,
     "payout": 0.0,
     "net": -20.0,
-    "type": "wager"
-  },
-  {
-    "date": "9/18/2026",
-    "name": "Billy",
-    "bet": "Bank Builder Bet 1",
-    "bet_amount": 4.73,
-    "payout": 0.0,
-    "net": -4.73,
-    "type": "wager"
-  },
-  {
-    "date": "9/18/2026",
-    "name": "Carlos",
-    "bet": "Bank Builder Bet 1",
-    "bet_amount": 4.73,
-    "payout": 0.0,
-    "net": -4.73,
     "type": "wager"
   },
   {
@@ -2313,11 +2313,29 @@
     "type": "wager"
   },
   {
+    "date": "10/2/2026",
+    "name": "Billy",
+    "bet": "VT Over 53.5",
+    "bet_amount": 20.0,
+    "payout": 36.0,
+    "net": 16.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/2/2026",
+    "name": "Carlos",
+    "bet": "VT Over 53.5",
+    "bet_amount": 20.0,
+    "payout": 36.0,
+    "net": 16.0,
+    "type": "wager"
+  },
+  {
     "date": "10/3/2026",
     "name": "Carlos",
     "bet": "Caterpillar",
     "bet_amount": 18.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -18.0,
     "type": "wager"
   },
@@ -2326,7 +2344,7 @@
     "name": "Billy",
     "bet": "Week 3 Bank Builder Bet 1",
     "bet_amount": 16.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -16.0,
     "type": "wager"
   },
@@ -2335,8 +2353,44 @@
     "name": "Carlos",
     "bet": "Week 3 Bank Builder Bet 1",
     "bet_amount": 16.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -16.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/3/2026",
+    "name": "Billy",
+    "bet": "Parlay: Georgia & USC Over",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/3/2026",
+    "name": "Billy",
+    "bet": "Notre Dame -21",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/3/2026",
+    "name": "Billy",
+    "bet": "Ohio State -13.5",
+    "bet_amount": 20.0,
+    "payout": 35.15,
+    "net": 15.15,
+    "type": "wager"
+  },
+  {
+    "date": "10/4/2026",
+    "name": "Billy",
+    "bet": "Lions -4.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
     "type": "wager"
   }
 ]

@@ -304,13 +304,29 @@ def grade(side_line, side_score, opp_score):
 
 FROZEN_FIELDS = ("line", "home_bets", "home_money", "away_bets", "away_money")
 
+# Contest picks lock Saturday morning; no line or split may be taken after this
+# for that week's games, even if GitHub starts a scheduled run hours late
+# (the 9:05 AM slot on 2026-10-03 actually ran at 1:01 PM) or someone runs
+# the pull by hand.
+LOCK_WEEKDAY_OFFSET = 2          # Saturday = week_id (Monday) - 2 days
+LOCK_TIME = (10, 30)             # 10:30 AM Eastern
+
+
+def lock_time(week_id):
+    """Saturday 10:30 AM Eastern of the week that ends on week_id (a Monday), in UTC."""
+    sat = datetime.fromisoformat(week_id).date() - timedelta(days=LOCK_WEEKDAY_OFFSET)
+    return datetime(sat.year, sat.month, sat.day, *LOCK_TIME, tzinfo=EASTERN).astimezone(timezone.utc)
+
 
 def parse_time(ts):
     return datetime.fromisoformat(ts.replace("Z", "+00:00"))
 
 
 def freeze_started_games(games, now):
-    """Once a game kicks off, Action Network's feed switches to live in-game
+    """Freeze each game at kickoff or at the Saturday 10:30 AM Eastern lock,
+    whichever comes first.
+
+    Once a game kicks off, Action Network's feed switches to live in-game
     lines and splits (e.g. CLE +2.5 pre-game became -7.5 at 21-10 on
     2026-10-01). Keep each started game's last pre-kickoff numbers instead:
     from the previous pull if it ran before kickoff (or was already frozen),
@@ -329,7 +345,10 @@ def freeze_started_games(games, now):
 
     for g in games:
         kickoff = parse_time(g["start_time"])
-        if kickoff > now and g["status"] == "scheduled":
+        lock = lock_time(g["week_id"])
+        cutoff = min(kickoff, lock)
+        frozen_for = "lock" if lock < kickoff else "kickoff"
+        if cutoff > now and g["status"] == "scheduled":
             continue
         key = f"{g['league']}:{g['id']}"
         src, src_at = None, None
@@ -338,7 +357,7 @@ def freeze_started_games(games, now):
             src, src_at = store[key], store[key]["frozen_at"]
         elif p and p.get("frozen_at"):
             src, src_at = p, p["frozen_at"]
-        elif p and prev_at and prev_at < kickoff:
+        elif p and prev_at and prev_at < cutoff:
             src, src_at = p, prev["pulled_at"]
         else:
             wk = g["week_id"]
@@ -347,13 +366,14 @@ def freeze_started_games(games, now):
             for snap in snapshots[wk]:
                 at = snap.get("pulled_at")
                 hit = next((x for x in snap.get("games", []) if x["id"] == g["id"] and x["league"] == g["league"]), None)
-                if hit and at and parse_time(at) < kickoff and (src_at is None or parse_time(at) > parse_time(src_at)):
+                if hit and at and parse_time(at) < cutoff and (src_at is None or parse_time(at) > parse_time(src_at)):
                     src, src_at = hit, at
         for f in FROZEN_FIELDS:
             g[f] = src.get(f) if src else None  # no pre-kickoff numbers: blank, never live ones
         g["frozen_at"] = src_at
+        g["frozen_for"] = (store.get(key) or {}).get("frozen_for", frozen_for)
         if src and key not in store:
-            store[key] = {**{f: g[f] for f in FROZEN_FIELDS}, "frozen_at": src_at,
+            store[key] = {**{f: g[f] for f in FROZEN_FIELDS}, "frozen_at": src_at, "frozen_for": frozen_for,
                           "away": g["away"], "home": g["home"], "start_time": g["start_time"]}
 
     store_path.write_text(json.dumps(dict(sorted(store.items())), indent=2) + "\n")

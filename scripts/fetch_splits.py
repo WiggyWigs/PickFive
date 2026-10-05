@@ -333,6 +333,8 @@ def live_week_for(now):
     tuesday = (datetime.fromisoformat(wk) - timedelta(days=6)).date().isoformat()
     if (SPLITS_DIR / "weeks" / wk / f"{tuesday}.json").exists() or (LINES_WEEKS_DIR / wk / "tuesday.json").exists():
         return wk
+    if now.astimezone(EASTERN).date().isoformat() > tuesday:
+        return wk  # Tuesday's run was skipped - move on anyway, without Tuesday lines
     return (datetime.fromisoformat(wk) - timedelta(days=7)).date().isoformat()
 
 
@@ -452,7 +454,7 @@ def freeze_started_games(games, now, use_lock=True, store_name="kickoff_lines.js
 # --- Season record ---------------------------------------------------------------
 
 RECORD_FIELDS = ("league", "season", "an_week", "week_id", "start_time", "home", "away",
-                 "home_abbr", "away_abbr", "splash_line", "open_line", *FROZEN_FIELDS,
+                 "home_abbr", "away_abbr", "splash_line", "open_line", "tue_line", *FROZEN_FIELDS,
                  "frozen_at", "frozen_for")
 
 
@@ -469,6 +471,10 @@ def update_angle_record(record, games):
         if key not in record:
             record[key] = {**{f: g.get(f) for f in RECORD_FIELDS},
                            "home_score": None, "away_score": None, "final": False}
+        elif record[key].get("tue_line") is None and g.get("tue_line") is not None:
+            # Tuesday line added to the record later; it's a Tuesday number, so
+            # filling it in never uses anything from after the lock
+            record[key]["tue_line"] = g["tue_line"]
 
 
 # --- Main --------------------------------------------------------------------
@@ -541,14 +547,14 @@ def main():
     if splash_copied_at:
         baseline_path.write_text(json.dumps(baseline, indent=2) + "\n")
 
-    # 3. Market move + sharp flag. The move is DraftKings now vs the opening
-    # line, which is DraftKings' Monday ~9 AM line from the Weekly Lines pull.
-    # Falls back to DraftKings at Splash time, then Tuesday, if there's no Monday line.
+    # 3. Market move + sharp flag. The move is DraftKings now vs DraftKings'
+    # Tuesday line (the Tuesday Pull Splits / Pull Lines run), falling back to
+    # DraftKings when the Splash lines came in.
     cache, monday_cache = {}, {}
     for g in games:
         g["tue_line"], g["tue_source"] = tuesday_line(g, cache)
         g["open_line"] = monday_line(g, monday_cache)
-        base = next((b for b in (g["open_line"], g["dk_at_splash"], g["tue_line"]) if b is not None), None)
+        base = next((b for b in (g["tue_line"], g["dk_at_splash"]) if b is not None), None)
         g["move"] = round(g["line"] - base, 1) if g["line"] is not None and base is not None else None
         # With a Splash slate loaded, only its games can be flagged - the page shows nothing else
         on_slate = g["splash_line"] is not None or not splash_rows

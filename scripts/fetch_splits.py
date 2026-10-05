@@ -304,13 +304,29 @@ def grade(side_line, side_score, opp_score):
 
 FROZEN_FIELDS = ("line", "home_bets", "home_money", "away_bets", "away_money")
 
+# Contest picks lock Saturday morning; no line or split may be taken after this
+# for that week's games, even if GitHub starts a scheduled run hours late
+# (the 9:05 AM slot on 2026-10-03 actually ran at 1:01 PM) or someone runs
+# the pull by hand.
+LOCK_WEEKDAY_OFFSET = 2          # Saturday = week_id (Monday) - 2 days
+LOCK_TIME = (10, 30)             # 10:30 AM Eastern
+
+
+def lock_time(week_id):
+    """Saturday 10:30 AM Eastern of the week that ends on week_id (a Monday), in UTC."""
+    sat = datetime.fromisoformat(week_id).date() - timedelta(days=LOCK_WEEKDAY_OFFSET)
+    return datetime(sat.year, sat.month, sat.day, *LOCK_TIME, tzinfo=EASTERN).astimezone(timezone.utc)
+
 
 def parse_time(ts):
     return datetime.fromisoformat(ts.replace("Z", "+00:00"))
 
 
 def freeze_started_games(games, now):
-    """Once a game kicks off, Action Network's feed switches to live in-game
+    """Freeze each game at kickoff or at the Saturday 10:30 AM Eastern lock,
+    whichever comes first.
+
+    Once a game kicks off, Action Network's feed switches to live in-game
     lines and splits (e.g. CLE +2.5 pre-game became -7.5 at 21-10 on
     2026-10-01). Keep each started game's last pre-kickoff numbers instead:
     from the previous pull if it ran before kickoff (or was already frozen),
@@ -329,7 +345,10 @@ def freeze_started_games(games, now):
 
     for g in games:
         kickoff = parse_time(g["start_time"])
-        if kickoff > now and g["status"] == "scheduled":
+        lock = lock_time(g["week_id"])
+        cutoff = min(kickoff, lock)
+        frozen_for = "lock" if lock < kickoff else "kickoff"
+        if cutoff > now and g["status"] == "scheduled":
             continue
         key = f"{g['league']}:{g['id']}"
         src, src_at = None, None
@@ -338,7 +357,7 @@ def freeze_started_games(games, now):
             src, src_at = store[key], store[key]["frozen_at"]
         elif p and p.get("frozen_at"):
             src, src_at = p, p["frozen_at"]
-        elif p and prev_at and prev_at < kickoff:
+        elif p and prev_at and prev_at < cutoff:
             src, src_at = p, prev["pulled_at"]
         else:
             wk = g["week_id"]
@@ -347,16 +366,39 @@ def freeze_started_games(games, now):
             for snap in snapshots[wk]:
                 at = snap.get("pulled_at")
                 hit = next((x for x in snap.get("games", []) if x["id"] == g["id"] and x["league"] == g["league"]), None)
-                if hit and at and parse_time(at) < kickoff and (src_at is None or parse_time(at) > parse_time(src_at)):
+                if hit and at and parse_time(at) < cutoff and (src_at is None or parse_time(at) > parse_time(src_at)):
                     src, src_at = hit, at
         for f in FROZEN_FIELDS:
             g[f] = src.get(f) if src else None  # no pre-kickoff numbers: blank, never live ones
         g["frozen_at"] = src_at
+        g["frozen_for"] = (store.get(key) or {}).get("frozen_for", frozen_for)
         if src and key not in store:
-            store[key] = {**{f: g[f] for f in FROZEN_FIELDS}, "frozen_at": src_at,
+            store[key] = {**{f: g[f] for f in FROZEN_FIELDS}, "frozen_at": src_at, "frozen_for": frozen_for,
                           "away": g["away"], "home": g["home"], "start_time": g["start_time"]}
 
     store_path.write_text(json.dumps(dict(sorted(store.items())), indent=2) + "\n")
+
+
+# --- Season record ---------------------------------------------------------------
+
+RECORD_FIELDS = ("league", "season", "an_week", "week_id", "start_time", "home", "away",
+                 "home_abbr", "away_abbr", "splash_line", "open_line", *FROZEN_FIELDS,
+                 "frozen_at", "frozen_for")
+
+
+def update_angle_record(record, games):
+    """Add each Splash game to the season record once its numbers are locked
+    (kickoff or the Saturday lock). The locked numbers are written once and
+    never changed; only scores are filled in later. The page works out the
+    M/S/T/E circles from these raw numbers at whatever dropdown settings are
+    chosen and grades them at the Splash line."""
+    for g in games:
+        if g.get("splash_line") is None or not g.get("frozen_at"):
+            continue
+        key = f"{g['league']}:{g['id']}"
+        if key not in record:
+            record[key] = {**{f: g.get(f) for f in RECORD_FIELDS},
+                           "home_score": None, "away_score": None, "final": False}
 
 
 # --- Main --------------------------------------------------------------------
@@ -424,6 +466,10 @@ def main():
         on_slate = g["splash_line"] is not None or not splash_rows
         g["flag"] = sharp_flag(g) if on_slate else None
 
+    record_path = SPLITS_DIR / "angle_record.json"
+    record = load_json(record_path, {})
+    update_angle_record(record, games)
+
     # 4. Flag log. A flag stays live until kickoff, then freezes with the
     # last pre-kickoff numbers; it is graded once the game is final.
     flags = load_json(SPLITS_DIR / "flags.json", {})
@@ -453,6 +499,8 @@ def main():
             finals[f"{g['league']}:{g['id']}"] = g
     pending_weeks = {(f["league"], f["an_week"]) for k, f in flags.items()
                      if f["result"] is None and k not in finals}
+    pending_weeks |= {(r["league"], r["an_week"]) for k, r in record.items()
+                      if not r["final"] and k not in finals and parse_time(r["start_time"]) <= now}
     for league, an_week in pending_weeks:
         sport = next(s for s, l in LEAGUES.items() if l == league)
         data = get_json(API.format(sport=sport) + f"?bookIds={LINE_BOOK}&periods=event&week={an_week}")
@@ -470,6 +518,12 @@ def main():
 
     (SPLITS_DIR / "flags.json").write_text(json.dumps(dict(sorted(flags.items())), indent=2) + "\n")
 
+    for key, r in record.items():
+        fin = finals.get(key)
+        if not r["final"] and fin:
+            r.update(home_score=fin["home_score"], away_score=fin["away_score"], final=True)
+    record_path.write_text(json.dumps(dict(sorted(record.items())), indent=2) + "\n")
+
     # 6. What the page reads
     for g in games:
         g.update({k: finals[f"{g['league']}:{g['id']}"][k] for k in ("home_score", "away_score")}
@@ -485,7 +539,9 @@ def main():
 
     flagged = sum(1 for g in games if g["flag"])
     with_splits = sum(1 for g in games if g["home_money"] is not None)
-    print(f"{len(games)} games, {with_splits} with splits, {flagged} flagged, {len(flags)} flags logged")
+    graded = sum(1 for r in record.values() if r["final"])
+    print(f"{len(games)} games, {with_splits} with splits, {flagged} flagged, {len(flags)} flags logged, "
+          f"season record {len(record)} games ({graded} final)")
 
 
 if __name__ == "__main__":

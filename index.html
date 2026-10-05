@@ -146,6 +146,14 @@
     border: 1px solid var(--line); border-radius: 4px;
     padding: 0.3rem 0.55rem; font: inherit; min-width: 11rem;
   }
+  .season { max-width: 1100px; margin: 2rem auto 0; }
+  .season .section-title { margin: 0 0 0.35rem; }
+  .season-note { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.75rem; }
+  #season-table td, #season-table th, #season-games td, #season-games th { text-align: center; }
+  #season-table td:first-child { font-weight: 700; }
+  .season-games { margin-top: 0.75rem; font-size: 0.85rem; }
+  .season-games summary { cursor: pointer; color: var(--muted); margin-bottom: 0.5rem; }
+  .res-W { color: var(--up); font-weight: 700; } .res-L { color: var(--down); font-weight: 700; }
 </style>
 </head>
 <body>
@@ -226,6 +234,26 @@
     </thead>
     <tbody></tbody>
   </table>
+</div>
+
+<div class="season" id="season" style="display:none;">
+  <h2 class="section-title">Season Record</h2>
+  <p class="season-note" id="season-note"></p>
+  <div class="table-wrap">
+    <table id="season-table">
+      <thead><tr><th>Angle</th><th>Side graded</th><th>Record</th><th>Win %</th><th>Pending</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <details class="season-games">
+    <summary>Show every graded play</summary>
+    <div class="table-wrap">
+      <table id="season-games">
+        <thead><tr><th>Week</th><th>Game</th><th>Angle</th><th>Pick (Splash line)</th><th>Final</th><th>Result</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </details>
 </div>
 
 <div class="empty-state" id="empty-state" style="display:none;">
@@ -338,7 +366,9 @@
       if (marketMove === null) return "no opening line yet";
       const f = (v) => sgn(side === "home" ? v : -v);
       // Started games are frozen at their last pre-kickoff pull, so say so instead of "now"
-      const nowText = g.frozen_at ? `line at kickoff ${f(g.line)} (${fmtDayTime(g.frozen_at)} pull)` : `line is now ${f(g.line)} (${pulledAtLabel})`;
+      const nowText = !g.frozen_at ? `line is now ${f(g.line)} (${pulledAtLabel})`
+        : g.frozen_for === "lock" ? `line at Sat 10:30 AM lock ${f(g.line)} (${fmtDayTime(g.frozen_at)} pull)`
+        : `line at kickoff ${f(g.line)} (${fmtDayTime(g.frozen_at)} pull)`;
       return `${g[`${side}_abbr`]} was ${f(baseLine)} ${baseLabel}, ${nowText}`;
     };
     //  T Trap: over 60% of the money on one team, and DraftKings moved 1+ point the other way
@@ -542,10 +572,61 @@
     document.getElementById("sharps").style.display = "block";
   }
 
+  // Season Record: every locked Splash game, circles worked out exactly as in the
+  // table (same toRow) at the current dropdowns, graded at the Splash line.
+  function renderSeason(record, threshold, ticketCut, edgeData) {
+    const games = Object.values(record || {});
+    if (!games.length) return;
+    const rowsOut = [], plays = [];
+    const tally = {};
+    const add = (key, label, side, r, angleName) => {
+      const t = (tally[key] = tally[key] || { label, side, w: 0, l: 0, p: 0, pending: 0 });
+      if (!r.final) { t.pending++; return; }
+      const sideLine = side === "home" ? r.splash_line : -r.splash_line;
+      const margin = (side === "home" ? r.home_score - r.away_score : r.away_score - r.home_score) + sideLine;
+      const res = margin > 0 ? "W" : margin < 0 ? "L" : "P";
+      t[res === "W" ? "w" : res === "L" ? "l" : "p"]++;
+      plays.push({ r, angleName, side, sideLine, res });
+    };
+    for (const r of games) {
+      const row = toRow({ ...r, status: r.final ? "complete" : "scheduled" }, threshold, edgeData, ticketCut);
+      const met = Object.fromEntries(row.angles.map((a) => [a.key, a.met]));
+      const moneySide = row.gapSide;
+      const majSide = r.home_money > 60 ? "home" : r.away_money > 60 ? "away" : null;
+      if (met.money) add("money", "M - Money", moneySide, r, "Money");
+      if (met.sharp) add("sharp", "S - Sharp", moneySide, r, "Sharp");
+      if (met.trap) {
+        add("trapM", "T - Trap", majSide, r, "Trap (money side)");
+        add("trapL", "T - Trap", majSide === "home" ? "away" : "home", r, "Trap (line side)");
+      }
+      if (met.edge) add("edge", "E - Edge", row.moveSide, r, "Edge");
+    }
+    const order = [["money", "money side"], ["sharp", "money side"], ["trapM", "money side"], ["trapL", "line side"], ["edge", "team the line moved toward"]];
+    document.querySelector("#season-table tbody").innerHTML = order.map(([k, sideText]) => {
+      const t = tally[k] || { label: { money: "M - Money", sharp: "S - Sharp", trapM: "T - Trap", trapL: "T - Trap", edge: "E - Edge" }[k], w: 0, l: 0, p: 0, pending: 0 };
+      const n = t.w + t.l;
+      return `<tr><td>${t.label}</td><td>${sideText}</td><td>${t.w}-${t.l}${t.p ? `-${t.p}` : ""}</td>
+        <td>${n ? ((100 * t.w) / n).toFixed(1) + "%" : "—"}</td><td>${t.pending}</td></tr>`;
+    }).join("");
+    const weeks = new Set(games.map((g) => g.week_id)).size;
+    document.getElementById("season-note").textContent =
+      `${games.length} Splash games over ${weeks} week${weeks === 1 ? "" : "s"}, using the numbers locked at kickoff or the Saturday 10:30 AM lock. ` +
+      `Circles use the current dropdowns (Sharp Money ${threshold}+, Sharp Tickets under ${ticketCut}%); every play is graded at your Splash line. ` +
+      `A small sample - treat records under ~100 plays as noise.`;
+    plays.sort((a, b) => b.r.start_time.localeCompare(a.r.start_time) || a.angleName.localeCompare(b.angleName));
+    document.querySelector("#season-games tbody").innerHTML = plays.map(({ r, angleName, side, sideLine, res }) => `
+      <tr><td>${esc(r.week_id)}</td><td>${esc(r.away)} @ ${esc(r.home)}</td><td>${esc(angleName)}</td>
+        <td>${esc(r[`${side}_abbr`])} ${fmtSpread(sideLine)}</td>
+        <td>${esc(r.away_abbr)} ${r.away_score} - ${esc(r.home_abbr)} ${r.home_score}</td>
+        <td class="res-${res}">${res}</td></tr>`).join("");
+    document.getElementById("season").style.display = "block";
+  }
+
   async function init() {
-    const [current, edgeData] = await Promise.all([
+    const [current, edgeData, seasonRecord] = await Promise.all([
       loadJson("data/splits/current.json"),
       loadJson("data/splits/move_edge.json"),
+      loadJson("data/splits/angle_record.json"),
     ]);
     const statusEl = document.getElementById("status");
 
@@ -600,6 +681,7 @@
     showStatus();
     renderEdges(rows);
     renderSharps(rows, threshold, ticketCut);
+    renderSeason(seasonRecord, threshold, ticketCut, edgeData);
     const games = renderGames(rows);
     select.addEventListener("change", () => {
       threshold = Number(select.value);
@@ -608,6 +690,7 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
+      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
     });
     ticketSelect.addEventListener("change", () => {
       ticketCut = Number(ticketSelect.value);
@@ -616,6 +699,7 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
+      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
     });
     document.getElementById("controls").style.display = "flex";
     document.getElementById("table-wrap").style.display = "block";

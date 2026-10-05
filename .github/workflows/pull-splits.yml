@@ -2,14 +2,18 @@ name: Pull Splits
 
 on:
   schedule:
-    # Every 2 hours from Wednesday 5 AM Eastern until Saturday's 10 AM
-    # Eastern pick deadline - nothing after it on Saturday. Cron is UTC-only:
+    # Every 2 hours from Wednesday 5 AM Eastern until Saturday's 10:30 AM
+    # Eastern pick lock - nothing after it on Saturday. Cron is UTC-only:
     # 09:05 UTC = 5:05 AM EDT, but 4:05 AM EST once daylight saving ends in
     # November. :05 instead of :00 because the top of the hour is GitHub's
     # most delayed slot.
     - cron: "5 9-23/2 * * 3"   # Wed 09:05-23:05 UTC
     - cron: "5 1-23/2 * * 4,5" # Thu, Fri - every odd UTC hour
-    - cron: "5 1-13/2 * * 6"   # Sat 01:05-13:05 UTC (last = 9:05 AM EDT / 8:05 AM EST, before the deadline)
+    - cron: "5 1-13/2 * * 6"   # Sat 01:05-13:05 UTC
+    - cron: "5 14 * * 6"       # Sat 14:05 UTC = 10:05 AM EDT / 9:05 AM EST, closest slot to the lock
+    # The 10:30 AM Eastern Saturday lock itself is enforced in fetch_splits.py
+    # (lock_time): GitHub has started scheduled runs up to 4 hours late, so a run
+    # that lands after the lock keeps the last pre-lock lines instead of pulling new ones.
     # Once a day Mon-Tue (no Sunday) to grade finished flags and keep snapshots.
     - cron: "23 15 * * 1,2"
   workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab

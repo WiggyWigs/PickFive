@@ -30,6 +30,7 @@ Odds API DraftKings line in data/weeks/<week_id>/tuesday.json - the same
 number the Weekly Lines page anchors to. The current line is also
 DraftKings, so the two are the same book.
 """
+import copy
 import csv
 import io
 import json
@@ -252,21 +253,74 @@ def contained(short, full):
     return len(ts & tf) / len(ts) if ts else 0.0
 
 
-def splash_line_for(game, rows):
-    """Home-team Splash spread for this game. Both teams must match, which is
-    what keeps "Miami" from matching the wrong Miami."""
-    best, best_score = None, 0.0
-    for r in rows:
-        for flipped in (False, True):  # neutral-site games can list home/away differently
-            ra, rh = (r["home"], r["away"]) if flipped else (r["away"], r["home"])
-            a, h = contained(ra, game["away"]), contained(rh, game["home"])
-            if min(a, h) < 0.5:
+def match_score(row, game):
+    """How well a Splash row names this game, and the home-team line it gives.
+    Both teams must match, which is what keeps "Miami" from matching the
+    wrong Miami. None if it doesn't match."""
+    best = None
+    for flipped in (False, True):  # neutral-site games can list home/away differently
+        ra, rh = (row["home"], row["away"]) if flipped else (row["away"], row["home"])
+        a, h = contained(ra, game["away"]), contained(rh, game["home"])
+        if min(a, h) < 0.5:
+            continue
+        # tie-break on plain overlap so "Texas" prefers Texas Longhorns over Texas Tech
+        score = a + h + 0.01 * (similar(ra, game["away"]) + similar(rh, game["home"]))
+        if score >= 1.5 and (best is None or score > best[0]):
+            best = (score, -row["home_line"] if flipped else row["home_line"])
+    return best
+
+
+def assign_splash_lines(games, rows, slate_week):
+    """Give each Splash row to the one game it names best, and each game at
+    most one row. Only games in the Splash slate's own week can match: once
+    last week's college games drop out of the feed, a loose name match
+    ("Utah State at Boise State" vs Washington State at Utah State - "State"
+    counts as half a name) must not pin last week's line on this week's game."""
+    pairs = []
+    for i, r in enumerate(rows):
+        for j, g in enumerate(games):
+            if slate_week and g["week_id"] != slate_week:
                 continue
-            # tie-break on plain overlap so "Texas" prefers Texas Longhorns over Texas Tech
-            score = a + h + 0.01 * (similar(ra, game["away"]) + similar(rh, game["home"]))
-            if score > best_score:
-                best, best_score = (-r["home_line"] if flipped else r["home_line"]), score
-    return best if best_score >= 1.5 else None
+            m = match_score(r, g)
+            if m:
+                pairs.append((m[0], i, j, m[1]))
+    used_rows, used_games = set(), set()
+    for g in games:
+        g["splash_line"] = None
+    for _, i, j, line in sorted(pairs, key=lambda x: -x[0]):
+        if i in used_rows or j in used_games:
+            continue
+        used_rows.add(i)
+        used_games.add(j)
+        games[j]["splash_line"] = line
+
+
+def slate_week_for(copied_at):
+    """week_id of the Splash slate: the Monday ending the week it was copied in."""
+    try:
+        return week_id_for(copied_at)
+    except (TypeError, ValueError):
+        return None
+
+
+def carry_over_week(games, week_id):
+    """Action Network drops a week's college games from its feed once they're
+    played (Sunday/Monday), while the Splash slate - and this page - still
+    covers them until the next Splash copy. Put back any game of that week
+    that's missing from the feed, from the latest pull that had it. Its line
+    and splits get frozen at the lock like every other game."""
+    have = {f"{g['league']}:{g['id']}" for g in games}
+    latest = {}
+    sources = [load_json(f, {}) for f in sorted((SPLITS_DIR / "weeks" / week_id).glob("*.json"))]
+    sources.append(load_json(SPLITS_DIR / "current.json", {}))
+    for snap in sources:
+        for g in snap.get("games", []):
+            if g.get("week_id") == week_id:
+                latest[f"{g['league']}:{g['id']}"] = g  # later sources win
+    carried = [copy.deepcopy(g) for k, g in latest.items() if k not in have]
+    for g in carried:
+        g["carried"] = True
+    return carried
 
 
 # --- Flag rule ---------------------------------------------------------------
@@ -322,7 +376,7 @@ def parse_time(ts):
     return datetime.fromisoformat(ts.replace("Z", "+00:00"))
 
 
-def freeze_started_games(games, now):
+def freeze_started_games(games, now, use_lock=True, store_name="kickoff_lines.json", prev_name="current.json"):
     """Freeze each game at kickoff or at the Saturday 10:30 AM Eastern lock,
     whichever comes first.
 
@@ -336,16 +390,18 @@ def freeze_started_games(games, now):
     The first frozen numbers for each game are also kept in kickoff_lines.json,
     which is never rewritten for that game, so a later pull or an overwritten
     daily snapshot can't lose them."""
-    store_path = SPLITS_DIR / "kickoff_lines.json"
+    # use_lock=False is the live-lines page: frozen at kickoff only, kept in its own
+    # store and compared against its own previous file (live.json).
+    store_path = SPLITS_DIR / store_name
     store = load_json(store_path, {})
-    prev = load_json(SPLITS_DIR / "current.json", {})
+    prev = load_json(SPLITS_DIR / prev_name, {})
     prev_at = parse_time(prev["pulled_at"]) if prev.get("pulled_at") else None
     prev_games = {f"{g['league']}:{g['id']}": g for g in prev.get("games", [])}
     snapshots = {}
 
     for g in games:
         kickoff = parse_time(g["start_time"])
-        lock = lock_time(g["week_id"])
+        lock = lock_time(g["week_id"]) if use_lock else kickoff
         cutoff = min(kickoff, lock)
         frozen_for = "lock" if lock < kickoff else "kickoff"
         if cutoff > now and g["status"] == "scheduled":
@@ -419,21 +475,35 @@ def main():
     if not any(g["home_money"] is not None for g in games):
         sys.exit("Games returned but none carry bet/money % - Action Network may have changed or paywalled it.")
 
+    # The live-lines page (live-lines.html) gets its own copy that keeps updating
+    # until kickoff - no Saturday lock, nothing to do with Splash.
+    live_games = copy.deepcopy(games)
+
+    # Last week's Splash slate stays on the main page until the next Splash
+    # copy, even after its games leave Action Network's feed.
+    splash_rows, splash_copied_at = load_splash_lines()
+    slate_week = slate_week_for(splash_copied_at)
+    carried = carry_over_week(games, slate_week) if slate_week else []
+    if carried:
+        print(f"Carried over {len(carried)} week {slate_week} games no longer in the feed")
+    games += carried
+
     freeze_started_games(games, now)
+    freeze_started_games(live_games, now, use_lock=False,
+                         store_name="live_kickoff_lines.json", prev_name="live.json")
 
     # 1. Raw daily snapshot, grouped by each game's own week
     by_week = {}
     for g in games:
-        by_week.setdefault(g["week_id"], []).append(g)
+        if not g.get("carried"):  # raw snapshots hold only what the feed returned
+            by_week.setdefault(g["week_id"], []).append(g)
     for wk, wk_games in by_week.items():
         path = SPLITS_DIR / "weeks" / wk / f"{today}.json"
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps({"pulled_at": now.isoformat(timespec="seconds"), "games": wk_games}, indent=2) + "\n")
 
     # 2. Splash lines, and the DraftKings line captured when they came in
-    splash_rows, splash_copied_at = load_splash_lines()
-    for g in games:
-        g["splash_line"] = splash_line_for(g, splash_rows) if splash_rows else None
+    assign_splash_lines(games, splash_rows, slate_week)
     if splash_rows:
         matched = sum(1 for g in games if g["splash_line"] is not None)
         print(f"Splash lines: {len(splash_rows)} rows, {matched} matched to games")
@@ -526,6 +596,9 @@ def main():
 
     # 6. What the page reads
     for g in games:
+        r = record.get(f"{g['league']}:{g['id']}")
+        if g.get("carried") and r and r["final"]:
+            g.update(home_score=r["home_score"], away_score=r["away_score"], status="complete")
         g.update({k: finals[f"{g['league']}:{g['id']}"][k] for k in ("home_score", "away_score")}
                  if f"{g['league']}:{g['id']}" in finals else {})
     current = {
@@ -536,6 +609,22 @@ def main():
         "games": sorted(games, key=lambda g: g["start_time"]),
     }
     (SPLITS_DIR / "current.json").write_text(json.dumps(current, indent=2) + "\n")
+
+    # 7. Live-lines page: every game, frozen only at kickoff, with DraftKings'
+    # Monday (opening) and Tuesday lines for the M/S/T circles and Movement.
+    live_monday, live_tuesday = {}, {}
+    for g in live_games:
+        g["open_line"] = monday_line(g, live_monday)
+        g["tue_line"], g["tue_source"] = tuesday_line(g, live_tuesday)
+        if g["home_score"] is None and f"{g['league']}:{g['id']}" in finals:
+            fin = finals[f"{g['league']}:{g['id']}"]
+            g.update(home_score=fin["home_score"], away_score=fin["away_score"])
+    live = {
+        "pulled_at": now.isoformat(timespec="seconds"),
+        "edge_threshold": EDGE_THRESHOLD,
+        "games": sorted(live_games, key=lambda g: g["start_time"]),
+    }
+    (SPLITS_DIR / "live.json").write_text(json.dumps(live, indent=2) + "\n")
 
     flagged = sum(1 for g in games if g["flag"])
     with_splits = sum(1 for g in games if g["home_money"] is not None)

@@ -1,0 +1,513 @@
+{
+  "NCAAF:289267": {
+    "week_id": "2026-10-12",
+    "line": -2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Missouri State Bears",
+    "home": "Western Kentucky Hilltoppers"
+  },
+  "NCAAF:289377": {
+    "week_id": "2026-10-12",
+    "line": -10,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Southern Miss Golden Eagles",
+    "home": "Troy Trojans"
+  },
+  "NCAAF:289379": {
+    "week_id": "2026-10-12",
+    "line": 3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Jacksonville State Gamecocks",
+    "home": "Kennesaw State Owls"
+  },
+  "NCAAF:289381": {
+    "week_id": "2026-10-12",
+    "line": -13.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Sam Houston State Bearkats",
+    "home": "Liberty Flames"
+  },
+  "NCAAF:289382": {
+    "week_id": "2026-10-12",
+    "line": -7,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "South Florida Bulls",
+    "home": "UTSA Roadrunners"
+  },
+  "NCAAF:289383": {
+    "week_id": "2026-10-12",
+    "line": -1.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "South Alabama Jaguars",
+    "home": "Arkansas State Red Wolves"
+  },
+  "NCAAF:289385": {
+    "week_id": "2026-10-12",
+    "line": -3.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Florida State Seminoles",
+    "home": "Louisville Cardinals"
+  },
+  "NCAAF:289386": {
+    "week_id": "2026-10-12",
+    "line": -10.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Iowa State Cyclones",
+    "home": "BYU Cougars"
+  },
+  "NCAAF:289387": {
+    "week_id": "2026-10-12",
+    "line": 4,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Wake Forest Demon Deacons",
+    "home": "North Carolina State Wolfpack"
+  },
+  "NCAAF:289388": {
+    "week_id": "2026-10-12",
+    "line": -3.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "North Carolina Tar Heels",
+    "home": "Pittsburgh Panthers"
+  },
+  "NCAAF:289391": {
+    "week_id": "2026-10-12",
+    "line": 2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Miami (OH) RedHawks",
+    "home": "UMass Minutemen"
+  },
+  "NCAAF:289394": {
+    "week_id": "2026-10-12",
+    "line": 7.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Air Force Falcons",
+    "home": "Northern Illinois Huskies"
+  },
+  "NCAAF:289395": {
+    "week_id": "2026-10-12",
+    "line": -9.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Old Dominion Monarchs",
+    "home": "Appalachian State Mountaineers"
+  },
+  "NCAAF:289396": {
+    "week_id": "2026-10-12",
+    "line": -1.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "USC Trojans",
+    "home": "Penn State Nittany Lions"
+  },
+  "NCAAF:289398": {
+    "week_id": "2026-10-12",
+    "line": -5.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Washington State Cougars",
+    "home": "Utah State Aggies"
+  },
+  "NCAAF:289399": {
+    "week_id": "2026-10-12",
+    "line": 8.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Texas Longhorns",
+    "home": "Oklahoma Sooners"
+  },
+  "NCAAF:289402": {
+    "week_id": "2026-10-12",
+    "line": -34.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Maryland Terrapins",
+    "home": "Ohio State Buckeyes"
+  },
+  "NCAAF:289403": {
+    "week_id": "2026-10-12",
+    "line": -11.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "UCLA Bruins",
+    "home": "Oregon Ducks"
+  },
+  "NCAAF:289404": {
+    "week_id": "2026-10-12",
+    "line": -28.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Charlotte 49ers",
+    "home": "North Texas Mean Green"
+  },
+  "NCAAF:289405": {
+    "week_id": "2026-10-12",
+    "line": -15.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Kansas Jayhawks",
+    "home": "Utah Utes"
+  },
+  "NCAAF:289406": {
+    "week_id": "2026-10-12",
+    "line": 7.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "James Madison Dukes",
+    "home": "Georgia Southern Eagles"
+  },
+  "NCAAF:289408": {
+    "week_id": "2026-10-12",
+    "line": -3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Coastal Carolina Chanticleers",
+    "home": "Marshall Thundering Herd"
+  },
+  "NCAAF:289410": {
+    "week_id": "2026-10-12",
+    "line": 9.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Virginia Tech Hokies",
+    "home": "California Golden Bears"
+  },
+  "NCAAF:289413": {
+    "week_id": "2026-10-12",
+    "line": 9.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Nevada Wolf Pack",
+    "home": "UTEP Miners"
+  },
+  "NCAAF:289414": {
+    "week_id": "2026-10-12",
+    "line": -14.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "San Diego State Aztecs",
+    "home": "Oregon State Beavers"
+  },
+  "NCAAF:289415": {
+    "week_id": "2026-10-12",
+    "line": 2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Illinois Fighting Illini",
+    "home": "Michigan State Spartans"
+  },
+  "NCAAF:289416": {
+    "week_id": "2026-10-12",
+    "line": 8.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "LSU Tigers",
+    "home": "Kentucky Wildcats"
+  },
+  "NCAAF:289417": {
+    "week_id": "2026-10-12",
+    "line": 7,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Duke Blue Devils",
+    "home": "Georgia Tech Yellow Jackets"
+  },
+  "NCAAF:289418": {
+    "week_id": "2026-10-12",
+    "line": -12.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "South Carolina Gamecocks",
+    "home": "Florida Gators"
+  },
+  "NCAAF:289419": {
+    "week_id": "2026-10-12",
+    "line": -13.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Kent State Golden Flashes",
+    "home": "Western Michigan Broncos"
+  },
+  "NCAAF:289421": {
+    "week_id": "2026-10-12",
+    "line": -20.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Hawai'i Warriors",
+    "home": "Arizona State Sun Devils"
+  },
+  "NCAAF:289422": {
+    "week_id": "2026-10-12",
+    "line": -2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Houston Cougars",
+    "home": "Kansas State Wildcats"
+  },
+  "NCAAF:289423": {
+    "week_id": "2026-10-12",
+    "line": -3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Iowa Hawkeyes",
+    "home": "Washington Huskies"
+  },
+  "NCAAF:289424": {
+    "week_id": "2026-10-12",
+    "line": -38.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Stanford Cardinal",
+    "home": "Notre Dame Fighting Irish"
+  },
+  "NCAAF:289426": {
+    "week_id": "2026-10-12",
+    "line": -10,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Rice Owls",
+    "home": "East Carolina Pirates"
+  },
+  "NCAAF:289431": {
+    "week_id": "2026-10-12",
+    "line": -36.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Ball State Cardinals",
+    "home": "Northwestern Wildcats"
+  },
+  "NCAAF:289433": {
+    "week_id": "2026-10-12",
+    "line": -8.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "UCF Knights",
+    "home": "Oklahoma State Cowboys"
+  },
+  "NCAAF:289434": {
+    "week_id": "2026-10-12",
+    "line": 7,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Eastern Michigan Eagles",
+    "home": "Akron Zips"
+  },
+  "NCAAF:289435": {
+    "week_id": "2026-10-12",
+    "line": -3.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Texas A&M Aggies",
+    "home": "Missouri Tigers"
+  },
+  "NCAAF:289436": {
+    "week_id": "2026-10-12",
+    "line": 7.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Indiana Hoosiers",
+    "home": "Nebraska Cornhuskers"
+  },
+  "NCAAF:289439": {
+    "week_id": "2026-10-12",
+    "line": -7.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Sacramento State Hornets",
+    "home": "Bowling Green Falcons"
+  },
+  "NCAAF:289440": {
+    "week_id": "2026-10-12",
+    "line": 3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Arizona Wildcats",
+    "home": "West Virginia Mountaineers"
+  },
+  "NCAAF:289443": {
+    "week_id": "2026-10-12",
+    "line": -6,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Wyoming Cowboys",
+    "home": "San Jose State Spartans"
+  },
+  "NCAAF:289447": {
+    "week_id": "2026-10-12",
+    "line": -3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Central Michigan Chippewas",
+    "home": "Ohio Bobcats"
+  },
+  "NCAAF:289450": {
+    "week_id": "2026-10-12",
+    "line": 13.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Tennessee Volunteers",
+    "home": "Arkansas Razorbacks"
+  },
+  "NCAAF:289455": {
+    "week_id": "2026-10-12",
+    "line": -3.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "UConn Huskies",
+    "home": "Temple Owls"
+  },
+  "NCAAF:289457": {
+    "week_id": "2026-10-12",
+    "line": -14,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "UAB Blazers",
+    "home": "Memphis Tigers"
+  },
+  "NCAAF:289458": {
+    "week_id": "2026-10-12",
+    "line": -2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Tulsa Golden Hurricane",
+    "home": "Navy Midshipmen"
+  },
+  "NCAAF:289459": {
+    "week_id": "2026-10-12",
+    "line": 2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Minnesota Golden Gophers",
+    "home": "Purdue Boilermakers"
+  },
+  "NCAAF:289461": {
+    "week_id": "2026-10-12",
+    "line": -1.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Georgia Bulldogs",
+    "home": "Alabama Crimson Tide"
+  },
+  "NCAAF:289464": {
+    "week_id": "2026-10-12",
+    "line": 10,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Ole Miss Rebels",
+    "home": "Vanderbilt Commodores"
+  },
+  "NCAAF:289465": {
+    "week_id": "2026-10-12",
+    "line": 3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "North Dakota State Bison",
+    "home": "UNLV Rebels"
+  },
+  "NCAAF:289466": {
+    "week_id": "2026-10-12",
+    "line": -3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Louisiana Ragin' Cajuns",
+    "home": "Louisiana Tech Bulldogs"
+  },
+  "NCAAF:289468": {
+    "week_id": "2026-10-12",
+    "line": 6.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Boise State Broncos",
+    "home": "Fresno State Bulldogs"
+  },
+  "NCAAF:289469": {
+    "week_id": "2026-10-12",
+    "line": -20.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Buffalo Bulls",
+    "home": "Toledo Rockets"
+  },
+  "NCAAF:289470": {
+    "week_id": "2026-10-12",
+    "line": -9.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Syracuse Orange",
+    "home": "Virginia Cavaliers"
+  },
+  "NCAAF:289471": {
+    "week_id": "2026-10-12",
+    "line": -3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Tulane Green Wave",
+    "home": "Army Black Knights"
+  },
+  "NCAAF:290392": {
+    "week_id": "2026-10-12",
+    "line": -6.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "New Mexico State Aggies",
+    "home": "Florida International Panthers"
+  },
+  "NFL:290820": {
+    "week_id": "2026-10-12",
+    "line": -6.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Philadelphia Eagles",
+    "home": "Jacksonville Jaguars"
+  },
+  "NFL:290903": {
+    "week_id": "2026-10-12",
+    "line": -8.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Tampa Bay Buccaneers",
+    "home": "Dallas Cowboys"
+  },
+  "NFL:290904": {
+    "week_id": "2026-10-12",
+    "line": -3.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "New York Giants",
+    "home": "Washington Commanders"
+  },
+  "NFL:290905": {
+    "week_id": "2026-10-12",
+    "line": 6.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Houston Texans",
+    "home": "Tennessee Titans"
+  },
+  "NFL:290906": {
+    "week_id": "2026-10-12",
+    "line": 1.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Minnesota Vikings",
+    "home": "New Orleans Saints"
+  },
+  "NFL:290907": {
+    "week_id": "2026-10-12",
+    "line": 7,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Cincinnati Bengals",
+    "home": "Miami Dolphins"
+  },
+  "NFL:290908": {
+    "week_id": "2026-10-12",
+    "line": -2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Cleveland Browns",
+    "home": "New York Jets"
+  },
+  "NFL:290909": {
+    "week_id": "2026-10-12",
+    "line": -2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Indianapolis Colts",
+    "home": "Pittsburgh Steelers"
+  },
+  "NFL:290910": {
+    "week_id": "2026-10-12",
+    "line": -3.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Las Vegas Raiders",
+    "home": "New England Patriots"
+  },
+  "NFL:290911": {
+    "week_id": "2026-10-12",
+    "line": 3.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Denver Broncos",
+    "home": "Los Angeles Chargers"
+  },
+  "NFL:290912": {
+    "week_id": "2026-10-12",
+    "line": -3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "San Francisco 49ers",
+    "home": "Seattle Seahawks"
+  },
+  "NFL:290913": {
+    "week_id": "2026-10-12",
+    "line": 4.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Detroit Lions",
+    "home": "Arizona Cardinals"
+  },
+  "NFL:290914": {
+    "week_id": "2026-10-12",
+    "line": 3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Chicago Bears",
+    "home": "Green Bay Packers"
+  },
+  "NFL:290915": {
+    "week_id": "2026-10-12",
+    "line": -3,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Baltimore Ravens",
+    "home": "Atlanta Falcons"
+  },
+  "NFL:290916": {
+    "week_id": "2026-10-12",
+    "line": -2.5,
+    "taken_at": "2026-10-06T17:29:20+00:00",
+    "away": "Buffalo Bills",
+    "home": "Los Angeles Rams"
+  }
+}

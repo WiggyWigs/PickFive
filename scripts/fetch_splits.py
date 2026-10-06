@@ -495,6 +495,24 @@ def update_angle_record(record, games):
             record[key]["tue_line"] = g["tue_line"]
 
 
+LIVE_RECORD_FIELDS = tuple(f for f in RECORD_FIELDS if f != "splash_line")
+
+
+def update_live_record(record, games):
+    """Live Lines' season record: every game with splits, once frozen at kickoff.
+    Written once, never changed; only scores are filled in later. The page works
+    out M/S/T at the chosen dropdowns and grades them at the line at kickoff."""
+    for g in games:
+        if not g.get("frozen_at") or g.get("home_money") is None or g.get("line") is None:
+            continue
+        key = f"{g['league']}:{g['id']}"
+        if key not in record:
+            record[key] = {**{f: g.get(f) for f in LIVE_RECORD_FIELDS},
+                           "home_score": None, "away_score": None, "final": False}
+        elif record[key].get("tue_line") is None and g.get("tue_line") is not None:
+            record[key]["tue_line"] = g["tue_line"]
+
+
 # --- Main --------------------------------------------------------------------
 
 def main():
@@ -605,6 +623,15 @@ def main():
         else:
             flags.pop(key, None)  # flag dropped before kickoff - never counted
 
+    # Live-lines page lines (DraftKings Monday and Tuesday), and its own record
+    live_monday, live_tuesday = {}, {}
+    for g in live_games:
+        g["open_line"] = monday_line(g, live_monday)
+        g["tue_line"], g["tue_source"] = tuesday_line(g, live_tuesday)
+    live_record_path = SPLITS_DIR / "live_record.json"
+    live_record = load_json(live_record_path, {})
+    update_live_record(live_record, live_games)
+
     # 5. Grade anything final
     finals = {}
     for g in games:
@@ -613,6 +640,8 @@ def main():
     pending_weeks = {(f["league"], f["an_week"]) for k, f in flags.items()
                      if f["result"] is None and k not in finals}
     pending_weeks |= {(r["league"], r["an_week"]) for k, r in record.items()
+                      if not r["final"] and k not in finals and parse_time(r["start_time"]) <= now}
+    pending_weeks |= {(r["league"], r["an_week"]) for k, r in live_record.items()
                       if not r["final"] and k not in finals and parse_time(r["start_time"]) <= now}
     for league, an_week in pending_weeks:
         sport = next(s for s, l in LEAGUES.items() if l == league)
@@ -636,6 +665,11 @@ def main():
         if not r["final"] and fin:
             r.update(home_score=fin["home_score"], away_score=fin["away_score"], final=True)
     record_path.write_text(json.dumps(dict(sorted(record.items())), indent=2) + "\n")
+    for key, r in live_record.items():
+        fin = finals.get(key)
+        if not r["final"] and fin:
+            r.update(home_score=fin["home_score"], away_score=fin["away_score"], final=True)
+    live_record_path.write_text(json.dumps(dict(sorted(live_record.items())), indent=2) + "\n")
 
     # 6. What the page reads
     for g in games:
@@ -654,11 +688,8 @@ def main():
     (SPLITS_DIR / "current.json").write_text(json.dumps(current, indent=2) + "\n")
 
     # 7. Live-lines page: every game, frozen only at kickoff, with DraftKings'
-    # Monday (opening) and Tuesday lines for the M/S/T circles and Movement.
-    live_monday, live_tuesday = {}, {}
+    # Tuesday line for the M/S/T circles and Movement (set above).
     for g in live_games:
-        g["open_line"] = monday_line(g, live_monday)
-        g["tue_line"], g["tue_source"] = tuesday_line(g, live_tuesday)
         if g["home_score"] is None and f"{g['league']}:{g['id']}" in finals:
             fin = finals[f"{g['league']}:{g['id']}"]
             g.update(home_score=fin["home_score"], away_score=fin["away_score"])

@@ -252,7 +252,7 @@
     <div class="table-wrap">
       <table id="season-games">
         <thead>
-          <tr><th>Week</th><th>Game</th><th>Angle</th><th>Pick (Splash line)</th><th>Final</th><th>Result</th></tr>
+          <tr><th>Week</th><th>Game</th><th>Angle</th><th>Pick (Splash line)</th><th>Final</th><th>Result</th><th>Angle</th></tr>
           <tr class="filter-row"><th></th><th></th>
             <th><select id="play-angle-filter" aria-label="Filter graded plays by angle">
               <option value="">All angles</option>
@@ -262,7 +262,7 @@
               <option>Trap (line side)</option>
               <option>Edge</option>
             </select></th>
-            <th></th><th></th><th></th></tr>
+            <th></th><th></th><th></th><th></th></tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -593,27 +593,28 @@
     if (!games.length) return;
     const rowsOut = [], plays = [];
     const tally = {};
-    const add = (key, label, side, r, angleName) => {
+    const add = (key, label, side, r, angleName, angle) => {
       const t = (tally[key] = tally[key] || { label, side, w: 0, l: 0, p: 0, pending: 0 });
       if (!r.final) { t.pending++; return; }
       const sideLine = side === "home" ? r.splash_line : -r.splash_line;
       const margin = (side === "home" ? r.home_score - r.away_score : r.away_score - r.home_score) + sideLine;
       const res = margin > 0 ? "W" : margin < 0 ? "L" : "P";
       t[res === "W" ? "w" : res === "L" ? "l" : "p"]++;
-      plays.push({ r, angleName, side, sideLine, res });
+      plays.push({ r, angleName, side, sideLine, res, angle });
     };
     for (const r of games) {
       const row = toRow({ ...r, status: r.final ? "complete" : "scheduled" }, threshold, edgeData, ticketCut);
       const met = Object.fromEntries(row.angles.map((a) => [a.key, a.met]));
+      const ang = Object.fromEntries(row.angles.map((a) => [a.key, a]));
       const moneySide = row.gapSide;
       const majSide = r.home_money > 60 ? "home" : r.away_money > 60 ? "away" : null;
-      if (met.money) add("money", "M - Money", moneySide, r, "Money");
-      if (met.sharp) add("sharp", "S - Sharp", moneySide, r, "Sharp");
+      if (met.money) add("money", "M - Money", moneySide, r, "Money", ang.money);
+      if (met.sharp) add("sharp", "S - Sharp", moneySide, r, "Sharp", ang.sharp);
       if (met.trap) {
-        add("trapM", "T - Trap", majSide, r, "Trap (money side)");
-        add("trapL", "T - Trap", majSide === "home" ? "away" : "home", r, "Trap (line side)");
+        add("trapM", "T - Trap", majSide, r, "Trap (money side)", ang.trap);
+        add("trapL", "T - Trap", majSide === "home" ? "away" : "home", r, "Trap (line side)", ang.trap);
       }
-      if (met.edge) add("edge", "E - Edge", row.moveSide, r, "Edge");
+      if (met.edge) add("edge", "E - Edge", row.moveSide, r, "Edge", ang.edge);
     }
     const order = [["money", "money side"], ["sharp", "money side"], ["trapM", "money side"], ["trapL", "line side"], ["edge", "team the line moved toward"]];
     document.querySelector("#season-table tbody").innerHTML = order.map(([k, sideText]) => {
@@ -628,11 +629,12 @@
       `Circles use the current dropdowns (Sharp Money ${threshold}+, Sharp Tickets under ${ticketCut}%); every play is graded at your Splash line. ` +
       `A small sample - treat records under ~100 plays as noise.`;
     plays.sort((a, b) => b.r.start_time.localeCompare(a.r.start_time) || a.angleName.localeCompare(b.angleName));
-    document.querySelector("#season-games tbody").innerHTML = plays.map(({ r, angleName, side, sideLine, res }) => `
+    document.querySelector("#season-games tbody").innerHTML = plays.map(({ r, angleName, side, sideLine, res, angle }) => `
       <tr data-angle="${esc(angleName)}"><td>${esc(r.week_id)}</td><td>${esc(r.away)} @ ${esc(r.home)}</td><td>${esc(angleName)}</td>
         <td>${esc(r[`${side}_abbr`])} ${fmtSpread(sideLine)}</td>
         <td>${esc(r.away_abbr)} ${r.away_score} - ${esc(r.home_abbr)} ${r.home_score}</td>
-        <td class="res-${res}">${res}</td></tr>`).join("");
+        <td class="res-${res}">${res}</td>
+        <td><span class="dots"><span class="dot ${angle.key} on" tabindex="0" data-tip="${esc(angle.title)}">${angle.letter}</span></span></td></tr>`).join("");
     filterPlays();
     document.getElementById("season").style.display = "block";
   }

@@ -119,11 +119,11 @@
   {
     "week": 3,
     "wager": "2",
-    "pick": "College",
+    "pick": "Sunday International Game",
     "amount": 16.0,
-    "payout": null,
-    "net": null,
-    "total": null
+    "payout": 0.0,
+    "net": -16.0,
+    "total": 0.0
   },
   {
     "week": 3,
@@ -154,6 +154,60 @@
   },
   {
     "week": 3,
+    "wager": "6",
+    "pick": "MNF",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 4,
+    "wager": "1",
+    "pick": "TNF",
+    "amount": 20.0,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 4,
+    "wager": "2",
+    "pick": "College",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 4,
+    "wager": "3",
+    "pick": "NFL 1:00",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 4,
+    "wager": "4",
+    "pick": "NFL 4:00",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 4,
+    "wager": "5",
+    "pick": "SNF",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 4,
     "wager": "6",
     "pick": "MNF",
     "amount": null,

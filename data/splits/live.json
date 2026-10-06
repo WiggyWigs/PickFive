@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-06T01:41:12+00:00",
+  "pulled_at": "2026-10-06T17:29:20+00:00",
   "edge_threshold": 15,
   "games": [
     {
@@ -51,7 +51,8 @@
       "frozen_for": "kickoff",
       "open_line": 3.0,
       "tue_line": 2.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 289264,
@@ -1584,7 +1585,8 @@
       "frozen_for": "kickoff",
       "open_line": 3.5,
       "tue_line": 3.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290889,
@@ -1609,7 +1611,8 @@
       "frozen_for": "kickoff",
       "open_line": 1.5,
       "tue_line": 3.0,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290890,
@@ -1634,7 +1637,8 @@
       "frozen_for": "kickoff",
       "open_line": 3.5,
       "tue_line": 3.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290891,
@@ -1659,7 +1663,8 @@
       "frozen_for": "kickoff",
       "open_line": -3.0,
       "tue_line": -3.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290892,
@@ -1684,7 +1689,8 @@
       "frozen_for": "kickoff",
       "open_line": -7.0,
       "tue_line": -7.0,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290893,
@@ -1709,7 +1715,8 @@
       "frozen_for": "kickoff",
       "open_line": -3.0,
       "tue_line": -2.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290894,
@@ -1734,7 +1741,8 @@
       "frozen_for": "kickoff",
       "open_line": -11.5,
       "tue_line": -11.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290895,
@@ -1759,7 +1767,8 @@
       "frozen_for": "kickoff",
       "open_line": -2.5,
       "tue_line": -2.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290896,
@@ -1784,7 +1793,8 @@
       "frozen_for": "kickoff",
       "open_line": 1.5,
       "tue_line": 1.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290897,
@@ -1809,7 +1819,8 @@
       "frozen_for": "kickoff",
       "open_line": -10.5,
       "tue_line": -11.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290898,
@@ -1834,7 +1845,8 @@
       "frozen_for": "kickoff",
       "open_line": -2.5,
       "tue_line": -3.0,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290899,
@@ -1859,7 +1871,8 @@
       "frozen_for": "kickoff",
       "open_line": -6.5,
       "tue_line": -7.0,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290900,
@@ -1884,7 +1897,8 @@
       "frozen_for": "kickoff",
       "open_line": 4.5,
       "tue_line": 4.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290901,
@@ -1909,7 +1923,8 @@
       "frozen_for": "kickoff",
       "open_line": 3.5,
       "tue_line": 3.5,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     },
     {
       "id": 290902,
@@ -1934,7 +1949,8 @@
       "frozen_for": "kickoff",
       "open_line": -2.5,
       "tue_line": -3.0,
-      "tue_source": "odds_api"
+      "tue_source": "odds_api",
+      "carried": true
     }
   ]
 }

@@ -156,13 +156,37 @@ def load_json(path, default):
         return default
 
 
+TUESDAY_STORE = SPLITS_DIR / "tuesday_lines.json"
+
+
 def tuesday_lines(week_id):
-    """(own snapshot lines keyed by 'league:id', odds-api rows) for this week's Tuesday."""
+    """(own Tuesday lines keyed by 'league:id', odds-api rows) for this week's Tuesday.
+    Own lines come from tuesday_lines.json - DraftKings at the first Pull Splits
+    run on that Tuesday, never overwritten - else from that day's snapshot."""
     tuesday = (datetime.fromisoformat(week_id) - timedelta(days=6)).date().isoformat()
     snap = load_json(SPLITS_DIR / "weeks" / week_id / f"{tuesday}.json", {})
     own = {f"{g['league']}:{g['id']}": g.get("line") for g in snap.get("games", [])}
+    own.update({k: v["line"] for k, v in load_json(TUESDAY_STORE, {}).items() if v.get("week_id") == week_id})
     odds_api = load_json(LINES_WEEKS_DIR / week_id / "tuesday.json", [])
     return own, odds_api
+
+
+def record_tuesday_lines(games, now):
+    """On a game's Tuesday (Eastern), keep DraftKings' line from the first run
+    that sees it. Later Tuesday runs don't move it."""
+    today = now.astimezone(EASTERN).date().isoformat()
+    store = load_json(TUESDAY_STORE, {})
+    added = 0
+    for g in games:
+        tuesday = (datetime.fromisoformat(g["week_id"]) - timedelta(days=6)).date().isoformat()
+        key = f"{g['league']}:{g['id']}"
+        if tuesday == today and key not in store and g["line"] is not None:
+            store[key] = {"week_id": g["week_id"], "line": g["line"], "taken_at": now.isoformat(timespec="seconds"),
+                          "away": g["away"], "home": g["home"]}
+            added += 1
+    if added:
+        TUESDAY_STORE.write_text(json.dumps(dict(sorted(store.items())), indent=2) + "\n")
+        print(f"Tuesday line taken for {added} games")
 
 
 def odds_api_match(game, rows):
@@ -326,16 +350,10 @@ def carry_over_week(games, week_id, prev_name="current.json"):
 
 
 def live_week_for(now):
-    """Week the Live Lines page shows: the one ending this coming Monday, from
-    the moment its Tuesday line exists (the Tuesday pull). Until then - Tuesday
-    morning - it keeps showing the week that just ended."""
-    wk = week_id_for(now.isoformat())
-    tuesday = (datetime.fromisoformat(wk) - timedelta(days=6)).date().isoformat()
-    if (SPLITS_DIR / "weeks" / wk / f"{tuesday}.json").exists() or (LINES_WEEKS_DIR / wk / "tuesday.json").exists():
-        return wk
-    if now.astimezone(EASTERN).date().isoformat() > tuesday:
-        return wk  # Tuesday's run was skipped - move on anyway, without Tuesday lines
-    return (datetime.fromisoformat(wk) - timedelta(days=7)).date().isoformat()
+    """Week the Live Lines page shows: the one ending this coming Monday. It
+    turns over on Tuesday - the only Tuesday runs are the manual one that takes
+    the Tuesday line."""
+    return week_id_for(now.isoformat())
 
 
 # --- Flag rule ---------------------------------------------------------------
@@ -499,6 +517,7 @@ def main():
     # until kickoff - no Saturday lock, nothing to do with Splash. One week at a
     # time: the feed mixes next week's college games with this week's NFL, and
     # drops this week's college games once played, so put those back.
+    record_tuesday_lines(games, now)  # raw feed lines, before anything is frozen
     live_week = live_week_for(now)
     live_games = [copy.deepcopy(g) for g in games if g["week_id"] == live_week]
     live_games += carry_over_week(games, live_week, prev_name="live.json")

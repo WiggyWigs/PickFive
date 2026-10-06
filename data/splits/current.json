@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-06T17:29:20+00:00",
+  "pulled_at": "2026-10-06T17:37:01+00:00",
   "edge_threshold": 15,
   "splash_copied_at": "2026-10-06T17:16:32.306Z",
   "splash_baseline_at": "2026-10-06T17:29:20+00:00",
@@ -1962,9 +1962,9 @@
       "away_abbr": "BUF",
       "line": -2.5,
       "home_bets": 27,
-      "home_money": 31,
+      "home_money": 30,
       "away_bets": 73,
-      "away_money": 69,
+      "away_money": 70,
       "home_score": null,
       "away_score": null,
       "splash_line": -2.5,

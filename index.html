@@ -153,6 +153,8 @@
   #season-table td:first-child { font-weight: 700; }
   .season-games { margin-top: 0.75rem; font-size: 0.85rem; }
   .season-games summary { cursor: pointer; color: var(--muted); margin-bottom: 0.5rem; }
+  #season-games .filter-row th { padding-top: 0; }
+  #play-angle-filter { font: inherit; font-size: 0.8rem; padding: 0.15rem 0.3rem; background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 4px; }
   .res-W { color: var(--up); font-weight: 700; } .res-L { color: var(--down); font-weight: 700; }
 </style>
 </head>
@@ -249,7 +251,19 @@
     <summary>Show every graded play</summary>
     <div class="table-wrap">
       <table id="season-games">
-        <thead><tr><th>Week</th><th>Game</th><th>Angle</th><th>Pick (Splash line)</th><th>Final</th><th>Result</th></tr></thead>
+        <thead>
+          <tr><th>Week</th><th>Game</th><th>Angle</th><th>Pick (Splash line)</th><th>Final</th><th>Result</th></tr>
+          <tr class="filter-row"><th></th><th></th>
+            <th><select id="play-angle-filter" aria-label="Filter graded plays by angle">
+              <option value="">All angles</option>
+              <option>Money</option>
+              <option>Sharp</option>
+              <option>Trap (money side)</option>
+              <option>Trap (line side)</option>
+              <option>Edge</option>
+            </select></th>
+            <th></th><th></th><th></th></tr>
+        </thead>
         <tbody></tbody>
       </table>
     </div>
@@ -615,12 +629,22 @@
       `A small sample - treat records under ~100 plays as noise.`;
     plays.sort((a, b) => b.r.start_time.localeCompare(a.r.start_time) || a.angleName.localeCompare(b.angleName));
     document.querySelector("#season-games tbody").innerHTML = plays.map(({ r, angleName, side, sideLine, res }) => `
-      <tr><td>${esc(r.week_id)}</td><td>${esc(r.away)} @ ${esc(r.home)}</td><td>${esc(angleName)}</td>
+      <tr data-angle="${esc(angleName)}"><td>${esc(r.week_id)}</td><td>${esc(r.away)} @ ${esc(r.home)}</td><td>${esc(angleName)}</td>
         <td>${esc(r[`${side}_abbr`])} ${fmtSpread(sideLine)}</td>
         <td>${esc(r.away_abbr)} ${r.away_score} - ${esc(r.home_abbr)} ${r.home_score}</td>
         <td class="res-${res}">${res}</td></tr>`).join("");
+    filterPlays();
     document.getElementById("season").style.display = "block";
   }
+
+  // Graded plays: show only the angle picked in the box under the Angle header
+  function filterPlays() {
+    const pick = document.getElementById("play-angle-filter").value;
+    document.querySelectorAll("#season-games tbody tr").forEach((tr) => {
+      tr.hidden = !!pick && tr.dataset.angle !== pick;
+    });
+  }
+  document.getElementById("play-angle-filter").addEventListener("change", filterPlays);
 
   async function init() {
     const [current, edgeData, seasonRecord] = await Promise.all([

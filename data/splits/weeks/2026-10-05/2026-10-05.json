@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-05T23:36:20+00:00",
+  "pulled_at": "2026-10-06T01:41:12+00:00",
   "games": [
     {
       "id": 290888,
@@ -338,7 +338,7 @@
       "an_week": 4,
       "week_id": "2026-10-05",
       "start_time": "2026-10-06T00:15:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "New Orleans Saints",
       "away": "Atlanta Falcons",
       "home_abbr": "NO",
@@ -348,8 +348,8 @@
       "home_money": 50,
       "away_bets": 52,
       "away_money": 50,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 7,
+      "away_score": 24,
       "frozen_at": "2026-10-03T12:17:31+00:00",
       "frozen_for": "lock"
     }

@@ -20,7 +20,8 @@
     "frozen_for": "kickoff",
     "home_score": 44,
     "away_score": 45,
-    "final": true
+    "final": true,
+    "tue_line": -1.5
   },
   "NCAAF:289266": {
     "league": "NCAAF",
@@ -43,7 +44,8 @@
     "frozen_for": "kickoff",
     "home_score": 34,
     "away_score": 13,
-    "final": true
+    "final": true,
+    "tue_line": 3.0
   },
   "NCAAF:289268": {
     "league": "NCAAF",
@@ -66,7 +68,8 @@
     "frozen_for": "kickoff",
     "home_score": 33,
     "away_score": 35,
-    "final": true
+    "final": true,
+    "tue_line": -3.5
   },
   "NCAAF:289269": {
     "league": "NCAAF",
@@ -89,7 +92,8 @@
     "frozen_for": "kickoff",
     "home_score": 14,
     "away_score": 30,
-    "final": true
+    "final": true,
+    "tue_line": 7.0
   },
   "NCAAF:289270": {
     "league": "NCAAF",
@@ -112,7 +116,8 @@
     "frozen_for": "kickoff",
     "home_score": 45,
     "away_score": 42,
-    "final": true
+    "final": true,
+    "tue_line": -3.0
   },
   "NCAAF:289272": {
     "league": "NCAAF",
@@ -135,7 +140,8 @@
     "frozen_for": "lock",
     "home_score": 34,
     "away_score": 35,
-    "final": true
+    "final": true,
+    "tue_line": -2.5
   },
   "NCAAF:289273": {
     "league": "NCAAF",
@@ -158,7 +164,8 @@
     "frozen_for": "kickoff",
     "home_score": 31,
     "away_score": 3,
-    "final": true
+    "final": true,
+    "tue_line": -10.0
   },
   "NCAAF:289274": {
     "league": "NCAAF",
@@ -181,7 +188,8 @@
     "frozen_for": "lock",
     "home_score": 31,
     "away_score": 29,
-    "final": true
+    "final": true,
+    "tue_line": 2.5
   },
   "NCAAF:289276": {
     "league": "NCAAF",
@@ -204,7 +212,8 @@
     "frozen_for": "lock",
     "home_score": 45,
     "away_score": 17,
-    "final": true
+    "final": true,
+    "tue_line": -18.5
   },
   "NCAAF:289278": {
     "league": "NCAAF",
@@ -227,7 +236,8 @@
     "frozen_for": "lock",
     "home_score": 6,
     "away_score": 26,
-    "final": true
+    "final": true,
+    "tue_line": -2.5
   },
   "NCAAF:289279": {
     "league": "NCAAF",
@@ -250,7 +260,8 @@
     "frozen_for": "lock",
     "home_score": 14,
     "away_score": 31,
-    "final": true
+    "final": true,
+    "tue_line": 14.0
   },
   "NCAAF:289281": {
     "league": "NCAAF",
@@ -273,7 +284,8 @@
     "frozen_for": "lock",
     "home_score": 42,
     "away_score": 10,
-    "final": true
+    "final": true,
+    "tue_line": -1.5
   },
   "NCAAF:289282": {
     "league": "NCAAF",
@@ -296,7 +308,8 @@
     "frozen_for": "lock",
     "home_score": 34,
     "away_score": 7,
-    "final": true
+    "final": true,
+    "tue_line": -7.0
   },
   "NCAAF:289289": {
     "league": "NCAAF",
@@ -319,7 +332,8 @@
     "frozen_for": "kickoff",
     "home_score": 27,
     "away_score": 17,
-    "final": true
+    "final": true,
+    "tue_line": -12.5
   },
   "NCAAF:289292": {
     "league": "NCAAF",
@@ -342,7 +356,8 @@
     "frozen_for": "kickoff",
     "home_score": 23,
     "away_score": 56,
-    "final": true
+    "final": true,
+    "tue_line": 6.0
   },
   "NCAAF:289294": {
     "league": "NCAAF",
@@ -365,7 +380,8 @@
     "frozen_for": "lock",
     "home_score": 13,
     "away_score": 17,
-    "final": true
+    "final": true,
+    "tue_line": -6.0
   },
   "NCAAF:289295": {
     "league": "NCAAF",
@@ -388,7 +404,8 @@
     "frozen_for": "lock",
     "home_score": 16,
     "away_score": 20,
-    "final": true
+    "final": true,
+    "tue_line": -3.0
   },
   "NCAAF:289296": {
     "league": "NCAAF",
@@ -411,7 +428,8 @@
     "frozen_for": "lock",
     "home_score": 17,
     "away_score": 24,
-    "final": true
+    "final": true,
+    "tue_line": -10.0
   },
   "NCAAF:289297": {
     "league": "NCAAF",
@@ -434,7 +452,8 @@
     "frozen_for": "lock",
     "home_score": 19,
     "away_score": 55,
-    "final": true
+    "final": true,
+    "tue_line": -4.0
   },
   "NCAAF:289298": {
     "league": "NCAAF",
@@ -457,7 +476,8 @@
     "frozen_for": "lock",
     "home_score": 38,
     "away_score": 7,
-    "final": true
+    "final": true,
+    "tue_line": 2.5
   },
   "NCAAF:289301": {
     "league": "NCAAF",
@@ -480,7 +500,8 @@
     "frozen_for": "lock",
     "home_score": 28,
     "away_score": 0,
-    "final": true
+    "final": true,
+    "tue_line": -18.5
   },
   "NCAAF:289303": {
     "league": "NCAAF",
@@ -503,7 +524,8 @@
     "frozen_for": "lock",
     "home_score": 37,
     "away_score": 18,
-    "final": true
+    "final": true,
+    "tue_line": -20.5
   },
   "NCAAF:289304": {
     "league": "NCAAF",
@@ -526,7 +548,8 @@
     "frozen_for": "lock",
     "home_score": 14,
     "away_score": 38,
-    "final": true
+    "final": true,
+    "tue_line": -6.5
   },
   "NCAAF:289305": {
     "league": "NCAAF",
@@ -549,7 +572,8 @@
     "frozen_for": "kickoff",
     "home_score": 8,
     "away_score": 59,
-    "final": true
+    "final": true,
+    "tue_line": 20.5
   },
   "NCAAF:289306": {
     "league": "NCAAF",
@@ -572,7 +596,8 @@
     "frozen_for": "lock",
     "home_score": 14,
     "away_score": 16,
-    "final": true
+    "final": true,
+    "tue_line": 11.5
   },
   "NCAAF:289308": {
     "league": "NCAAF",
@@ -595,7 +620,8 @@
     "frozen_for": "kickoff",
     "home_score": 14,
     "away_score": 9,
-    "final": true
+    "final": true,
+    "tue_line": -3.0
   },
   "NCAAF:289309": {
     "league": "NCAAF",
@@ -618,7 +644,8 @@
     "frozen_for": "lock",
     "home_score": 24,
     "away_score": 14,
-    "final": true
+    "final": true,
+    "tue_line": -7.0
   },
   "NCAAF:289310": {
     "league": "NCAAF",
@@ -641,7 +668,8 @@
     "frozen_for": "lock",
     "home_score": 20,
     "away_score": 24,
-    "final": true
+    "final": true,
+    "tue_line": -13.5
   },
   "NCAAF:289312": {
     "league": "NCAAF",
@@ -664,7 +692,8 @@
     "frozen_for": "kickoff",
     "home_score": 26,
     "away_score": 37,
-    "final": true
+    "final": true,
+    "tue_line": 21.0
   },
   "NCAAF:289313": {
     "league": "NCAAF",
@@ -687,7 +716,8 @@
     "frozen_for": "kickoff",
     "home_score": 25,
     "away_score": 16,
-    "final": true
+    "final": true,
+    "tue_line": -21.0
   },
   "NCAAF:289316": {
     "league": "NCAAF",
@@ -710,7 +740,8 @@
     "frozen_for": "lock",
     "home_score": 24,
     "away_score": 31,
-    "final": true
+    "final": true,
+    "tue_line": 2.5
   },
   "NCAAF:289318": {
     "league": "NCAAF",
@@ -733,7 +764,8 @@
     "frozen_for": "lock",
     "home_score": 7,
     "away_score": 29,
-    "final": true
+    "final": true,
+    "tue_line": 13.5
   },
   "NCAAF:289319": {
     "league": "NCAAF",
@@ -756,7 +788,8 @@
     "frozen_for": "lock",
     "home_score": 26,
     "away_score": 56,
-    "final": true
+    "final": true,
+    "tue_line": 6.0
   },
   "NCAAF:289321": {
     "league": "NCAAF",
@@ -779,7 +812,8 @@
     "frozen_for": "lock",
     "home_score": 23,
     "away_score": 20,
-    "final": true
+    "final": true,
+    "tue_line": -6.5
   },
   "NCAAF:289325": {
     "league": "NCAAF",
@@ -802,7 +836,8 @@
     "frozen_for": "lock",
     "home_score": 48,
     "away_score": 23,
-    "final": true
+    "final": true,
+    "tue_line": -14.5
   },
   "NCAAF:289326": {
     "league": "NCAAF",
@@ -825,7 +860,8 @@
     "frozen_for": "lock",
     "home_score": 39,
     "away_score": 31,
-    "final": true
+    "final": true,
+    "tue_line": -2.5
   },
   "NCAAF:289328": {
     "league": "NCAAF",
@@ -848,7 +884,8 @@
     "frozen_for": "lock",
     "home_score": 61,
     "away_score": 7,
-    "final": true
+    "final": true,
+    "tue_line": -22.5
   },
   "NCAAF:289329": {
     "league": "NCAAF",
@@ -871,7 +908,8 @@
     "frozen_for": "lock",
     "home_score": 15,
     "away_score": 47,
-    "final": true
+    "final": true,
+    "tue_line": 24.5
   },
   "NCAAF:289330": {
     "league": "NCAAF",
@@ -894,7 +932,8 @@
     "frozen_for": "kickoff",
     "home_score": 38,
     "away_score": 14,
-    "final": true
+    "final": true,
+    "tue_line": -24.5
   },
   "NCAAF:289333": {
     "league": "NCAAF",
@@ -917,7 +956,8 @@
     "frozen_for": "lock",
     "home_score": 45,
     "away_score": 17,
-    "final": true
+    "final": true,
+    "tue_line": 5.5
   },
   "NCAAF:289334": {
     "league": "NCAAF",
@@ -940,7 +980,8 @@
     "frozen_for": "lock",
     "home_score": 10,
     "away_score": 13,
-    "final": true
+    "final": true,
+    "tue_line": 3.0
   },
   "NCAAF:289337": {
     "league": "NCAAF",
@@ -963,7 +1004,8 @@
     "frozen_for": "lock",
     "home_score": 52,
     "away_score": 35,
-    "final": true
+    "final": true,
+    "tue_line": -14.0
   },
   "NCAAF:289338": {
     "league": "NCAAF",
@@ -986,7 +1028,8 @@
     "frozen_for": "lock",
     "home_score": 31,
     "away_score": 29,
-    "final": true
+    "final": true,
+    "tue_line": 4.5
   },
   "NCAAF:289339": {
     "league": "NCAAF",
@@ -1009,7 +1052,8 @@
     "frozen_for": "kickoff",
     "home_score": 20,
     "away_score": 14,
-    "final": true
+    "final": true,
+    "tue_line": 5.5
   },
   "NCAAF:289340": {
     "league": "NCAAF",
@@ -1032,7 +1076,8 @@
     "frozen_for": "lock",
     "home_score": 24,
     "away_score": 39,
-    "final": true
+    "final": true,
+    "tue_line": 19.5
   },
   "NCAAF:289343": {
     "league": "NCAAF",
@@ -1055,7 +1100,8 @@
     "frozen_for": "kickoff",
     "home_score": 57,
     "away_score": 3,
-    "final": true
+    "final": true,
+    "tue_line": -12.5
   },
   "NCAAF:289345": {
     "league": "NCAAF",
@@ -1078,7 +1124,8 @@
     "frozen_for": "lock",
     "home_score": 41,
     "away_score": 17,
-    "final": true
+    "final": true,
+    "tue_line": -6.5
   },
   "NCAAF:289346": {
     "league": "NCAAF",
@@ -1101,7 +1148,8 @@
     "frozen_for": "lock",
     "home_score": 10,
     "away_score": 17,
-    "final": true
+    "final": true,
+    "tue_line": 6.5
   },
   "NCAAF:289347": {
     "league": "NCAAF",
@@ -1124,7 +1172,8 @@
     "frozen_for": "lock",
     "home_score": 31,
     "away_score": 28,
-    "final": true
+    "final": true,
+    "tue_line": 4.0
   },
   "NCAAF:289352": {
     "league": "NCAAF",
@@ -1147,7 +1196,8 @@
     "frozen_for": "lock",
     "home_score": 13,
     "away_score": 41,
-    "final": true
+    "final": true,
+    "tue_line": 16.5
   },
   "NCAAF:289356": {
     "league": "NCAAF",
@@ -1170,7 +1220,8 @@
     "frozen_for": "kickoff",
     "home_score": 17,
     "away_score": 20,
-    "final": true
+    "final": true,
+    "tue_line": 13.5
   },
   "NCAAF:289357": {
     "league": "NCAAF",
@@ -1193,7 +1244,8 @@
     "frozen_for": "lock",
     "home_score": 25,
     "away_score": 21,
-    "final": true
+    "final": true,
+    "tue_line": -9.5
   },
   "NCAAF:289359": {
     "league": "NCAAF",
@@ -1216,7 +1268,8 @@
     "frozen_for": "lock",
     "home_score": 34,
     "away_score": 7,
-    "final": true
+    "final": true,
+    "tue_line": -14.0
   },
   "NCAAF:289360": {
     "league": "NCAAF",
@@ -1239,7 +1292,8 @@
     "frozen_for": "kickoff",
     "home_score": 41,
     "away_score": 42,
-    "final": true
+    "final": true,
+    "tue_line": 6.5
   },
   "NCAAF:289361": {
     "league": "NCAAF",
@@ -1262,7 +1316,8 @@
     "frozen_for": "kickoff",
     "home_score": 55,
     "away_score": 0,
-    "final": true
+    "final": true,
+    "tue_line": -18.5
   },
   "NCAAF:289378": {
     "league": "NCAAF",
@@ -1285,7 +1340,8 @@
     "frozen_for": "kickoff",
     "home_score": 34,
     "away_score": 13,
-    "final": true
+    "final": true,
+    "tue_line": -2.5
   },
   "NFL:290819": {
     "league": "NFL",
@@ -1308,7 +1364,8 @@
     "frozen_for": "lock",
     "home_score": 13,
     "away_score": 30,
-    "final": true
+    "final": true,
+    "tue_line": 3.5
   },
   "NFL:290888": {
     "league": "NFL",
@@ -1331,7 +1388,8 @@
     "frozen_for": "kickoff",
     "home_score": 27,
     "away_score": 24,
-    "final": true
+    "final": true,
+    "tue_line": 2.5
   },
   "NFL:290889": {
     "league": "NFL",
@@ -1354,7 +1412,8 @@
     "frozen_for": "lock",
     "home_score": 20,
     "away_score": 24,
-    "final": true
+    "final": true,
+    "tue_line": 3.0
   },
   "NFL:290890": {
     "league": "NFL",
@@ -1377,7 +1436,8 @@
     "frozen_for": "lock",
     "home_score": 14,
     "away_score": 17,
-    "final": true
+    "final": true,
+    "tue_line": 3.5
   },
   "NFL:290891": {
     "league": "NFL",
@@ -1400,7 +1460,8 @@
     "frozen_for": "lock",
     "home_score": 23,
     "away_score": 12,
-    "final": true
+    "final": true,
+    "tue_line": -3.5
   },
   "NFL:290892": {
     "league": "NFL",
@@ -1423,7 +1484,8 @@
     "frozen_for": "lock",
     "home_score": 26,
     "away_score": 29,
-    "final": true
+    "final": true,
+    "tue_line": -7.0
   },
   "NFL:290893": {
     "league": "NFL",
@@ -1446,7 +1508,8 @@
     "frozen_for": "lock",
     "home_score": 17,
     "away_score": 22,
-    "final": true
+    "final": true,
+    "tue_line": -2.5
   },
   "NFL:290894": {
     "league": "NFL",
@@ -1469,7 +1532,8 @@
     "frozen_for": "lock",
     "home_score": 24,
     "away_score": 18,
-    "final": true
+    "final": true,
+    "tue_line": -11.5
   },
   "NFL:290895": {
     "league": "NFL",
@@ -1492,7 +1556,8 @@
     "frozen_for": "lock",
     "home_score": 30,
     "away_score": 34,
-    "final": true
+    "final": true,
+    "tue_line": -2.5
   },
   "NFL:290896": {
     "league": "NFL",
@@ -1515,7 +1580,8 @@
     "frozen_for": "lock",
     "home_score": 36,
     "away_score": 24,
-    "final": true
+    "final": true,
+    "tue_line": 1.5
   },
   "NFL:290897": {
     "league": "NFL",
@@ -1538,7 +1604,8 @@
     "frozen_for": "lock",
     "home_score": 15,
     "away_score": 10,
-    "final": true
+    "final": true,
+    "tue_line": -11.5
   },
   "NFL:290898": {
     "league": "NFL",
@@ -1561,7 +1628,8 @@
     "frozen_for": "lock",
     "home_score": 24,
     "away_score": 14,
-    "final": true
+    "final": true,
+    "tue_line": -3.0
   },
   "NFL:290899": {
     "league": "NFL",
@@ -1584,7 +1652,8 @@
     "frozen_for": "lock",
     "home_score": 30,
     "away_score": 23,
-    "final": true
+    "final": true,
+    "tue_line": -7.0
   },
   "NFL:290900": {
     "league": "NFL",
@@ -1607,7 +1676,8 @@
     "frozen_for": "lock",
     "home_score": 27,
     "away_score": 30,
-    "final": true
+    "final": true,
+    "tue_line": 4.5
   },
   "NFL:290901": {
     "league": "NFL",
@@ -1630,7 +1700,8 @@
     "frozen_for": "lock",
     "home_score": 32,
     "away_score": 26,
-    "final": true
+    "final": true,
+    "tue_line": 3.5
   },
   "NFL:290902": {
     "league": "NFL",
@@ -1653,6 +1724,7 @@
     "frozen_for": "lock",
     "home_score": null,
     "away_score": null,
-    "final": false
+    "final": false,
+    "tue_line": -3.0
   }
 }

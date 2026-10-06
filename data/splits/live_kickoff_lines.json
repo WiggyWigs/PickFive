@@ -886,5 +886,17 @@
     "away": "Detroit Lions",
     "home": "Carolina Panthers",
     "start_time": "2026-10-05T00:20:00.000Z"
+  },
+  "NFL:290902": {
+    "line": -1.5,
+    "home_bets": 41,
+    "home_money": 27,
+    "away_bets": 59,
+    "away_money": 73,
+    "frozen_at": "2026-10-05T23:36:20+00:00",
+    "frozen_for": "kickoff",
+    "away": "Atlanta Falcons",
+    "home": "New Orleans Saints",
+    "start_time": "2026-10-06T00:15:00.000Z"
   }
 }

@@ -119,6 +119,16 @@
   .edges .pct { color: var(--up); font-weight: 600; }
   .edges .none { color: var(--muted); margin: 0; }
   #sharps .pick { color: var(--up); }
+  #traps .pick { color: var(--down); }
+  .season { max-width: 1100px; margin: 2rem auto 0; }
+  .season .section-title { margin: 0 0 0.35rem; }
+  .season-note { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.75rem; }
+  #season-table td, #season-table th, #season-games td, #season-games th { text-align: center; }
+  #season-table td:first-child { font-weight: 700; }
+  .season-games { margin-top: 0.75rem; font-size: 0.85rem; }
+  .season-games summary { cursor: pointer; color: var(--muted); margin-bottom: 0.5rem; }
+  #season-games .filter-row th { padding-top: 0; }
+  #play-angle-filter { font: inherit; font-size: 0.8rem; padding: 0.15rem 0.3rem; background: var(--panel); color: var(--text); border: 1px solid var(--line); border-radius: 4px; }
 
   /* Info buttons + tap/hover pop-up (replaces browser title tooltips, which phones don't show) */
   .info {
@@ -170,6 +180,12 @@
   <p class="none" id="sharps-none" style="display:none;"></p>
 </div>
 
+<div class="edges" id="traps" style="display:none;">
+  <h2>Best Trap Plays</h2>
+  <ol id="traps-list"></ol>
+  <p class="none" id="traps-none" style="display:none;"></p>
+</div>
+
 <div class="controls" id="controls" style="display:none;">
   <label>Sharp Money
     <select id="threshold-select">
@@ -217,25 +233,40 @@
   </table>
 </div>
 
+<div class="season" id="season" style="display:none;">
+  <h2 class="section-title">Season Record</h2>
+  <p class="season-note" id="season-note"></p>
+  <div class="table-wrap">
+    <table id="season-table">
+      <thead><tr><th>Angle</th><th>Side graded</th><th>Record</th><th>Win %</th><th>Pending</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <details class="season-games">
+    <summary>Show every graded play</summary>
+    <div class="table-wrap">
+      <table id="season-games">
+        <thead>
+          <tr><th>Week</th><th>Game</th><th>Angle</th><th>Pick (line at kickoff)</th><th>Final</th><th>Result</th><th>Angle</th></tr>
+          <tr class="filter-row"><th></th><th></th>
+            <th><select id="play-angle-filter" aria-label="Filter graded plays by angle">
+              <option value="">All angles</option>
+              <option>Money</option>
+              <option>Sharp</option>
+              <option>Trap (money side)</option>
+              <option>Trap (line side)</option>
+            </select></th>
+            <th></th><th></th><th></th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </details>
+</div>
+
 <div class="empty-state" id="empty-state" style="display:none;">
   No games yet. Once the next Pull Splits runs, this week's games will show up here.
 </div>
-
-<footer>
-  Every game Action Network reports is shown. All lines are the home team's spread (negative = home favored).<br>
-  Current Line = DraftKings, updated on each pull until kickoff, then frozen at the last pre-kickoff pull.
-  Tuesday Line = DraftKings' Tuesday line, locked in. Movement = Current Line minus Tuesday Line.<br>
-  Ticket Gap = money % minus bet % for the team whose money outruns its tickets.<br>
-  Sharp and Trap measure the line move from DraftKings' Tuesday line (taken when you run the pulls on Tuesday) to the
-  current DraftKings line. The history below used Action Network's "open", which can be a stale lookahead number posted
-  weeks early, so treat its Sharp and Trap records as rough.
-  <br><br>
-  2024&ndash;26 history (NFL + FBS, graded at the closing line):<br>
-  Money alone, at 15+, sided with the money 519-480 (52.0%)<br>
-  Sharps at 15+ with under 40% of the tickets and a 1+ point move from the open went 95-59 (61.7%, &plusmn;8%) - only ~3 games a week, and the best of several rules tried, so treat it as promising, not proven<br>
-  In Trap games (1+ point move from the open) the money side went 246-253 (49.3%) and the line side 253-246 (50.7%).<br>
-  Money and Trap don't beat a coin flip - treat them as information, not picks.
-</footer>
 
 <script>
   const esc = (s) =>
@@ -354,6 +385,10 @@
         side: moneySide, abbr: moneyAbbr, gap, tickets: moneyTickets, money: g[`${moneySide}_money`],
         move: Math.abs(marketMove), moveText: dkMoveText(moneySide),
         tueLine: lock === null || lock === undefined ? null : moneySide === "home" ? lock : -lock,
+      } : null,
+      trapInfo: trap ? {
+        side: majSide, abbr: g[`${majSide}_abbr`], money: majPct, tickets: g[`${majSide}_bets`],
+        move: Math.abs(marketMove), moveText: dkMoveText(majSide),
       } : null,
       // Weighted so any Sharp outranks Money/Trap
       angleScore: angles.reduce((t, a) => t + (a.met ? ANGLE_WEIGHT[a.key] : 0), 0),
@@ -495,15 +530,94 @@
       })
       .join("");
     const noneEl = document.getElementById("sharps-none");
-    noneEl.textContent = `No game meets Sharp right now (Ticket Gap ${threshold}+, under ${ticketCut}% of the tickets, 1+ point move from the open).`;
+    noneEl.textContent = `No game meets Sharp right now (Ticket Gap ${threshold}+, under ${ticketCut}% of the tickets, 1+ point move toward them since Tuesday).`;
     noneEl.style.display = best.length ? "none" : "block";
     document.getElementById("sharps").style.display = "block";
   }
 
+  function renderTraps(rows) {
+    const best = rows
+      .filter((r) => !r.started && r.trapInfo)
+      .sort((a, b) => b.trapInfo.move - a.trapInfo.move || b.trapInfo.money - a.trapInfo.money);
+    document.getElementById("traps-list").innerHTML = best
+      .map((r) => {
+        const t = r.trapInfo;
+        const team = t.side === "home" ? r.home : r.away, opp = t.side === "home" ? r.away : r.home;
+        return `<li><span class="pick">${t.money}% of the money on ${esc(team)}</span>
+          <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · ${t.tickets}% of the tickets · line moved ${t.move} pts away:
+          ${esc(t.moveText)} · Kickoff ${fmtKickoff(r.start)}</span></li>`;
+      })
+      .join("");
+    const noneEl = document.getElementById("traps-none");
+    noneEl.textContent = "No game meets Trap right now (over 60% of the money, DraftKings moved 1+ point the other way since Tuesday).";
+    noneEl.style.display = best.length ? "none" : "block";
+    document.getElementById("traps").style.display = "block";
+  }
+
+  // Season record: every game with splits since Live Lines started, at its numbers
+  // frozen at kickoff. Circles use the current dropdowns; graded at the line at kickoff.
+  function renderSeason(record, threshold, ticketCut, edgeData) {
+    const games = Object.values(record || {});
+    if (!games.length) return;
+    const plays = [], tally = {};
+    const add = (key, label, side, r, angleName, angle) => {
+      const t = (tally[key] = tally[key] || { label, w: 0, l: 0, p: 0, pending: 0 });
+      if (!r.final) { t.pending++; return; }
+      const sideLine = side === "home" ? r.line : -r.line;
+      const margin = (side === "home" ? r.home_score - r.away_score : r.away_score - r.home_score) + sideLine;
+      const res = margin > 0 ? "W" : margin < 0 ? "L" : "P";
+      t[res === "W" ? "w" : res === "L" ? "l" : "p"]++;
+      plays.push({ r, angleName, side, sideLine, res, angle });
+    };
+    for (const r of games) {
+      const row = toRow({ ...r, status: r.final ? "complete" : "scheduled" }, threshold, edgeData, ticketCut);
+      const ang = Object.fromEntries(row.angles.map((a) => [a.key, a]));
+      const majSide = r.home_money > 60 ? "home" : r.away_money > 60 ? "away" : null;
+      if (ang.money.met) add("money", "M - Money", row.gapSide, r, "Money", ang.money);
+      if (ang.sharp.met) add("sharp", "S - Sharp", row.gapSide, r, "Sharp", ang.sharp);
+      if (ang.trap.met) {
+        add("trapM", "T - Trap", majSide, r, "Trap (money side)", ang.trap);
+        add("trapL", "T - Trap", majSide === "home" ? "away" : "home", r, "Trap (line side)", ang.trap);
+      }
+    }
+    const labels = { money: "M - Money", sharp: "S - Sharp", trapM: "T - Trap", trapL: "T - Trap" };
+    const order = [["money", "money side"], ["sharp", "money side"], ["trapM", "money side"], ["trapL", "line side"]];
+    document.querySelector("#season-table tbody").innerHTML = order.map(([k, sideText]) => {
+      const t = tally[k] || { label: labels[k], w: 0, l: 0, p: 0, pending: 0 };
+      const n = t.w + t.l;
+      return `<tr><td>${t.label}</td><td>${sideText}</td><td>${t.w}-${t.l}${t.p ? `-${t.p}` : ""}</td>
+        <td>${n ? ((100 * t.w) / n).toFixed(1) + "%" : "—"}</td><td>${t.pending}</td></tr>`;
+    }).join("");
+    const weeks = new Set(games.map((g) => g.week_id)).size;
+    document.getElementById("season-note").textContent =
+      `${games.length} games over ${weeks} week${weeks === 1 ? "" : "s"}, using the numbers frozen at kickoff. ` +
+      `Circles use the current dropdowns (Sharp Money ${threshold}+, Sharp Tickets under ${ticketCut}%); Sharp and Trap measure from the Tuesday line; ` +
+      `every play is graded at DraftKings' line at kickoff. A small sample - treat records under ~100 plays as noise.`;
+    plays.sort((a, b) => b.r.start_time.localeCompare(a.r.start_time) || a.angleName.localeCompare(b.angleName));
+    document.querySelector("#season-games tbody").innerHTML = plays.map(({ r, angleName, side, sideLine, res, angle }) => `
+      <tr data-angle="${esc(angleName)}"><td>${esc(r.week_id)}</td><td>${esc(r.away)} @ ${esc(r.home)}</td><td>${esc(angleName)}</td>
+        <td>${esc(r[`${side}_abbr`])} ${fmtSpread(sideLine)}</td>
+        <td>${esc(r.away_abbr)} ${r.away_score} - ${esc(r.home_abbr)} ${r.home_score}</td>
+        <td class="res-${res}">${res}</td>
+        <td><span class="dots"><span class="dot ${angle.key} on" tabindex="0" data-tip="${esc(angle.title)}">${angle.letter}</span></span></td></tr>`).join("");
+    filterPlays();
+    document.getElementById("season").style.display = "block";
+  }
+
+  // Graded plays: show only the angle picked in the box under the Angle header
+  function filterPlays() {
+    const pick = document.getElementById("play-angle-filter").value;
+    document.querySelectorAll("#season-games tbody tr").forEach((tr) => {
+      tr.hidden = !!pick && tr.dataset.angle !== pick;
+    });
+  }
+  document.getElementById("play-angle-filter").addEventListener("change", filterPlays);
+
   async function init() {
-    const [current, edgeData] = await Promise.all([
+    const [current, edgeData, seasonRecord] = await Promise.all([
       loadJson("data/splits/live.json"),
       loadJson("data/splits/move_edge.json"),
+      loadJson("data/splits/live_record.json"),
     ]);
     const statusEl = document.getElementById("status");
 
@@ -555,6 +669,8 @@
 
     showStatus();
     renderSharps(rows, threshold, ticketCut);
+    renderTraps(rows);
+    renderSeason(seasonRecord, threshold, ticketCut, edgeData);
     const games = renderGames(rows);
     select.addEventListener("change", () => {
       threshold = Number(select.value);
@@ -563,6 +679,8 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
+      renderTraps(rows);
+      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
       });
     ticketSelect.addEventListener("change", () => {
       ticketCut = Number(ticketSelect.value);
@@ -571,6 +689,8 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
+      renderTraps(rows);
+      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
       });
     document.getElementById("controls").style.display = "flex";
     document.getElementById("table-wrap").style.display = "block";

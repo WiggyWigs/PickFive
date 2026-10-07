@@ -2,23 +2,20 @@ name: Pull Splits
 
 on:
   schedule:
-    # Every 2 hours from Wednesday 5 AM Eastern through Monday night, so the
-    # Live Lines page (live-lines.html) tracks DraftKings right up to each
-    # kickoff, including Sunday and Monday games. Cron is UTC-only: 09:05 UTC
-    # = 5:05 AM EDT / 4:05 AM EST. :05 instead of :00 because the top of the
-    # hour is GitHub's most delayed slot.
+    # Every 2 hours from Wednesday 5 AM Eastern until the Saturday 10:30 AM
+    # lock. Cron is UTC-only: 09:05 UTC = 5:05 AM EDT / 4:05 AM EST. :05
+    # instead of :00 because the top of the hour is GitHub's most delayed slot.
     #
-    # The Weekly Lines page (index.html) is NOT affected by the later runs:
-    # fetch_splits.py freezes every game there at kickoff or Saturday 10:30 AM
-    # Eastern, whichever comes first (lock_time), so nothing pulled after the
-    # Saturday lock - late scheduled run or manual - ever reaches it.
+    # fetch_splits.py also freezes every game at kickoff or the Saturday
+    # 10:30 AM lock, whichever comes first (lock_time), so a scheduled run that
+    # starts late - or a manual run - never puts later numbers on the page.
     - cron: "5 9-23/2 * * 3"     # Wed 09:05-23:05 UTC
-    - cron: "5 1-23/2 * * 4,5,6" # Thu, Fri, Sat - every odd UTC hour
+    - cron: "5 1-23/2 * * 4,5"   # Thu, Fri - every odd UTC hour
+    - cron: "5 1-13/2 * * 6"     # Sat 01:05-13:05 UTC
     - cron: "5 14 * * 6"         # Sat 14:05 UTC = 10:05 AM EDT / 9:05 AM EST, closest slot to the lock
-    - cron: "5 1-23/2 * * 0,1"   # Sun, Mon - every odd UTC hour (last before MNF kickoff: Mon 23:05)
-    # No Tuesday runs: the Tuesday line comes from the Pull Splits run you
-    # start by hand on Tuesday (after pasting the Splash lines). Monday
-    # night's games get graded by that run, or by Wednesday's first.
+    # No Sunday or Monday runs, and none on Tuesday: the Tuesday line comes
+    # from the Pull Splits run you start by hand on Tuesday (after pasting
+    # the Splash lines). That run also grades the weekend's games.
   workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
 
 permissions:

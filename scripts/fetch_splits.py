@@ -349,13 +349,6 @@ def carry_over_week(games, week_id, prev_name="current.json"):
     return carried
 
 
-def live_week_for(now):
-    """Week the Live Lines page shows: the one ending this coming Monday. It
-    turns over on Tuesday - the only Tuesday runs are the manual one that takes
-    the Tuesday line."""
-    return week_id_for(now.isoformat())
-
-
 # --- Flag rule ---------------------------------------------------------------
 
 def sharp_flag(g):
@@ -409,7 +402,7 @@ def parse_time(ts):
     return datetime.fromisoformat(ts.replace("Z", "+00:00"))
 
 
-def freeze_started_games(games, now, use_lock=True, store_name="kickoff_lines.json", prev_name="current.json"):
+def freeze_started_games(games, now, store_name="kickoff_lines.json", prev_name="current.json"):
     """Freeze each game at kickoff or at the Saturday 10:30 AM Eastern lock,
     whichever comes first.
 
@@ -423,8 +416,6 @@ def freeze_started_games(games, now, use_lock=True, store_name="kickoff_lines.js
     The first frozen numbers for each game are also kept in kickoff_lines.json,
     which is never rewritten for that game, so a later pull or an overwritten
     daily snapshot can't lose them."""
-    # use_lock=False is the live-lines page: frozen at kickoff only, kept in its own
-    # store and compared against its own previous file (live.json).
     store_path = SPLITS_DIR / store_name
     store = load_json(store_path, {})
     prev = load_json(SPLITS_DIR / prev_name, {})
@@ -434,7 +425,7 @@ def freeze_started_games(games, now, use_lock=True, store_name="kickoff_lines.js
 
     for g in games:
         kickoff = parse_time(g["start_time"])
-        lock = lock_time(g["week_id"]) if use_lock else kickoff
+        lock = lock_time(g["week_id"])
         cutoff = min(kickoff, lock)
         frozen_for = "lock" if lock < kickoff else "kickoff"
         if cutoff > now and g["status"] == "scheduled":
@@ -495,24 +486,6 @@ def update_angle_record(record, games):
             record[key]["tue_line"] = g["tue_line"]
 
 
-LIVE_RECORD_FIELDS = tuple(f for f in RECORD_FIELDS if f != "splash_line")
-
-
-def update_live_record(record, games):
-    """Live Lines' season record: every game with splits, once frozen at kickoff.
-    Written once, never changed; only scores are filled in later. The page works
-    out M/S/T at the chosen dropdowns and grades them at the line at kickoff."""
-    for g in games:
-        if not g.get("frozen_at") or g.get("home_money") is None or g.get("line") is None:
-            continue
-        key = f"{g['league']}:{g['id']}"
-        if key not in record:
-            record[key] = {**{f: g.get(f) for f in LIVE_RECORD_FIELDS},
-                           "home_score": None, "away_score": None, "final": False}
-        elif record[key].get("tue_line") is None and g.get("tue_line") is not None:
-            record[key]["tue_line"] = g["tue_line"]
-
-
 # --- Main --------------------------------------------------------------------
 
 def main():
@@ -531,14 +504,7 @@ def main():
     if not any(g["home_money"] is not None for g in games):
         sys.exit("Games returned but none carry bet/money % - Action Network may have changed or paywalled it.")
 
-    # The live-lines page (live-lines.html) gets its own copy that keeps updating
-    # until kickoff - no Saturday lock, nothing to do with Splash. One week at a
-    # time: the feed mixes next week's college games with this week's NFL, and
-    # drops this week's college games once played, so put those back.
     record_tuesday_lines(games, now)  # raw feed lines, before anything is frozen
-    live_week = live_week_for(now)
-    live_games = [copy.deepcopy(g) for g in games if g["week_id"] == live_week]
-    live_games += carry_over_week(games, live_week, prev_name="live.json")
 
     # Last week's Splash slate stays on the main page until the next Splash
     # copy, even after its games leave Action Network's feed.
@@ -550,8 +516,6 @@ def main():
     games += carried
 
     freeze_started_games(games, now)
-    freeze_started_games(live_games, now, use_lock=False,
-                         store_name="live_kickoff_lines.json", prev_name="live.json")
 
     # 1. Raw daily snapshot, grouped by each game's own week
     by_week = {}
@@ -623,15 +587,6 @@ def main():
         else:
             flags.pop(key, None)  # flag dropped before kickoff - never counted
 
-    # Live-lines page lines (DraftKings Monday and Tuesday), and its own record
-    live_monday, live_tuesday = {}, {}
-    for g in live_games:
-        g["open_line"] = monday_line(g, live_monday)
-        g["tue_line"], g["tue_source"] = tuesday_line(g, live_tuesday)
-    live_record_path = SPLITS_DIR / "live_record.json"
-    live_record = load_json(live_record_path, {})
-    update_live_record(live_record, live_games)
-
     # 5. Grade anything final
     finals = {}
     for g in games:
@@ -640,8 +595,6 @@ def main():
     pending_weeks = {(f["league"], f["an_week"]) for k, f in flags.items()
                      if f["result"] is None and k not in finals}
     pending_weeks |= {(r["league"], r["an_week"]) for k, r in record.items()
-                      if not r["final"] and k not in finals and parse_time(r["start_time"]) <= now}
-    pending_weeks |= {(r["league"], r["an_week"]) for k, r in live_record.items()
                       if not r["final"] and k not in finals and parse_time(r["start_time"]) <= now}
     for league, an_week in pending_weeks:
         sport = next(s for s, l in LEAGUES.items() if l == league)
@@ -665,11 +618,6 @@ def main():
         if not r["final"] and fin:
             r.update(home_score=fin["home_score"], away_score=fin["away_score"], final=True)
     record_path.write_text(json.dumps(dict(sorted(record.items())), indent=2) + "\n")
-    for key, r in live_record.items():
-        fin = finals.get(key)
-        if not r["final"] and fin:
-            r.update(home_score=fin["home_score"], away_score=fin["away_score"], final=True)
-    live_record_path.write_text(json.dumps(dict(sorted(live_record.items())), indent=2) + "\n")
 
     # 6. What the page reads
     for g in games:
@@ -686,19 +634,6 @@ def main():
         "games": sorted(games, key=lambda g: g["start_time"]),
     }
     (SPLITS_DIR / "current.json").write_text(json.dumps(current, indent=2) + "\n")
-
-    # 7. Live-lines page: every game, frozen only at kickoff, with DraftKings'
-    # Tuesday line for the M/S/T circles and Movement (set above).
-    for g in live_games:
-        if g["home_score"] is None and f"{g['league']}:{g['id']}" in finals:
-            fin = finals[f"{g['league']}:{g['id']}"]
-            g.update(home_score=fin["home_score"], away_score=fin["away_score"])
-    live = {
-        "pulled_at": now.isoformat(timespec="seconds"),
-        "edge_threshold": EDGE_THRESHOLD,
-        "games": sorted(live_games, key=lambda g: g["start_time"]),
-    }
-    (SPLITS_DIR / "live.json").write_text(json.dumps(live, indent=2) + "\n")
 
     flagged = sum(1 for g in games if g["flag"])
     with_splits = sum(1 for g in games if g["home_money"] is not None)

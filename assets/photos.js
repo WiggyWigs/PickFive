@@ -1,7 +1,7 @@
 // Weekly photo strip: shows every image in a folder of the repo
-// (images/weekly-lines/ on Weekly Lines, images/live-lines/ on Live Lines).
-// Photos are uploaded by hand on GitHub (photos.html links to the upload
-// pages) and the Clear Weekly Photos workflow empties both folders Tuesday.
+// (images/weekly-lines/ on Weekly Lines). Photos are uploaded by hand on
+// GitHub (photos.html links to the upload page) and the Clear Weekly
+// Photos workflow empties the folder Tuesday morning.
 (function () {
   const API = "https://api.github.com/repos/wiggywigs/PickFive/contents/";
   const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp)$/i;

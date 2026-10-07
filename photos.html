@@ -37,21 +37,13 @@
     <div class="thumbs" id="weekly-thumbs"></div>
     <a class="small" href="index.html">See Weekly Lines</a>
   </section>
-  <section>
-    <h2 id="live-title">Live Lines</h2>
-    <a class="big upload" href="https://github.com/WiggyWigs/PickFive/upload/main/images/live-lines">Upload to Live Lines</a>
-    <div class="thumbs" id="live-thumbs"></div>
-    <a class="small" href="live-lines.html">See Live Lines</a>
-  </section>
-  <p class="note">Upload opens GitHub's upload page for that page's photo folder: choose your files, then
-    <strong>Commit changes</strong>. They show up about a minute later. Both folders are cleared every
-    Tuesday morning.</p>
+  <p class="note">Upload opens GitHub's upload page for the Weekly Lines photo folder: choose your files, then
+    <strong>Commit changes</strong>. They show up about a minute later and are cleared every Tuesday morning.</p>
 </main>
 <script src="assets/photos.js"></script>
 <script>
   for (const [folder, el, title, name] of [
     ["images/weekly-lines", "weekly-thumbs", "weekly-title", "Weekly Lines"],
-    ["images/live-lines", "live-thumbs", "live-title", "Live Lines"],
   ]) {
     PickFivePhotos.showPhotos(folder, el).then((files) => {
       document.getElementById(title).textContent = `${name} · ${files.length ? `${files.length} up this week` : "no photos this week"}`;

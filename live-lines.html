@@ -7,6 +7,7 @@
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<script src="assets/photos.js"></script>
 <style>
   .controls {
     max-width: 1100px;
@@ -617,30 +618,8 @@
   }
   document.getElementById("play-angle-filter").addEventListener("change", filterPlays);
 
-  // Weekly photos: whatever is in images/weekly/ (uploaded by hand on GitHub;
-  // the Clear Weekly Photos workflow empties it Tuesday morning)
-  const PHOTOS_API_URL = "https://api.github.com/repos/wiggywigs/PickFive/contents/images/weekly";
-  const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp)$/i;
-  async function loadWeeklyPhotos() {
-    try {
-      const res = await fetch(PHOTOS_API_URL, { cache: "no-store" });
-      if (!res.ok) return []; // missing or rate-limited - no photos, page carries on
-      const files = await res.json();
-      return Array.isArray(files) ? files.filter((f) => f.type === "file" && IMAGE_EXTENSIONS.test(f.name)) : [];
-    } catch (e) {
-      return [];
-    }
-  }
-  function renderWeeklyPhotos(files) {
-    const gallery = document.getElementById("photo-gallery");
-    if (!files.length) { gallery.style.display = "none"; return; }
-    gallery.innerHTML = files.map((f) => `
-      <a href="${esc(f.download_url)}" target="_blank" rel="noopener"><img src="${esc(f.download_url)}" alt="${esc(f.name)}"></a>`).join("");
-    gallery.style.display = "flex";
-  }
-
   async function init() {
-    loadWeeklyPhotos().then(renderWeeklyPhotos); // runs alongside the line data, never blocks it
+    PickFivePhotos.showPhotos("images/live-lines", "photo-gallery"); // runs alongside the line data, never blocks it
     const [current, edgeData, seasonRecord] = await Promise.all([
       loadJson("data/splits/live.json"),
       loadJson("data/splits/move_edge.json"),

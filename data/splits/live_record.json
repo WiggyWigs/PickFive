@@ -317,9 +317,9 @@
     "away_money": 45,
     "frozen_at": "2026-10-03T17:01:52+00:00",
     "frozen_for": "kickoff",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 66,
+    "away_score": 10,
+    "final": true
   },
   "NCAAF:289289": {
     "league": "NCAAF",
@@ -685,9 +685,9 @@
     "away_money": 45,
     "frozen_at": "2026-10-03T17:01:52+00:00",
     "frozen_for": "kickoff",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 63,
+    "away_score": 14,
+    "final": true
   },
   "NCAAF:289312": {
     "league": "NCAAF",
@@ -1329,9 +1329,32 @@
     "away_money": 51,
     "frozen_at": "2026-10-03T17:01:52+00:00",
     "frozen_for": "kickoff",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 33,
+    "away_score": 14,
+    "final": true
+  },
+  "NCAAF:289377": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 6,
+    "week_id": "2026-10-12",
+    "start_time": "2026-10-07T00:00:00.000Z",
+    "home": "Troy Trojans",
+    "away": "Southern Miss Golden Eagles",
+    "home_abbr": "TROY",
+    "away_abbr": "USM",
+    "open_line": -10.5,
+    "tue_line": -10,
+    "line": -10,
+    "home_bets": 51,
+    "home_money": 55,
+    "away_bets": 49,
+    "away_money": 45,
+    "frozen_at": "2026-10-06T17:37:01+00:00",
+    "frozen_for": "kickoff",
+    "home_score": 55,
+    "away_score": 34,
+    "final": true
   },
   "NCAAF:289378": {
     "league": "NCAAF",

@@ -695,6 +695,18 @@
     "home": "UAB Blazers",
     "start_time": "2026-10-03T19:30:00.000Z"
   },
+  "NCAAF:289377": {
+    "line": -10,
+    "home_bets": 51,
+    "home_money": 55,
+    "away_bets": 49,
+    "away_money": 45,
+    "frozen_at": "2026-10-06T17:37:01+00:00",
+    "frozen_for": "kickoff",
+    "away": "Southern Miss Golden Eagles",
+    "home": "Troy Trojans",
+    "start_time": "2026-10-07T00:00:00.000Z"
+  },
   "NCAAF:289378": {
     "line": -2.5,
     "home_bets": 44,

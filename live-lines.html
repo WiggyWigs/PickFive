@@ -120,6 +120,8 @@
   .edges .none { color: var(--muted); margin: 0; }
   #sharps .pick { color: var(--up); }
   #traps .pick { color: var(--down); }
+  .photo-gallery { max-width: 1100px; margin: 0 auto 1.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .photo-gallery img { height: 140px; width: auto; max-width: 100%; border-radius: 6px; border: 1px solid var(--line); object-fit: cover; cursor: pointer; }
   .season { max-width: 1100px; margin: 2rem auto 0; }
   .season .section-title { margin: 0 0 0.35rem; }
   .season-note { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.75rem; }
@@ -173,6 +175,8 @@
 </header>
 
 <div id="status" hidden></div>
+
+<div class="photo-gallery" id="photo-gallery" style="display:none;"></div>
 
 <div class="edges" id="sharps" style="display:none;">
   <h2>Best Sharp Plays</h2>
@@ -613,7 +617,30 @@
   }
   document.getElementById("play-angle-filter").addEventListener("change", filterPlays);
 
+  // Weekly photos: whatever is in images/weekly/ (uploaded by hand on GitHub;
+  // the Clear Weekly Photos workflow empties it Tuesday morning)
+  const PHOTOS_API_URL = "https://api.github.com/repos/wiggywigs/PickFive/contents/images/weekly";
+  const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp)$/i;
+  async function loadWeeklyPhotos() {
+    try {
+      const res = await fetch(PHOTOS_API_URL, { cache: "no-store" });
+      if (!res.ok) return []; // missing or rate-limited - no photos, page carries on
+      const files = await res.json();
+      return Array.isArray(files) ? files.filter((f) => f.type === "file" && IMAGE_EXTENSIONS.test(f.name)) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+  function renderWeeklyPhotos(files) {
+    const gallery = document.getElementById("photo-gallery");
+    if (!files.length) { gallery.style.display = "none"; return; }
+    gallery.innerHTML = files.map((f) => `
+      <a href="${esc(f.download_url)}" target="_blank" rel="noopener"><img src="${esc(f.download_url)}" alt="${esc(f.name)}"></a>`).join("");
+    gallery.style.display = "flex";
+  }
+
   async function init() {
+    loadWeeklyPhotos().then(renderWeeklyPhotos); // runs alongside the line data, never blocks it
     const [current, edgeData, seasonRecord] = await Promise.all([
       loadJson("data/splits/live.json"),
       loadJson("data/splits/move_edge.json"),

@@ -1,0 +1,40 @@
+name: Clear Weekly Photos
+
+# Live Lines (live-lines.html) shows whatever images are in images/weekly/.
+# You upload them by hand through GitHub's web UI during the week; this
+# empties the folder every Tuesday morning (keeping .gitkeep so it still
+# exists to upload into). It only deletes photos - it pulls no lines.
+on:
+  schedule:
+    # 12:07 UTC = 8:07 AM EDT / 7:07 AM EST, Tuesday
+    - cron: "7 12 * * 2"
+  workflow_dispatch: {} # clear them now from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: clear-photos
+  cancel-in-progress: false
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Clear weekly photos
+        run: |
+          mkdir -p images/weekly
+          find images/weekly -type f ! -name '.gitkeep' -delete
+          touch images/weekly/.gitkeep
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A images/weekly/
+          git diff --staged --quiet && exit 0
+          git commit -m "Clear weekly photos ($(date -u +%F))"
+          git pull --rebase
+          git push

@@ -125,6 +125,8 @@
   .edges .pct { color: var(--up); font-weight: 600; }
   .edges .none { color: var(--muted); margin: 0; }
   #sharps .pick { color: var(--up); }
+  #traps .pick { color: var(--down); }
+  #traps-record { margin: 0 0 0.5rem; font-size: 0.85rem; }
 
   /* Info buttons + tap/hover pop-up (replaces browser title tooltips, which phones don't show) */
   .info {
@@ -194,6 +196,13 @@
   <h2>Best Sharp Plays</h2>
   <ol id="sharps-list"></ol>
   <p class="none" id="sharps-none" style="display:none;"></p>
+</div>
+
+<div class="edges" id="traps" style="display:none;">
+  <h2>Best Trap Plays</h2>
+  <p class="meta" id="traps-record"></p>
+  <ol id="traps-list"></ol>
+  <p class="none" id="traps-none" style="display:none;"></p>
 </div>
 
 <div class="controls" id="controls" style="display:none;">
@@ -427,6 +436,15 @@
         move: Math.abs(marketMove), moveText: dkMoveText(moneySide),
         splashLine: lock === null || lock === undefined ? null : moneySide === "home" ? lock : -lock,
       } : null,
+      // Trap played the other way: the team the line moved toward, against the public money
+      trapInfo: trap ? (() => {
+        const side = majSide === "home" ? "away" : "home";
+        return {
+          side, abbr: g[`${side}_abbr`], publicAbbr: g[`${majSide}_abbr`], publicMoney: majPct,
+          move: Math.abs(marketMove), moveText: dkMoveText(side),
+          splashLine: lock === null || lock === undefined ? null : side === "home" ? lock : -lock,
+        };
+      })() : null,
       // Weighted so any Edge outranks any Sharp, which outranks Money/Trap
       angleScore: angles.reduce((t, a) => t + (a.met ? ANGLE_WEIGHT[a.key] : 0), 0),
       // Games to Watch = any of the four circles filled
@@ -591,11 +609,38 @@
     document.getElementById("sharps").style.display = "block";
   }
 
+  // Trap games, played on the line side (the team the line moved toward, away from
+  // the public money) - the side the Season Record has on top so far.
+  function renderTraps(rows, tally) {
+    const best = rows
+      .filter((r) => !r.started && r.trapInfo)
+      .sort((a, b) => b.trapInfo.move - a.trapInfo.move || b.trapInfo.publicMoney - a.trapInfo.publicMoney);
+    document.getElementById("traps-list").innerHTML = best
+      .map((r) => {
+        const t = r.trapInfo;
+        const team = t.side === "home" ? r.home : r.away, opp = t.side === "home" ? r.away : r.home;
+        return `<li><span class="pick">${esc(team)} ${fmtSpread(t.splashLine)}</span>
+          <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · Splash ${fmtSpread(t.splashLine)} ·
+          ${t.publicMoney}% of the money on ${esc(t.publicAbbr)}, but the line moved ${t.move} pts toward ${esc(t.abbr)}: ${esc(t.moveText)} · Kickoff ${fmtKickoff(r.start)}</span></li>`;
+      })
+      .join("");
+    const lt = (tally && tally.trapL) || { w: 0, l: 0, p: 0 };
+    const n = lt.w + lt.l;
+    document.getElementById("traps-record").textContent =
+      `Played against the public money, on the team the line moved toward. Trap line side this season: ` +
+      `${lt.w}-${lt.l}${lt.p ? `-${lt.p}` : ""}${n ? ` (${((100 * lt.w) / n).toFixed(1)}%)` : ""} at your Splash line` +
+      ` - 2024-26 history at the closing line: 253-246 (50.7%).`;
+    const noneEl = document.getElementById("traps-none");
+    noneEl.textContent = "No game meets Trap right now (over 60% of the money on one team, DraftKings 1+ point the other way since Tuesday).";
+    noneEl.style.display = best.length ? "none" : "block";
+    document.getElementById("traps").style.display = "block";
+  }
+
   // Season Record: every locked Splash game, circles worked out exactly as in the
   // table (same toRow) at the current dropdowns, graded at the Splash line.
   function renderSeason(record, threshold, ticketCut, edgeData) {
     const games = Object.values(record || {});
-    if (!games.length) return;
+    if (!games.length) return {};
     const rowsOut = [], plays = [];
     const tally = {};
     const add = (key, label, side, r, angleName, angle) => {
@@ -642,6 +687,7 @@
         <td><span class="dots"><span class="dot ${angle.key} on" tabindex="0" data-tip="${esc(angle.title)}">${angle.letter}</span></span></td></tr>`).join("");
     filterPlays();
     document.getElementById("season").style.display = "block";
+    return tally;
   }
 
   // Graded plays: show only the angle picked in the box under the Angle header
@@ -713,7 +759,7 @@
     showStatus();
     renderEdges(rows);
     renderSharps(rows, threshold, ticketCut);
-    renderSeason(seasonRecord, threshold, ticketCut, edgeData);
+    renderTraps(rows, renderSeason(seasonRecord, threshold, ticketCut, edgeData));
     const games = renderGames(rows);
     select.addEventListener("change", () => {
       threshold = Number(select.value);
@@ -722,7 +768,7 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
-      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
+      renderTraps(rows, renderSeason(seasonRecord, threshold, ticketCut, edgeData));
     });
     ticketSelect.addEventListener("change", () => {
       ticketCut = Number(ticketSelect.value);
@@ -731,7 +777,7 @@
       showStatus();
       games.setRows(rows);
       renderSharps(rows, threshold, ticketCut);
-      renderSeason(seasonRecord, threshold, ticketCut, edgeData);
+      renderTraps(rows, renderSeason(seasonRecord, threshold, ticketCut, edgeData));
     });
     document.getElementById("controls").style.display = "flex";
     document.getElementById("table-wrap").style.display = "block";

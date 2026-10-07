@@ -7,6 +7,7 @@
 <link rel="icon" href="assets/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/styles.css">
+<script src="assets/photos.js"></script>
 <style>
   .controls {
     max-width: 1100px;
@@ -146,6 +147,8 @@
     border: 1px solid var(--line); border-radius: 4px;
     padding: 0.3rem 0.55rem; font: inherit; min-width: 11rem;
   }
+  .photo-gallery { max-width: 1100px; margin: 0 auto 1.25rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .photo-gallery img { height: 140px; width: auto; max-width: 100%; border-radius: 6px; border: 1px solid var(--line); object-fit: cover; cursor: pointer; }
   .season { max-width: 1100px; margin: 2rem auto 0; }
   .season .section-title { margin: 0 0 0.35rem; }
   .season-note { color: var(--muted); font-size: 0.82rem; margin: 0 0 0.75rem; }
@@ -178,6 +181,8 @@
 </header>
 
 <div id="status" hidden></div>
+
+<div class="photo-gallery" id="photo-gallery" style="display:none;"></div>
 
 <div class="edges" id="edges" style="display:none;">
   <h2>Best edges vs. your Splash line</h2>
@@ -649,6 +654,7 @@
   document.getElementById("play-angle-filter").addEventListener("change", filterPlays);
 
   async function init() {
+    PickFivePhotos.showPhotos("images/weekly-lines", "photo-gallery"); // runs alongside the line data, never blocks it
     const [current, edgeData, seasonRecord] = await Promise.all([
       loadJson("data/splits/current.json"),
       loadJson("data/splits/move_edge.json"),

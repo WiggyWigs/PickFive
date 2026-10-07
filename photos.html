@@ -16,13 +16,14 @@
   }
   .logo { max-width: 260px; width: 70%; margin: 0.5rem auto 1.25rem; display: block; }
   a.big {
-    display: block; padding: 1rem; margin: 0 0 0.9rem; border-radius: 10px;
+    display: block; padding: 0.9rem; margin: 0 0 0.75rem; border-radius: 10px;
     font-size: 1.15rem; font-weight: 700; text-decoration: none;
   }
   a.upload { background: var(--amber); color: var(--bg); }
-  a.view { border: 1px solid var(--line); color: var(--text); background: var(--panel); }
+  a.small { display: inline-block; margin: 0.6rem 0 0; color: var(--muted); font-size: 0.9rem; }
+  section { border: 1px solid var(--line); border-radius: 10px; background: var(--panel); padding: 0.9rem 1rem 1rem; margin: 0 0 1rem; }
   .note { color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 1rem 0; }
-  h2 { font-family: "Iowan Old Style", Georgia, serif; font-size: 1rem; margin: 1.5rem 0 0.6rem; }
+  h2 { font-family: "Iowan Old Style", Georgia, serif; font-size: 1.05rem; margin: 0 0 0.7rem; }
   .thumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
   .thumbs img { height: 90px; width: auto; max-width: 100%; border-radius: 6px; border: 1px solid var(--line); }
 </style>
@@ -30,29 +31,32 @@
 <body>
 <main>
   <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
-  <a class="big upload" href="https://github.com/WiggyWigs/PickFive/upload/main/images/weekly">Upload photos</a>
-  <a class="big view" href="live-lines.html">See Live Lines</a>
-  <p class="note">Upload opens GitHub's upload page for the photos folder: choose your files, then
-    <strong>Commit changes</strong>. They show on Live Lines about a minute later and are cleared every
+  <section>
+    <h2 id="weekly-title">Weekly Lines</h2>
+    <a class="big upload" href="https://github.com/WiggyWigs/PickFive/upload/main/images/weekly-lines">Upload to Weekly Lines</a>
+    <div class="thumbs" id="weekly-thumbs"></div>
+    <a class="small" href="index.html">See Weekly Lines</a>
+  </section>
+  <section>
+    <h2 id="live-title">Live Lines</h2>
+    <a class="big upload" href="https://github.com/WiggyWigs/PickFive/upload/main/images/live-lines">Upload to Live Lines</a>
+    <div class="thumbs" id="live-thumbs"></div>
+    <a class="small" href="live-lines.html">See Live Lines</a>
+  </section>
+  <p class="note">Upload opens GitHub's upload page for that page's photo folder: choose your files, then
+    <strong>Commit changes</strong>. They show up about a minute later. Both folders are cleared every
     Tuesday morning.</p>
-  <h2 id="current-title">Up this week</h2>
-  <div class="thumbs" id="thumbs"></div>
 </main>
+<script src="assets/photos.js"></script>
 <script>
-  // Same folder Live Lines shows (images/weekly/)
-  const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp)$/i;
-  const esc = (s) =>
-    String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  fetch("https://api.github.com/repos/wiggywigs/PickFive/contents/images/weekly", { cache: "no-store" })
-    .then((res) => (res.ok ? res.json() : []))
-    .catch(() => [])
-    .then((files) => {
-      const photos = Array.isArray(files) ? files.filter((f) => f.type === "file" && IMAGE_EXTENSIONS.test(f.name)) : [];
-      document.getElementById("current-title").textContent = photos.length ? `Up this week (${photos.length})` : "No photos up this week";
-      document.getElementById("thumbs").innerHTML = photos
-        .map((f) => `<a href="${esc(f.download_url)}" target="_blank" rel="noopener"><img src="${esc(f.download_url)}" alt="${esc(f.name)}"></a>`)
-        .join("");
+  for (const [folder, el, title, name] of [
+    ["images/weekly-lines", "weekly-thumbs", "weekly-title", "Weekly Lines"],
+    ["images/live-lines", "live-thumbs", "live-title", "Live Lines"],
+  ]) {
+    PickFivePhotos.showPhotos(folder, el).then((files) => {
+      document.getElementById(title).textContent = `${name} · ${files.length ? `${files.length} up this week` : "no photos this week"}`;
     });
+  }
 </script>
 </body>
 </html>

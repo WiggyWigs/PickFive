@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PickFive Photos</title>
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/styles.css">
+<!-- No web app manifest on purpose: iPhone's Add to Home Screen then saves this
+     exact address (GitHub's own manifest sends its icon to github.com/ instead). -->
+<style>
+  main {
+    max-width: 520px; margin: 0 auto; padding: 1.5rem 1rem; text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  .logo { max-width: 260px; width: 70%; margin: 0.5rem auto 1.25rem; display: block; }
+  a.big {
+    display: block; padding: 1rem; margin: 0 0 0.9rem; border-radius: 10px;
+    font-size: 1.15rem; font-weight: 700; text-decoration: none;
+  }
+  a.upload { background: var(--amber); color: var(--bg); }
+  a.view { border: 1px solid var(--line); color: var(--text); background: var(--panel); }
+  .note { color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin: 1rem 0; }
+  h2 { font-family: "Iowan Old Style", Georgia, serif; font-size: 1rem; margin: 1.5rem 0 0.6rem; }
+  .thumbs { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+  .thumbs img { height: 90px; width: auto; max-width: 100%; border-radius: 6px; border: 1px solid var(--line); }
+</style>
+</head>
+<body>
+<main>
+  <img class="logo" src="assets/pickfive_header.png" alt="PickFive">
+  <a class="big upload" href="https://github.com/WiggyWigs/PickFive/upload/main/images/weekly">Upload photos</a>
+  <a class="big view" href="live-lines.html">See Live Lines</a>
+  <p class="note">Upload opens GitHub's upload page for the photos folder: choose your files, then
+    <strong>Commit changes</strong>. They show on Live Lines about a minute later and are cleared every
+    Tuesday morning.</p>
+  <h2 id="current-title">Up this week</h2>
+  <div class="thumbs" id="thumbs"></div>
+</main>
+<script>
+  // Same folder Live Lines shows (images/weekly/)
+  const IMAGE_EXTENSIONS = /\.(jpe?g|png|gif|webp)$/i;
+  const esc = (s) =>
+    String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  fetch("https://api.github.com/repos/wiggywigs/PickFive/contents/images/weekly", { cache: "no-store" })
+    .then((res) => (res.ok ? res.json() : []))
+    .catch(() => [])
+    .then((files) => {
+      const photos = Array.isArray(files) ? files.filter((f) => f.type === "file" && IMAGE_EXTENSIONS.test(f.name)) : [];
+      document.getElementById("current-title").textContent = photos.length ? `Up this week (${photos.length})` : "No photos up this week";
+      document.getElementById("thumbs").innerHTML = photos
+        .map((f) => `<a href="${esc(f.download_url)}" target="_blank" rel="noopener"><img src="${esc(f.download_url)}" alt="${esc(f.name)}"></a>`)
+        .join("");
+    });
+</script>
+</body>
+</html>

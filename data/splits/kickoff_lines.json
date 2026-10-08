@@ -700,6 +700,30 @@
     "home": "New Mexico State Aggies",
     "start_time": "2026-10-02T00:00:00.000Z"
   },
+  "NCAAF:289379": {
+    "line": 3,
+    "home_bets": 42,
+    "home_money": 34,
+    "away_bets": 58,
+    "away_money": 66,
+    "frozen_at": "2026-10-07T21:48:49+00:00",
+    "frozen_for": "kickoff",
+    "away": "Jacksonville State Gamecocks",
+    "home": "Kennesaw State Owls",
+    "start_time": "2026-10-07T23:00:00.000Z"
+  },
+  "NCAAF:290392": {
+    "line": -6.5,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-07T21:48:49+00:00",
+    "frozen_for": "kickoff",
+    "away": "New Mexico State Aggies",
+    "home": "Florida International Panthers",
+    "start_time": "2026-10-07T23:30:00.000Z"
+  },
   "NFL:290819": {
     "line": 4.5,
     "home_bets": 68,

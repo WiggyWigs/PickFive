@@ -1,1 +1,42 @@
-{}
+{
+  "NCAAF:289383": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 6,
+    "week_id": "2026-10-12",
+    "start_time": "2026-10-08T23:30:00.000Z",
+    "home": "Arkansas State Red Wolves",
+    "away": "South Alabama Jaguars",
+    "first_flagged": "2026-10-08",
+    "last_updated": "2026-10-08",
+    "side": "home",
+    "team": "Arkansas State Red Wolves",
+    "abbr": "ARST",
+    "edge": 19,
+    "side_move": -1.5,
+    "side_line": -3,
+    "result": null,
+    "home_score": null,
+    "away_score": null
+  },
+  "NCAAF:289402": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 6,
+    "week_id": "2026-10-12",
+    "start_time": "2026-10-10T20:15:00.000Z",
+    "home": "Ohio State Buckeyes",
+    "away": "Maryland Terrapins",
+    "first_flagged": "2026-10-08",
+    "last_updated": "2026-10-08",
+    "side": "away",
+    "team": "Maryland Terrapins",
+    "abbr": "UMD",
+    "edge": 22,
+    "side_move": -2.0,
+    "side_line": 32.5,
+    "result": null,
+    "home_score": null,
+    "away_score": null
+  }
+}

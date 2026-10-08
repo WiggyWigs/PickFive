@@ -2392,5 +2392,41 @@
     "payout": 0.0,
     "net": -20.0,
     "type": "wager"
+  },
+  {
+    "date": "10/8/2026",
+    "name": "Billy",
+    "bet": "Week 4 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/8/2026",
+    "name": "Carlos",
+    "bet": "Week 4 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Billy",
+    "bet": "ND -12.5 vs BYU",
+    "bet_amount": 50.0,
+    "payout": null,
+    "net": -50.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Kevin",
+    "bet": "ND -12.5 vs BYU",
+    "bet_amount": 50.0,
+    "payout": null,
+    "net": -50.0,
+    "type": "wager"
   }
 ]

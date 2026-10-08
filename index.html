@@ -71,6 +71,8 @@
   #splits-table thead th[data-key="splash_line"] { white-space: nowrap; }
   .intro { max-width: 900px; margin: 0 auto; text-align: center; color: var(--muted); font-size: 0.78rem; line-height: 1.6; } /* same size as the footer */
   .intro p { margin: 0 0 0.6rem; }
+  .last-pulled { text-align: center; color: #fff; font-size: 1.05rem; font-weight: 600; margin: 0 auto 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
   /* Angle column: four fixed circles, M S T E, filled when that criterion is met */
   :root { --edge-blue: #5b9bd5; }
   .dots { display: inline-flex; gap: 0.25rem; }
@@ -185,6 +187,8 @@
 <div id="status" hidden></div>
 
 <div class="photo-gallery" id="photo-gallery" style="display:none;"></div>
+
+<p class="last-pulled" id="last-pulled" hidden></p>
 
 <div class="edges" id="edges" style="display:none;">
   <h2>Best edges vs. your Splash line</h2>
@@ -604,7 +608,7 @@
       })
       .join("");
     const noneEl = document.getElementById("sharps-none");
-    noneEl.textContent = `No game meets Sharp right now (Ticket Gap ${threshold}+, under ${ticketCut}% of the tickets, 1+ point move from the open).`;
+    noneEl.textContent = `No game meets Sharp right now (Ticket Gap ${threshold}+, under ${ticketCut}% of the tickets, 1+ point move toward them since Tuesday).`;
     noneEl.style.display = best.length ? "none" : "block";
     document.getElementById("sharps").style.display = "block";
   }
@@ -735,6 +739,11 @@
     // Only games on this week's Splash slate
     const slate = current.games.filter((g) => g.splash_line !== null && g.splash_line !== undefined);
     pulledAtLabel = fmtDayTime(current.pulled_at);
+    const lastPulled = document.getElementById("last-pulled");
+    lastPulled.textContent = "Last Lines Pulled at " + new Date(current.pulled_at).toLocaleString(undefined, {
+      weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short",
+    });
+    lastPulled.hidden = false;
     const build = (t) => slate.map((g) => toRow(g, t, edgeData, ticketCut));
     let rows = build(threshold);
     if (rows.length === 0) {

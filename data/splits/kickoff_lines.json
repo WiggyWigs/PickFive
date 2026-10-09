@@ -760,6 +760,18 @@
     "home": "Arkansas State Red Wolves",
     "start_time": "2026-10-08T23:30:00.000Z"
   },
+  "NCAAF:289385": {
+    "line": -4,
+    "home_bets": 39,
+    "home_money": 54,
+    "away_bets": 61,
+    "away_money": 46,
+    "frozen_at": "2026-10-09T17:21:44+00:00",
+    "frozen_for": "kickoff",
+    "away": "Florida State Seminoles",
+    "home": "Louisville Cardinals",
+    "start_time": "2026-10-09T23:00:00.000Z"
+  },
   "NCAAF:290392": {
     "line": -6.5,
     "home_bets": null,

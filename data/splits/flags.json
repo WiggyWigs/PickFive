@@ -32,9 +32,9 @@
     "side": "away",
     "team": "Maryland Terrapins",
     "abbr": "UMD",
-    "edge": 20,
-    "side_move": -2.0,
-    "side_line": 32.5,
+    "edge": 15,
+    "side_move": -1.0,
+    "side_line": 33.5,
     "result": null,
     "home_score": null,
     "away_score": null

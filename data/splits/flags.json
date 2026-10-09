@@ -15,9 +15,9 @@
     "edge": 19,
     "side_move": -1.5,
     "side_line": -3,
-    "result": null,
-    "home_score": null,
-    "away_score": null
+    "result": "L",
+    "home_score": 49,
+    "away_score": 56
   },
   "NCAAF:289402": {
     "league": "NCAAF",
@@ -28,7 +28,7 @@
     "home": "Ohio State Buckeyes",
     "away": "Maryland Terrapins",
     "first_flagged": "2026-10-08",
-    "last_updated": "2026-10-08",
+    "last_updated": "2026-10-09",
     "side": "away",
     "team": "Maryland Terrapins",
     "abbr": "UMD",

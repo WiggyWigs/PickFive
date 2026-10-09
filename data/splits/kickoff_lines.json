@@ -21,6 +21,18 @@
     "home": "Northwestern Wildcats",
     "start_time": "2026-10-03T00:00:00.000Z"
   },
+  "NCAAF:289267": {
+    "line": 1.5,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-08T21:51:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "Missouri State Bears",
+    "home": "Western Kentucky Hilltoppers",
+    "start_time": "2026-10-08T23:00:00.000Z"
+  },
   "NCAAF:289268": {
     "line": -2.5,
     "home_bets": 46,
@@ -712,6 +724,42 @@
     "home": "Kennesaw State Owls",
     "start_time": "2026-10-07T23:00:00.000Z"
   },
+  "NCAAF:289381": {
+    "line": -13.5,
+    "home_bets": 59,
+    "home_money": 69,
+    "away_bets": 41,
+    "away_money": 31,
+    "frozen_at": "2026-10-08T21:51:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "Sam Houston State Bearkats",
+    "home": "Liberty Flames",
+    "start_time": "2026-10-08T23:00:00.000Z"
+  },
+  "NCAAF:289382": {
+    "line": -6.5,
+    "home_bets": 39,
+    "home_money": 34,
+    "away_bets": 61,
+    "away_money": 66,
+    "frozen_at": "2026-10-08T21:51:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "South Florida Bulls",
+    "home": "UTSA Roadrunners",
+    "start_time": "2026-10-08T23:30:00.000Z"
+  },
+  "NCAAF:289383": {
+    "line": -3,
+    "home_bets": 37,
+    "home_money": 56,
+    "away_bets": 63,
+    "away_money": 44,
+    "frozen_at": "2026-10-08T21:51:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "South Alabama Jaguars",
+    "home": "Arkansas State Red Wolves",
+    "start_time": "2026-10-08T23:30:00.000Z"
+  },
   "NCAAF:290392": {
     "line": -6.5,
     "home_bets": null,
@@ -914,5 +962,17 @@
     "away": "Atlanta Falcons",
     "home": "New Orleans Saints",
     "start_time": "2026-10-06T00:15:00.000Z"
+  },
+  "NFL:290903": {
+    "line": -9.5,
+    "home_bets": 75,
+    "home_money": 72,
+    "away_bets": 25,
+    "away_money": 28,
+    "frozen_at": "2026-10-08T21:51:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "Tampa Bay Buccaneers",
+    "home": "Dallas Cowboys",
+    "start_time": "2026-10-09T00:15:00.000Z"
   }
 }

@@ -1,14 +1,5 @@
 [
   {
-    "id": "259b5df9aa0d10257f56de78523495e0",
-    "league": "NFL",
-    "home_team": "Dallas Cowboys",
-    "away_team": "Tampa Bay Buccaneers",
-    "commence_time": "2026-10-09T00:15:00Z",
-    "spread": -9.5,
-    "bookmaker": "draftkings"
-  },
-  {
     "id": "21b26266f3d78af02eb672e606275d95",
     "league": "NFL",
     "home_team": "Jacksonville Jaguars",
@@ -23,7 +14,7 @@
     "home_team": "Green Bay Packers",
     "away_team": "Chicago Bears",
     "commence_time": "2026-10-11T17:00:00Z",
-    "spread": 2.5,
+    "spread": 1.5,
     "bookmaker": "draftkings"
   },
   {
@@ -86,7 +77,7 @@
     "home_team": "Washington Commanders",
     "away_team": "New York Giants",
     "commence_time": "2026-10-11T17:00:00Z",
-    "spread": -4.5,
+    "spread": -3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -132,42 +123,6 @@
     "away_team": "Buffalo Bills",
     "commence_time": "2026-10-13T00:15:00Z",
     "spread": -3.0,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "b274da111dc9826f36e5fa238998dd69",
-    "league": "NCAAF",
-    "home_team": "Liberty Flames",
-    "away_team": "Sam Houston State Bearkats",
-    "commence_time": "2026-10-08T23:00:00Z",
-    "spread": -13.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "561884d0d63e91b022e96bc6c415accd",
-    "league": "NCAAF",
-    "home_team": "Western Kentucky Hilltoppers",
-    "away_team": "Missouri State Bears",
-    "commence_time": "2026-10-08T23:00:00Z",
-    "spread": 1.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "52f2d012fe3e686087077b0d7083159a",
-    "league": "NCAAF",
-    "home_team": "Arkansas State Red Wolves",
-    "away_team": "South Alabama Jaguars",
-    "commence_time": "2026-10-08T23:30:00Z",
-    "spread": -3.0,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "2a637494f07611db6ba822fb84218d58",
-    "league": "NCAAF",
-    "home_team": "UTSA Roadrunners",
-    "away_team": "South Florida Bulls",
-    "commence_time": "2026-10-08T23:30:00Z",
-    "spread": -6.5,
     "bookmaker": "draftkings"
   },
   {
@@ -338,7 +293,7 @@
     "home_team": "Toledo Rockets",
     "away_team": "Buffalo Bulls",
     "commence_time": "2026-10-10T19:30:00Z",
-    "spread": -21.0,
+    "spread": -20.5,
     "bookmaker": "draftkings"
   },
   {
@@ -401,7 +356,7 @@
     "home_team": "Western Michigan Broncos",
     "away_team": "Kent State Golden Flashes",
     "commence_time": "2026-10-10T19:30:00Z",
-    "spread": -14.0,
+    "spread": -13.5,
     "bookmaker": "draftkings"
   },
   {
@@ -410,7 +365,7 @@
     "home_team": "Navy Midshipmen",
     "away_team": "Tulsa Golden Hurricane",
     "commence_time": "2026-10-10T19:30:00Z",
-    "spread": -2.5,
+    "spread": -1.5,
     "bookmaker": "draftkings"
   },
   {
@@ -419,7 +374,7 @@
     "home_team": "Notre Dame Fighting Irish",
     "away_team": "Stanford Cardinal",
     "commence_time": "2026-10-10T19:30:00Z",
-    "spread": -38.5,
+    "spread": -39.5,
     "bookmaker": "draftkings"
   },
   {
@@ -590,7 +545,7 @@
     "home_team": "Virginia Cavaliers",
     "away_team": "Syracuse Orange",
     "commence_time": "2026-10-10T23:30:00Z",
-    "spread": -9.5,
+    "spread": -10.0,
     "bookmaker": "draftkings"
   },
   {

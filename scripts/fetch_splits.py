@@ -173,7 +173,11 @@ def tuesday_lines(week_id):
 
 def record_tuesday_lines(games, now):
     """On a game's Tuesday (Eastern), keep DraftKings' line from the first run
-    that sees it. Later Tuesday runs don't move it."""
+    that sees it. Later Tuesday runs don't move it. Only a run started by hand
+    takes it - a scheduled run GitHub starts late (Monday night's, after
+    midnight) must not set the Tuesday line before Splash posts."""
+    if os.environ.get("GITHUB_EVENT_NAME") == "schedule":
+        return
     today = now.astimezone(EASTERN).date().isoformat()
     store = load_json(TUESDAY_STORE, {})
     added = 0

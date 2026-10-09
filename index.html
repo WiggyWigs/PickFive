@@ -127,6 +127,9 @@
   .edges .pct { color: var(--up); font-weight: 600; }
   .edges .none { color: var(--muted); margin: 0; }
   #sharps .pick { color: var(--up); }
+  .result { display: inline-block; min-width: 1.4rem; text-align: center; font-weight: 700; border-radius: 4px; padding: 0 0.3rem; margin-right: 0.35rem; }
+  .result.W { background: var(--up); color: var(--bg); } .result.L { background: var(--down); color: var(--bg); }
+  .result.P { background: var(--line); color: var(--text); }
   #traps .pick { color: var(--down); }
   #traps-record { margin: 0 0 0.5rem; font-size: 0.85rem; }
 
@@ -595,16 +598,26 @@
 
   // Sharp games under the current dropdowns, biggest Ticket Gap first
   function renderSharps(rows, threshold, ticketCut) {
+    // Started games stay in the box (their numbers are frozen at kickoff or the
+    // Saturday lock) and get a W/L/P at the Splash line once a pull brings the final.
     const best = rows
-      .filter((r) => !r.started && r.sharpInfo)
+      .filter((r) => r.sharpInfo)
       .sort((a, b) => b.sharpInfo.gap - a.sharpInfo.gap || b.sharpInfo.move - a.sharpInfo.move);
     document.getElementById("sharps-list").innerHTML = best
       .map((r) => {
         const s = r.sharpInfo;
         const team = s.side === "home" ? r.home : r.away, opp = s.side === "home" ? r.away : r.home;
-        return `<li><span class="pick">${esc(team)} ${fmtSpread(s.splashLine)}</span>
+        const final = r.status === "complete" && r.home_score !== null && r.home_score !== undefined && s.splashLine !== null;
+        let badge = "";
+        if (final) {
+          const margin = (s.side === "home" ? r.home_score - r.away_score : r.away_score - r.home_score) + s.splashLine;
+          const res = margin > 0 ? "W" : margin < 0 ? "L" : "P";
+          badge = `<span class="result ${res}" title="Final ${esc(r.away_abbr)} ${r.away_score} - ${esc(r.home_abbr)} ${r.home_score}">${res}</span>`;
+        }
+        const score = final ? ` · Final ${esc(r.away_abbr)} ${r.away_score}-${r.home_score} ${esc(r.home_abbr)}` : "";
+        return `<li>${badge}<span class="pick">${esc(team)} ${fmtSpread(s.splashLine)}</span>
           <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · Splash ${fmtSpread(s.splashLine)} ·
-          ${s.money}% of the money on ${s.tickets}% of the tickets (gap +${s.gap}) · ${esc(s.moveText)} · Kickoff ${fmtKickoff(r.start)}</span></li>`;
+          ${s.money}% of the money on ${s.tickets}% of the tickets (gap +${s.gap}) · ${esc(s.moveText)} · Kickoff ${fmtKickoff(r.start)}${score}</span></li>`;
       })
       .join("");
     const noneEl = document.getElementById("sharps-none");
@@ -740,7 +753,10 @@
     const slate = current.games.filter((g) => g.splash_line !== null && g.splash_line !== undefined);
     pulledAtLabel = fmtDayTime(current.pulled_at);
     const lastPulled = document.getElementById("last-pulled");
-    lastPulled.textContent = "Last Lines Pulled at " + new Date(current.pulled_at).toLocaleString(undefined, {
+    // After the Saturday lock, later pulls only bring scores: show the last pull
+    // whose lines are on the page (the one each locked game was frozen at).
+    const lockedAt = slate.filter((g) => g.frozen_for === "lock" && g.frozen_at).map((g) => g.frozen_at).sort().pop();
+    lastPulled.textContent = "Last Lines Pulled at " + new Date(lockedAt || current.pulled_at).toLocaleString(undefined, {
       weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short",
     });
     lastPulled.hidden = false;

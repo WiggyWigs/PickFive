@@ -2,20 +2,18 @@ name: Pull Splits
 
 on:
   schedule:
-    # Every 2 hours from Wednesday 5 AM Eastern until the Saturday 10:30 AM
-    # lock. Cron is UTC-only: 09:05 UTC = 5:05 AM EDT / 4:05 AM EST. :05
-    # instead of :00 because the top of the hour is GitHub's most delayed slot.
+    # Every 2 hours, every day - except Tuesday before 6 PM Eastern, when you
+    # grab the Splash lines and run Pull Splits by hand (that run takes the
+    # Tuesday line). The "Skip Tuesday daytime" step below enforces the window,
+    # so a run GitHub starts late can't land in it either. Cron is UTC-only;
+    # :05 instead of :00 because the top of the hour is GitHub's most delayed slot.
     #
-    # fetch_splits.py also freezes every game at kickoff or the Saturday
-    # 10:30 AM lock, whichever comes first (lock_time), so a scheduled run that
-    # starts late - or a manual run - never puts later numbers on the page.
-    - cron: "5 9-23/2 * * 3"     # Wed 09:05-23:05 UTC
-    - cron: "5 1-23/2 * * 4,5"   # Thu, Fri - every odd UTC hour
-    - cron: "5 1-13/2 * * 6"     # Sat 01:05-13:05 UTC
-    - cron: "5 14 * * 6"         # Sat 14:05 UTC = 10:05 AM EDT / 9:05 AM EST, closest slot to the lock
-    # No Sunday or Monday runs, and none on Tuesday: the Tuesday line comes
-    # from the Pull Splits run you start by hand on Tuesday (after pasting
-    # the Splash lines). That run also grades the weekend's games.
+    # Pulls after the Saturday lock only bring in final scores: fetch_splits.py
+    # freezes every game at kickoff or Saturday 10:30 AM Eastern, whichever
+    # comes first (lock_time), so no later line or split ever reaches the page.
+    - cron: "5 1-23/2 * * *"   # every odd UTC hour
+    - cron: "5 22 * * 2"       # Tue 22:05 UTC = 6:05 PM EDT (skipped in winter: 5:05 PM EST)
+    - cron: "5 14 * * 6"       # Sat 14:05 UTC = 10:05 AM EDT / 9:05 AM EST, closest slot to the lock
   workflow_dispatch: {} # lets you trigger a manual pull from the Actions tab
 
 permissions:
@@ -29,13 +27,27 @@ jobs:
   pull:
     runs-on: ubuntu-latest
     steps:
+      # No automated pulls on Tuesday before 6 PM Eastern. Manual runs always go.
+      - name: Skip Tuesday daytime
+        id: window
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ] \
+             && [ "$(TZ=America/New_York date +%u)" = "2" ] \
+             && [ "$(TZ=America/New_York date +%H)" -lt 18 ]; then
+            echo "Tuesday before 6 PM Eastern - skipping the scheduled pull."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - uses: actions/checkout@v4
+        if: steps.window.outputs.skip != 'true'
 
       - uses: actions/setup-python@v5
+        if: steps.window.outputs.skip != 'true'
         with:
           python-version: "3.12"
 
       - name: Pull splits from Action Network
+        if: steps.window.outputs.skip != 'true'
         env:
           # Optional: published CSV of the Splash Lines sheet tab. Unset = use
           # DraftKings' Tuesday line as the lock line instead.
@@ -46,6 +58,7 @@ jobs:
       # branch, and this job only ever touches data/splits/, so a rebase
       # can't conflict with them.
       - name: Commit snapshot
+        if: steps.window.outputs.skip != 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"

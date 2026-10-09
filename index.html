@@ -753,7 +753,10 @@
     const slate = current.games.filter((g) => g.splash_line !== null && g.splash_line !== undefined);
     pulledAtLabel = fmtDayTime(current.pulled_at);
     const lastPulled = document.getElementById("last-pulled");
-    lastPulled.textContent = "Last Lines Pulled at " + new Date(current.pulled_at).toLocaleString(undefined, {
+    // After the Saturday lock, later pulls only bring scores: show the last pull
+    // whose lines are on the page (the one each locked game was frozen at).
+    const lockedAt = slate.filter((g) => g.frozen_for === "lock" && g.frozen_at).map((g) => g.frozen_at).sort().pop();
+    lastPulled.textContent = "Last Lines Pulled at " + new Date(lockedAt || current.pulled_at).toLocaleString(undefined, {
       weekday: "short", month: "numeric", day: "numeric", hour: "numeric", minute: "2-digit", timeZoneName: "short",
     });
     lastPulled.hidden = false;

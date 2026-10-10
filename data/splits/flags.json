@@ -18,5 +18,25 @@
     "result": "L",
     "home_score": 49,
     "away_score": 56
+  },
+  "NCAAF:289433": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 6,
+    "week_id": "2026-10-12",
+    "start_time": "2026-10-10T16:00:00.000Z",
+    "home": "Oklahoma State Cowboys",
+    "away": "UCF Knights",
+    "first_flagged": "2026-10-10",
+    "last_updated": "2026-10-10",
+    "side": "home",
+    "team": "Oklahoma State Cowboys",
+    "abbr": "OKST",
+    "edge": 20,
+    "side_move": -2.0,
+    "side_line": -10.5,
+    "result": null,
+    "home_score": null,
+    "away_score": null
   }
 }

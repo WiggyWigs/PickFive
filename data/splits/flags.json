@@ -55,8 +55,8 @@
     "edge": 20,
     "side_move": -2.0,
     "side_line": -10.5,
-    "result": null,
-    "home_score": null,
-    "away_score": null
+    "result": "W",
+    "home_score": 42,
+    "away_score": 28
   }
 }

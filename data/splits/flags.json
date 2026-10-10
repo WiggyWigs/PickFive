@@ -18,25 +18,5 @@
     "result": "L",
     "home_score": 49,
     "away_score": 56
-  },
-  "NCAAF:289402": {
-    "league": "NCAAF",
-    "season": 2026,
-    "an_week": 6,
-    "week_id": "2026-10-12",
-    "start_time": "2026-10-10T20:15:00.000Z",
-    "home": "Ohio State Buckeyes",
-    "away": "Maryland Terrapins",
-    "first_flagged": "2026-10-08",
-    "last_updated": "2026-10-09",
-    "side": "away",
-    "team": "Maryland Terrapins",
-    "abbr": "UMD",
-    "edge": 15,
-    "side_move": -1.0,
-    "side_line": 33.5,
-    "result": null,
-    "home_score": null,
-    "away_score": null
   }
 }

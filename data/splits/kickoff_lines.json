@@ -772,6 +772,54 @@
     "home": "Louisville Cardinals",
     "start_time": "2026-10-09T23:00:00.000Z"
   },
+  "NCAAF:289386": {
+    "line": -11.5,
+    "home_bets": 53,
+    "home_money": 47,
+    "away_bets": 47,
+    "away_money": 53,
+    "frozen_at": "2026-10-09T23:04:29+00:00",
+    "frozen_for": "kickoff",
+    "away": "Iowa State Cyclones",
+    "home": "BYU Cougars",
+    "start_time": "2026-10-10T02:15:00.000Z"
+  },
+  "NCAAF:289398": {
+    "line": -4,
+    "home_bets": 53,
+    "home_money": 61,
+    "away_bets": 47,
+    "away_money": 39,
+    "frozen_at": "2026-10-09T23:04:29+00:00",
+    "frozen_for": "kickoff",
+    "away": "Washington State Cougars",
+    "home": "Utah State Aggies",
+    "start_time": "2026-10-10T01:00:00.000Z"
+  },
+  "NCAAF:289423": {
+    "line": -3,
+    "home_bets": 26,
+    "home_money": 45,
+    "away_bets": 74,
+    "away_money": 55,
+    "frozen_at": "2026-10-09T23:04:29+00:00",
+    "frozen_for": "kickoff",
+    "away": "Iowa Hawkeyes",
+    "home": "Washington Huskies",
+    "start_time": "2026-10-10T01:00:00.000Z"
+  },
+  "NCAAF:289443": {
+    "line": -4.5,
+    "home_bets": 68,
+    "home_money": 71,
+    "away_bets": 32,
+    "away_money": 29,
+    "frozen_at": "2026-10-09T23:04:29+00:00",
+    "frozen_for": "kickoff",
+    "away": "Wyoming Cowboys",
+    "home": "San Jose State Spartans",
+    "start_time": "2026-10-10T01:00:00.000Z"
+  },
   "NCAAF:290392": {
     "line": -6.5,
     "home_bets": null,

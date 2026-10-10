@@ -577,16 +577,32 @@
     return { setRows(next) { rows = next; draw(); } };
   }
 
+  // W/L/P for a pick once its game is final, graded at the given line (the
+  // Splash line for that side). Empty until a pull brings the final score.
+  function gradePick(r, side, line) {
+    if (r.status !== "complete" || r.home_score === null || r.home_score === undefined || line === null || line === undefined) {
+      return { badge: "", score: "" };
+    }
+    const margin = (side === "home" ? r.home_score - r.away_score : r.away_score - r.home_score) + line;
+    const res = margin > 0 ? "W" : margin < 0 ? "L" : "P";
+    const final = `${esc(r.away_abbr)} ${r.away_score}-${r.home_score} ${esc(r.home_abbr)}`;
+    return { badge: `<span class="result ${res}" title="Final ${final}">${res}</span>`, score: ` · Final ${final}` };
+  }
+
+  // Started games stay in all three boxes - their numbers are frozen at kickoff or
+  // the Saturday lock - and get a W/L/P at the Splash line once the final is in.
   function renderEdges(rows) {
     const best = rows
-      .filter((r) => !r.started && r.edgePct !== null && Math.abs(r.move) >= 2)
+      .filter((r) => r.edgePct !== null && Math.abs(r.move) >= 2)
       .sort((a, b) => b.edgePct - a.edgePct || Math.abs(b.move) - Math.abs(a.move));
     document.getElementById("edges-list").innerHTML = best
-      .map(
-        (r) => `<li><span class="pick">${esc(r.moveTeam)} ${fmtSpread(r.lockLine)}</span>
-          <span class="meta">vs ${esc(r.moveSide === "home" ? r.away : r.home)} · ${esc(r.league)} · ${r.lockSrc} ${fmtSpread(r.lockLine)} → now ${fmtSpread(r.moveSide === "home" ? r.line : -r.line)} · ${fmtKickoff(r.start)}</span>
-          · <span class="pct">${r.edgePct}%</span> <span class="meta">(${r.edgeRec} historically)</span></li>`
-      )
+      .map((r) => {
+        const g = gradePick(r, r.moveSide, r.lockLine);
+        const when = !r.frozen_at ? "now" : r.frozen_for === "lock" ? "at the lock" : "at kickoff";
+        return `<li>${g.badge}<span class="pick">${esc(r.moveTeam)} ${fmtSpread(r.lockLine)}</span>
+          <span class="meta">vs ${esc(r.moveSide === "home" ? r.away : r.home)} · ${esc(r.league)} · ${r.lockSrc} ${fmtSpread(r.lockLine)} → ${when} ${fmtSpread(r.moveSide === "home" ? r.line : -r.line)} · ${fmtKickoff(r.start)}${g.score}</span>
+          · <span class="pct">${r.edgePct}%</span> <span class="meta">(${r.edgeRec} historically)</span></li>`;
+      })
       .join("");
     const noneEl = document.getElementById("edges-none");
     noneEl.textContent = rows.some((r) => r.splash_line !== null && r.splash_line !== undefined)
@@ -607,14 +623,7 @@
       .map((r) => {
         const s = r.sharpInfo;
         const team = s.side === "home" ? r.home : r.away, opp = s.side === "home" ? r.away : r.home;
-        const final = r.status === "complete" && r.home_score !== null && r.home_score !== undefined && s.splashLine !== null;
-        let badge = "";
-        if (final) {
-          const margin = (s.side === "home" ? r.home_score - r.away_score : r.away_score - r.home_score) + s.splashLine;
-          const res = margin > 0 ? "W" : margin < 0 ? "L" : "P";
-          badge = `<span class="result ${res}" title="Final ${esc(r.away_abbr)} ${r.away_score} - ${esc(r.home_abbr)} ${r.home_score}">${res}</span>`;
-        }
-        const score = final ? ` · Final ${esc(r.away_abbr)} ${r.away_score}-${r.home_score} ${esc(r.home_abbr)}` : "";
+        const { badge, score } = gradePick(r, s.side, s.splashLine);
         return `<li>${badge}<span class="pick">${esc(team)} ${fmtSpread(s.splashLine)}</span>
           <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · Splash ${fmtSpread(s.splashLine)} ·
           ${s.money}% of the money on ${s.tickets}% of the tickets (gap +${s.gap}) · ${esc(s.moveText)} · Kickoff ${fmtKickoff(r.start)}${score}</span></li>`;
@@ -630,15 +639,16 @@
   // the public money) - the side the Season Record has on top so far.
   function renderTraps(rows, tally) {
     const best = rows
-      .filter((r) => !r.started && r.trapInfo)
+      .filter((r) => r.trapInfo)
       .sort((a, b) => b.trapInfo.move - a.trapInfo.move || b.trapInfo.publicMoney - a.trapInfo.publicMoney);
     document.getElementById("traps-list").innerHTML = best
       .map((r) => {
         const t = r.trapInfo;
         const team = t.side === "home" ? r.home : r.away, opp = t.side === "home" ? r.away : r.home;
-        return `<li><span class="pick">${esc(team)} ${fmtSpread(t.splashLine)}</span>
+        const g = gradePick(r, t.side, t.splashLine);
+        return `<li>${g.badge}<span class="pick">${esc(team)} ${fmtSpread(t.splashLine)}</span>
           <span class="meta">vs ${esc(opp)} · ${esc(r.league)} · Splash ${fmtSpread(t.splashLine)} ·
-          ${t.publicMoney}% of the money on ${esc(t.publicAbbr)}, but the line moved ${t.move} pts toward ${esc(t.abbr)}: ${esc(t.moveText)} · Kickoff ${fmtKickoff(r.start)}</span></li>`;
+          ${t.publicMoney}% of the money on ${esc(t.publicAbbr)}, but the line moved ${t.move} pts toward ${esc(t.abbr)}: ${esc(t.moveText)} · Kickoff ${fmtKickoff(r.start)}${g.score}</span></li>`;
       })
       .join("");
     const lt = (tally && tally.trapL) || { w: 0, l: 0, p: 0 };

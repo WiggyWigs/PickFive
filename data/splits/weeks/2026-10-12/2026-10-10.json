@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-10T14:05:49+00:00",
+  "pulled_at": "2026-10-10T16:07:42+00:00",
   "games": [
     {
       "id": 290903,
@@ -41,7 +41,9 @@
       "away_bets": 42,
       "away_money": 49,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290904,
@@ -61,7 +63,9 @@
       "away_bets": 73,
       "away_money": 73,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290905,
@@ -81,7 +85,9 @@
       "away_bets": 68,
       "away_money": 63,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290906,
@@ -101,7 +107,9 @@
       "away_bets": 55,
       "away_money": 52,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290907,
@@ -121,7 +129,9 @@
       "away_bets": 75,
       "away_money": 86,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290908,
@@ -141,7 +151,9 @@
       "away_bets": 84,
       "away_money": 77,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290909,
@@ -161,7 +173,9 @@
       "away_bets": 64,
       "away_money": 58,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290910,
@@ -181,7 +195,9 @@
       "away_bets": 72,
       "away_money": 78,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290914,
@@ -201,7 +217,9 @@
       "away_bets": 57,
       "away_money": 51,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290911,
@@ -221,7 +239,9 @@
       "away_bets": 53,
       "away_money": 53,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290912,
@@ -241,7 +261,9 @@
       "away_bets": 81,
       "away_money": 86,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290913,
@@ -261,7 +283,9 @@
       "away_bets": 51,
       "away_money": 58,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290915,
@@ -281,7 +305,9 @@
       "away_bets": 54,
       "away_money": 48,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290916,
@@ -301,7 +327,9 @@
       "away_bets": 75,
       "away_money": 63,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289377,
@@ -584,8 +612,10 @@
       "home_money": 43,
       "away_bets": 60,
       "away_money": 57,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289388,
@@ -594,7 +624,7 @@
       "an_week": 6,
       "week_id": "2026-10-12",
       "start_time": "2026-10-10T16:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Pittsburgh Panthers",
       "away": "North Carolina Tar Heels",
       "home_abbr": "PITT",
@@ -604,8 +634,10 @@
       "home_money": 41,
       "away_bets": 46,
       "away_money": 59,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289433,
@@ -614,7 +646,7 @@
       "an_week": 6,
       "week_id": "2026-10-12",
       "start_time": "2026-10-10T16:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Oklahoma State Cowboys",
       "away": "UCF Knights",
       "home_abbr": "OKST",
@@ -624,8 +656,10 @@
       "home_money": 40,
       "away_bets": 80,
       "away_money": 60,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289435,
@@ -634,7 +668,7 @@
       "an_week": 6,
       "week_id": "2026-10-12",
       "start_time": "2026-10-10T16:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Missouri Tigers",
       "away": "Texas A&M Aggies",
       "home_abbr": "MIZ",
@@ -644,8 +678,10 @@
       "home_money": 57,
       "away_bets": 39,
       "away_money": 43,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289436,
@@ -664,8 +700,10 @@
       "home_money": 44,
       "away_bets": 59,
       "away_money": 56,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289439,
@@ -674,7 +712,7 @@
       "an_week": 6,
       "week_id": "2026-10-12",
       "start_time": "2026-10-10T16:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Bowling Green Falcons",
       "away": "Sacramento State Hornets",
       "home_abbr": "BGSU",
@@ -684,8 +722,10 @@
       "home_money": 57,
       "away_bets": 43,
       "away_money": 43,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289440,
@@ -694,7 +734,7 @@
       "an_week": 6,
       "week_id": "2026-10-12",
       "start_time": "2026-10-10T16:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "West Virginia Mountaineers",
       "away": "Arizona Wildcats",
       "home_abbr": "WVU",
@@ -704,8 +744,10 @@
       "home_money": 52,
       "away_bets": 46,
       "away_money": 48,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289471,
@@ -714,7 +756,7 @@
       "an_week": 6,
       "week_id": "2026-10-12",
       "start_time": "2026-10-10T16:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Army Black Knights",
       "away": "Tulane Green Wave",
       "home_abbr": "ARMY",
@@ -724,8 +766,10 @@
       "home_money": 44,
       "away_bets": 55,
       "away_money": 56,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289431,
@@ -745,7 +789,9 @@
       "away_bets": 88,
       "away_money": 84,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289418,
@@ -765,7 +811,9 @@
       "away_bets": 32,
       "away_money": 23,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289395,
@@ -785,7 +833,9 @@
       "away_bets": 89,
       "away_money": 87,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289426,
@@ -805,7 +855,9 @@
       "away_bets": 94,
       "away_money": 95,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289391,
@@ -825,7 +877,9 @@
       "away_bets": 62,
       "away_money": 81,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289399,
@@ -845,7 +899,9 @@
       "away_bets": 44,
       "away_money": 49,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289403,
@@ -865,7 +921,9 @@
       "away_bets": 62,
       "away_money": 68,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289404,
@@ -885,7 +943,9 @@
       "away_bets": 92,
       "away_money": 89,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289410,
@@ -905,7 +965,9 @@
       "away_bets": 7,
       "away_money": 5,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289415,
@@ -925,7 +987,9 @@
       "away_bets": 51,
       "away_money": 60,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289417,
@@ -945,7 +1009,9 @@
       "away_bets": 19,
       "away_money": 30,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289419,
@@ -965,7 +1031,9 @@
       "away_bets": 95,
       "away_money": 95,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289422,
@@ -985,7 +1053,9 @@
       "away_bets": 70,
       "away_money": 64,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289424,
@@ -1005,7 +1075,9 @@
       "away_bets": 89,
       "away_money": 89,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289434,
@@ -1025,7 +1097,9 @@
       "away_bets": 52,
       "away_money": 50,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289447,
@@ -1045,7 +1119,9 @@
       "away_bets": 38,
       "away_money": 50,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289458,
@@ -1065,7 +1141,9 @@
       "away_bets": 55,
       "away_money": 54,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289464,
@@ -1085,7 +1163,9 @@
       "away_bets": 38,
       "away_money": 39,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289469,
@@ -1105,7 +1185,9 @@
       "away_bets": 94,
       "away_money": 89,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289455,
@@ -1125,7 +1207,9 @@
       "away_bets": 60,
       "away_money": 80,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289402,
@@ -1145,7 +1229,9 @@
       "away_bets": 25,
       "away_money": 30,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289450,
@@ -1165,7 +1251,9 @@
       "away_bets": 71,
       "away_money": 81,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289414,
@@ -1185,7 +1273,9 @@
       "away_bets": 36,
       "away_money": 25,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289408,
@@ -1205,7 +1295,9 @@
       "away_bets": 39,
       "away_money": 40,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289413,
@@ -1225,7 +1317,9 @@
       "away_bets": 47,
       "away_money": 42,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289416,
@@ -1245,7 +1339,9 @@
       "away_bets": 61,
       "away_money": 70,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289457,
@@ -1265,7 +1361,9 @@
       "away_bets": 33,
       "away_money": 28,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289465,
@@ -1285,7 +1383,9 @@
       "away_bets": 50,
       "away_money": 51,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289394,
@@ -1305,7 +1405,9 @@
       "away_bets": 64,
       "away_money": 43,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289396,
@@ -1325,7 +1427,9 @@
       "away_bets": 74,
       "away_money": 33,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289406,
@@ -1345,7 +1449,9 @@
       "away_bets": 81,
       "away_money": 80,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289461,
@@ -1365,7 +1471,9 @@
       "away_bets": 52,
       "away_money": 56,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289466,
@@ -1385,7 +1493,9 @@
       "away_bets": 33,
       "away_money": 24,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289470,
@@ -1405,7 +1515,9 @@
       "away_bets": 57,
       "away_money": 70,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289405,
@@ -1425,7 +1537,9 @@
       "away_bets": 42,
       "away_money": 28,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289459,
@@ -1445,7 +1559,9 @@
       "away_bets": 78,
       "away_money": 77,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289421,
@@ -1465,7 +1581,9 @@
       "away_bets": 48,
       "away_money": 48,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289468,
@@ -1485,7 +1603,9 @@
       "away_bets": 79,
       "away_money": 82,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-10-10T14:05:49+00:00",
+      "frozen_for": "lock"
     }
   ]
 }

@@ -23,7 +23,7 @@
     "home_team": "Miami Dolphins",
     "away_team": "Cincinnati Bengals",
     "commence_time": "2026-10-11T17:00:00Z",
-    "spread": 6.5,
+    "spread": 7.0,
     "bookmaker": "draftkings"
   },
   {
@@ -41,7 +41,7 @@
     "home_team": "Tennessee Titans",
     "away_team": "Houston Texans",
     "commence_time": "2026-10-11T17:00:00Z",
-    "spread": 7.5,
+    "spread": 7.0,
     "bookmaker": "draftkings"
   },
   {
@@ -77,7 +77,7 @@
     "home_team": "Washington Commanders",
     "away_team": "New York Giants",
     "commence_time": "2026-10-11T17:00:00Z",
-    "spread": -4.5,
+    "spread": -3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -126,47 +126,11 @@
     "bookmaker": "draftkings"
   },
   {
-    "id": "7556739cc30a38511b7f631581a416e4",
-    "league": "NCAAF",
-    "home_team": "Louisville Cardinals",
-    "away_team": "Florida State Seminoles",
-    "commence_time": "2026-10-09T23:00:00Z",
-    "spread": -4.0,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "a168f1bed30ce7d56dc2b77dbfe37705",
-    "league": "NCAAF",
-    "home_team": "Washington Huskies",
-    "away_team": "Iowa Hawkeyes",
-    "commence_time": "2026-10-10T01:00:00Z",
-    "spread": -2.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "23614f055733537fb79ab73e68040eca",
-    "league": "NCAAF",
-    "home_team": "San Jose State Spartans",
-    "away_team": "Wyoming Cowboys",
-    "commence_time": "2026-10-10T01:00:00Z",
-    "spread": -4.5,
-    "bookmaker": "draftkings"
-  },
-  {
-    "id": "2ec27bbe3b14c521ba8a3f3f6e46f4ac",
-    "league": "NCAAF",
-    "home_team": "Utah State Aggies",
-    "away_team": "Washington State Cougars",
-    "commence_time": "2026-10-10T01:00:00Z",
-    "spread": -3.5,
-    "bookmaker": "draftkings"
-  },
-  {
     "id": "55d9636153ca5741d460ef2f78b663d9",
     "league": "NCAAF",
     "home_team": "BYU Cougars",
     "away_team": "Iowa State Cyclones",
-    "commence_time": "2026-10-10T02:15:00Z",
+    "commence_time": "2026-10-10T02:30:00Z",
     "spread": -11.5,
     "bookmaker": "draftkings"
   },
@@ -176,7 +140,7 @@
     "home_team": "West Virginia Mountaineers",
     "away_team": "Arizona Wildcats",
     "commence_time": "2026-10-10T16:00:00Z",
-    "spread": 3.0,
+    "spread": 3.5,
     "bookmaker": "draftkings"
   },
   {
@@ -257,7 +221,7 @@
     "home_team": "Florida Gators",
     "away_team": "South Carolina Gamecocks",
     "commence_time": "2026-10-10T16:45:00Z",
-    "spread": -11.5,
+    "spread": -10.5,
     "bookmaker": "draftkings"
   },
   {
@@ -284,7 +248,7 @@
     "home_team": "UMass Minutemen",
     "away_team": "Miami (OH) RedHawks",
     "commence_time": "2026-10-10T18:00:00Z",
-    "spread": 3.5,
+    "spread": 4.5,
     "bookmaker": "draftkings"
   },
   {
@@ -320,7 +284,7 @@
     "home_team": "Ohio Bobcats",
     "away_team": "Central Michigan Chippewas",
     "commence_time": "2026-10-10T19:30:00Z",
-    "spread": -3.0,
+    "spread": -1.5,
     "bookmaker": "draftkings"
   },
   {
@@ -365,7 +329,7 @@
     "home_team": "Western Michigan Broncos",
     "away_team": "Kent State Golden Flashes",
     "commence_time": "2026-10-10T19:30:00Z",
-    "spread": -13.5,
+    "spread": -14.0,
     "bookmaker": "draftkings"
   },
   {
@@ -437,7 +401,7 @@
     "home_team": "Ohio State Buckeyes",
     "away_team": "Maryland Terrapins",
     "commence_time": "2026-10-10T20:15:00Z",
-    "spread": -32.5,
+    "spread": -33.5,
     "bookmaker": "draftkings"
   },
   {
@@ -464,7 +428,7 @@
     "home_team": "Kentucky Wildcats",
     "away_team": "LSU Tigers",
     "commence_time": "2026-10-10T23:00:00Z",
-    "spread": 9.5,
+    "spread": 8.5,
     "bookmaker": "draftkings"
   },
   {
@@ -491,7 +455,7 @@
     "home_team": "UNLV Rebels",
     "away_team": "North Dakota State Bison",
     "commence_time": "2026-10-10T23:00:00Z",
-    "spread": 3.0,
+    "spread": 2.5,
     "bookmaker": "draftkings"
   },
   {
@@ -545,7 +509,7 @@
     "home_team": "Virginia Cavaliers",
     "away_team": "Syracuse Orange",
     "commence_time": "2026-10-10T23:30:00Z",
-    "spread": -9.5,
+    "spread": -11.5,
     "bookmaker": "draftkings"
   },
   {

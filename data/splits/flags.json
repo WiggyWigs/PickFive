@@ -35,9 +35,9 @@
     "edge": 41,
     "side_move": -1.0,
     "side_line": -2.5,
-    "result": null,
-    "home_score": null,
-    "away_score": null
+    "result": "L",
+    "home_score": 23,
+    "away_score": 31
   },
   "NCAAF:289433": {
     "league": "NCAAF",

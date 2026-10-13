@@ -2,9 +2,9 @@ name: Sync Bank Builder
 
 on:
   schedule:
-    # All times fixed at EST (UTC-5) - see the README note in pull-lines.yml
-    # for the same daylight-saving caveat (drifts ~1hr local once DST ends
-    # in November). Cron's day-of-week is UTC's day, not Eastern's - the
+    # All times fixed at EST (UTC-5), so they drift ~1hr local while daylight
+    # saving is on (until early November).
+    # Cron's day-of-week is UTC's day, not Eastern's - the
     # Sunday 8:30 PM EST entry below crosses midnight into Monday UTC.
     - cron: "0 19 * * 4"  # Thursday 2:00 PM EST
     - cron: "0 23 * * 4"  # Thursday 6:00 PM EST

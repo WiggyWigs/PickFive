@@ -20,15 +20,13 @@ Sharp flag rule (kept deliberately simple so it can be checked by hand):
   money % - bet % >= EDGE_THRESHOLD on one side, AND
   that side has under SHARP_MAX_TICKETS % of the tickets, AND
   the DraftKings spread has moved SHARP_MIN_MOVE+ points toward that side
-  from the opening line (DraftKings' Monday ~9 AM line; DraftKings at Splash time, then
-  Tuesday's line, if there's no open) -
+  from Tuesday's line (DraftKings when the Splash lines came in, if there's
+  no Tuesday line) -
   its number got worse for new bettors, e.g. -3 -> -4 or +7 -> +6.
 
-Tuesday's line comes from our own Tuesday splits snapshot. If there
-isn't one (first week, or a failed Tuesday run) it falls back to the
-Odds API DraftKings line in data/weeks/<week_id>/tuesday.json - the same
-number the Weekly Lines page anchors to. The current line is also
-DraftKings, so the two are the same book.
+Tuesday's line comes from the first Pull Splits run you start by hand on
+Tuesday (tuesday_lines.json), else that day's splits snapshot. The current
+line is also DraftKings, so the two are the same book.
 """
 import copy
 import csv
@@ -45,7 +43,6 @@ from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 SPLITS_DIR = ROOT / "data" / "splits"
-LINES_WEEKS_DIR = ROOT / "data" / "weeks"
 
 LEAGUES = {"nfl": "NFL", "ncaaf": "NCAAF"}
 API = "https://api.actionnetwork.com/web/v2/scoreboard/{sport}"
@@ -160,15 +157,14 @@ TUESDAY_STORE = SPLITS_DIR / "tuesday_lines.json"
 
 
 def tuesday_lines(week_id):
-    """(own Tuesday lines keyed by 'league:id', odds-api rows) for this week's Tuesday.
+    """Tuesday lines keyed by 'league:id' for this week's Tuesday.
     Own lines come from tuesday_lines.json - DraftKings at the first Pull Splits
     run on that Tuesday, never overwritten - else from that day's snapshot."""
     tuesday = (datetime.fromisoformat(week_id) - timedelta(days=6)).date().isoformat()
     snap = load_json(SPLITS_DIR / "weeks" / week_id / f"{tuesday}.json", {})
     own = {f"{g['league']}:{g['id']}": g.get("line") for g in snap.get("games", [])}
     own.update({k: v["line"] for k, v in load_json(TUESDAY_STORE, {}).items() if v.get("week_id") == week_id})
-    odds_api = load_json(LINES_WEEKS_DIR / week_id / "tuesday.json", [])
-    return own, odds_api
+    return own
 
 
 def record_tuesday_lines(games, now):
@@ -193,50 +189,12 @@ def record_tuesday_lines(games, now):
         print(f"Tuesday line taken for {added} games")
 
 
-def odds_api_match(game, rows):
-    """Best Odds API row for this game: same league, kickoff within 36h, names alike."""
-    kickoff = datetime.fromisoformat(game["start_time"].replace("Z", "+00:00"))
-    best, best_score = None, 0.0
-    for r in rows:
-        if r.get("league") != game["league"] or not r.get("commence_time"):
-            continue
-        t = datetime.fromisoformat(r["commence_time"].replace("Z", "+00:00"))
-        if abs((t - kickoff).total_seconds()) > 36 * 3600:
-            continue
-        # Average, with a floor on the weaker side: "NC State Wolfpack" vs
-        # "North Carolina State Wolfpack" only scores 0.4, but its opponent
-        # matches exactly, and a team only plays once in a 36h window.
-        h, a = similar(r["home_team"], game["home"]), similar(r["away_team"], game["away"])
-        score = (h + a) / 2 if min(h, a) >= 0.25 else 0.0
-        if score > best_score:
-            best, best_score = r, score
-    return best if best_score >= 0.5 else None
-
-
-def monday_line(game, cache):
-    """DraftKings' Monday ~9 AM Eastern line - the Weekly Lines Monday pull
-    (data/weeks/<week_id>/monday.json). This is the "opening line" Sharp and
-    Trap measure from: Action Network's own "Open" turned out to be stale
-    lookahead numbers (e.g. CHI -8.5 vs DraftKings -3 on 2026-09-28)."""
-    wk = game["week_id"]
-    if wk not in cache:
-        cache[wk] = load_json(LINES_WEEKS_DIR / wk / "monday.json", [])
-    row = odds_api_match(game, cache[wk])
-    return row["spread"] if row and row.get("spread") is not None else None
-
-
 def tuesday_line(game, cache):
     wk = game["week_id"]
     if wk not in cache:
         cache[wk] = tuesday_lines(wk)
-    own, odds_api = cache[wk]
-    key = f"{game['league']}:{game['id']}"
-    if own.get(key) is not None:
-        return own[key], "splits"
-    row = odds_api_match(game, odds_api)
-    if row and row.get("spread") is not None:
-        return row["spread"], "odds_api"
-    return None, None
+    line = cache[wk].get(f"{game['league']}:{game['id']}")
+    return (line, "splits") if line is not None else (None, None)
 
 
 # --- Splash (contest) lines -------------------------------------------------
@@ -467,7 +425,7 @@ def freeze_started_games(games, now, store_name="kickoff_lines.json", prev_name=
 # --- Season record ---------------------------------------------------------------
 
 RECORD_FIELDS = ("league", "season", "an_week", "week_id", "start_time", "home", "away",
-                 "home_abbr", "away_abbr", "splash_line", "open_line", "tue_line", *FROZEN_FIELDS,
+                 "home_abbr", "away_abbr", "splash_line", "tue_line", *FROZEN_FIELDS,
                  "frozen_at", "frozen_for")
 
 
@@ -553,12 +511,11 @@ def main():
         baseline_path.write_text(json.dumps(baseline, indent=2) + "\n")
 
     # 3. Market move + sharp flag. The move is DraftKings now vs DraftKings'
-    # Tuesday line (the Tuesday Pull Splits / Pull Lines run), falling back to
+    # Tuesday line (the first Pull Splits run you start on Tuesday), falling back to
     # DraftKings when the Splash lines came in.
-    cache, monday_cache = {}, {}
+    cache = {}
     for g in games:
         g["tue_line"], g["tue_source"] = tuesday_line(g, cache)
-        g["open_line"] = monday_line(g, monday_cache)
         base = next((b for b in (g["tue_line"], g["dk_at_splash"]) if b is not None), None)
         g["move"] = round(g["line"] - base, 1) if g["line"] is not None and base is not None else None
         # With a Splash slate loaded, only its games can be flagged - the page shows nothing else

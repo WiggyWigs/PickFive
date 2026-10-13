@@ -376,7 +376,7 @@
     const gapSide = !hasSplits ? null : homeGap >= awayGap ? "home" : "away";
     const gap = !hasSplits ? null : Math.max(homeGap, awayGap);
     // Angle circles. Market move = DraftKings now vs DraftKings' Tuesday line (home spread:
-    // negative = moved toward home). tue_line comes from the Tuesday Pull Splits / Pull Lines run.
+    // negative = moved toward home). tue_line comes from the first Pull Splits run on Tuesday.
     // Falls back to DraftKings when the Splash lines came in if a game has no Tuesday line.
     const sgn = (v) => (v > 0 ? "+" : "") + v;
     const hasTue = g.tue_line !== null && g.tue_line !== undefined;

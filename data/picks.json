@@ -1848,5 +1848,55 @@
     "fav_dog": "Favorite",
     "spread": -13.5,
     "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "5",
+    "person": "Greg",
+    "team_picked": "Rams",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -2.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "5",
+    "person": "Carlos/Patrick",
+    "team_picked": "Tennessee",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "5",
+    "person": "Kevin",
+    "team_picked": "UNC",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 3.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "5",
+    "person": "Robert",
+    "team_picked": "Indiana",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -7.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "5",
+    "person": "Billy",
+    "team_picked": "Oklahoma State",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -9.5,
+    "result": "W"
   }
 ]

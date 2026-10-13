@@ -17,6 +17,27 @@
   #history-table td {
     text-align: center;
   }
+
+  /* Pick History filter row - same as the Lifetime page's. <td> cells, not
+     <th>, so the sortable-header click handlers skip it. */
+  #history-table thead tr.filter-row td {
+    background: #d7dbdf;
+    padding: 0.5rem 0.6rem;
+    border-bottom: 1px solid var(--line);
+    cursor: default;
+  }
+
+  #history-table thead tr.filter-row select {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.82rem;
+    padding: 0.3rem 0.4rem;
+    text-align: center;
+    text-align-last: center;
+    background: #f2f3f5;
+    color: #1a2228;
+    border: 1px solid #b8bec3;
+  }
 </style>
 </head>
 <body>
@@ -65,6 +86,23 @@
           <th data-key="fav_dog" data-type="string">Fav/Dog</th>
           <th data-key="spread" data-type="number">Spread</th>
           <th data-key="result" data-type="string">Result</th>
+        </tr>
+        <tr class="filter-row">
+          <td>
+            <select id="history-week-filter">
+              <option value="all">All</option>
+            </select>
+          </td>
+          <td>
+            <select id="history-person-filter">
+              <option value="all">All</option>
+            </select>
+          </td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
       </thead>
       <tbody></tbody>
@@ -238,7 +276,21 @@
     document.getElementById("content").style.display = "block";
 
     renderStandings(buildStandings(seasonPicks));
-    renderHistory(seasonPicks, false);
+
+    const weekFilter = document.getElementById("history-week-filter");
+    const personFilter = document.getElementById("history-person-filter");
+    populateSelect(weekFilter, distinctWeeks(seasonPicks), "All", fmtWeek);
+    populateSelect(personFilter, [...new Set(seasonPicks.map((p) => p.person))].sort(), "All");
+
+    function refreshHistory() {
+      const week = weekFilter.value;
+      const person = personFilter.value;
+      renderHistory(seasonPicks.filter((p) =>
+        (week === "all" || String(p.week) === week) && (person === "all" || p.person === person)), false);
+    }
+    weekFilter.addEventListener("change", refreshHistory);
+    personFilter.addEventListener("change", refreshHistory);
+    refreshHistory();
   }
 
   init();

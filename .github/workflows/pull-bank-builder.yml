@@ -40,5 +40,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add data/bank_builder.json
-          git diff --staged --quiet || git commit -m "Sync Bank Builder ($(date -u +%F))"
-          git push
+          git diff --staged --quiet && exit 0
+          git commit -m "Sync Bank Builder ($(date -u +%F))"
+          # Another workflow (picks, ledger, splits...) may have pushed since this
+          # one checked out - pick that up first instead of being rejected.
+          for i in 1 2 3; do git pull --rebase && git push && exit 0; sleep 5; done
+          exit 1

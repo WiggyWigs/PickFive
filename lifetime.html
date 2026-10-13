@@ -210,7 +210,11 @@
               <option value="all">All</option>
             </select>
           </td>
-          <td></td>
+          <td>
+            <select id="history-week-filter">
+              <option value="all">All</option>
+            </select>
+          </td>
           <td>
             <select id="history-person-filter">
               <option value="all">All</option>
@@ -344,16 +348,6 @@
     `;
   }
 
-  function populateSelect(select, values, allLabel) {
-    select.innerHTML = `<option value="all">${allLabel}</option>`;
-    for (const v of values) {
-      const opt = document.createElement("option");
-      opt.value = String(v);
-      opt.textContent = v;
-      select.appendChild(opt);
-    }
-  }
-
   function refreshStandings() {
     const year = document.getElementById("standings-year-filter").value;
     const picks = year === "all" ? ALL_PICKS : ALL_PICKS.filter((p) => String(p.year) === year);
@@ -363,12 +357,14 @@
 
   function refreshHistory() {
     const year = document.getElementById("history-year-filter").value;
+    const week = document.getElementById("history-week-filter").value;
     const person = document.getElementById("history-person-filter").value;
     const homeAway = document.getElementById("history-homeaway-filter").value;
     const favDog = document.getElementById("history-favdog-filter").value;
 
     const picks = ALL_PICKS.filter((p) => {
       if (year !== "all" && String(p.year) !== year) return false;
+      if (week !== "all" && String(p.week) !== week) return false;
       if (person !== "all" && p.person !== person) return false;
       if (homeAway !== "all" && p.home_away !== homeAway) return false;
       if (favDog !== "all" && p.fav_dog !== favDog) return false;
@@ -400,9 +396,11 @@
 
     const people = [...new Set(ALL_PICKS.map((p) => p.person))].sort();
     populateSelect(document.getElementById("history-person-filter"), people, "All");
+    populateSelect(document.getElementById("history-week-filter"), distinctWeeks(ALL_PICKS), "All", fmtWeek);
 
     document.getElementById("standings-year-filter").addEventListener("change", refreshStandings);
     document.getElementById("history-year-filter").addEventListener("change", refreshHistory);
+    document.getElementById("history-week-filter").addEventListener("change", refreshHistory);
     document.getElementById("history-person-filter").addEventListener("change", refreshHistory);
     document.getElementById("history-homeaway-filter").addEventListener("change", refreshHistory);
     document.getElementById("history-favdog-filter").addEventListener("change", refreshHistory);

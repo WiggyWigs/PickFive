@@ -269,9 +269,13 @@ function renderStandings(standings, onPersonClick) {
   wireSort("#standings-table", standings, draw, currentSort);
 }
 
+// Pick History keeps one row list and one sort for the life of the page, so
+// re-rendering it after a filter change keeps the column you sorted by and
+// doesn't stack another set of header click handlers each time.
+const historyState = { rows: [], sort: { key: "week_sort", dir: -1 }, wired: false };
+
 function renderHistory(picks, showYear) {
   const tbody = document.querySelector("#history-table tbody");
-  let currentSort = { key: "week_sort", dir: -1 };
 
   const rows = picks.map((p) => {
     const n = p.week !== null && p.week !== undefined && p.week !== "" ? Number(p.week) : NaN;
@@ -297,8 +301,49 @@ function renderHistory(picks, showYear) {
     }
   }
 
-  draw([...rows].sort((a, b) => (b.week_sort ?? -Infinity) - (a.week_sort ?? -Infinity)));
-  wireSort("#history-table", rows, draw, currentSort);
+  // Swap the rows in place - the sort handler holds this same array
+  historyState.rows.length = 0;
+  historyState.rows.push(...rows);
+  const { key, dir } = historyState.sort;
+  const type = document.querySelector(`#history-table thead th[data-key="${key}"]`)?.dataset.type || "number";
+  draw(sortRows(historyState.rows, key, type, dir));
+  if (!historyState.wired) {
+    historyState.wired = true;
+    wireSort("#history-table", historyState.rows, draw, historyState.sort);
+  }
+}
+
+function sortRows(rows, key, type, dir) {
+  return [...rows].sort((a, b) => {
+    let av = a[key];
+    let bv = b[key];
+    if (type === "number") {
+      av = av === null || av === undefined ? -Infinity : av;
+      bv = bv === null || bv === undefined ? -Infinity : bv;
+      return (av - bv) * dir;
+    }
+    av = (av ?? "").toString().toLowerCase();
+    bv = (bv ?? "").toString().toLowerCase();
+    return av.localeCompare(bv) * dir;
+  });
+}
+
+// Fills a filter dropdown: an "all" option, then one option per value.
+// label(v) is the text shown for a value (defaults to the value itself).
+function populateSelect(select, values, allLabel, label = (v) => v) {
+  select.innerHTML = `<option value="all">${allLabel}</option>`;
+  for (const v of values) {
+    const opt = document.createElement("option");
+    opt.value = String(v);
+    opt.textContent = label(v);
+    select.appendChild(opt);
+  }
+}
+
+// Distinct week numbers in the picks, in week order.
+function distinctWeeks(picks) {
+  const weeks = [...new Set(picks.map((p) => p.week).filter((w) => w !== null && w !== undefined && w !== ""))];
+  return weeks.sort((a, b) => (Number(a) - Number(b)) || String(a).localeCompare(String(b)));
 }
 
 function wireSort(tableSelector, rows, draw, currentSort) {
@@ -316,18 +361,7 @@ function wireSort(tableSelector, rows, draw, currentSort) {
       arrow.textContent = dir === 1 ? "▲" : "▼";
       th.appendChild(arrow);
 
-      const sorted = [...rows].sort((a, b) => {
-        let av = a[key];
-        let bv = b[key];
-        if (type === "number") {
-          av = av === null || av === undefined ? -Infinity : av;
-          bv = bv === null || bv === undefined ? -Infinity : bv;
-          return (av - bv) * dir;
-        }
-        av = (av ?? "").toString().toLowerCase();
-        bv = (bv ?? "").toString().toLowerCase();
-        return av.localeCompare(bv) * dir;
-      });
+      const sorted = sortRows(rows, key, type, dir);
 
       draw(sorted);
     });

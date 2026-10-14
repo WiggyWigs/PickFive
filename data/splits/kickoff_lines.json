@@ -1396,6 +1396,18 @@
     "home": "Middle Tennessee Blue Raiders",
     "start_time": "2026-10-13T23:00:00.000Z"
   },
+  "NCAAF:290102": {
+    "line": 2.5,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-14T19:12:27+00:00",
+    "frozen_for": "kickoff",
+    "away": "Kennesaw State Owls",
+    "home": "Missouri State Bears",
+    "start_time": "2026-10-14T23:30:00.000Z"
+  },
   "NCAAF:290392": {
     "line": -6.5,
     "home_bets": null,

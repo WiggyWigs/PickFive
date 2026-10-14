@@ -2398,7 +2398,7 @@
     "name": "Billy",
     "bet": "Week 4 Bank Builder Seed",
     "bet_amount": 20.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -20.0,
     "type": "wager"
   },
@@ -2407,7 +2407,43 @@
     "name": "Carlos",
     "bet": "Week 4 Bank Builder Seed",
     "bet_amount": 20.0,
-    "payout": null,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/10/2026",
+    "name": "Carlos",
+    "bet": "Caterpillar",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/10/2026",
+    "name": "Billy",
+    "bet": "Miles Graham TD",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/10/2026",
+    "name": "Billy",
+    "bet": "Matt Jeffrey TD",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/10/2026",
+    "name": "Billy",
+    "bet": "Parlay: Texas, Georgia, Utah, SC",
+    "bet_amount": 20.0,
+    "payout": 0.0,
     "net": -20.0,
     "type": "wager"
   },

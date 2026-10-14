@@ -1,4 +1,16 @@
 {
+  "NCAAF:289263": {
+    "line": -3,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-13T15:09:55+00:00",
+    "frozen_for": "kickoff",
+    "away": "Florida International Panthers",
+    "home": "Jacksonville State Gamecocks",
+    "start_time": "2026-10-14T00:00:00.000Z"
+  },
   "NCAAF:289264": {
     "line": 2.5,
     "home_bets": 44,
@@ -1371,6 +1383,18 @@
     "away": "Tulane Green Wave",
     "home": "Army Black Knights",
     "start_time": "2026-10-10T16:00:00.000Z"
+  },
+  "NCAAF:289875": {
+    "line": 1.5,
+    "home_bets": 52,
+    "home_money": 52,
+    "away_bets": 48,
+    "away_money": 48,
+    "frozen_at": "2026-10-13T15:09:55+00:00",
+    "frozen_for": "kickoff",
+    "away": "Delaware Fightin Blue Hens",
+    "home": "Middle Tennessee Blue Raiders",
+    "start_time": "2026-10-13T23:00:00.000Z"
   },
   "NCAAF:290392": {
     "line": -6.5,

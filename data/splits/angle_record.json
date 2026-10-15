@@ -2734,6 +2734,29 @@
     "away_score": 17,
     "final": true
   },
+  "NCAAF:289707": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 7,
+    "week_id": "2026-10-19",
+    "start_time": "2026-10-15T00:00:00.000Z",
+    "home": "Sam Houston State Bearkats",
+    "away": "Western Kentucky Hilltoppers",
+    "home_abbr": "SHSU",
+    "away_abbr": "WKU",
+    "splash_line": -1.5,
+    "tue_line": 1.5,
+    "line": 1.5,
+    "home_bets": 49,
+    "home_money": 57,
+    "away_bets": 51,
+    "away_money": 43,
+    "frozen_at": "2026-10-14T23:44:18+00:00",
+    "frozen_for": "kickoff",
+    "home_score": 3,
+    "away_score": 16,
+    "final": true
+  },
   "NCAAF:289875": {
     "league": "NCAAF",
     "season": 2026,
@@ -2776,9 +2799,9 @@
     "away_money": null,
     "frozen_at": "2026-10-14T19:12:27+00:00",
     "frozen_for": "kickoff",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 24,
+    "away_score": 21,
+    "final": true
   },
   "NCAAF:290392": {
     "league": "NCAAF",

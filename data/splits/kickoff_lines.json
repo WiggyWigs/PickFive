@@ -1384,6 +1384,18 @@
     "home": "Army Black Knights",
     "start_time": "2026-10-10T16:00:00.000Z"
   },
+  "NCAAF:289707": {
+    "line": 1.5,
+    "home_bets": 49,
+    "home_money": 57,
+    "away_bets": 51,
+    "away_money": 43,
+    "frozen_at": "2026-10-14T23:44:18+00:00",
+    "frozen_for": "kickoff",
+    "away": "Western Kentucky Hilltoppers",
+    "home": "Sam Houston State Bearkats",
+    "start_time": "2026-10-15T00:00:00.000Z"
+  },
   "NCAAF:289875": {
     "line": 1.5,
     "home_bets": 52,

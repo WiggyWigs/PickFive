@@ -1384,6 +1384,42 @@
     "home": "Army Black Knights",
     "start_time": "2026-10-10T16:00:00.000Z"
   },
+  "NCAAF:289484": {
+    "line": 4.5,
+    "home_bets": 53,
+    "home_money": 56,
+    "away_bets": 47,
+    "away_money": 44,
+    "frozen_at": "2026-10-15T21:58:39+00:00",
+    "frozen_for": "kickoff",
+    "away": "East Carolina Pirates",
+    "home": "UAB Blazers",
+    "start_time": "2026-10-15T23:30:00.000Z"
+  },
+  "NCAAF:289485": {
+    "line": 3,
+    "home_bets": 46,
+    "home_money": 48,
+    "away_bets": 54,
+    "away_money": 52,
+    "frozen_at": "2026-10-15T21:58:39+00:00",
+    "frozen_for": "kickoff",
+    "away": "Georgia Southern Eagles",
+    "home": "Old Dominion Monarchs",
+    "start_time": "2026-10-15T23:30:00.000Z"
+  },
+  "NCAAF:289501": {
+    "line": -14.5,
+    "home_bets": 47,
+    "home_money": 36,
+    "away_bets": 53,
+    "away_money": 64,
+    "frozen_at": "2026-10-15T21:58:39+00:00",
+    "frozen_for": "kickoff",
+    "away": "Colorado State Rams",
+    "home": "Texas State Bobcats",
+    "start_time": "2026-10-16T00:00:00.000Z"
+  },
   "NCAAF:289707": {
     "line": 1.5,
     "home_bets": 49,
@@ -1802,5 +1838,17 @@
     "away": "Buffalo Bills",
     "home": "Los Angeles Rams",
     "start_time": "2026-10-13T00:15:00.000Z"
+  },
+  "NFL:290917": {
+    "line": 2.5,
+    "home_bets": 39,
+    "home_money": 31,
+    "away_bets": 61,
+    "away_money": 69,
+    "frozen_at": "2026-10-15T21:58:39+00:00",
+    "frozen_for": "kickoff",
+    "away": "Seattle Seahawks",
+    "home": "Denver Broncos",
+    "start_time": "2026-10-16T00:15:00.000Z"
   }
 }

@@ -218,17 +218,17 @@
   {
     "week": 5,
     "wager": "1",
-    "pick": "TNF",
+    "pick": "TNF: Lutz 1 FG, JSN over 80 yards",
     "amount": 20.0,
-    "payout": null,
-    "net": null,
-    "total": null
+    "payout": 33.79,
+    "net": 13.79,
+    "total": 13.79
   },
   {
     "week": 5,
     "wager": "2",
     "pick": "College",
-    "amount": null,
+    "amount": 13.79,
     "payout": null,
     "net": null,
     "total": null

@@ -1408,6 +1408,30 @@
     "home": "Old Dominion Monarchs",
     "start_time": "2026-10-15T23:30:00.000Z"
   },
+  "NCAAF:289486": {
+    "line": 1.5,
+    "home_bets": 57,
+    "home_money": 68,
+    "away_bets": 43,
+    "away_money": 32,
+    "frozen_at": "2026-10-16T21:57:11+00:00",
+    "frozen_for": "kickoff",
+    "away": "Appalachian State Mountaineers",
+    "home": "Coastal Carolina Chanticleers",
+    "start_time": "2026-10-17T00:00:00.000Z"
+  },
+  "NCAAF:289487": {
+    "line": 6.5,
+    "home_bets": 26,
+    "home_money": 29,
+    "away_bets": 74,
+    "away_money": 71,
+    "frozen_at": "2026-10-16T21:57:11+00:00",
+    "frozen_for": "kickoff",
+    "away": "Memphis Tigers",
+    "home": "Tulane Green Wave",
+    "start_time": "2026-10-16T23:30:00.000Z"
+  },
   "NCAAF:289501": {
     "line": -14.5,
     "home_bets": 47,
@@ -1419,6 +1443,18 @@
     "away": "Colorado State Rams",
     "home": "Texas State Bobcats",
     "start_time": "2026-10-16T00:00:00.000Z"
+  },
+  "NCAAF:289505": {
+    "line": -3,
+    "home_bets": 47,
+    "home_money": 39,
+    "away_bets": 53,
+    "away_money": 61,
+    "frozen_at": "2026-10-16T21:57:11+00:00",
+    "frozen_for": "kickoff",
+    "away": "Washington Huskies",
+    "home": "Purdue Boilermakers",
+    "start_time": "2026-10-17T00:00:00.000Z"
   },
   "NCAAF:289707": {
     "line": 1.5,

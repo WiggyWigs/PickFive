@@ -2464,5 +2464,59 @@
     "payout": null,
     "net": -50.0,
     "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Carlos",
+    "bet": "Parlay: Miss State & Northwestern",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Billy",
+    "bet": "Ole Miss Cover",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Billy",
+    "bet": "Wisconsin Cover",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Billy",
+    "bet": "LSU Cover",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Billy",
+    "bet": "Parlay: Bama, Utah, Texas Covers",
+    "bet_amount": 20.0,
+    "payout": null,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Carlos",
+    "bet": "Caterpillar: Panthers, AF, NW, Wisc, UK, OK State",
+    "bet_amount": 25.0,
+    "payout": null,
+    "net": -25.0,
+    "type": "wager"
   }
 ]

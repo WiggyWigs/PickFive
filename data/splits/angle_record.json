@@ -3029,9 +3029,9 @@
     "away_money": 31,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 48,
+    "away_score": 30,
+    "final": true
   },
   "NCAAF:289505": {
     "league": "NCAAF",
@@ -3213,9 +3213,9 @@
     "away_money": 26,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 31,
+    "away_score": 17,
+    "final": true
   },
   "NCAAF:289531": {
     "league": "NCAAF",
@@ -3236,9 +3236,9 @@
     "away_money": 44,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 6,
+    "away_score": 17,
+    "final": true
   },
   "NCAAF:289532": {
     "league": "NCAAF",
@@ -3282,9 +3282,9 @@
     "away_money": 51,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 29,
+    "away_score": 2,
+    "final": true
   },
   "NCAAF:289535": {
     "league": "NCAAF",
@@ -3328,9 +3328,9 @@
     "away_money": 62,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 13,
+    "away_score": 21,
+    "final": true
   },
   "NCAAF:289538": {
     "league": "NCAAF",
@@ -3512,9 +3512,9 @@
     "away_money": 30,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 13,
+    "away_score": 23,
+    "final": true
   },
   "NCAAF:289552": {
     "league": "NCAAF",
@@ -3926,9 +3926,9 @@
     "away_money": 51,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 21,
+    "away_score": 31,
+    "final": true
   },
   "NCAAF:289578": {
     "league": "NCAAF",

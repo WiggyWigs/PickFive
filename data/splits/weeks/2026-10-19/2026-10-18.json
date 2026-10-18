@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-18T11:57:33+00:00",
+  "pulled_at": "2026-10-18T16:23:22+00:00",
   "games": [
     {
       "id": 290917,
@@ -30,7 +30,7 @@
       "an_week": 6,
       "week_id": "2026-10-19",
       "start_time": "2026-10-18T13:30:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Jacksonville Jaguars",
       "away": "Houston Texans",
       "home_abbr": "JAC",
@@ -40,8 +40,8 @@
       "home_money": 54,
       "away_bets": 44,
       "away_money": 46,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 28,
+      "away_score": 31,
       "frozen_at": "2026-10-17T12:44:12+00:00",
       "frozen_for": "lock"
     },

@@ -227,11 +227,11 @@
   {
     "week": 5,
     "wager": "2",
-    "pick": "College",
+    "pick": "College: LSU and Bama",
     "amount": 13.79,
-    "payout": null,
-    "net": null,
-    "total": null
+    "payout": 0.0,
+    "net": -13.79,
+    "total": 0.0
   },
   {
     "week": 5,

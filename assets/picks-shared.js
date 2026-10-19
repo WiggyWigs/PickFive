@@ -225,9 +225,13 @@ function buildStandings(picks) {
   }));
 }
 
+// Standings keep one row list for the life of the page and wire the header
+// sort once. Each render (a filter change) resets to the default sort, best
+// W% first, with the arrow back on W%.
+const standingsState = { rows: [], sort: { key: "win_pct", dir: -1 }, draw: null, wired: false };
+
 function renderStandings(standings, onPersonClick) {
   const tbody = document.querySelector("#standings-table tbody");
-  let currentSort = { key: "win_pct", dir: -1 }; // default: best record first
 
   function draw(data) {
     tbody.innerHTML = "";
@@ -252,26 +256,34 @@ function renderStandings(standings, onPersonClick) {
     }
   }
 
-  const sortedDefault = [...standings].sort((a, b) => {
-    const av = a.win_pct === null ? -Infinity : a.win_pct;
-    const bv = b.win_pct === null ? -Infinity : b.win_pct;
-    return bv - av;
-  });
-  draw(sortedDefault);
-
-  const winPctHeader = document.querySelector('#standings-table thead th[data-key="win_pct"]');
-  if (winPctHeader) {
-    const arrow = document.createElement("span");
-    arrow.className = "arrow";
-    arrow.textContent = "▼";
-    winPctHeader.appendChild(arrow);
+  standingsState.draw = draw;
+  standingsState.rows.length = 0;
+  standingsState.rows.push(...standings);
+  Object.assign(standingsState.sort, { key: "win_pct", dir: -1 });
+  setSortArrow("#standings-table", "win_pct", -1);
+  draw(sortRows(standingsState.rows, "win_pct", "number", -1));
+  if (!standingsState.wired) {
+    standingsState.wired = true;
+    // Through standingsState.draw: the person-click handler can change between renders
+    wireSort("#standings-table", standingsState.rows, (data) => standingsState.draw(data), standingsState.sort);
   }
-  wireSort("#standings-table", standings, draw, currentSort);
 }
 
-// Pick History keeps one row list and one sort for the life of the page, so
-// re-rendering it after a filter change keeps the column you sorted by and
-// doesn't stack another set of header click handlers each time.
+// Clears every sort arrow in a table's header, then puts one on `key` (none if key is null)
+function setSortArrow(tableSelector, key, dir) {
+  document.querySelectorAll(`${tableSelector} thead th .arrow`).forEach((a) => a.remove());
+  const th = key && document.querySelector(`${tableSelector} thead th[data-key="${key}"]`);
+  if (th) {
+    const arrow = document.createElement("span");
+    arrow.className = "arrow";
+    arrow.textContent = dir === 1 ? "▲" : "▼";
+    th.appendChild(arrow);
+  }
+}
+
+// Pick History keeps one row list for the life of the page and wires the
+// header sort once. Each render (a filter change) resets to the default
+// order, newest week first, and clears the arrow.
 const historyState = { rows: [], sort: { key: "week_sort", dir: -1 }, wired: false };
 
 function renderHistory(picks, showYear) {
@@ -304,9 +316,9 @@ function renderHistory(picks, showYear) {
   // Swap the rows in place - the sort handler holds this same array
   historyState.rows.length = 0;
   historyState.rows.push(...rows);
-  const { key, dir } = historyState.sort;
-  const type = document.querySelector(`#history-table thead th[data-key="${key}"]`)?.dataset.type || "number";
-  draw(sortRows(historyState.rows, key, type, dir));
+  Object.assign(historyState.sort, { key: "week_sort", dir: -1 });
+  setSortArrow("#history-table", null);
+  draw(sortRows(historyState.rows, "week_sort", "number", -1));
   if (!historyState.wired) {
     historyState.wired = true;
     wireSort("#history-table", historyState.rows, draw, historyState.sort);
@@ -355,11 +367,7 @@ function wireSort(tableSelector, rows, draw, currentSort) {
       currentSort.key = key;
       currentSort.dir = dir;
 
-      document.querySelectorAll(`${tableSelector} thead th .arrow`).forEach((a) => a.remove());
-      const arrow = document.createElement("span");
-      arrow.className = "arrow";
-      arrow.textContent = dir === 1 ? "▲" : "▼";
-      th.appendChild(arrow);
+      setSortArrow(tableSelector, key, dir);
 
       const sorted = sortRows(rows, key, type, dir);
 

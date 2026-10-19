@@ -283,7 +283,7 @@ function setSortArrow(tableSelector, key, dir) {
 
 // Pick History keeps one row list for the life of the page and wires the
 // header sort once. Each render (a filter change) resets to the default
-// order, newest week first, and clears the arrow.
+// order, newest year then newest week first, and clears the arrow.
 const historyState = { rows: [], sort: { key: "week_sort", dir: -1 }, wired: false };
 
 function renderHistory(picks, showYear) {
@@ -318,7 +318,8 @@ function renderHistory(picks, showYear) {
   historyState.rows.push(...rows);
   Object.assign(historyState.sort, { key: "week_sort", dir: -1 });
   setSortArrow("#history-table", null);
-  draw(sortRows(historyState.rows, "week_sort", "number", -1));
+  // Newest first: latest year, then latest week (Current Season has one year)
+  draw([...historyState.rows].sort((x, y) => (y.year ?? -Infinity) - (x.year ?? -Infinity) || (y.week_sort ?? -Infinity) - (x.week_sort ?? -Infinity)));
   if (!historyState.wired) {
     historyState.wired = true;
     wireSort("#history-table", historyState.rows, draw, historyState.sort);

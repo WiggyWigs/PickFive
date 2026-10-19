@@ -5131,9 +5131,9 @@
     "away_money": 62,
     "frozen_at": "2026-10-17T12:44:12+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 23,
+    "away_score": 13,
+    "final": true
   },
   "NFL:290929": {
     "league": "NFL",

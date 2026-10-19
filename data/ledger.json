@@ -2448,11 +2448,29 @@
     "type": "wager"
   },
   {
+    "date": "10/15/2026",
+    "name": "Carlos",
+    "bet": "Week 5 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 33.79,
+    "net": 13.79,
+    "type": "wager"
+  },
+  {
+    "date": "10/15/2026",
+    "name": "Billy",
+    "bet": "Week 5 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 33.79,
+    "net": 13.79,
+    "type": "wager"
+  },
+  {
     "date": "10/17/2026",
     "name": "Billy",
     "bet": "ND -12.5 vs BYU",
     "bet_amount": 50.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -50.0,
     "type": "wager"
   },
@@ -2461,17 +2479,8 @@
     "name": "Kevin",
     "bet": "ND -12.5 vs BYU",
     "bet_amount": 50.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -50.0,
-    "type": "wager"
-  },
-  {
-    "date": "10/17/2026",
-    "name": "Carlos",
-    "bet": "Parlay: Miss State & Northwestern",
-    "bet_amount": 20.0,
-    "payout": null,
-    "net": -20.0,
     "type": "wager"
   },
   {
@@ -2479,8 +2488,8 @@
     "name": "Billy",
     "bet": "Ole Miss Cover",
     "bet_amount": 20.0,
-    "payout": null,
-    "net": -20.0,
+    "payout": 38.87,
+    "net": 18.87,
     "type": "wager"
   },
   {
@@ -2488,7 +2497,7 @@
     "name": "Billy",
     "bet": "Wisconsin Cover",
     "bet_amount": 20.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -20.0,
     "type": "wager"
   },
@@ -2497,8 +2506,8 @@
     "name": "Billy",
     "bet": "LSU Cover",
     "bet_amount": 20.0,
-    "payout": null,
-    "net": -20.0,
+    "payout": 35.38,
+    "net": 15.38,
     "type": "wager"
   },
   {
@@ -2506,7 +2515,7 @@
     "name": "Billy",
     "bet": "Parlay: Bama, Utah, Texas Covers",
     "bet_amount": 20.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -20.0,
     "type": "wager"
   },
@@ -2515,8 +2524,35 @@
     "name": "Carlos",
     "bet": "Caterpillar: Panthers, AF, NW, Wisc, UK, OK State",
     "bet_amount": 25.0,
-    "payout": null,
+    "payout": 0.0,
     "net": -25.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Carlos",
+    "bet": "Caterpillar2: Panthers, AF, Wisc, UK, OK State",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Carlos",
+    "bet": "Week 5 Bank Builder Bet 2",
+    "bet_amount": 13.79,
+    "payout": 0.0,
+    "net": -13.79,
+    "type": "wager"
+  },
+  {
+    "date": "10/17/2026",
+    "name": "Billy",
+    "bet": "Week 5 Bank Builder Bet 2",
+    "bet_amount": 13.79,
+    "payout": 0.0,
+    "net": -13.79,
     "type": "wager"
   }
 ]

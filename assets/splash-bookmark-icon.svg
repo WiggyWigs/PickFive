@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Copy Splash Lines bookmark icon: solid amber clipboard with a dark S (reads at 16px) -->
+  <rect x="9" y="8" width="46" height="54" rx="7" fill="#e0a458"/>
+  <rect x="20" y="2" width="24" height="12" rx="4" fill="#12181c" stroke="#e0a458" stroke-width="4"/>
+  <text x="32" y="55" text-anchor="middle" font-family="Georgia, 'Iowan Old Style', serif"
+        font-weight="700" font-size="42" fill="#12181c">S</text>
+</svg>

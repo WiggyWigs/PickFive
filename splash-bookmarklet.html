@@ -28,6 +28,7 @@
     font-weight: 600;
     cursor: grab;
   }
+  main a:not(.bookmarklet) { color: var(--amber); }
   code, pre { background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
   code { padding: 0.05rem 0.3rem; }
   pre { padding: 0.75rem; overflow-x: auto; font-size: 0.8rem; }
@@ -63,6 +64,18 @@
   <p class="muted">Compare the count in the message with the number of games on the page. If they
     differ, or it says 0, Splash has probably changed its page layout; send a new sample of one game's
     HTML and the bookmarklet can be updated.</p>
+
+  <h2>Give it an icon (optional)</h2>
+  <p><img src="assets/splash-bookmark-icon.png" alt="" width="32" height="32" style="vertical-align: middle; margin-right: 0.4rem;">
+    Firefox won't let a bookmarklet have its own icon. An add-on can set one:</p>
+  <ol>
+    <li>Save the icon: <a href="assets/splash-bookmark-icon.png" download>PNG</a> or
+      <a href="assets/splash-bookmark-icon.svg" download>SVG</a>.</li>
+    <li>Install a bookmark-icon add-on from Firefox Add-ons (search "bookmark favicon changer").</li>
+    <li>In the add-on, pick the <strong>Copy Splash Lines</strong> bookmark and choose the saved icon.</li>
+  </ol>
+  <p class="muted">No add-on: rename the bookmark to start with an emoji, e.g. "📋 Copy Splash Lines" -
+    Firefox shows the emoji where the icon would be.</p>
 
   <h2>Bookmark URL</h2>
   <pre id="bookmarklet-src"></pre>

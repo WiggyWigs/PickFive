@@ -291,6 +291,16 @@ def slate_week_for(copied_at):
         return None
 
 
+def button_locked(now, slate_week):
+    """The site's Pull now button (PULL_SOURCE=button) is locked on Tuesday
+    (Eastern) until this week's Splash lines are in the sheet: that first
+    press after the copy takes the Tuesday line, so an earlier one mustn't.
+    Runs from the Actions tab and scheduled runs aren't affected."""
+    if os.environ.get("PULL_SOURCE") != "button" or now.astimezone(EASTERN).weekday() != 1:
+        return False
+    return slate_week != week_id_for(now.isoformat())
+
+
 def carry_over_week(games, week_id, prev_name="current.json"):
     """Action Network drops a week's college games from its feed once they're
     played (Sunday/Monday), while the Splash slate - and this page - still
@@ -466,12 +476,16 @@ def main():
     if not any(g["home_money"] is not None for g in games):
         sys.exit("Games returned but none carry bet/money % - Action Network may have changed or paywalled it.")
 
+    splash_rows, splash_copied_at = load_splash_lines()
+    slate_week = slate_week_for(splash_copied_at)
+    if button_locked(now, slate_week):
+        print("Pull now button: Tuesday, and this week's Splash lines aren't in the sheet yet - nothing pulled.")
+        return
+
     record_tuesday_lines(games, now)  # raw feed lines, before anything is frozen
 
     # Last week's Splash slate stays on the main page until the next Splash
     # copy, even after its games leave Action Network's feed.
-    splash_rows, splash_copied_at = load_splash_lines()
-    slate_week = slate_week_for(splash_copied_at)
     carried = carry_over_week(games, slate_week) if slate_week else []
     if carried:
         print(f"Carried over {len(carried)} week {slate_week} games no longer in the feed")
@@ -591,6 +605,9 @@ def main():
         "pulled_at": now.isoformat(timespec="seconds"),
         "edge_threshold": EDGE_THRESHOLD,
         "splash_copied_at": splash_copied_at,
+        # Published CSV of the Splash Lines tab, so the Pull now button can see
+        # a new copy before any pull has read it
+        "splash_csv_url": os.environ.get("SPLASH_LINES_CSV_URL", "").strip() or None,
         "splash_baseline_at": baseline.get("captured_at") if splash_copied_at else None,
         "games": sorted(games, key=lambda g: g["start_time"]),
     }

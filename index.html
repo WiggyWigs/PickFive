@@ -71,6 +71,14 @@
   #splits-table thead th[data-key="splash_line"] { white-space: nowrap; }
   .intro { max-width: 900px; margin: 0 auto; text-align: center; color: var(--muted); font-size: 0.78rem; line-height: 1.6; } /* same size as the footer */
   .intro p { margin: 0 0 0.6rem; }
+  /* Pull now button, under "Last Lines Pulled at" */
+  .pull-now { text-align: center; margin: -0.5rem auto 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .pull-now-btn { background: transparent; color: var(--amber); border: 1px solid var(--amber); border-radius: 6px;
+    padding: 0.35rem 0.9rem; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+  .pull-now-btn:disabled { color: var(--muted); border-color: var(--line); cursor: default; }
+  .pull-now-msg { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 0.3rem; min-height: 1em; }
+  .pull-now-forget { color: var(--muted); font-size: 0.8rem; }
   .last-pulled { text-align: center; color: #fff; font-size: 1.05rem; font-weight: 600; margin: 0 auto 1rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
   /* Angle column: four fixed circles, M S T E, filled when that criterion is met */
@@ -192,6 +200,11 @@
 <div class="photo-gallery" id="photo-gallery" style="display:none;"></div>
 
 <p class="last-pulled" id="last-pulled" hidden></p>
+<div class="pull-now" id="pull-now">
+  <button type="button" class="pull-now-btn">Pull now</button>
+  <span class="pull-now-msg"></span>
+  <a href="#" class="pull-now-forget" hidden>Forget key</a>
+</div>
 
 <div class="edges" id="edges" style="display:none;">
   <h2>Best edges vs. your Splash line</h2>
@@ -873,5 +886,7 @@
   init();
 </script>
 
+<script src="assets/pull-button.js"></script>
+<script>PullButton.mount(document.getElementById("pull-now"), { repo: "PickFive", workflow: "pull-splits.yml", lock: "splash" });</script>
 </body>
 </html>

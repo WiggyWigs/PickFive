@@ -2080,6 +2080,30 @@
     "home": "Wyoming Cowboys",
     "start_time": "2026-10-17T19:30:00.000Z"
   },
+  "NCAAF:289597": {
+    "line": -10,
+    "home_bets": 44,
+    "home_money": 46,
+    "away_bets": 56,
+    "away_money": 54,
+    "frozen_at": "2026-10-20T22:09:14+00:00",
+    "frozen_for": "kickoff",
+    "away": "Middle Tennessee Blue Raiders",
+    "home": "Florida International Panthers",
+    "start_time": "2026-10-20T23:00:00.000Z"
+  },
+  "NCAAF:289598": {
+    "line": 2.5,
+    "home_bets": 43,
+    "home_money": 45,
+    "away_bets": 57,
+    "away_money": 55,
+    "frozen_at": "2026-10-20T22:09:14+00:00",
+    "frozen_for": "kickoff",
+    "away": "South Alabama Jaguars",
+    "home": "Marshall Thundering Herd",
+    "start_time": "2026-10-20T23:30:00.000Z"
+  },
   "NCAAF:289707": {
     "line": 1.5,
     "home_bets": 49,
@@ -2127,6 +2151,18 @@
     "away": "New Mexico State Aggies",
     "home": "Florida International Panthers",
     "start_time": "2026-10-07T23:30:00.000Z"
+  },
+  "NCAAF:290393": {
+    "line": -3,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-20T22:09:14+00:00",
+    "frozen_for": "kickoff",
+    "away": "Missouri State Bears",
+    "home": "Delaware Fightin Blue Hens",
+    "start_time": "2026-10-20T23:00:00.000Z"
   },
   "NFL:290819": {
     "line": 4.5,

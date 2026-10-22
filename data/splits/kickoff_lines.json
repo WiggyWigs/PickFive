@@ -22,6 +22,18 @@
     "home": "Tulsa Golden Hurricane",
     "start_time": "2026-10-02T01:00:00.000Z"
   },
+  "NCAAF:289265": {
+    "line": 3,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-21T23:55:27+00:00",
+    "frozen_for": "kickoff",
+    "away": "New Mexico State Aggies",
+    "home": "Sam Houston State Bearkats",
+    "start_time": "2026-10-22T00:00:00.000Z"
+  },
   "NCAAF:289266": {
     "line": 2.5,
     "home_bets": 37,

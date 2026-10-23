@@ -2554,5 +2554,32 @@
     "payout": 0.0,
     "net": -13.79,
     "type": "wager"
+  },
+  {
+    "date": "10/23/2026",
+    "name": "Carlos",
+    "bet": "Week 6 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 35.38,
+    "net": 15.38,
+    "type": "wager"
+  },
+  {
+    "date": "10/23/2026",
+    "name": "Billy",
+    "bet": "Week 6 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 35.38,
+    "net": 15.38,
+    "type": "wager"
+  },
+  {
+    "date": "10/23/2026",
+    "name": "Robert",
+    "bet": "Week 6 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 35.38,
+    "net": 15.38,
+    "type": "wager"
   }
 ]

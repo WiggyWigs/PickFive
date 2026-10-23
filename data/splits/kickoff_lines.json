@@ -2116,6 +2116,30 @@
     "home": "Marshall Thundering Herd",
     "start_time": "2026-10-20T23:30:00.000Z"
   },
+  "NCAAF:289602": {
+    "line": -10.5,
+    "home_bets": 58,
+    "home_money": 61,
+    "away_bets": 42,
+    "away_money": 39,
+    "frozen_at": "2026-10-22T22:09:42+00:00",
+    "frozen_for": "kickoff",
+    "away": "East Carolina Pirates",
+    "home": "Memphis Tigers",
+    "start_time": "2026-10-22T23:30:00.000Z"
+  },
+  "NCAAF:289603": {
+    "line": 12.5,
+    "home_bets": 38,
+    "home_money": 34,
+    "away_bets": 62,
+    "away_money": 66,
+    "frozen_at": "2026-10-22T22:09:42+00:00",
+    "frozen_for": "kickoff",
+    "away": "James Madison Dukes",
+    "home": "Appalachian State Mountaineers",
+    "start_time": "2026-10-22T23:00:00.000Z"
+  },
   "NCAAF:289707": {
     "line": 1.5,
     "home_bets": 49,
@@ -2151,6 +2175,18 @@
     "away": "Kennesaw State Owls",
     "home": "Missouri State Bears",
     "start_time": "2026-10-14T23:30:00.000Z"
+  },
+  "NCAAF:290255": {
+    "line": 9.5,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-22T22:09:42+00:00",
+    "frozen_for": "kickoff",
+    "away": "Liberty Flames",
+    "home": "Kennesaw State Owls",
+    "start_time": "2026-10-22T23:00:00.000Z"
   },
   "NCAAF:290392": {
     "line": -6.5,
@@ -2714,5 +2750,17 @@
     "away": "Washington Commanders",
     "home": "San Francisco 49ers",
     "start_time": "2026-10-20T00:15:00.000Z"
+  },
+  "NFL:290930": {
+    "line": -3,
+    "home_bets": 34,
+    "home_money": 36,
+    "away_bets": 66,
+    "away_money": 64,
+    "frozen_at": "2026-10-22T22:09:42+00:00",
+    "frozen_for": "kickoff",
+    "away": "New England Patriots",
+    "home": "Chicago Bears",
+    "start_time": "2026-10-23T00:15:00.000Z"
   }
 }

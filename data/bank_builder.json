@@ -268,5 +268,59 @@
     "payout": null,
     "net": null,
     "total": null
+  },
+  {
+    "week": 6,
+    "wager": "1",
+    "pick": "TNF: Odunze 30 yards & Maye 15 rush yards",
+    "amount": 20.0,
+    "payout": 35.38,
+    "net": 15.38,
+    "total": 15.38
+  },
+  {
+    "week": 6,
+    "wager": "2",
+    "pick": "College",
+    "amount": 15.38,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 6,
+    "wager": "3",
+    "pick": "NFL 1:00",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 6,
+    "wager": "4",
+    "pick": "NFL 4:00",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 6,
+    "wager": "5",
+    "pick": "SNF",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
+  },
+  {
+    "week": 6,
+    "wager": "6",
+    "pick": "MNF",
+    "amount": null,
+    "payout": null,
+    "net": null,
+    "total": null
   }
 ]

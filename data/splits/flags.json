@@ -78,5 +78,25 @@
     "result": "L",
     "home_score": 41,
     "away_score": 23
+  },
+  "NCAAF:289649": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 8,
+    "week_id": "2026-10-26",
+    "start_time": "2026-10-24T17:00:00.000Z",
+    "home": "Kansas Jayhawks",
+    "away": "Baylor Bears",
+    "first_flagged": "2026-10-24",
+    "last_updated": "2026-10-24",
+    "side": "home",
+    "team": "Kansas Jayhawks",
+    "abbr": "KU",
+    "edge": 22,
+    "side_move": -1.5,
+    "side_line": 1.5,
+    "result": null,
+    "home_score": null,
+    "away_score": null
   }
 }

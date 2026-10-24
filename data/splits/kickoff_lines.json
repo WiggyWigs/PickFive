@@ -2164,6 +2164,18 @@
     "home": "Tulsa Golden Hurricane",
     "start_time": "2026-10-24T00:30:00.000Z"
   },
+  "NCAAF:289606": {
+    "line": 7.5,
+    "home_bets": 36,
+    "home_money": 46,
+    "away_bets": 64,
+    "away_money": 54,
+    "frozen_at": "2026-10-24T01:23:54+00:00",
+    "frozen_for": "kickoff",
+    "away": "North Carolina State Wolfpack",
+    "home": "Stanford Cardinal",
+    "start_time": "2026-10-24T02:30:00.000Z"
+  },
   "NCAAF:289630": {
     "line": -12.5,
     "home_bets": 33,

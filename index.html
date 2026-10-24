@@ -140,6 +140,8 @@
   .result.P { background: var(--line); color: var(--text); }
   #traps .pick { color: var(--down); }
   #traps-record { margin: 0 0 0.5rem; font-size: 0.85rem; }
+  .edges .box-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
+  .edges .box-head label { color: var(--muted); font-size: 0.85rem; }
 
   /* Info buttons + tap/hover pop-up (replaces browser title tooltips, which phones don't show) */
   .info {
@@ -219,7 +221,15 @@
 </div>
 
 <div class="edges" id="traps" style="display:none;">
-  <h2>Best Trap Plays</h2>
+  <div class="box-head">
+    <h2>Best Trap Plays</h2>
+    <label>Sort
+      <select id="trap-sort">
+        <option value="move">Biggest line move</option>
+        <option value="start">Start time</option>
+      </select>
+    </label>
+  </div>
   <p class="meta" id="traps-record"></p>
   <ol id="traps-list"></ol>
   <p class="none" id="traps-none" style="display:none;"></p>
@@ -650,10 +660,19 @@
 
   // Trap games, played on the line side (the team the line moved toward, away from
   // the public money) - the side the Season Record has on top so far.
+  // Box order from the Sort dropdown: biggest line move (default) or start
+  // time. Remembered on this device (separately from The Hook's).
+  let trapArgs = null;
+  let trapSort = "move";
+  try { if (localStorage.getItem("pickfiveTrapSort") === "start") trapSort = "start"; } catch (e) { /* default - fine */ }
+
   function renderTraps(rows, tally) {
+    trapArgs = [rows, tally];
+    const byMove = (a, b) => b.trapInfo.move - a.trapInfo.move || b.trapInfo.publicMoney - a.trapInfo.publicMoney;
+    const byStart = (a, b) => a.start - b.start || byMove(a, b);
     const best = rows
       .filter((r) => r.trapInfo)
-      .sort((a, b) => b.trapInfo.move - a.trapInfo.move || b.trapInfo.publicMoney - a.trapInfo.publicMoney);
+      .sort(trapSort === "start" ? byStart : byMove);
     document.getElementById("traps-list").innerHTML = best
       .map((r) => {
         const t = r.trapInfo;
@@ -807,6 +826,13 @@
     showStatus();
     renderEdges(rows);
     renderSharps(rows, threshold, ticketCut);
+    const trapSortSelect = document.getElementById("trap-sort");
+    trapSortSelect.value = trapSort;
+    trapSortSelect.addEventListener("change", () => {
+      trapSort = trapSortSelect.value;
+      try { localStorage.setItem("pickfiveTrapSort", trapSort); } catch (e) { /* not remembered - fine */ }
+      if (trapArgs) renderTraps(...trapArgs);
+    });
     renderTraps(rows, renderSeason(seasonRecord, threshold, ticketCut, edgeData));
     const games = renderGames(rows);
     select.addEventListener("change", () => {

@@ -290,26 +290,26 @@
   {
     "week": 6,
     "wager": "3",
-    "pick": "NFL 1:00",
-    "amount": 25.34,
-    "payout": null,
-    "net": null,
-    "total": null
+    "pick": "NFL 1: CMC 30 rec and London 60 Rec",
+    "amount": 25.0,
+    "payout": 42.86,
+    "net": 17.86,
+    "total": 43.2
   },
   {
     "week": 6,
     "wager": "4",
     "pick": "NFL 4:00",
-    "amount": null,
-    "payout": null,
-    "net": null,
-    "total": null
+    "amount": 42.75,
+    "payout": 68.59,
+    "net": 25.84,
+    "total": 69.04
   },
   {
     "week": 6,
     "wager": "5",
     "pick": "SNF",
-    "amount": null,
+    "amount": 69.04,
     "payout": null,
     "net": null,
     "total": null

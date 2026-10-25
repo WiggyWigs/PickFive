@@ -281,17 +281,17 @@
   {
     "week": 6,
     "wager": "2",
-    "pick": "College",
+    "pick": "College: Ok State -6.5 & Kentucky ML",
     "amount": 15.38,
-    "payout": null,
-    "net": null,
-    "total": null
+    "payout": 25.34,
+    "net": 9.96,
+    "total": 25.34
   },
   {
     "week": 6,
     "wager": "3",
     "pick": "NFL 1:00",
-    "amount": null,
+    "amount": 25.34,
     "payout": null,
     "net": null,
     "total": null

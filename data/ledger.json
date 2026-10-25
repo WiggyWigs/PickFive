@@ -2581,5 +2581,86 @@
     "payout": 35.38,
     "net": 15.38,
     "type": "wager"
+  },
+  {
+    "date": "10/24/2026",
+    "name": "Carlos",
+    "bet": "Week 6 Bank Builder Bet 1",
+    "bet_amount": 15.38,
+    "payout": 25.34,
+    "net": 9.96,
+    "type": "wager"
+  },
+  {
+    "date": "10/24/2026",
+    "name": "Billy",
+    "bet": "Week 6 Bank Builder Bet 1",
+    "bet_amount": 15.38,
+    "payout": 25.34,
+    "net": 9.96,
+    "type": "wager"
+  },
+  {
+    "date": "10/24/2026",
+    "name": "Robert",
+    "bet": "Week 6 Bank Builder Bet 1",
+    "bet_amount": 15.38,
+    "payout": 25.34,
+    "net": 9.96,
+    "type": "wager"
+  },
+  {
+    "date": "10/24/2026",
+    "name": "Carlos",
+    "bet": "Caterpillar: Michigan, Rutgers, Alabama, USC, UNC",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/24/2026",
+    "name": "Kevin",
+    "bet": "Parlay: Michigan +7.5 & South Carolina -2.5",
+    "bet_amount": 100.0,
+    "payout": 356.91,
+    "net": 256.91,
+    "type": "wager"
+  },
+  {
+    "date": "10/24/2026",
+    "name": "Carlos",
+    "bet": "UNC -8.5 & TCU -8.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Carlos",
+    "bet": "Week 6 Bank Builder Bet 1",
+    "bet_amount": 25.34,
+    "payout": null,
+    "net": -25.34,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Billy",
+    "bet": "Week 6 Bank Builder Bet 1",
+    "bet_amount": 25.34,
+    "payout": null,
+    "net": -25.34,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Robert",
+    "bet": "Week 6 Bank Builder Bet 1",
+    "bet_amount": 25.34,
+    "payout": null,
+    "net": -25.34,
+    "type": "wager"
   }
 ]

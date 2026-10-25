@@ -4317,9 +4317,9 @@
     "away_money": 38,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 16,
+    "away_score": 20,
+    "final": true
   },
   "NCAAF:289616": {
     "league": "NCAAF",
@@ -4340,9 +4340,9 @@
     "away_money": 82,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 10,
+    "away_score": 31,
+    "final": true
   },
   "NCAAF:289617": {
     "league": "NCAAF",
@@ -4455,9 +4455,9 @@
     "away_money": 49,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 57,
+    "away_score": 24,
+    "final": true
   },
   "NCAAF:289630": {
     "league": "NCAAF",
@@ -4501,9 +4501,9 @@
     "away_money": 46,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 56,
+    "away_score": 49,
+    "final": true
   },
   "NCAAF:289633": {
     "league": "NCAAF",
@@ -4570,9 +4570,9 @@
     "away_money": 77,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 34,
+    "away_score": 27,
+    "final": true
   },
   "NCAAF:289639": {
     "league": "NCAAF",
@@ -4662,9 +4662,9 @@
     "away_money": 58,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 20,
+    "away_score": 17,
+    "final": true
   },
   "NCAAF:289644": {
     "league": "NCAAF",
@@ -4708,9 +4708,9 @@
     "away_money": 42,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 21,
+    "away_score": 16,
+    "final": true
   },
   "NCAAF:289647": {
     "league": "NCAAF",
@@ -4800,9 +4800,9 @@
     "away_money": 44,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 39,
+    "away_score": 3,
+    "final": true
   },
   "NCAAF:289656": {
     "league": "NCAAF",
@@ -4846,9 +4846,9 @@
     "away_money": 62,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 30,
+    "away_score": 31,
+    "final": true
   },
   "NCAAF:289661": {
     "league": "NCAAF",
@@ -4869,9 +4869,9 @@
     "away_money": 67,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 19,
+    "away_score": 42,
+    "final": true
   },
   "NCAAF:289663": {
     "league": "NCAAF",
@@ -4984,9 +4984,9 @@
     "away_money": 33,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 34,
+    "away_score": 17,
+    "final": true
   },
   "NCAAF:289669": {
     "league": "NCAAF",
@@ -5168,9 +5168,9 @@
     "away_money": 72,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 38,
+    "away_score": 32,
+    "final": true
   },
   "NCAAF:289686": {
     "league": "NCAAF",
@@ -5214,9 +5214,9 @@
     "away_money": 52,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 24,
+    "away_score": 7,
+    "final": true
   },
   "NCAAF:289690": {
     "league": "NCAAF",

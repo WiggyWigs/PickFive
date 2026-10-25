@@ -6511,9 +6511,9 @@
     "away_money": 48,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 21,
+    "away_score": 27,
+    "final": true
   },
   "NFL:290932": {
     "league": "NFL",
@@ -6534,9 +6534,9 @@
     "away_money": 60,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 29,
+    "away_score": 20,
+    "final": true
   },
   "NFL:290933": {
     "league": "NFL",
@@ -6557,9 +6557,9 @@
     "away_money": 58,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 13,
+    "away_score": 43,
+    "final": true
   },
   "NFL:290934": {
     "league": "NFL",
@@ -6580,9 +6580,9 @@
     "away_money": 62,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 24,
+    "away_score": 27,
+    "final": true
   },
   "NFL:290935": {
     "league": "NFL",
@@ -6603,9 +6603,9 @@
     "away_money": 72,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 13,
+    "away_score": 35,
+    "final": true
   },
   "NFL:290936": {
     "league": "NFL",
@@ -6626,9 +6626,9 @@
     "away_money": 54,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 25,
+    "away_score": 28,
+    "final": true
   },
   "NFL:290937": {
     "league": "NFL",
@@ -6649,9 +6649,9 @@
     "away_money": 58,
     "frozen_at": "2026-10-24T14:29:29+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 16,
+    "away_score": 10,
+    "final": true
   },
   "NFL:290938": {
     "league": "NFL",

@@ -299,7 +299,7 @@
   {
     "week": 6,
     "wager": "4",
-    "pick": "NFL 4:00",
+    "pick": "NFL 2: Kraft 30 yards and Kyren 15 yards",
     "amount": 42.75,
     "payout": 68.59,
     "net": 25.84,
@@ -308,11 +308,11 @@
   {
     "week": 6,
     "wager": "5",
-    "pick": "SNF",
-    "amount": 69.04,
-    "payout": null,
-    "net": null,
-    "total": null
+    "pick": "SNF: JSN 70 yards, KW3 16 carries",
+    "amount": 68.5,
+    "payout": 0.0,
+    "net": -68.5,
+    "total": 0.54
   },
   {
     "week": 6,

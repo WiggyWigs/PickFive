@@ -2639,28 +2639,82 @@
   {
     "date": "10/25/2026",
     "name": "Carlos",
-    "bet": "Week 6 Bank Builder Bet 1",
-    "bet_amount": 25.34,
-    "payout": null,
-    "net": -25.34,
+    "bet": "Week 6 Bank Builder Bet 2",
+    "bet_amount": 25.0,
+    "payout": 42.86,
+    "net": 17.86,
     "type": "wager"
   },
   {
     "date": "10/25/2026",
     "name": "Billy",
-    "bet": "Week 6 Bank Builder Bet 1",
-    "bet_amount": 25.34,
-    "payout": null,
-    "net": -25.34,
+    "bet": "Week 6 Bank Builder Bet 2",
+    "bet_amount": 25.0,
+    "payout": 42.86,
+    "net": 17.86,
     "type": "wager"
   },
   {
     "date": "10/25/2026",
     "name": "Robert",
-    "bet": "Week 6 Bank Builder Bet 1",
-    "bet_amount": 25.34,
-    "payout": null,
-    "net": -25.34,
+    "bet": "Week 6 Bank Builder Bet 2",
+    "bet_amount": 25.0,
+    "payout": 42.86,
+    "net": 17.86,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Carlos",
+    "bet": "Week 6 Bank Builder Bet 3",
+    "bet_amount": 42.75,
+    "payout": 68.59,
+    "net": 25.84,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Billy",
+    "bet": "Week 6 Bank Builder Bet 3",
+    "bet_amount": 42.75,
+    "payout": 68.59,
+    "net": 25.84,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Robert",
+    "bet": "Week 6 Bank Builder Bet 3",
+    "bet_amount": 42.75,
+    "payout": 68.59,
+    "net": 25.84,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Carlos",
+    "bet": "Week 6 Bank Builder Bet 4",
+    "bet_amount": 68.5,
+    "payout": 0.0,
+    "net": -68.5,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Billy",
+    "bet": "Week 6 Bank Builder Bet 4",
+    "bet_amount": 68.5,
+    "payout": 0.0,
+    "net": -68.5,
+    "type": "wager"
+  },
+  {
+    "date": "10/25/2026",
+    "name": "Robert",
+    "bet": "Week 6 Bank Builder Bet 4",
+    "bet_amount": 68.5,
+    "payout": 0.0,
+    "net": -68.5,
     "type": "wager"
   }
 ]

@@ -2116,6 +2116,18 @@
     "home": "Marshall Thundering Herd",
     "start_time": "2026-10-20T23:30:00.000Z"
   },
+  "NCAAF:289600": {
+    "line": -6,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-27T19:00:43+00:00",
+    "frozen_for": "kickoff",
+    "away": "Sam Houston State Bearkats",
+    "home": "Missouri State Bears",
+    "start_time": "2026-10-28T00:00:00.000Z"
+  },
   "NCAAF:289602": {
     "line": -10.5,
     "home_bets": 58,
@@ -2775,6 +2787,18 @@
     "away": "Liberty Flames",
     "home": "Kennesaw State Owls",
     "start_time": "2026-10-22T23:00:00.000Z"
+  },
+  "NCAAF:290390": {
+    "line": -1.5,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-27T19:00:43+00:00",
+    "frozen_for": "kickoff",
+    "away": "Delaware Fightin Blue Hens",
+    "home": "Western Kentucky Hilltoppers",
+    "start_time": "2026-10-27T23:00:00.000Z"
   },
   "NCAAF:290392": {
     "line": -6.5,

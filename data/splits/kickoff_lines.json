@@ -1396,6 +1396,18 @@
     "home": "Army Black Knights",
     "start_time": "2026-10-10T16:00:00.000Z"
   },
+  "NCAAF:289481": {
+    "line": 1.5,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-28T21:33:26+00:00",
+    "frozen_for": "kickoff",
+    "away": "Kennesaw State Owls",
+    "home": "Middle Tennessee Blue Raiders",
+    "start_time": "2026-10-28T23:00:00.000Z"
+  },
   "NCAAF:289484": {
     "line": 4.5,
     "home_bets": 53,
@@ -2127,6 +2139,18 @@
     "away": "Sam Houston State Bearkats",
     "home": "Missouri State Bears",
     "start_time": "2026-10-28T00:00:00.000Z"
+  },
+  "NCAAF:289601": {
+    "line": 3,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-10-28T21:33:26+00:00",
+    "frozen_for": "kickoff",
+    "away": "Jacksonville State Gamecocks",
+    "home": "New Mexico State Aggies",
+    "start_time": "2026-10-29T00:00:00.000Z"
   },
   "NCAAF:289602": {
     "line": -10.5,

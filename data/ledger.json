@@ -2716,5 +2716,32 @@
     "payout": 0.0,
     "net": -68.5,
     "type": "wager"
+  },
+  {
+    "date": "10/29/2026",
+    "name": "Carlos",
+    "bet": "Week 7 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 37.29,
+    "net": 17.29,
+    "type": "wager"
+  },
+  {
+    "date": "10/29/2026",
+    "name": "Billy",
+    "bet": "Week 7 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 37.29,
+    "net": 17.29,
+    "type": "wager"
+  },
+  {
+    "date": "10/29/2026",
+    "name": "Kevin",
+    "bet": "Week 7 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 37.29,
+    "net": 17.29,
+    "type": "wager"
   }
 ]

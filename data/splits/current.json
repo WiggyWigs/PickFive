@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-30T13:31:20+00:00",
+  "pulled_at": "2026-10-30T13:52:43+00:00",
   "edge_threshold": 15,
   "splash_copied_at": "2026-10-27T14:04:59.216Z",
   "splash_csv_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSCJ1xEWWQHvRJVkAtSH1OpjCxHtYvk1YXmKSsTspXwu3jkebG81SDs1_NB9ALOnV2zrUMvhwpyy4zi/pub?gid=241224790&single=true&output=csv",
@@ -525,7 +525,7 @@
       "away": "Michigan Wolverines",
       "home_abbr": "RUT",
       "away_abbr": "MICH",
-      "line": 15.5,
+      "line": 16.5,
       "home_bets": 59,
       "home_money": 49,
       "away_bets": 41,
@@ -536,7 +536,7 @@
       "dk_at_splash": 14,
       "tue_line": 14,
       "tue_source": "splits",
-      "move": 1.5,
+      "move": 2.5,
       "flag": null
     },
     {
@@ -1071,7 +1071,7 @@
       "away": "Purdue Boilermakers",
       "home_abbr": "PSU",
       "away_abbr": "PUR",
-      "line": -10,
+      "line": -10.5,
       "home_bets": 45,
       "home_money": 23,
       "away_bets": 55,
@@ -1082,7 +1082,7 @@
       "dk_at_splash": -7.5,
       "tue_line": -7.5,
       "tue_source": "splits",
-      "move": -2.5,
+      "move": -3.0,
       "flag": null
     },
     {

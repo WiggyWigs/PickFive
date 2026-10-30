@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-30T13:31:20+00:00",
+  "pulled_at": "2026-10-30T13:52:43+00:00",
   "games": [
     {
       "id": 290943,
@@ -667,7 +667,7 @@
       "away": "Michigan Wolverines",
       "home_abbr": "RUT",
       "away_abbr": "MICH",
-      "line": 15.5,
+      "line": 16.5,
       "home_bets": 59,
       "home_money": 49,
       "away_bets": 41,
@@ -1087,7 +1087,7 @@
       "away": "Purdue Boilermakers",
       "home_abbr": "PSU",
       "away_abbr": "PUR",
-      "line": -10,
+      "line": -10.5,
       "home_bets": 45,
       "home_money": 23,
       "away_bets": 55,

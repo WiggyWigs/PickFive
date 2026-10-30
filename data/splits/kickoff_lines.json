@@ -2776,6 +2776,30 @@
     "home": "Sam Houston State Bearkats",
     "start_time": "2026-10-15T00:00:00.000Z"
   },
+  "NCAAF:289709": {
+    "line": -14,
+    "home_bets": 35,
+    "home_money": 22,
+    "away_bets": 65,
+    "away_money": 78,
+    "frozen_at": "2026-10-29T23:06:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "Florida Atlantic Owls",
+    "home": "North Texas Mean Green",
+    "start_time": "2026-10-29T23:30:00.000Z"
+  },
+  "NCAAF:289710": {
+    "line": -19.5,
+    "home_bets": 53,
+    "home_money": 58,
+    "away_bets": 47,
+    "away_money": 42,
+    "frozen_at": "2026-10-29T23:06:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "Troy Trojans",
+    "home": "James Madison Dukes",
+    "start_time": "2026-10-29T23:30:00.000Z"
+  },
   "NCAAF:289875": {
     "line": 1.5,
     "home_bets": 52,
@@ -3554,5 +3578,17 @@
     "away": "Dallas Cowboys",
     "home": "Philadelphia Eagles",
     "start_time": "2026-10-27T00:15:00.000Z"
+  },
+  "NFL:290943": {
+    "line": -3.5,
+    "home_bets": 50,
+    "home_money": 42,
+    "away_bets": 50,
+    "away_money": 58,
+    "frozen_at": "2026-10-29T23:06:56+00:00",
+    "frozen_for": "kickoff",
+    "away": "Carolina Panthers",
+    "home": "Green Bay Packers",
+    "start_time": "2026-10-30T00:15:00.000Z"
   }
 }

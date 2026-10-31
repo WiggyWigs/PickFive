@@ -2800,6 +2800,30 @@
     "home": "James Madison Dukes",
     "start_time": "2026-10-29T23:30:00.000Z"
   },
+  "NCAAF:289712": {
+    "line": 7.5,
+    "home_bets": 37,
+    "home_money": 34,
+    "away_bets": 63,
+    "away_money": 66,
+    "frozen_at": "2026-10-30T22:28:04+00:00",
+    "frozen_for": "kickoff",
+    "away": "Tulane Green Wave",
+    "home": "Charlotte 49ers",
+    "start_time": "2026-10-30T23:00:00.000Z"
+  },
+  "NCAAF:289713": {
+    "line": 2.5,
+    "home_bets": 63,
+    "home_money": 57,
+    "away_bets": 37,
+    "away_money": 43,
+    "frozen_at": "2026-10-30T22:28:04+00:00",
+    "frozen_for": "kickoff",
+    "away": "Baylor Bears",
+    "home": "UCF Knights",
+    "start_time": "2026-10-30T23:30:00.000Z"
+  },
   "NCAAF:289875": {
     "line": 1.5,
     "home_bets": 52,

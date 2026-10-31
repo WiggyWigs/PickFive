@@ -2800,6 +2800,18 @@
     "home": "James Madison Dukes",
     "start_time": "2026-10-29T23:30:00.000Z"
   },
+  "NCAAF:289711": {
+    "line": 7,
+    "home_bets": 56,
+    "home_money": 62,
+    "away_bets": 44,
+    "away_money": 38,
+    "frozen_at": "2026-10-31T00:28:50+00:00",
+    "frozen_for": "kickoff",
+    "away": "Kent State Golden Flashes",
+    "home": "Sacramento State Hornets",
+    "start_time": "2026-10-31T02:30:00.000Z"
+  },
   "NCAAF:289712": {
     "line": 7.5,
     "home_bets": 37,

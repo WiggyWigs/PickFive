@@ -5356,6 +5356,29 @@
     "away_score": 24,
     "final": true
   },
+  "NCAAF:289711": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 9,
+    "week_id": "2026-11-02",
+    "start_time": "2026-10-31T02:30:00.000Z",
+    "home": "Sacramento State Hornets",
+    "away": "Kent State Golden Flashes",
+    "home_abbr": "SAC",
+    "away_abbr": "KENT",
+    "splash_line": 9.5,
+    "tue_line": 10,
+    "line": 7,
+    "home_bets": 56,
+    "home_money": 62,
+    "away_bets": 44,
+    "away_money": 38,
+    "frozen_at": "2026-10-31T00:28:50+00:00",
+    "frozen_for": "kickoff",
+    "home_score": 31,
+    "away_score": 10,
+    "final": true
+  },
   "NCAAF:289712": {
     "league": "NCAAF",
     "season": 2026,
@@ -5375,9 +5398,9 @@
     "away_money": 66,
     "frozen_at": "2026-10-30T22:28:04+00:00",
     "frozen_for": "kickoff",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 31,
+    "away_score": 38,
+    "final": true
   },
   "NCAAF:289713": {
     "league": "NCAAF",
@@ -5398,9 +5421,9 @@
     "away_money": 43,
     "frozen_at": "2026-10-30T22:28:04+00:00",
     "frozen_for": "kickoff",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 9,
+    "away_score": 41,
+    "final": true
   },
   "NCAAF:289875": {
     "league": "NCAAF",

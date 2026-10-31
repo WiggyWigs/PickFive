@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-10-31T18:18:54+00:00",
+  "pulled_at": "2026-10-31T19:08:17+00:00",
   "games": [
     {
       "id": 290943,
@@ -525,7 +525,7 @@
       "away_bets": 64,
       "away_money": 68,
       "home_score": 20,
-      "away_score": 17,
+      "away_score": 27,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -546,7 +546,7 @@
       "home_money": 49,
       "away_bets": 52,
       "away_money": 51,
-      "home_score": 17,
+      "home_score": 31,
       "away_score": 10,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
@@ -568,7 +568,7 @@
       "home_money": 39,
       "away_bets": 52,
       "away_money": 61,
-      "home_score": 34,
+      "home_score": 44,
       "away_score": 2,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
@@ -580,7 +580,7 @@
       "an_week": 9,
       "week_id": "2026-11-02",
       "start_time": "2026-10-31T16:00:00.000Z",
-      "status": "inprogress",
+      "status": "complete",
       "home": "Navy Midshipmen",
       "away": "Notre Dame Fighting Irish",
       "home_abbr": "NAVY",
@@ -591,7 +591,7 @@
       "away_bets": 52,
       "away_money": 75,
       "home_score": 13,
-      "away_score": 21,
+      "away_score": 35,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -612,7 +612,7 @@
       "home_money": 51,
       "away_bets": 50,
       "away_money": 49,
-      "home_score": 27,
+      "home_score": 30,
       "away_score": 0,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
@@ -634,7 +634,7 @@
       "home_money": 74,
       "away_bets": 42,
       "away_money": 26,
-      "home_score": 20,
+      "home_score": 27,
       "away_score": 10,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
@@ -656,7 +656,7 @@
       "home_money": 41,
       "away_bets": 67,
       "away_money": 59,
-      "home_score": 17,
+      "home_score": 20,
       "away_score": 10,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
@@ -678,8 +678,8 @@
       "home_money": 29,
       "away_bets": 68,
       "away_money": 71,
-      "home_score": 14,
-      "away_score": 10,
+      "home_score": 17,
+      "away_score": 17,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -700,7 +700,7 @@
       "home_money": 37,
       "away_bets": 55,
       "away_money": 63,
-      "home_score": 17,
+      "home_score": 27,
       "away_score": 23,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
@@ -723,7 +723,7 @@
       "away_bets": 45,
       "away_money": 52,
       "home_score": 13,
-      "away_score": 14,
+      "away_score": 21,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -744,8 +744,8 @@
       "home_money": 53,
       "away_bets": 56,
       "away_money": 47,
-      "home_score": 14,
-      "away_score": 9,
+      "home_score": 17,
+      "away_score": 15,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -767,7 +767,7 @@
       "away_bets": 63,
       "away_money": 78,
       "home_score": 10,
-      "away_score": 17,
+      "away_score": 27,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -788,8 +788,8 @@
       "home_money": 32,
       "away_bets": 62,
       "away_money": 68,
-      "home_score": 0,
-      "away_score": 0,
+      "home_score": 7,
+      "away_score": 7,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -810,8 +810,8 @@
       "home_money": 41,
       "away_bets": 51,
       "away_money": 59,
-      "home_score": 0,
-      "away_score": 0,
+      "home_score": 3,
+      "away_score": 10,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -822,7 +822,7 @@
       "an_week": 9,
       "week_id": "2026-11-02",
       "start_time": "2026-10-31T19:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "South Alabama Jaguars",
       "away": "Louisiana Tech Bulldogs",
       "home_abbr": "USA",
@@ -832,8 +832,8 @@
       "home_money": 48,
       "away_bets": 41,
       "away_money": 52,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 0,
+      "away_score": 0,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -844,7 +844,7 @@
       "an_week": 9,
       "week_id": "2026-11-02",
       "start_time": "2026-10-31T19:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "East Carolina Pirates",
       "away": "Temple Owls",
       "home_abbr": "ECU",
@@ -854,8 +854,8 @@
       "home_money": 42,
       "away_bets": 45,
       "away_money": 58,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 0,
+      "away_score": 0,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -866,7 +866,7 @@
       "an_week": 9,
       "week_id": "2026-11-02",
       "start_time": "2026-10-31T19:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Air Force Falcons",
       "away": "UConn Huskies",
       "home_abbr": "AFA",
@@ -876,8 +876,8 @@
       "home_money": 38,
       "away_bets": 61,
       "away_money": 62,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 0,
+      "away_score": 0,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },
@@ -898,8 +898,8 @@
       "home_money": 36,
       "away_bets": 70,
       "away_money": 64,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 0,
+      "away_score": 0,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     },

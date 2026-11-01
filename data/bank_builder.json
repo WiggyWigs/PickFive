@@ -335,11 +335,11 @@
   {
     "week": 7,
     "wager": "2",
-    "pick": "College",
-    "amount": null,
-    "payout": null,
-    "net": null,
-    "total": null
+    "pick": "College - UGA and Minnesota",
+    "amount": 17.29,
+    "payout": 31.72,
+    "net": 14.43,
+    "total": 31.72
   },
   {
     "week": 7,

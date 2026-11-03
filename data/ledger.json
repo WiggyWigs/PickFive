@@ -2743,5 +2743,104 @@
     "payout": 37.29,
     "net": 17.29,
     "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Carlos",
+    "bet": "Week 7 Bank Builder Bet 1",
+    "bet_amount": 17.29,
+    "payout": 31.73,
+    "net": 14.44,
+    "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Billy",
+    "bet": "Week 7 Bank Builder Bet 1",
+    "bet_amount": 17.29,
+    "payout": 31.73,
+    "net": 14.44,
+    "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Kevin",
+    "bet": "Week 7 Bank Builder Bet 1",
+    "bet_amount": 17.29,
+    "payout": 31.73,
+    "net": 14.44,
+    "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Kevin",
+    "bet": "Northwestern ML & Arizona ML",
+    "bet_amount": 50.0,
+    "payout": 0.0,
+    "net": -50.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Carlos",
+    "bet": "Northwestern ML & Arizona ML",
+    "bet_amount": 50.0,
+    "payout": 0.0,
+    "net": -50.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Carlos",
+    "bet": "Parlay: PSU, Arizona, Northern Ill, Bengals",
+    "bet_amount": 15.0,
+    "payout": 0.0,
+    "net": -15.0,
+    "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Billy",
+    "bet": "Texas -29.5 & UGA ML",
+    "bet_amount": 20.0,
+    "payout": 47.92,
+    "net": 27.92,
+    "type": "wager"
+  },
+  {
+    "date": "10/31/2026",
+    "name": "Billy",
+    "bet": "ND/Navy over 56.5",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/1/2026",
+    "name": "Carlos",
+    "bet": "Week 7 Bank Builder Bet 2",
+    "bet_amount": 31.73,
+    "payout": 0.0,
+    "net": -31.73,
+    "type": "wager"
+  },
+  {
+    "date": "11/1/2026",
+    "name": "Billy",
+    "bet": "Week 7 Bank Builder Bet 2",
+    "bet_amount": 31.73,
+    "payout": 0.0,
+    "net": -31.73,
+    "type": "wager"
+  },
+  {
+    "date": "11/1/2026",
+    "name": "Kevin",
+    "bet": "Week 7 Bank Builder Bet 2",
+    "bet_amount": 31.73,
+    "payout": 0.0,
+    "net": -31.73,
+    "type": "wager"
   }
 ]

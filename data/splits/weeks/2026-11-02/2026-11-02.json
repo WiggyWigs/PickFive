@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-02T19:14:40+00:00",
+  "pulled_at": "2026-11-03T02:46:47+00:00",
   "games": [
     {
       "id": 290943,
@@ -294,7 +294,7 @@
       "an_week": 8,
       "week_id": "2026-11-02",
       "start_time": "2026-11-03T01:15:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Seattle Seahawks",
       "away": "Chicago Bears",
       "home_abbr": "SEA",
@@ -304,8 +304,8 @@
       "home_money": 49,
       "away_bets": 60,
       "away_money": 51,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 9,
+      "away_score": 13,
       "frozen_at": "2026-10-31T13:23:09+00:00",
       "frozen_for": "lock"
     }

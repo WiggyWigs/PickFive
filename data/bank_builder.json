@@ -344,11 +344,11 @@
   {
     "week": 7,
     "wager": "3",
-    "pick": "NFL 1:00",
-    "amount": null,
-    "payout": null,
-    "net": null,
-    "total": null
+    "pick": "NFL Flowers 60 and Higgings 50",
+    "amount": 31.72,
+    "payout": 0.0,
+    "net": -31.72,
+    "total": 0.0
   },
   {
     "week": 7,

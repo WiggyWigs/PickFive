@@ -3400,6 +3400,30 @@
     "home": "Oklahoma Sooners",
     "start_time": "2026-10-31T20:15:00.000Z"
   },
+  "NCAAF:289820": {
+    "line": 12.5,
+    "home_bets": 41,
+    "home_money": 40,
+    "away_bets": 59,
+    "away_money": 60,
+    "frozen_at": "2026-11-03T23:52:32+00:00",
+    "frozen_for": "kickoff",
+    "away": "Ohio Bobcats",
+    "home": "Akron Zips",
+    "start_time": "2026-11-04T00:00:00.000Z"
+  },
+  "NCAAF:289821": {
+    "line": -7,
+    "home_bets": 46,
+    "home_money": 53,
+    "away_bets": 54,
+    "away_money": 47,
+    "frozen_at": "2026-11-03T23:52:32+00:00",
+    "frozen_for": "kickoff",
+    "away": "Buffalo Bulls",
+    "home": "Miami (OH) RedHawks",
+    "start_time": "2026-11-04T01:00:00.000Z"
+  },
   "NCAAF:289875": {
     "line": 1.5,
     "home_bets": 52,

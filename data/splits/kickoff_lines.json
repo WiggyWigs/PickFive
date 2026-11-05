@@ -3424,6 +3424,42 @@
     "home": "Miami (OH) RedHawks",
     "start_time": "2026-11-04T01:00:00.000Z"
   },
+  "NCAAF:289822": {
+    "line": 24.5,
+    "home_bets": 48,
+    "home_money": 55,
+    "away_bets": 52,
+    "away_money": 45,
+    "frozen_at": "2026-11-04T22:28:23+00:00",
+    "frozen_for": "kickoff",
+    "away": "Toledo Rockets",
+    "home": "Sacramento State Hornets",
+    "start_time": "2026-11-05T00:00:00.000Z"
+  },
+  "NCAAF:289823": {
+    "line": 1.5,
+    "home_bets": 56,
+    "home_money": 47,
+    "away_bets": 44,
+    "away_money": 53,
+    "frozen_at": "2026-11-04T22:28:23+00:00",
+    "frozen_for": "kickoff",
+    "away": "Central Michigan Chippewas",
+    "home": "Eastern Michigan Eagles",
+    "start_time": "2026-11-05T00:30:00.000Z"
+  },
+  "NCAAF:289824": {
+    "line": -2.5,
+    "home_bets": 61,
+    "home_money": 83,
+    "away_bets": 39,
+    "away_money": 17,
+    "frozen_at": "2026-11-04T22:28:23+00:00",
+    "frozen_for": "kickoff",
+    "away": "Ball State Cardinals",
+    "home": "UMass Minutemen",
+    "start_time": "2026-11-05T00:00:00.000Z"
+  },
   "NCAAF:289875": {
     "line": 1.5,
     "home_bets": 52,

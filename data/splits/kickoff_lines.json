@@ -3460,6 +3460,30 @@
     "home": "UMass Minutemen",
     "start_time": "2026-11-05T00:00:00.000Z"
   },
+  "NCAAF:289825": {
+    "line": 7,
+    "home_bets": 54,
+    "home_money": 64,
+    "away_bets": 46,
+    "away_money": 36,
+    "frozen_at": "2026-11-06T00:08:20+00:00",
+    "frozen_for": "kickoff",
+    "away": "UTSA Roadrunners",
+    "home": "Florida Atlantic Owls",
+    "start_time": "2026-11-06T00:30:00.000Z"
+  },
+  "NCAAF:289826": {
+    "line": 14,
+    "home_bets": 36,
+    "home_money": 45,
+    "away_bets": 64,
+    "away_money": 55,
+    "frozen_at": "2026-11-06T00:08:20+00:00",
+    "frozen_for": "kickoff",
+    "away": "James Madison Dukes",
+    "home": "Southern Miss Golden Eagles",
+    "start_time": "2026-11-06T01:00:00.000Z"
+  },
   "NCAAF:289875": {
     "line": 1.5,
     "home_bets": 52,
@@ -4406,5 +4430,17 @@
     "away": "Chicago Bears",
     "home": "Seattle Seahawks",
     "start_time": "2026-11-03T01:15:00.000Z"
+  },
+  "NFL:290957": {
+    "line": 9.5,
+    "home_bets": 31,
+    "home_money": 40,
+    "away_bets": 69,
+    "away_money": 60,
+    "frozen_at": "2026-11-06T00:08:20+00:00",
+    "frozen_for": "kickoff",
+    "away": "Jacksonville Jaguars",
+    "home": "Baltimore Ravens",
+    "start_time": "2026-11-06T01:15:00.000Z"
   }
 }

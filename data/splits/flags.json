@@ -98,25 +98,5 @@
     "result": "W",
     "home_score": 25,
     "away_score": 24
-  },
-  "NCAAF:289850": {
-    "league": "NCAAF",
-    "season": 2026,
-    "an_week": 10,
-    "week_id": "2026-11-09",
-    "start_time": "2026-11-08T00:30:00.000Z",
-    "home": "Notre Dame Fighting Irish",
-    "away": "Miami (FL) Hurricanes",
-    "first_flagged": "2026-11-04",
-    "last_updated": "2026-11-07",
-    "side": "home",
-    "team": "Notre Dame Fighting Irish",
-    "abbr": "ND",
-    "edge": 16,
-    "side_move": -1.5,
-    "side_line": -7,
-    "result": null,
-    "home_score": null,
-    "away_score": null
   }
 }

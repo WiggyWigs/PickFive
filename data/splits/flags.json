@@ -98,5 +98,25 @@
     "result": "W",
     "home_score": 25,
     "away_score": 24
+  },
+  "NCAAF:289829": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 10,
+    "week_id": "2026-11-09",
+    "start_time": "2026-11-07T17:00:00.000Z",
+    "home": "Syracuse Orange",
+    "away": "Clemson Tigers",
+    "first_flagged": "2026-11-07",
+    "last_updated": "2026-11-07",
+    "side": "home",
+    "team": "Syracuse Orange",
+    "abbr": "SYR",
+    "edge": 20,
+    "side_move": -1.0,
+    "side_line": 1.5,
+    "result": null,
+    "home_score": null,
+    "away_score": null
   }
 }

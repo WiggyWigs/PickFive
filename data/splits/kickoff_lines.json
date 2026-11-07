@@ -3484,6 +3484,30 @@
     "home": "Southern Miss Golden Eagles",
     "start_time": "2026-11-06T01:00:00.000Z"
   },
+  "NCAAF:289827": {
+    "line": -1.5,
+    "home_bets": 38,
+    "home_money": 20,
+    "away_bets": 62,
+    "away_money": 80,
+    "frozen_at": "2026-11-07T00:15:15+00:00",
+    "frozen_for": "kickoff",
+    "away": "South Florida Bulls",
+    "home": "East Carolina Pirates",
+    "start_time": "2026-11-07T00:30:00.000Z"
+  },
+  "NCAAF:289841": {
+    "line": 4.5,
+    "home_bets": 56,
+    "home_money": 69,
+    "away_bets": 44,
+    "away_money": 31,
+    "frozen_at": "2026-11-07T00:15:15+00:00",
+    "frozen_for": "kickoff",
+    "away": "Nebraska Cornhuskers",
+    "home": "Illinois Fighting Illini",
+    "start_time": "2026-11-07T01:00:00.000Z"
+  },
   "NCAAF:289875": {
     "line": 1.5,
     "home_bets": 52,
@@ -3495,6 +3519,18 @@
     "away": "Delaware Fightin Blue Hens",
     "home": "Middle Tennessee Blue Raiders",
     "start_time": "2026-10-13T23:00:00.000Z"
+  },
+  "NCAAF:289877": {
+    "line": 10,
+    "home_bets": 38,
+    "home_money": 49,
+    "away_bets": 62,
+    "away_money": 51,
+    "frozen_at": "2026-11-07T00:15:15+00:00",
+    "frozen_for": "kickoff",
+    "away": "New Mexico Lobos",
+    "home": "Nevada Wolf Pack",
+    "start_time": "2026-11-07T02:00:00.000Z"
   },
   "NCAAF:289898": {
     "line": -5.5,

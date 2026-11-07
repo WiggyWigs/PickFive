@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-07T12:09:18+00:00",
+  "pulled_at": "2026-11-07T12:43:54+00:00",
   "games": [
     {
       "id": 290957,
@@ -237,9 +237,9 @@
       "away_abbr": "ARI",
       "line": -8.5,
       "home_bets": 53,
-      "home_money": 52,
+      "home_money": 53,
       "away_bets": 47,
-      "away_money": 48,
+      "away_money": 47,
       "home_score": null,
       "away_score": null
     },
@@ -1279,7 +1279,7 @@
       "away": "Kentucky Wildcats",
       "home_abbr": "TENN",
       "away_abbr": "UK",
-      "line": -5.5,
+      "line": -6,
       "home_bets": 25,
       "home_money": 49,
       "away_bets": 75,

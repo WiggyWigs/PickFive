@@ -3496,6 +3496,18 @@
     "home": "East Carolina Pirates",
     "start_time": "2026-11-07T00:30:00.000Z"
   },
+  "NCAAF:289828": {
+    "line": -6.5,
+    "home_bets": 66,
+    "home_money": 62,
+    "away_bets": 34,
+    "away_money": 38,
+    "frozen_at": "2026-11-07T02:44:39+00:00",
+    "frozen_for": "kickoff",
+    "away": "TCU Horned Frogs",
+    "home": "Arizona Wildcats",
+    "start_time": "2026-11-07T03:15:00.000Z"
+  },
   "NCAAF:289841": {
     "line": 4.5,
     "home_bets": 56,

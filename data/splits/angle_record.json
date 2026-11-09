@@ -9777,9 +9777,9 @@
     "away_money": 75,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 11,
+    "away_score": 19,
+    "final": true
   },
   "NFL:290959": {
     "league": "NFL",
@@ -9800,9 +9800,9 @@
     "away_money": 67,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 21,
+    "away_score": 26,
+    "final": true
   },
   "NFL:290960": {
     "league": "NFL",
@@ -9823,9 +9823,9 @@
     "away_money": 86,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 9,
+    "away_score": 19,
+    "final": true
   },
   "NFL:290961": {
     "league": "NFL",
@@ -9846,9 +9846,9 @@
     "away_money": 30,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 35,
+    "away_score": 12,
+    "final": true
   },
   "NFL:290962": {
     "league": "NFL",
@@ -9869,9 +9869,9 @@
     "away_money": 55,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 23,
+    "away_score": 22,
+    "final": true
   },
   "NFL:290963": {
     "league": "NFL",
@@ -9892,9 +9892,9 @@
     "away_money": 71,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 13,
+    "away_score": 20,
+    "final": true
   },
   "NFL:290964": {
     "league": "NFL",
@@ -9915,9 +9915,9 @@
     "away_money": 80,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 23,
+    "away_score": 27,
+    "final": true
   },
   "NFL:290965": {
     "league": "NFL",
@@ -9938,9 +9938,9 @@
     "away_money": 77,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 22,
+    "away_score": 44,
+    "final": true
   },
   "NFL:290966": {
     "league": "NFL",
@@ -9961,9 +9961,9 @@
     "away_money": 46,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 38,
+    "away_score": 17,
+    "final": true
   },
   "NFL:290967": {
     "league": "NFL",
@@ -9984,9 +9984,9 @@
     "away_money": 47,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 17,
+    "away_score": 3,
+    "final": true
   },
   "NFL:290968": {
     "league": "NFL",

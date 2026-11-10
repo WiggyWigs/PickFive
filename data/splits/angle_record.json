@@ -10053,8 +10053,8 @@
     "away_money": 80,
     "frozen_at": "2026-11-07T14:08:18+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 6,
+    "away_score": 23,
+    "final": true
   }
 }

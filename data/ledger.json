@@ -2842,5 +2842,149 @@
     "payout": 0.0,
     "net": -31.73,
     "type": "wager"
+  },
+  {
+    "date": "11/5/2026",
+    "name": "Carlos",
+    "bet": "Week 8 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Carlos",
+    "bet": "UNC -3.5, Houston -10.5, Missouri ML",
+    "bet_amount": 10.0,
+    "payout": 0.0,
+    "net": -10.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Carlos",
+    "bet": "Tennessee ML, Ok State -6.5",
+    "bet_amount": 20.0,
+    "payout": 56.32,
+    "net": 36.32,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "Tennessee ML, Ok State -6.5",
+    "bet_amount": 20.0,
+    "payout": 56.32,
+    "net": 36.32,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "LSU ML and UGA ML",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "TDs: Nolan James, Faison, Walton",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "James TD, Carr Passing, James Rushing, Faison Recieving",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "James Rushing, James TD, Faison Receiving",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "Carr Passing, James TD, ND ML",
+    "bet_amount": 20.0,
+    "payout": 66.0,
+    "net": 46.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "Walton Rushing over 60",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/7/2026",
+    "name": "Billy",
+    "bet": "Faison Receptions 7+",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
+  },
+  {
+    "date": "11/10/2026",
+    "name": "Kevin",
+    "bet": "Pick 5 Payout",
+    "bet_amount": 0.0,
+    "payout": 134.2,
+    "net": 134.2,
+    "type": "wager"
+  },
+  {
+    "date": "11/10/2026",
+    "name": "Billy",
+    "bet": "Pick 5 Payout",
+    "bet_amount": 0.0,
+    "payout": 134.2,
+    "net": 134.2,
+    "type": "wager"
+  },
+  {
+    "date": "11/10/2026",
+    "name": "Robert",
+    "bet": "Pick 5 Payout",
+    "bet_amount": 0.0,
+    "payout": 134.2,
+    "net": 134.2,
+    "type": "wager"
+  },
+  {
+    "date": "11/10/2026",
+    "name": "Carlos",
+    "bet": "Pick 5 Payout",
+    "bet_amount": 0.0,
+    "payout": 67.1,
+    "net": 67.1,
+    "type": "wager"
+  },
+  {
+    "date": "11/10/2026",
+    "name": "Patrick",
+    "bet": "Pick 5 Payout",
+    "bet_amount": 0.0,
+    "payout": 67.1,
+    "net": 67.1,
+    "type": "wager"
   }
 ]

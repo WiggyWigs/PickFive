@@ -4132,6 +4132,42 @@
     "home": "Army Black Knights",
     "start_time": "2026-11-08T00:30:00.000Z"
   },
+  "NCAAF:289943": {
+    "line": 15.5,
+    "home_bets": 38,
+    "home_money": 51,
+    "away_bets": 62,
+    "away_money": 49,
+    "frozen_at": "2026-11-10T20:50:37+00:00",
+    "frozen_for": "kickoff",
+    "away": "Western Michigan Broncos",
+    "home": "Akron Zips",
+    "start_time": "2026-11-11T00:00:00.000Z"
+  },
+  "NCAAF:289944": {
+    "line": -4.5,
+    "home_bets": 54,
+    "home_money": 41,
+    "away_bets": 46,
+    "away_money": 59,
+    "frozen_at": "2026-11-10T20:50:37+00:00",
+    "frozen_for": "kickoff",
+    "away": "Kent State Golden Flashes",
+    "home": "Bowling Green Falcons",
+    "start_time": "2026-11-11T00:00:00.000Z"
+  },
+  "NCAAF:289945": {
+    "line": 1.5,
+    "home_bets": 38,
+    "home_money": 31,
+    "away_bets": 62,
+    "away_money": 69,
+    "frozen_at": "2026-11-10T20:50:37+00:00",
+    "frozen_for": "kickoff",
+    "away": "Ohio Bobcats",
+    "home": "Miami (OH) RedHawks",
+    "start_time": "2026-11-11T01:00:00.000Z"
+  },
   "NCAAF:290102": {
     "line": 2.5,
     "home_bets": null,

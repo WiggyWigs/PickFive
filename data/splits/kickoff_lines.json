@@ -4204,6 +4204,30 @@
     "home": "Central Michigan Chippewas",
     "start_time": "2026-11-12T00:30:00.000Z"
   },
+  "NCAAF:289949": {
+    "line": 4.5,
+    "home_bets": 35,
+    "home_money": 49,
+    "away_bets": 65,
+    "away_money": 51,
+    "frozen_at": "2026-11-12T23:59:10+00:00",
+    "frozen_for": "kickoff",
+    "away": "Memphis Tigers",
+    "home": "South Florida Bulls",
+    "start_time": "2026-11-13T01:00:00.000Z"
+  },
+  "NCAAF:289950": {
+    "line": 10.5,
+    "home_bets": 32,
+    "home_money": 36,
+    "away_bets": 68,
+    "away_money": 64,
+    "frozen_at": "2026-11-12T23:59:10+00:00",
+    "frozen_for": "kickoff",
+    "away": "Louisiana Ragin' Cajuns",
+    "home": "UL-Monroe Warhawks",
+    "start_time": "2026-11-13T02:00:00.000Z"
+  },
   "NCAAF:290102": {
     "line": 2.5,
     "home_bets": null,
@@ -5342,6 +5366,18 @@
     "away": "Tampa Bay Buccaneers",
     "home": "Chicago Bears",
     "start_time": "2026-11-09T01:20:00.000Z"
+  },
+  "NFL:290970": {
+    "line": -1.5,
+    "home_bets": 56,
+    "home_money": 36,
+    "away_bets": 44,
+    "away_money": 64,
+    "frozen_at": "2026-11-12T23:59:10+00:00",
+    "frozen_for": "kickoff",
+    "away": "Washington Commanders",
+    "home": "New York Giants",
+    "start_time": "2026-11-13T01:15:00.000Z"
   },
   "NFL:291123": {
     "line": 3,

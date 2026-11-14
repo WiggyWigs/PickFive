@@ -132,9 +132,9 @@
     "side": "home",
     "team": "Penn State Nittany Lions",
     "abbr": "PSU",
-    "edge": 18,
-    "side_move": -1.0,
-    "side_line": -10.5,
+    "edge": 44,
+    "side_move": -2.0,
+    "side_line": -11.5,
     "result": null,
     "home_score": null,
     "away_score": null

@@ -4228,6 +4228,18 @@
     "home": "UL-Monroe Warhawks",
     "start_time": "2026-11-13T02:00:00.000Z"
   },
+  "NCAAF:289951": {
+    "line": -3,
+    "home_bets": 47,
+    "home_money": 22,
+    "away_bets": 53,
+    "away_money": 78,
+    "frozen_at": "2026-11-13T23:40:11+00:00",
+    "frozen_for": "kickoff",
+    "away": "Florida State Seminoles",
+    "home": "Pittsburgh Panthers",
+    "start_time": "2026-11-14T00:00:00.000Z"
+  },
   "NCAAF:290102": {
     "line": 2.5,
     "home_bets": null,

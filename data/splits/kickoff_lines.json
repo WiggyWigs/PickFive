@@ -4240,6 +4240,18 @@
     "home": "Pittsburgh Panthers",
     "start_time": "2026-11-14T00:00:00.000Z"
   },
+  "NCAAF:289953": {
+    "line": 7.5,
+    "home_bets": 16,
+    "home_money": 24,
+    "away_bets": 84,
+    "away_money": 76,
+    "frozen_at": "2026-11-14T02:55:33+00:00",
+    "frozen_for": "kickoff",
+    "away": "Houston Cougars",
+    "home": "Colorado Buffaloes",
+    "start_time": "2026-11-14T03:15:00.000Z"
+  },
   "NCAAF:289995": {
     "line": -10,
     "home_bets": 57,

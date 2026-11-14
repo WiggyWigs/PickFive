@@ -4240,6 +4240,18 @@
     "home": "Pittsburgh Panthers",
     "start_time": "2026-11-14T00:00:00.000Z"
   },
+  "NCAAF:289995": {
+    "line": -10,
+    "home_bets": 57,
+    "home_money": 47,
+    "away_bets": 43,
+    "away_money": 53,
+    "frozen_at": "2026-11-14T01:47:53+00:00",
+    "frozen_for": "kickoff",
+    "away": "Illinois Fighting Illini",
+    "home": "UCLA Bruins",
+    "start_time": "2026-11-14T02:00:00.000Z"
+  },
   "NCAAF:290102": {
     "line": 2.5,
     "home_bets": null,

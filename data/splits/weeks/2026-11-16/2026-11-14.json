@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-14T21:08:25+00:00",
+  "pulled_at": "2026-11-14T21:13:22+00:00",
   "games": [
     {
       "id": 290970,
@@ -789,7 +789,7 @@
       "away_bets": 54,
       "away_money": 54,
       "home_score": 16,
-      "away_score": 14,
+      "away_score": 17,
       "frozen_at": "2026-11-14T14:50:24+00:00",
       "frozen_for": "lock"
     },
@@ -811,7 +811,7 @@
       "away_bets": 48,
       "away_money": 31,
       "home_score": 28,
-      "away_score": 14,
+      "away_score": 21,
       "frozen_at": "2026-11-14T14:50:24+00:00",
       "frozen_for": "lock"
     },
@@ -965,7 +965,7 @@
       "away_bets": 21,
       "away_money": 12,
       "home_score": 7,
-      "away_score": 10,
+      "away_score": 17,
       "frozen_at": "2026-11-14T14:50:24+00:00",
       "frozen_for": "lock"
     },
@@ -986,7 +986,7 @@
       "home_money": 36,
       "away_bets": 74,
       "away_money": 64,
-      "home_score": 10,
+      "home_score": 14,
       "away_score": 10,
       "frozen_at": "2026-11-14T14:50:24+00:00",
       "frozen_for": "lock"
@@ -1174,7 +1174,7 @@
       "an_week": 11,
       "week_id": "2026-11-16",
       "start_time": "2026-11-14T21:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Texas State Bobcats",
       "away": "Fresno State Bulldogs",
       "home_abbr": "TXST",

@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-15T10:28:27+00:00",
+  "pulled_at": "2026-11-15T17:35:37+00:00",
   "games": [
     {
       "id": 290970,
@@ -30,7 +30,7 @@
       "an_week": 10,
       "week_id": "2026-11-16",
       "start_time": "2026-11-15T14:30:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Detroit Lions",
       "away": "New England Patriots",
       "home_abbr": "DET",
@@ -40,8 +40,8 @@
       "home_money": 52,
       "away_bets": 61,
       "away_money": 48,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 35,
+      "away_score": 10,
       "frozen_at": "2026-11-14T14:50:24+00:00",
       "frozen_for": "lock"
     },

@@ -2986,5 +2986,50 @@
     "payout": 67.1,
     "net": 67.1,
     "type": "wager"
+  },
+  {
+    "date": "11/11/2026",
+    "name": "Carlos",
+    "bet": "Week 8 Bank Builder Seed",
+    "bet_amount": 20.0,
+    "payout": 37.39,
+    "net": 17.39,
+    "type": "wager"
+  },
+  {
+    "date": "11/13/2026",
+    "name": "Carlos",
+    "bet": "Week 8 Bank Builder Bet 1",
+    "bet_amount": 17.39,
+    "payout": 0.0,
+    "net": -17.39,
+    "type": "wager"
+  },
+  {
+    "date": "11/13/2026",
+    "name": "Billy",
+    "bet": "Alabama -14",
+    "bet_amount": 20.0,
+    "payout": 38.18,
+    "net": 18.18,
+    "type": "wager"
+  },
+  {
+    "date": "11/13/2026",
+    "name": "Billy",
+    "bet": "Iowa -17.5",
+    "bet_amount": 20.0,
+    "payout": 38.51,
+    "net": 18.51,
+    "type": "wager"
+  },
+  {
+    "date": "11/13/2026",
+    "name": "Billy",
+    "bet": "Texas Tech/OSU Over 73.5",
+    "bet_amount": 20.0,
+    "payout": 39.04,
+    "net": 19.04,
+    "type": "wager"
   }
 ]

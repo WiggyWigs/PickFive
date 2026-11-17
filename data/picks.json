@@ -2048,5 +2048,105 @@
     "fav_dog": "Favorite",
     "spread": -20.5,
     "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "9",
+    "person": "Carlos/Patrick",
+    "team_picked": "Iowa",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 2.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "9",
+    "person": "Greg",
+    "team_picked": "Oklahma State",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -4.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "9",
+    "person": "Kevin",
+    "team_picked": "Wisconsin",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -17.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "9",
+    "person": "Robert",
+    "team_picked": "Wyoming",
+    "home_away": "Away",
+    "fav_dog": "Underdog",
+    "spread": 6.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "9",
+    "person": "Kevin",
+    "team_picked": "Notre Dame",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -5.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "10",
+    "person": "Carlos/Patrick",
+    "team_picked": "Seahawks",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "10",
+    "person": "Greg",
+    "team_picked": "Ohio State",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -12.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "10",
+    "person": "Kevin",
+    "team_picked": "Clemson",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -13.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "10",
+    "person": "Robert",
+    "team_picked": "Indiana",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -7.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "10",
+    "person": "Billy",
+    "team_picked": "Alabama",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -15.5,
+    "result": "L"
   }
 ]

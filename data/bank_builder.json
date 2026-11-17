@@ -382,18 +382,18 @@
     "wager": "1",
     "pick": "TNF: Strange 25 yards, Andres 2 receptions",
     "amount": 20.0,
-    "payout": 0.0,
-    "net": -20.0,
-    "total": -20.0
+    "payout": 37.39,
+    "net": 17.39,
+    "total": 17.39
   },
   {
     "week": 8,
     "wager": "2",
-    "pick": "College",
-    "amount": null,
-    "payout": null,
-    "net": null,
-    "total": null
+    "pick": "College: ND Over and Oklahoma State +3.5",
+    "amount": 17.39,
+    "payout": 0.0,
+    "net": -17.39,
+    "total": 0.0
   },
   {
     "week": 8,

@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-16T19:20:37+00:00",
+  "pulled_at": "2026-11-17T03:27:12+00:00",
   "games": [
     {
       "id": 290970,
@@ -294,7 +294,7 @@
       "an_week": 10,
       "week_id": "2026-11-16",
       "start_time": "2026-11-17T01:15:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Baltimore Ravens",
       "away": "Los Angeles Chargers",
       "home_abbr": "BAL",
@@ -304,8 +304,8 @@
       "home_money": 67,
       "away_bets": 67,
       "away_money": 33,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 13,
+      "away_score": 20,
       "frozen_at": "2026-11-14T14:50:24+00:00",
       "frozen_for": "lock"
     }

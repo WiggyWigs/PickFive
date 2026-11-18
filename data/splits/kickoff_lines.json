@@ -4936,6 +4936,42 @@
     "home": "North Carolina State Wolfpack",
     "start_time": "2026-11-14T17:00:00.000Z"
   },
+  "NCAAF:290072": {
+    "line": -10,
+    "home_bets": 64,
+    "home_money": 34,
+    "away_bets": 36,
+    "away_money": 66,
+    "frozen_at": "2026-11-17T19:40:32+00:00",
+    "frozen_for": "kickoff",
+    "away": "Ball State Cardinals",
+    "home": "Ohio Bobcats",
+    "start_time": "2026-11-18T00:00:00.000Z"
+  },
+  "NCAAF:290073": {
+    "line": -14.5,
+    "home_bets": 60,
+    "home_money": 55,
+    "away_bets": 40,
+    "away_money": 45,
+    "frozen_at": "2026-11-17T19:40:32+00:00",
+    "frozen_for": "kickoff",
+    "away": "Eastern Michigan Eagles",
+    "home": "Western Michigan Broncos",
+    "start_time": "2026-11-17T23:00:00.000Z"
+  },
+  "NCAAF:290074": {
+    "line": 9.5,
+    "home_bets": 38,
+    "home_money": 62,
+    "away_bets": 62,
+    "away_money": 38,
+    "frozen_at": "2026-11-17T19:40:32+00:00",
+    "frozen_for": "kickoff",
+    "away": "Miami (OH) RedHawks",
+    "home": "Kent State Golden Flashes",
+    "start_time": "2026-11-18T00:00:00.000Z"
+  },
   "NCAAF:290102": {
     "line": 2.5,
     "home_bets": null,

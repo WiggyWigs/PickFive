@@ -5008,6 +5008,18 @@
     "home": "Temple Owls",
     "start_time": "2026-11-20T00:30:00.000Z"
   },
+  "NCAAF:290082": {
+    "line": 1.5,
+    "home_bets": 38,
+    "home_money": 24,
+    "away_bets": 62,
+    "away_money": 76,
+    "frozen_at": "2026-11-20T22:08:27+00:00",
+    "frozen_for": "kickoff",
+    "away": "Iowa State Cyclones",
+    "home": "UCF Knights",
+    "start_time": "2026-11-20T23:00:00.000Z"
+  },
   "NCAAF:290102": {
     "line": 2.5,
     "home_bets": null,

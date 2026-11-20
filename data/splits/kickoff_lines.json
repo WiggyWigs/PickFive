@@ -4996,6 +4996,18 @@
     "home": "Buffalo Bulls",
     "start_time": "2026-11-19T00:30:00.000Z"
   },
+  "NCAAF:290081": {
+    "line": -2.5,
+    "home_bets": 56,
+    "home_money": 32,
+    "away_bets": 44,
+    "away_money": 68,
+    "frozen_at": "2026-11-19T22:35:22+00:00",
+    "frozen_for": "kickoff",
+    "away": "Rice Owls",
+    "home": "Temple Owls",
+    "start_time": "2026-11-20T00:30:00.000Z"
+  },
   "NCAAF:290102": {
     "line": 2.5,
     "home_bets": null,
@@ -6302,6 +6314,18 @@
     "away": "Los Angeles Chargers",
     "home": "Baltimore Ravens",
     "start_time": "2026-11-17T01:15:00.000Z"
+  },
+  "NFL:290983": {
+    "line": -12.5,
+    "home_bets": 52,
+    "home_money": 61,
+    "away_bets": 48,
+    "away_money": 39,
+    "frozen_at": "2026-11-19T22:35:22+00:00",
+    "frozen_for": "kickoff",
+    "away": "Indianapolis Colts",
+    "home": "Houston Texans",
+    "start_time": "2026-11-20T01:15:00.000Z"
   },
   "NFL:291123": {
     "line": 3,

@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-21T15:06:38+00:00",
+  "pulled_at": "2026-11-21T20:23:56+00:00",
   "games": [
     {
       "id": 290983,
@@ -41,7 +41,9 @@
       "away_bets": 46,
       "away_money": 45,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290985,
@@ -61,7 +63,9 @@
       "away_bets": 48,
       "away_money": 50,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290986,
@@ -81,7 +85,9 @@
       "away_bets": 67,
       "away_money": 68,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290987,
@@ -101,7 +107,9 @@
       "away_bets": 47,
       "away_money": 51,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290989,
@@ -121,7 +129,9 @@
       "away_bets": 33,
       "away_money": 31,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290990,
@@ -141,7 +151,9 @@
       "away_bets": 38,
       "away_money": 46,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290992,
@@ -161,7 +173,9 @@
       "away_bets": 28,
       "away_money": 27,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290991,
@@ -181,7 +195,9 @@
       "away_bets": 57,
       "away_money": 59,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290988,
@@ -201,7 +217,9 @@
       "away_bets": 82,
       "away_money": 80,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290993,
@@ -221,7 +239,9 @@
       "away_bets": 39,
       "away_money": 39,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290824,
@@ -241,7 +261,9 @@
       "away_bets": 73,
       "away_money": 41,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290994,
@@ -261,7 +283,9 @@
       "away_bets": 80,
       "away_money": 67,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290073,
@@ -534,7 +558,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Boston College Eagles",
       "away": "Syracuse Orange",
       "home_abbr": "BC",
@@ -544,8 +568,10 @@
       "home_money": 66,
       "away_bets": 59,
       "away_money": 34,
-      "home_score": null,
-      "away_score": null
+      "home_score": 27,
+      "away_score": 15,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290110,
@@ -554,7 +580,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "complete",
       "home": "Cincinnati Bearcats",
       "away": "Colorado Buffaloes",
       "home_abbr": "CIN",
@@ -564,8 +590,10 @@
       "home_money": 73,
       "away_bets": 36,
       "away_money": 27,
-      "home_score": null,
-      "away_score": null
+      "home_score": 35,
+      "away_score": 28,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290113,
@@ -574,7 +602,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Georgia Tech Yellow Jackets",
       "away": "Wake Forest Demon Deacons",
       "home_abbr": "GT",
@@ -584,8 +612,10 @@
       "home_money": 46,
       "away_bets": 61,
       "away_money": 54,
-      "home_score": null,
-      "away_score": null
+      "home_score": 28,
+      "away_score": 50,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290117,
@@ -594,7 +624,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Nebraska Cornhuskers",
       "away": "Ohio State Buckeyes",
       "home_abbr": "NEB",
@@ -604,8 +634,10 @@
       "home_money": 22,
       "away_bets": 82,
       "away_money": 78,
-      "home_score": null,
-      "away_score": null
+      "home_score": 31,
+      "away_score": 21,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290120,
@@ -614,7 +646,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "complete",
       "home": "Army Black Knights",
       "away": "East Carolina Pirates",
       "home_abbr": "ARMY",
@@ -624,8 +656,10 @@
       "home_money": 67,
       "away_bets": 32,
       "away_money": 33,
-      "home_score": null,
-      "away_score": null
+      "home_score": 6,
+      "away_score": 10,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290135,
@@ -634,7 +668,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "complete",
       "home": "Purdue Boilermakers",
       "away": "Wisconsin Badgers",
       "home_abbr": "PUR",
@@ -644,8 +678,10 @@
       "home_money": 57,
       "away_bets": 57,
       "away_money": 43,
-      "home_score": null,
-      "away_score": null
+      "home_score": 10,
+      "away_score": 42,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290140,
@@ -654,7 +690,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "complete",
       "home": "Ole Miss Rebels",
       "away": "Wofford Terriers",
       "home_abbr": "MISS",
@@ -664,8 +700,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 59,
+      "away_score": 17,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290141,
@@ -674,7 +712,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Florida Gators",
       "away": "Vanderbilt Commodores",
       "home_abbr": "FLA",
@@ -684,8 +722,10 @@
       "home_money": 73,
       "away_bets": 49,
       "away_money": 27,
-      "home_score": null,
-      "away_score": null
+      "home_score": 34,
+      "away_score": 27,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290145,
@@ -694,7 +734,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Kansas Jayhawks",
       "away": "BYU Cougars",
       "home_abbr": "KU",
@@ -704,8 +744,10 @@
       "home_money": 36,
       "away_bets": 64,
       "away_money": 64,
-      "home_score": null,
-      "away_score": null
+      "home_score": 16,
+      "away_score": 16,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290153,
@@ -714,7 +756,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "complete",
       "home": "Minnesota Golden Gophers",
       "away": "Northwestern Wildcats",
       "home_abbr": "MINN",
@@ -724,8 +766,10 @@
       "home_money": 22,
       "away_bets": 58,
       "away_money": 78,
-      "home_score": null,
-      "away_score": null
+      "home_score": 20,
+      "away_score": 17,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290154,
@@ -734,7 +778,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "complete",
       "home": "Tulane Green Wave",
       "away": "North Texas Mean Green",
       "home_abbr": "TULN",
@@ -744,8 +788,10 @@
       "home_money": 46,
       "away_bets": 57,
       "away_money": 54,
-      "home_score": null,
-      "away_score": null
+      "home_score": 28,
+      "away_score": 24,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290158,
@@ -754,7 +800,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Navy Midshipmen",
       "away": "Memphis Tigers",
       "home_abbr": "NAVY",
@@ -764,8 +810,10 @@
       "home_money": 34,
       "away_bets": 76,
       "away_money": 66,
-      "home_score": null,
-      "away_score": null
+      "home_score": 31,
+      "away_score": 34,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290087,
@@ -774,7 +822,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T17:30:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Virginia Cavaliers",
       "away": "North Carolina Tar Heels",
       "home_abbr": "UVA",
@@ -784,8 +832,10 @@
       "home_money": 9,
       "away_bets": 74,
       "away_money": 91,
-      "home_score": null,
-      "away_score": null
+      "home_score": 34,
+      "away_score": 10,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290136,
@@ -794,7 +844,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T18:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "West Virginia Mountaineers",
       "away": "Houston Cougars",
       "home_abbr": "WVU",
@@ -804,8 +854,10 @@
       "home_money": 34,
       "away_bets": 70,
       "away_money": 66,
-      "home_score": null,
-      "away_score": null
+      "home_score": 31,
+      "away_score": 21,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290151,
@@ -814,7 +866,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T18:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Mississippi State Bulldogs",
       "away": "Tennessee Tech Golden Eagles",
       "home_abbr": "MSST",
@@ -824,8 +876,10 @@
       "home_money": 18,
       "away_bets": 60,
       "away_money": 82,
-      "home_score": null,
-      "away_score": null
+      "home_score": 27,
+      "away_score": 10,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290396,
@@ -834,7 +888,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T18:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Liberty Flames",
       "away": "Western Kentucky Hilltoppers",
       "home_abbr": "LIB",
@@ -844,8 +898,10 @@
       "home_money": 30,
       "away_bets": 60,
       "away_money": 70,
-      "home_score": null,
-      "away_score": null
+      "home_score": 35,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 289708,
@@ -854,7 +910,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T19:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Jacksonville State Gamecocks",
       "away": "Missouri State Bears",
       "home_abbr": "JVST",
@@ -864,8 +920,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 3,
+      "away_score": 13,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290171,
@@ -874,7 +932,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T19:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Alabama Crimson Tide",
       "away": "Chattanooga Mocs",
       "home_abbr": "BAMA",
@@ -884,8 +942,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 26,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290173,
@@ -894,7 +954,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T19:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Tulsa Golden Hurricane",
       "away": "Charlotte 49ers",
       "home_abbr": "TLSA",
@@ -904,8 +964,10 @@
       "home_money": 59,
       "away_bets": 48,
       "away_money": 41,
-      "home_score": null,
-      "away_score": null
+      "home_score": 7,
+      "away_score": 7,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290217,
@@ -914,7 +976,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T19:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Sam Houston State Bearkats",
       "away": "Middle Tennessee Blue Raiders",
       "home_abbr": "SHSU",
@@ -924,8 +986,10 @@
       "home_money": 22,
       "away_bets": 63,
       "away_money": 78,
-      "home_score": null,
-      "away_score": null
+      "home_score": 7,
+      "away_score": 21,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290108,
@@ -934,7 +998,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T19:30:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Florida Atlantic Owls",
       "away": "South Florida Bulls",
       "home_abbr": "FAU",
@@ -944,8 +1008,10 @@
       "home_money": 17,
       "away_bets": 72,
       "away_money": 83,
-      "home_score": null,
-      "away_score": null
+      "home_score": 10,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290127,
@@ -954,7 +1020,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T19:30:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Appalachian State Mountaineers",
       "away": "UL-Monroe Warhawks",
       "home_abbr": "APP",
@@ -964,8 +1030,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 3,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290143,
@@ -974,7 +1042,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T19:30:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Illinois Fighting Illini",
       "away": "Iowa Hawkeyes",
       "home_abbr": "ILL",
@@ -984,8 +1052,10 @@
       "home_money": 9,
       "away_bets": 84,
       "away_money": 91,
-      "home_score": null,
-      "away_score": null
+      "home_score": 3,
+      "away_score": 10,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290089,
@@ -994,7 +1064,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T20:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Louisiana Ragin' Cajuns",
       "away": "Coastal Carolina Chanticleers",
       "home_abbr": "UL",
@@ -1004,8 +1074,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 7,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290394,
@@ -1014,7 +1086,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T20:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "New Mexico State Aggies",
       "away": "Delaware Fightin Blue Hens",
       "home_abbr": "NMSU",
@@ -1024,8 +1096,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 3,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290395,
@@ -1034,7 +1108,7 @@
       "an_week": 12,
       "week_id": "2026-11-23",
       "start_time": "2026-11-21T20:00:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Kennesaw State Owls",
       "away": "Florida International Panthers",
       "home_abbr": "KENN",
@@ -1044,8 +1118,10 @@
       "home_money": 64,
       "away_bets": 48,
       "away_money": 36,
-      "home_score": null,
-      "away_score": null
+      "home_score": 7,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290091,
@@ -1064,8 +1140,10 @@
       "home_money": 26,
       "away_bets": 62,
       "away_money": 74,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290109,
@@ -1084,8 +1162,10 @@
       "home_money": 65,
       "away_bets": 24,
       "away_money": 35,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290115,
@@ -1104,8 +1184,10 @@
       "home_money": 11,
       "away_bets": 79,
       "away_money": 89,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290121,
@@ -1124,8 +1206,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290129,
@@ -1144,8 +1228,10 @@
       "home_money": null,
       "away_bets": null,
       "away_money": null,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290147,
@@ -1164,8 +1250,10 @@
       "home_money": 20,
       "away_bets": 72,
       "away_money": 80,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290150,
@@ -1184,8 +1272,10 @@
       "home_money": 38,
       "away_bets": 65,
       "away_money": 62,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290162,
@@ -1204,8 +1294,10 @@
       "home_money": 23,
       "away_bets": 80,
       "away_money": 77,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290172,
@@ -1224,8 +1316,10 @@
       "home_money": 48,
       "away_bets": 71,
       "away_money": 52,
-      "home_score": null,
-      "away_score": null
+      "home_score": 0,
+      "away_score": 0,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290106,
@@ -1245,7 +1339,9 @@
       "away_bets": 34,
       "away_money": 35,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290086,
@@ -1265,7 +1361,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290156,
@@ -1285,7 +1383,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290176,
@@ -1305,7 +1405,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290177,
@@ -1325,7 +1427,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290088,
@@ -1345,7 +1449,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290097,
@@ -1365,7 +1471,9 @@
       "away_bets": 40,
       "away_money": 59,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290078,
@@ -1385,7 +1493,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290083,
@@ -1405,7 +1515,9 @@
       "away_bets": 58,
       "away_money": 55,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290098,
@@ -1425,7 +1537,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290103,
@@ -1445,7 +1559,9 @@
       "away_bets": 75,
       "away_money": 86,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290137,
@@ -1465,7 +1581,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290138,
@@ -1485,7 +1603,9 @@
       "away_bets": 66,
       "away_money": 61,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290142,
@@ -1505,7 +1625,9 @@
       "away_bets": 43,
       "away_money": 50,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290146,
@@ -1525,7 +1647,9 @@
       "away_bets": 74,
       "away_money": 64,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290164,
@@ -1545,7 +1669,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290165,
@@ -1565,7 +1691,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290101,
@@ -1585,7 +1713,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290122,
@@ -1605,7 +1735,9 @@
       "away_bets": 63,
       "away_money": 54,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290155,
@@ -1625,7 +1757,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290131,
@@ -1645,7 +1779,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290112,
@@ -1665,7 +1801,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     },
     {
       "id": 290118,
@@ -1685,7 +1823,9 @@
       "away_bets": null,
       "away_money": null,
       "home_score": null,
-      "away_score": null
+      "away_score": null,
+      "frozen_at": "2026-11-21T15:06:38+00:00",
+      "frozen_for": "lock"
     }
   ]
 }

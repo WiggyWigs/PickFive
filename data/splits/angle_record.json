@@ -9837,9 +9837,9 @@
     "away_money": null,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 17,
+    "away_score": 19,
+    "final": true
   },
   "NCAAF:290102": {
     "league": "NCAAF",
@@ -10021,9 +10021,9 @@
     "away_money": null,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 16,
+    "away_score": 8,
+    "final": true
   },
   "NCAAF:290113": {
     "league": "NCAAF",
@@ -10113,9 +10113,9 @@
     "away_money": null,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 31,
+    "away_score": 24,
+    "final": true
   },
   "NCAAF:290120": {
     "league": "NCAAF",
@@ -10182,9 +10182,9 @@
     "away_money": 54,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 17,
+    "away_score": 38,
+    "final": true
   },
   "NCAAF:290127": {
     "league": "NCAAF",
@@ -10228,9 +10228,9 @@
     "away_money": null,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 27,
+    "away_score": 30,
+    "final": true
   },
   "NCAAF:290133": {
     "league": "NCAAF",
@@ -10320,9 +10320,9 @@
     "away_money": null,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 49,
+    "away_score": 42,
+    "final": true
   },
   "NCAAF:290138": {
     "league": "NCAAF",
@@ -10573,9 +10573,9 @@
     "away_money": null,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 20,
+    "away_score": 22,
+    "final": true
   },
   "NCAAF:290156": {
     "league": "NCAAF",

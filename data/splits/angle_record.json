@@ -13572,9 +13572,9 @@
     "away_money": 80,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 23,
+    "away_score": 18,
+    "final": true
   },
   "NFL:290989": {
     "league": "NFL",
@@ -13641,9 +13641,9 @@
     "away_money": 59,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 24,
+    "away_score": 27,
+    "final": true
   },
   "NFL:290992": {
     "league": "NFL",
@@ -13687,9 +13687,9 @@
     "away_money": 39,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 38,
+    "away_score": 24,
+    "final": true
   },
   "NFL:290994": {
     "league": "NFL",

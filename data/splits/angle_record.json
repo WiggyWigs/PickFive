@@ -11220,9 +11220,9 @@
     "away_money": 41,
     "frozen_at": "2026-11-21T15:06:38+00:00",
     "frozen_for": "lock",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 35,
+    "away_score": 10,
+    "final": true
   },
   "NFL:290888": {
     "league": "NFL",

@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-23T15:43:21+00:00",
+  "pulled_at": "2026-11-23T17:04:52+00:00",
   "games": [
     {
       "id": 290200,
@@ -34,10 +34,10 @@
       "home_abbr": "WMU",
       "away_abbr": "M-OH",
       "line": -6.5,
-      "home_bets": null,
-      "home_money": null,
-      "away_bets": null,
-      "away_money": null,
+      "home_bets": 69,
+      "home_money": 65,
+      "away_bets": 31,
+      "away_money": 35,
       "home_score": null,
       "away_score": null
     },
@@ -273,7 +273,7 @@
       "away": "Texas Longhorns",
       "home_abbr": "TA&M",
       "away_abbr": "TEX",
-      "line": 12.5,
+      "line": 11.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -833,7 +833,7 @@
       "away": "Troy Trojans",
       "home_abbr": "ARST",
       "away_abbr": "TROY",
-      "line": -4,
+      "line": -3.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,
@@ -1273,7 +1273,7 @@
       "away": "Nevada Wolf Pack",
       "home_abbr": "UNLV",
       "away_abbr": "NEV",
-      "line": -6,
+      "line": -5.5,
       "home_bets": null,
       "home_money": null,
       "away_bets": null,

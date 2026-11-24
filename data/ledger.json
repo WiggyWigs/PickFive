@@ -3031,5 +3031,14 @@
     "payout": 39.04,
     "net": 19.04,
     "type": "wager"
+  },
+  {
+    "date": "11/20/2026",
+    "name": "Billy",
+    "bet": "Notre Dame/SMU Over",
+    "bet_amount": 20.0,
+    "payout": 0.0,
+    "net": -20.0,
+    "type": "wager"
   }
 ]

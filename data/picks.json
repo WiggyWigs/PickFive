@@ -2148,5 +2148,55 @@
     "fav_dog": "Favorite",
     "spread": -15.5,
     "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "11",
+    "person": "Carlos/Patrick",
+    "team_picked": "Ohio State",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -3.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "11",
+    "person": "Greg",
+    "team_picked": "Bears",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -11.5,
+    "result": "L"
+  },
+  {
+    "year": 2026,
+    "week": "11",
+    "person": "Kevin",
+    "team_picked": "Marshall",
+    "home_away": "Home",
+    "fav_dog": "Underdog",
+    "spread": 1.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "11",
+    "person": "Robert",
+    "team_picked": "Utah",
+    "home_away": "Away",
+    "fav_dog": "Favorite",
+    "spread": -7.5,
+    "result": "W"
+  },
+  {
+    "year": 2026,
+    "week": "11",
+    "person": "Billy",
+    "team_picked": "Texas",
+    "home_away": "Home",
+    "fav_dog": "Favorite",
+    "spread": -20.5,
+    "result": "W"
   }
 ]

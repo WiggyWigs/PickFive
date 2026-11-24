@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-23T17:04:52+00:00",
+  "pulled_at": "2026-11-24T03:10:39+00:00",
   "games": [
     {
       "id": 290983,
@@ -272,7 +272,7 @@
       "an_week": 11,
       "week_id": "2026-11-23",
       "start_time": "2026-11-24T01:15:00.000Z",
-      "status": "scheduled",
+      "status": "inprogress",
       "home": "Washington Commanders",
       "away": "Cincinnati Bengals",
       "home_abbr": "WAS",
@@ -282,8 +282,8 @@
       "home_money": 33,
       "away_bets": 80,
       "away_money": 67,
-      "home_score": null,
-      "away_score": null,
+      "home_score": 10,
+      "away_score": 10,
       "frozen_at": "2026-11-21T15:06:38+00:00",
       "frozen_for": "lock"
     }

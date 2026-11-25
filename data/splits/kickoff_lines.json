@@ -5764,6 +5764,30 @@
     "home": "Southern Miss Golden Eagles",
     "start_time": "2026-11-21T21:00:00.000Z"
   },
+  "NCAAF:290200": {
+    "line": -5.5,
+    "home_bets": null,
+    "home_money": null,
+    "away_bets": null,
+    "away_money": null,
+    "frozen_at": "2026-11-24T19:59:04+00:00",
+    "frozen_for": "kickoff",
+    "away": "Kent State Golden Flashes",
+    "home": "Eastern Michigan Eagles",
+    "start_time": "2026-11-25T00:00:00.000Z"
+  },
+  "NCAAF:290201": {
+    "line": -5.5,
+    "home_bets": 55,
+    "home_money": 55,
+    "away_bets": 45,
+    "away_money": 45,
+    "frozen_at": "2026-11-24T19:59:04+00:00",
+    "frozen_for": "kickoff",
+    "away": "Miami (OH) RedHawks",
+    "home": "Western Michigan Broncos",
+    "start_time": "2026-11-25T00:00:00.000Z"
+  },
   "NCAAF:290217": {
     "line": 6.5,
     "home_bets": 37,

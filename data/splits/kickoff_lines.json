@@ -5896,6 +5896,18 @@
     "home": "Liberty Flames",
     "start_time": "2026-11-21T18:00:00.000Z"
   },
+  "NFL:290805": {
+    "line": -8.5,
+    "home_bets": 54,
+    "home_money": 54,
+    "away_bets": 46,
+    "away_money": 46,
+    "frozen_at": "2026-11-26T14:46:26+00:00",
+    "frozen_for": "kickoff",
+    "away": "Philadelphia Eagles",
+    "home": "Dallas Cowboys",
+    "start_time": "2026-11-26T21:30:00.000Z"
+  },
   "NFL:290807": {
     "line": 3,
     "home_bets": 55,
@@ -5991,6 +6003,18 @@
     "away": "Green Bay Packers",
     "home": "Los Angeles Rams",
     "start_time": "2026-11-26T01:00:00.000Z"
+  },
+  "NFL:290841": {
+    "line": 1.5,
+    "home_bets": 47,
+    "home_money": 55,
+    "away_bets": 53,
+    "away_money": 45,
+    "frozen_at": "2026-11-26T14:46:26+00:00",
+    "frozen_for": "kickoff",
+    "away": "Chicago Bears",
+    "home": "Detroit Lions",
+    "start_time": "2026-11-26T18:00:00.000Z"
   },
   "NFL:290888": {
     "line": 2.5,

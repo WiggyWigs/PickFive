@@ -5980,6 +5980,18 @@
     "home": "San Francisco 49ers",
     "start_time": "2026-11-23T01:20:00.000Z"
   },
+  "NFL:290825": {
+    "line": -2.5,
+    "home_bets": 50,
+    "home_money": 54,
+    "away_bets": 50,
+    "away_money": 46,
+    "frozen_at": "2026-11-25T22:10:10+00:00",
+    "frozen_for": "kickoff",
+    "away": "Green Bay Packers",
+    "home": "Los Angeles Rams",
+    "start_time": "2026-11-26T01:00:00.000Z"
+  },
   "NFL:290888": {
     "line": 2.5,
     "home_bets": 49,

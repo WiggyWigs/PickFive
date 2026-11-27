@@ -5800,6 +5800,18 @@
     "home": "Texas Tech Red Raiders",
     "start_time": "2026-11-27T01:00:00.000Z"
   },
+  "NCAAF:290204": {
+    "line": -19.5,
+    "home_bets": 63,
+    "home_money": 89,
+    "away_bets": 37,
+    "away_money": 11,
+    "frozen_at": "2026-11-27T19:49:06+00:00",
+    "frozen_for": "kickoff",
+    "away": "Temple Owls",
+    "home": "Memphis Tigers",
+    "start_time": "2026-11-27T20:30:00.000Z"
+  },
   "NCAAF:290205": {
     "line": -17.5,
     "home_bets": 63,
@@ -5848,6 +5860,18 @@
     "home": "UTSA Roadrunners",
     "start_time": "2026-11-27T17:00:00.000Z"
   },
+  "NCAAF:290213": {
+    "line": 6.5,
+    "home_bets": 38,
+    "home_money": 28,
+    "away_bets": 62,
+    "away_money": 72,
+    "frozen_at": "2026-11-27T19:49:06+00:00",
+    "frozen_for": "kickoff",
+    "away": "Florida Gators",
+    "home": "Florida State Seminoles",
+    "start_time": "2026-11-27T20:30:00.000Z"
+  },
   "NCAAF:290214": {
     "line": -3.5,
     "home_bets": 64,
@@ -5860,6 +5884,18 @@
     "home": "Iowa Hawkeyes",
     "start_time": "2026-11-27T17:08:00.000Z"
   },
+  "NCAAF:290215": {
+    "line": -3,
+    "home_bets": 47,
+    "home_money": 38,
+    "away_bets": 53,
+    "away_money": 62,
+    "frozen_at": "2026-11-27T19:49:06+00:00",
+    "frozen_for": "kickoff",
+    "away": "Appalachian State Mountaineers",
+    "home": "South Alabama Jaguars",
+    "start_time": "2026-11-27T20:00:00.000Z"
+  },
   "NCAAF:290217": {
     "line": 6.5,
     "home_bets": 37,
@@ -5871,6 +5907,30 @@
     "away": "Middle Tennessee Blue Raiders",
     "home": "Sam Houston State Bearkats",
     "start_time": "2026-11-21T19:00:00.000Z"
+  },
+  "NCAAF:290222": {
+    "line": 9.5,
+    "home_bets": 41,
+    "home_money": 35,
+    "away_bets": 59,
+    "away_money": 65,
+    "frozen_at": "2026-11-27T19:49:06+00:00",
+    "frozen_for": "kickoff",
+    "away": "North Dakota State Bison",
+    "home": "San Jose State Spartans",
+    "start_time": "2026-11-27T20:30:00.000Z"
+  },
+  "NCAAF:290233": {
+    "line": -7,
+    "home_bets": 45,
+    "home_money": 37,
+    "away_bets": 55,
+    "away_money": 63,
+    "frozen_at": "2026-11-27T19:49:06+00:00",
+    "frozen_for": "kickoff",
+    "away": "Air Force Falcons",
+    "home": "New Mexico Lobos",
+    "start_time": "2026-11-27T21:30:00.000Z"
   },
   "NCAAF:290255": {
     "line": 9.5,
@@ -7382,6 +7442,18 @@
     "away": "Kansas City Chiefs",
     "home": "Buffalo Bills",
     "start_time": "2026-11-27T01:20:00.000Z"
+  },
+  "NFL:290996": {
+    "line": 4.5,
+    "home_bets": 19,
+    "home_money": 26,
+    "away_bets": 81,
+    "away_money": 74,
+    "frozen_at": "2026-11-27T19:49:06+00:00",
+    "frozen_for": "kickoff",
+    "away": "Denver Broncos",
+    "home": "Pittsburgh Steelers",
+    "start_time": "2026-11-27T20:00:00.000Z"
   },
   "NFL:291123": {
     "line": 3,

@@ -10922,6 +10922,29 @@
     "away_score": 28,
     "final": true
   },
+  "NCAAF:290202": {
+    "league": "NCAAF",
+    "season": 2026,
+    "an_week": 13,
+    "week_id": "2026-11-30",
+    "start_time": "2026-11-27T01:00:00.000Z",
+    "home": "Texas Tech Red Raiders",
+    "away": "TCU Horned Frogs",
+    "home_abbr": "TTU",
+    "away_abbr": "TCU",
+    "splash_line": -14.5,
+    "tue_line": -14,
+    "line": -14,
+    "home_bets": 59,
+    "home_money": 39,
+    "away_bets": 41,
+    "away_money": 61,
+    "frozen_at": "2026-11-26T23:31:48+00:00",
+    "frozen_for": "kickoff",
+    "home_score": 48,
+    "away_score": 27,
+    "final": true
+  },
   "NCAAF:290217": {
     "league": "NCAAF",
     "season": 2026,
@@ -11126,9 +11149,9 @@
     "away_money": 46,
     "frozen_at": "2026-11-26T14:46:26+00:00",
     "frozen_for": "kickoff",
-    "home_score": null,
-    "away_score": null,
-    "final": false
+    "home_score": 38,
+    "away_score": 39,
+    "final": true
   },
   "NFL:290807": {
     "league": "NFL",
@@ -13827,6 +13850,29 @@
     "frozen_for": "lock",
     "home_score": 22,
     "away_score": 20,
+    "final": true
+  },
+  "NFL:290995": {
+    "league": "NFL",
+    "season": 2026,
+    "an_week": 12,
+    "week_id": "2026-11-30",
+    "start_time": "2026-11-27T01:20:00.000Z",
+    "home": "Buffalo Bills",
+    "away": "Kansas City Chiefs",
+    "home_abbr": "BUF",
+    "away_abbr": "KC",
+    "splash_line": -2.5,
+    "tue_line": -3,
+    "line": -3,
+    "home_bets": 37,
+    "home_money": 34,
+    "away_bets": 63,
+    "away_money": 66,
+    "frozen_at": "2026-11-26T23:31:48+00:00",
+    "frozen_for": "kickoff",
+    "home_score": 13,
+    "away_score": 10,
     "final": true
   },
   "NFL:291123": {

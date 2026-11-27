@@ -5788,6 +5788,18 @@
     "home": "Western Michigan Broncos",
     "start_time": "2026-11-25T00:00:00.000Z"
   },
+  "NCAAF:290202": {
+    "line": -14,
+    "home_bets": 59,
+    "home_money": 39,
+    "away_bets": 41,
+    "away_money": 61,
+    "frozen_at": "2026-11-26T23:31:48+00:00",
+    "frozen_for": "kickoff",
+    "away": "TCU Horned Frogs",
+    "home": "Texas Tech Red Raiders",
+    "start_time": "2026-11-27T01:00:00.000Z"
+  },
   "NCAAF:290217": {
     "line": 6.5,
     "home_bets": 37,
@@ -7298,6 +7310,18 @@
     "away": "Cincinnati Bengals",
     "home": "Washington Commanders",
     "start_time": "2026-11-24T01:15:00.000Z"
+  },
+  "NFL:290995": {
+    "line": -3,
+    "home_bets": 37,
+    "home_money": 34,
+    "away_bets": 63,
+    "away_money": 66,
+    "frozen_at": "2026-11-26T23:31:48+00:00",
+    "frozen_for": "kickoff",
+    "away": "Kansas City Chiefs",
+    "home": "Buffalo Bills",
+    "start_time": "2026-11-27T01:20:00.000Z"
   },
   "NFL:291123": {
     "line": 3,

@@ -5848,6 +5848,18 @@
     "home": "Ohio Bobcats",
     "start_time": "2026-11-27T17:00:00.000Z"
   },
+  "NCAAF:290209": {
+    "line": -25.5,
+    "home_bets": 45,
+    "home_money": 50,
+    "away_bets": 55,
+    "away_money": 50,
+    "frozen_at": "2026-11-27T23:58:05+00:00",
+    "frozen_for": "kickoff",
+    "away": "West Virginia Mountaineers",
+    "home": "Utah Utes",
+    "start_time": "2026-11-28T02:00:00.000Z"
+  },
   "NCAAF:290211": {
     "line": 1.5,
     "home_bets": 66,
@@ -5859,6 +5871,18 @@
     "away": "Tulsa Golden Hurricane",
     "home": "UTSA Roadrunners",
     "start_time": "2026-11-27T17:00:00.000Z"
+  },
+  "NCAAF:290212": {
+    "line": 10.5,
+    "home_bets": 30,
+    "home_money": 41,
+    "away_bets": 70,
+    "away_money": 59,
+    "frozen_at": "2026-11-27T23:58:05+00:00",
+    "frozen_for": "kickoff",
+    "away": "Texas Longhorns",
+    "home": "Texas A&M Aggies",
+    "start_time": "2026-11-28T00:30:00.000Z"
   },
   "NCAAF:290213": {
     "line": 6.5,
@@ -5931,6 +5955,18 @@
     "away": "Air Force Falcons",
     "home": "New Mexico Lobos",
     "start_time": "2026-11-27T21:30:00.000Z"
+  },
+  "NCAAF:290252": {
+    "line": -9.5,
+    "home_bets": 39,
+    "home_money": 29,
+    "away_bets": 61,
+    "away_money": 71,
+    "frozen_at": "2026-11-27T23:58:05+00:00",
+    "frozen_for": "kickoff",
+    "away": "Minnesota Golden Gophers",
+    "home": "Wisconsin Badgers",
+    "start_time": "2026-11-28T00:30:00.000Z"
   },
   "NCAAF:290255": {
     "line": 9.5,

@@ -1,5 +1,5 @@
 {
-  "pulled_at": "2026-11-28T13:56:13+00:00",
+  "pulled_at": "2026-11-28T14:18:04+00:00",
   "edge_threshold": 15,
   "splash_copied_at": "2026-11-24T19:57:54.066Z",
   "splash_csv_url": "https://docs.google.com/spreadsheets/d/e/2PACX-1vSCJ1xEWWQHvRJVkAtSH1OpjCxHtYvk1YXmKSsTspXwu3jkebG81SDs1_NB9ALOnV2zrUMvhwpyy4zi/pub?gid=241224790&single=true&output=csv",
@@ -1333,7 +1333,7 @@
       "away": "Cincinnati Bearcats",
       "home_abbr": "BYU",
       "away_abbr": "CIN",
-      "line": -16.5,
+      "line": -17.5,
       "home_bets": 41,
       "home_money": 25,
       "away_bets": 59,
@@ -1344,7 +1344,7 @@
       "dk_at_splash": -15.5,
       "tue_line": -15.5,
       "tue_source": "splits",
-      "move": -1.0,
+      "move": -2.0,
       "flag": null
     },
     {
@@ -1385,7 +1385,7 @@
       "away": "USC Trojans",
       "home_abbr": "UCLA",
       "away_abbr": "USC",
-      "line": 5.5,
+      "line": 4.5,
       "home_bets": 64,
       "home_money": 43,
       "away_bets": 36,
@@ -1396,7 +1396,7 @@
       "dk_at_splash": 7,
       "tue_line": 7,
       "tue_source": "splits",
-      "move": -1.5,
+      "move": -2.5,
       "flag": null
     },
     {
@@ -1438,10 +1438,10 @@
       "home_abbr": "WF",
       "away_abbr": "DUKE",
       "line": -14.5,
-      "home_bets": 75,
-      "home_money": 88,
-      "away_bets": 25,
-      "away_money": 12,
+      "home_bets": 76,
+      "home_money": 75,
+      "away_bets": 24,
+      "away_money": 25,
       "home_score": null,
       "away_score": null,
       "splash_line": -14.5,
@@ -1489,7 +1489,7 @@
       "away": "Georgia Tech Yellow Jackets",
       "home_abbr": "UGA",
       "away_abbr": "GT",
-      "line": -35.5,
+      "line": -36,
       "home_bets": 61,
       "home_money": 70,
       "away_bets": 39,
@@ -1500,7 +1500,7 @@
       "dk_at_splash": -35.5,
       "tue_line": -35.5,
       "tue_source": "splits",
-      "move": 0.0,
+      "move": -0.5,
       "flag": null
     },
     {
@@ -1645,7 +1645,7 @@
       "away": "Kansas Jayhawks",
       "home_abbr": "OKST",
       "away_abbr": "KU",
-      "line": -5.5,
+      "line": -6,
       "home_bets": 75,
       "home_money": 87,
       "away_bets": 25,
@@ -1656,7 +1656,7 @@
       "dk_at_splash": -6.5,
       "tue_line": -6.5,
       "tue_source": "splits",
-      "move": 1.0,
+      "move": 0.5,
       "flag": null
     },
     {
